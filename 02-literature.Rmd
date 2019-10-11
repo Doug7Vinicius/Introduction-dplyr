@@ -1,3 +1,84 @@
-# Literature
+# O que é Dados organizados?
 
-Here is a review of existing methods.
+>“Famílias felizes são todas iguais; toda família infeliz é infeliz à sua maneira. ” – Leo Tolstoi
+
+>“Os conjuntos de dados organizados são todos iguais, mas todos os conjuntos de dados confusos são confusos à sua maneira.” – Hadley Wickham
+
+Você vai precisar instalar os pacotes `tidyr`, `devtools` e `DSR`. Para instalar tidyr e devtools, abra o RStudio e execute o comando:
+
+```{r eval=FALSE}
+install.packages(c("tidyr", "devtools"))
+```
+
+`DSR` é uma coleção de conjuntos de dados. Para instalar DSR, execute o comando:
+
+```{r eval=FALSE}
+devtools::install_github("garrettgman/DSR")
+```
+
+Os dados tabulares podem ser organizados de várias maneiras. Os conjuntos de dados abaixo mostram os mesmos dados organizados de quatro maneiras diferentes, sendo que possuem as mesmas variáveis: país, ano, população e casos. Mas cada conjunto organiza os valores em forma de layout diferente. 
+
+
+```{r}
+library(DSR)
+# Primeiro conjunto de dados.
+table1
+
+# Segundo conjunto de dados.
+table2
+
+# Terceiro conjunto de dados.
+table3
+```
+
+O último conjunto de dados é uma coleção de duas tabelas.
+
+```{r}
+# Quarto conjunto de dados.
+table4 # cases
+
+table5 # population
+```
+
+R segue um conjunto de convenções que tornam um layout de dados tabulares muito mais fácil de trabalhar do que outros. Seus dados serão mais fáceis de trabalhar no R se seguirem três regras:
+
+  - 1.Cada variável no conjunto de dados é colocada em sua própria coluna;
+  - 2.Cada observação é colocada em sua própria linha;
+  - 3.Cada valor é colocado em sua própria célula.
+
+Os dados que satisfazem essas regras são conhecidos como dados organizados. Observe que `table1` são dados organizados.
+
+```{r figure2, echo=FALSE, fig.align='center', out.width="90%"}
+knitr::include_graphics("imagens/tidy-1.png")
+```
+
+Em `table1`, cada variável é colocada em sua própria coluna, cada observação em sua própria linha e cada valor em sua própria célula.
+
+## Introdução ao `tidyr`
+
+```{r figure7, echo=FALSE, fig.align='center', out.width="25%"}
+knitr::include_graphics("imagens/tidyr.png")
+```
+
+O pacote tidyr tem como principal objetivo transformar um data frame para o formato tidy, ou limpo.
+
+
+De acordo com as regras ditas anteriormente, um dado limpo é aquele com formato *long*, ou seja, com mais linhas. O outro formato é chamado de *wide*, com mais colunas. No caso deste exemplo, ano é uma variável, logo é necessário existir uma coluna com os valores de ano. O valor relacionado a UF naqueles anos também é outra variável, então precisa de uma coluna pra representá-lo. Além disso, a própria UF precisa de uma coluna.
+
+O `tidyr` possui duas funções principais:
+
+`gather`: Transforma um `tibble` *wide* em *long*, ou seja, transforma os dados no formato *tidy*.
+
+`spread`: Transforma um `tibble` *long* em *wide*, ou seja, transforma dados que estão no formato *tidy* em formato não *tidy*.
+
+Além disso, existem duas funções que podem ser importantes na nossa análise: `separate` e `unite`, que separa uma coluna em duas e vice versa.
+
+### `gather`
+
+Vamos criar um `tibble` no formato *wide* e transformá-lo em um dado *tidy*:
+```{r}
+library(tibble)
+tb <- tibble(uf = c("RJ", "SP"), `2017` = c(10, 11), `2018` = c(11, 10))
+tb
+```
+
