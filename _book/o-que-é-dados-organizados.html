@@ -128,7 +128,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <ul class="summary">
 <li><center><img src="imagens/dplyr.png" alt="logo" width="50%" height="50%"style="margin: 15px 0 0 0"></center></li>
-<li><a href="./">Minicurso SEMAT XIX: introdução ao pacote dplyr</a></li>
+<li><center><a href="./">dplyr</a></center></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prefácio</a><ul>
@@ -182,7 +182,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado em bookdown</a></li>
+<li><center><img src="imagens/bookdown-logo.png" alt="logo" width="30%" height="30%"style="margin: 15px 0 0 0"></center></li>
+<li><center><a href="https://github.com/rstudio/bookdown" target="blank">Publicado em bookdown</a></center></li>
 
 </ul>
 
@@ -210,56 +211,71 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>“Os conjuntos de dados organizados são todos iguais, mas todos os conjuntos de dados confusos são confusos à sua maneira.” – Hadley Wickham</p>
 </blockquote>
 <p>Você vai precisar instalar os pacotes <code>tidyr</code>, <code>devtools</code> e <code>DSR</code>. Para instalar tidyr e devtools, abra o RStudio e execute o comando:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&quot;tidyr&quot;</span>, <span class="st">&quot;devtools&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&quot;tidyr&quot;</span>, <span class="st">&quot;devtools&quot;</span>))</a></code></pre></div>
 <p><code>DSR</code> é uma coleção de conjuntos de dados. Para instalar DSR, execute o comando:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;garrettgman/DSR&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;garrettgman/DSR&quot;</span>)</a></code></pre></div>
 <p>Os dados tabulares podem ser organizados de várias maneiras. Os conjuntos de dados abaixo mostram os mesmos dados organizados de quatro maneiras diferentes, sendo que possuem as mesmas variáveis: país, ano, população e casos. Mas cada conjunto organiza os valores em forma de layout diferente.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">library</span>(DSR)</a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="co"># Primeiro conjunto de dados.</span></a>
-<a class="sourceLine" id="cb3-3" title="3">table1</a></code></pre></div>
-<pre><code>##       country year  cases population
-## 1 Afghanistan 1999    745   19987071
-## 2 Afghanistan 2000   2666   20595360
-## 3      Brazil 1999  37737  172006362
-## 4      Brazil 2000  80488  174504898
-## 5       China 1999 212258 1272915272
-## 6       China 2000 213766 1280428583</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># Segundo conjunto de dados.</span></a>
-<a class="sourceLine" id="cb5-2" title="2">table2</a></code></pre></div>
-<pre><code>##        country year        key      value
-## 1  Afghanistan 1999      cases        745
-## 2  Afghanistan 1999 population   19987071
-## 3  Afghanistan 2000      cases       2666
-## 4  Afghanistan 2000 population   20595360
-## 5       Brazil 1999      cases      37737
-## 6       Brazil 1999 population  172006362
-## 7       Brazil 2000      cases      80488
-## 8       Brazil 2000 population  174504898
-## 9        China 1999      cases     212258
-## 10       China 1999 population 1272915272
-## 11       China 2000      cases     213766
-## 12       China 2000 population 1280428583</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co"># Terceiro conjunto de dados.</span></a>
-<a class="sourceLine" id="cb7-2" title="2">table3</a></code></pre></div>
-<pre><code>##       country year              rate
-## 1 Afghanistan 1999      745/19987071
-## 2 Afghanistan 2000     2666/20595360
-## 3      Brazil 1999   37737/172006362
-## 4      Brazil 2000   80488/174504898
-## 5       China 1999 212258/1272915272
-## 6       China 2000 213766/1280428583</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">library</span>(DSR)</a></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;DSR&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:tidyr&#39;:
+## 
+##     population, table1, table2, table3, table5, who</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="co"># Primeiro conjunto de dados.</span></a>
+<a class="sourceLine" id="cb15-2" title="2">table1</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 4
+##   country      year  cases population
+##   &lt;fct&gt;       &lt;int&gt;  &lt;int&gt;      &lt;int&gt;
+## 1 Afghanistan  1999    745   19987071
+## 2 Afghanistan  2000   2666   20595360
+## 3 Brazil       1999  37737  172006362
+## 4 Brazil       2000  80488  174504898
+## 5 China        1999 212258 1272915272
+## 6 China        2000 213766 1280428583</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="co"># Segundo conjunto de dados.</span></a>
+<a class="sourceLine" id="cb17-2" title="2">table2</a></code></pre></div>
+<pre><code>## # A tibble: 12 x 4
+##    country      year key             value
+##    &lt;fct&gt;       &lt;int&gt; &lt;fct&gt;           &lt;int&gt;
+##  1 Afghanistan  1999 cases             745
+##  2 Afghanistan  1999 population   19987071
+##  3 Afghanistan  2000 cases            2666
+##  4 Afghanistan  2000 population   20595360
+##  5 Brazil       1999 cases           37737
+##  6 Brazil       1999 population  172006362
+##  7 Brazil       2000 cases           80488
+##  8 Brazil       2000 population  174504898
+##  9 China        1999 cases          212258
+## 10 China        1999 population 1272915272
+## 11 China        2000 cases          213766
+## 12 China        2000 population 1280428583</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="co"># Terceiro conjunto de dados.</span></a>
+<a class="sourceLine" id="cb19-2" title="2">table3</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 3
+##   country      year rate             
+##   &lt;fct&gt;       &lt;int&gt; &lt;chr&gt;            
+## 1 Afghanistan  1999 745/19987071     
+## 2 Afghanistan  2000 2666/20595360    
+## 3 Brazil       1999 37737/172006362  
+## 4 Brazil       2000 80488/174504898  
+## 5 China        1999 212258/1272915272
+## 6 China        2000 213766/1280428583</code></pre>
 <p>O último conjunto de dados é uma coleção de duas tabelas.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co"># Quarto conjunto de dados.</span></a>
-<a class="sourceLine" id="cb9-2" title="2">table4 <span class="co"># cases</span></a></code></pre></div>
-<pre><code>##       country   1999   2000
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="co"># Quarto conjunto de dados.</span></a>
+<a class="sourceLine" id="cb21-2" title="2">table4 <span class="co"># cases</span></a></code></pre></div>
+<pre><code>## # A tibble: 3 x 3
+##   country     `1999` `2000`
+##   &lt;fct&gt;        &lt;int&gt;  &lt;int&gt;
 ## 1 Afghanistan    745   2666
-## 2      Brazil  37737  80488
-## 3       China 212258 213766</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">table5 <span class="co"># population</span></a></code></pre></div>
-<pre><code>##       country       1999       2000
+## 2 Brazil       37737  80488
+## 3 China       212258 213766</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1">table5 <span class="co"># population</span></a></code></pre></div>
+<pre><code>## # A tibble: 3 x 3
+##   country         `1999`     `2000`
+##   &lt;fct&gt;            &lt;int&gt;      &lt;int&gt;
 ## 1 Afghanistan   19987071   20595360
-## 2      Brazil  172006362  174504898
-## 3       China 1272915272 1280428583</code></pre>
+## 2 Brazil       172006362  174504898
+## 3 China       1272915272 1280428583</code></pre>
 <p>R segue um conjunto de convenções que tornam um layout de dados tabulares muito mais fácil de trabalhar do que outros. Seus dados serão mais fáceis de trabalhar no R se seguirem três regras:</p>
 <ul>
 <li>1.Cada variável no conjunto de dados é colocada em sua própria coluna;</li>
@@ -281,9 +297,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="gather" class="section level3">
 <h3><span class="header-section-number">3.1.1</span> <code>gather</code></h3>
 <p>Vamos criar um <code>tibble</code> no formato <em>wide</em> e transformá-lo em um dado <em>tidy</em>:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">library</span>(tibble)</a>
-<a class="sourceLine" id="cb13-2" title="2">tb &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">uf =</span> <span class="kw">c</span>(<span class="st">&quot;RJ&quot;</span>, <span class="st">&quot;SP&quot;</span>), <span class="st">`</span><span class="dt">2017</span><span class="st">`</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">11</span>), <span class="st">`</span><span class="dt">2018</span><span class="st">`</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">11</span>, <span class="dv">10</span>))</a>
-<a class="sourceLine" id="cb13-3" title="3">tb</a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="kw">library</span>(tibble)</a>
+<a class="sourceLine" id="cb25-2" title="2">tb &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">uf =</span> <span class="kw">c</span>(<span class="st">&quot;RJ&quot;</span>, <span class="st">&quot;SP&quot;</span>), <span class="st">`</span><span class="dt">2017</span><span class="st">`</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">11</span>), <span class="st">`</span><span class="dt">2018</span><span class="st">`</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">11</span>, <span class="dv">10</span>))</a>
+<a class="sourceLine" id="cb25-3" title="3">tb</a></code></pre></div>
 <pre><code>## # A tibble: 2 x 3
 ##   uf    `2017` `2018`
 ##   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
