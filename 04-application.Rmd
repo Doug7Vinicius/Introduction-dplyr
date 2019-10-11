@@ -1,7 +1,4 @@
-# Applications
+# Manipulando Data Frames com `dplyr`
 
-Some _significant_ applications are demonstrated in this chapter.
+## Data Frames
 
-## Example one
-
-## Example two
