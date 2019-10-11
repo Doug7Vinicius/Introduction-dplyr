@@ -1,3 +1,130 @@
-# Methods
+# Transformação de Dados com `dplyr`
 
-We describe our methods in this chapter.
+## Introdução
+
+A visualização é uma ferramenta importante para a geração de *insights*, mas é raro você obter os dados exatamente da forma correta de que precisa. Freqüentemente, você precisará criar algumas novas variáveis ou resumos, ou talvez apenas queira renomear as variáveis ou reordenar as observações para tornar os dados um pouco mais fáceis de trabalhar. Você aprenderá como fazer tudo isso (e muito mais!) Neste capítulo, que ensinará como transformar seus dados usando o pacote `dplyr` e um novo conjunto de dados em voos partindo de Nova York em 2013.
+
+## Pré-requisitos
+
+Neste capítulo, vamos nos concentrar em como usar o pacote `dplyr`, outro membro central do `tidyverse`. Ilustraremos as ideias principais usando dados do pacote `nycflights13` e usaremos o `ggplot2` para nos ajudar a entender os dados.
+
+```{r setup1, warning=FALSE}
+library(nycflights13)
+library(tidyverse) # ou isoladamente: library(dplyr).
+```
+
+## nycflights13
+
+Esse data frames contém todos os 336.776 vôos que partiram de Nova York em 2013. Os dados são do [Bureau of Transportation Statistics](https://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=120&Link=0) dos EUA e estão documentados em `?flights`.
+
+```{r}
+flights
+```
+
+Para ver todo o conjunto de dados, você pode executar o `View(flights)` que abrirá o conjunto de dados no visualizador do RStudio. Imprime de forma distinta do data frame, porque é um `tibble`. O que é um *tibble*?
+*Tibbles* são similares aos *data frames*, porém diferentes em dois aspectos: **impressão** e **indexação**
+
+Na impressão no console, os *tibbles* apresentam apenas as dez primeiras linhas e todas as colunas que cabem na tela, tornando mais fácil o trabalho com grandes volumes de dados. Além disso, cada coluna apresenta o seu tipo, algo semelhante ao apresentado quando utilizamos a função `str()`. A segunda diferença, não menos importante, é a forma de indexação. Para indexar um `tibble` devemos utilizar o nome completo da variável que desejamos. Caso contrário, ocorrerá um erro.
+
+Ainda sobre a indexação, sempre que indexarmos um `tibble` usando `[`, o resultado será outro `tibble`. Usando `[[` o resultados será um vetor.
+
+Abreviações de letras sob os nomes das colunas. Eles descrevem o tipo de cada variável:
+
+-`int` significa números inteiros;
+
+-`dbl` significa números duplos ou reais;
+
+-`chr` significa vetores de caracteres ou seqüências de caracteres;
+
+-`dttm` significa data e hora (uma data + uma hora).
+
+-`lgl` significa vetores lógicos que contêm apenas `TRUE` ou `FALSE`;
+
+-`fctr` significa fatores, que R usa para representar variáveis categóricas com valores possíveis fixos.
+
+-`data` significa data.
+
+Existem outros tipos comuns de variáveis que não são usadas neste conjunto de dados.
+
+Em síntese, *data frames* são tabelas de dados. Em seu formato, são bem parecidos com as matrizes, no entanto, possuem algumas diferenças significativas. Podemos idealizar os *data frames* como sendo matrizes em que cada coluna pode armazenar um tipo de dado diferente. Logo, estamos lidando com um objeto bem mais versátil do que as matrizes e os vetores.
+
+Uma das funções básicas mais importantes para começarmos a trabalhar com *data frames* é a `str()`. Essa função dá uma visão clara da estrutura do nosso objeto, bem como informa os tipos de dados existentes.
+
+### Exercícios
+
+- 1.Qual a diferença entre uma matriz e um data frame no R?
+- 2.Os data frames podem ser indexados com a mesma sintaxe utilizada para matrizes?
+- 3.Qual função básica que utilizamos para verificar a estrutura dos dados de um data frame?
+
+## Operador *pipe* ` %>% `
+
+```{r figure9, echo=FALSE, fig.align='center', out.width='25%'}
+knitr::include_graphics("imagens/magritt.png")
+```
+
+Os tubos são uma ferramenta poderosa para expressar claramente uma sequência de várias operações. O pipe, `%>%` vem do pacote `magrittr` de Stefan Milton Bache. Pacotes no `tidyverse` carregam `%>%` automaticamente, para que normalmente não carregue o magrittr explicitamente. 
+
+Para começar a utilizar o *pipe*, instale e carregue o pacote `magrittr`.
+
+```{r eval=FALSE}
+install.packages("magrittr")
+library(magrittr)
+```
+
+Para mais informações sobre o *pipe*, outros operadores relacionados e exemplos de utilização, visite a página [Ceci n’est pas un pipe](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html)
+
+### Exercícios
+
+  - 1. Reescreva a expressão abaixo utilizando o `%>%`.
+
+  >round(mean(sum(1:10)/3), digits = 1)
+
+**Dica**: utilize a função `magrittr::divide_by()`. Veja o help da função para mais informações.
+
+  - 2. Reescreva o código abaixo utilizando o `%>%`.
+  
+>x <- rnorm(100)<br/>
+x.pos <- x[x>0]<br/>
+media <- mean(x.pos)<br/>
+saida <- round(media, 1)<br/>
+
+
+  - 3. Sem rodar, diga qual a saída do código abaixo. Consulte o `help` das funções caso precise.
+
+>2 %>% <br/>
+  add(2) %>%<br/> 
+  c(6, NA) %>% <br/>
+  mean(na.rm = T) %>%<br/> 
+  equals(5)
+
+## `filter()`
+
+`filter()` permite agrupar observações com base em seus valores. O primeiro argumento da função é o nome do data frames. Por exemplo, podemos selecionar todos os valores 
+
+### Comparações
+
+### Operadores Lógicos
+
+### Valores Ausentes
+
+### Exercícios
+
+## `arrange()`
+
+### Exercícios
+
+## `select()`
+
+### Exercícios
+
+## `mutate()`
+
+### Funções úteis de criação
+
+### Exercícios
+
+## `summarise()`
+
+### ` %>% ` Combinando várias operações com pipe
+
+## `group_by()`
