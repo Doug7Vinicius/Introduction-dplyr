@@ -55,7 +55,7 @@ devtools::install_github("hadley/dplyr")
 
 Após a instalação do pacote, carregá-lo com a função `library()`:
 
-```{r script4.3, eval=FALSE}
+```{r script4.3}
 library(dplyr)
 ```
 
@@ -64,3 +64,45 @@ Ao carregar o pacote você pode receber alguns avisos, porque há funções no `
 ## `select()`
 
 Para melhor apresentar as funcionalidades da função, usaremos um conjunto de dados contendo dados de poluição do ar e temperatura da [cidade de Chicago](http://www.biostat.jhsph.edu/~rpeng/leanpub/rprog/chicago_data.zip) nos EUA. 
+
+Após descompactar o arquivo, você pode carregar os dados no R usando a função `readRDS()`:
+
+```{r script4.4}
+chicago <- readRDS("data/chicago.rds")
+```
+
+Este banco de chicago encontra no seguinte endereço <http://www.biostat.jhsph.edu/~rpeng/leanpub/rprog/chicago_data.zip> e está zipado. Uma das formas para facilitar o processo de descompactação do arquivo pelo R é:
+
+```{r eval=FALSE}
+# objeto caracter.
+fileURL <- "http://www.biostat.jhsph.edu/~rpeng/leanpub/rprog/chicago_data.zip"
+
+#Esta função pode ser usada para baixar um arquivo da Internet.
+download.file(fileURL, destfile = "data/chicago.rds", method = "curl", extra='-L') 
+```
+
+Umas das formas de ter informações do seu banco de dados é utilizar as seguintes funções `dim()` e `str()`. A primeira especifica a dimensão do seu banco e a segunda a estrutura do seu banco de dados.
+
+```{r script4.5}
+dim(chicago)
+str(chicago)
+```
+
+Muitas vezes teremos um data.frames contendo um grande número de dados. Com isso, a função `select()` permite obter as poucas colunas que você pode precisar.
+
+Suponhamos que desejássemos pegar as 3 primeiras colunas. Há algumas maneiras de fazer isto. Poderíamos, por exemplo, usar o índices númericos. Mas também podemos usar os nomes diretamente. 
+
+```{r script4.6}
+names(chicago[1:3]) 
+subset1 <- select(chicago, city:dptp)
+head(subset1)
+```
+
+Normalmente `:` não pode ser usado com nomes ou sequências de caracteres, mas dentro da função `select()` pode usá-lo para especificar um intervalo de nomes de variáveis.
+
+Pode **omitir** variáveis usando a função `select()` usando o sinal negativo.
+
+```{r script4.7}
+subset2 <- select(chicago, -(city:dptp))
+head(subset2)
+```

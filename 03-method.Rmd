@@ -115,6 +115,8 @@ saida <- round(media, 1)<br/>
 
 ## `select()`
 
+Esta função permite 
+
 ### Exercícios
 
 ## `mutate()`
