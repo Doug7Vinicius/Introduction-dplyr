@@ -2,3 +2,65 @@
 
 ## Data Frames
 
+## O Pacote `dplyr` 
+
+O pacote `dplyr` foi desenvolvido por Hadley Wickham, cientista chefe do RStudio. É uma versão otimizada do pacote `plyr`. O pacote `dplyr` não fornece nenhuma funcionalidade "nova" ao R, pois já é feito com base no R, mas simplifica **bastante** a funcionalidade no R.
+
+Uma contribuição importante do `dplyr` é que ele fornece uma "gramática" (em particular, verbos) para manipulação 
+
+## Gramática do `dplyr`
+
+Alguns dos principais "verbos" fornecidos pelo `dplyr` são:
+
+  -`select`: retorna um subconjunto das colunas de um data.frames, usando uma notação flexível;
+  
+  -`filter`: extrair um subconjunto de linhas(observações) de um data.frames com base em condições lógicas;
+  
+  -`arrange`: reordenar linhas de um data.frames;
+  
+  -`rename`: renomear variáveis em um data.frames;
+  
+  -`mutate`: adiciona novas variáveis/colunas ou transforme variáveis existentes;
+  
+  -`summarise/summarize`: gera estatísticas resumidas de diferentes variáveis no data.frames, possivelmente dentro dos estratos.
+  
+## Propriedades das funções do `dplyr`
+
+As funções têm algumas características comuns:
+
+  - 1. O primeiro argumento é um data.frames;
+  
+  - 2. Os argumentos subsequentes descrevem o que fazer com o data.frames especificado no primeiro argumento;
+  
+  - 3. O resultado de retorno de uma função é um novo data.frames;
+  
+  - 4. Os data.frames devem devidamente formatados e anotados para que tudo isso seja útil. Em particular, os dados devem estar *organizados*.
+  
+## Instalando o Pacote `dplyr`
+
+O pacote pode ser instalado a partir do CRAN ou do GitHub usando o pacote `devtools` com a função `install_github()`. O repositório GitHub normalmente contém as versões mais atualizadas dos pacotes.
+
+Para instalar a partir do CRAN, bastar executar:
+
+````{r script4.1, eval=FALSE}
+install.packages("dplyr")
+```
+
+Para instalar a partir do GitHub, execute:
+
+```{r script4.2, eval=FALSE}
+library(devtools) #carregar o pacote 'devtools' antes.
+devtools::install_github("hadley/dplyr")
+```
+
+Após a instalação do pacote, carregá-lo com a função `library()`:
+
+```{r script4.3, eval=FALSE}
+library(dplyr)
+```
+
+Ao carregar o pacote você pode receber alguns avisos, porque há funções no `dplyr`que têm o mesmo nome que as funções em outros pacotes. Por enquanto pode ignorar os avisos.
+
+## `select()`
+
+Para melhor apresentar as funcionalidades da função, usaremos um conjunto de dados contendo dados de poluição do ar e temperatura da [cidade de Chicago](http://www.biostat.jhsph.edu/~rpeng/leanpub/rprog/chicago_data.zip) nos EUA. 

@@ -1,5 +1,5 @@
 --- 
-title: "Apostila do Minicurso: introdução ao pacote dplyr"
+title: "Apostila: introdução ao pacote dplyr"
 author: "Msc.Elisângela C. Biazatti<br/>Douglas Vinícius<br/>Jossivana Macedo"
 date: "22 de outubro de 2019"
 site: bookdown::bookdown_site
@@ -10,9 +10,6 @@ link-citations: yes
 github-repo: rstudio/bookdown-demo
 description: "Minicurso sobre introdução ao pacote dplyr ministrado na XIX SEMAT.."
 ---
-```{r, include=FALSE}
-options(tinytex.verbose = TRUE)
-```
 
 # Prefácio
 

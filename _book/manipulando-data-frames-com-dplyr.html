@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5 Manipulando Data Frames com dplyr | Apostila do Minicurso: introdução ao pacote dplyr</title>
+  <title>5 Manipulando Data Frames com dplyr | Apostila: introdução ao pacote dplyr</title>
   <meta name="description" content="Minicurso sobre introdução ao pacote dplyr ministrado na XIX SEMAT.." />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5 Manipulando Data Frames com dplyr | Apostila do Minicurso: introdução ao pacote dplyr" />
+  <meta property="og:title" content="5 Manipulando Data Frames com dplyr | Apostila: introdução ao pacote dplyr" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 Manipulando Data Frames com dplyr | Apostila do Minicurso: introdução ao pacote dplyr" />
+  <meta name="twitter:title" content="5 Manipulando Data Frames com dplyr | Apostila: introdução ao pacote dplyr" />
   
   <meta name="twitter:description" content="Minicurso sobre introdução ao pacote dplyr ministrado na XIX SEMAT.." />
   
@@ -178,6 +178,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="manipulando-data-frames-com-dplyr.html"><a href="manipulando-data-frames-com-dplyr.html"><i class="fa fa-check"></i><b>5</b> Manipulando Data Frames com <code>dplyr</code></a><ul>
 <li class="chapter" data-level="5.1" data-path="manipulando-data-frames-com-dplyr.html"><a href="manipulando-data-frames-com-dplyr.html#data-frames"><i class="fa fa-check"></i><b>5.1</b> Data Frames</a></li>
+<li class="chapter" data-level="5.2" data-path="manipulando-data-frames-com-dplyr.html"><a href="manipulando-data-frames-com-dplyr.html#o-pacote-dplyr"><i class="fa fa-check"></i><b>5.2</b> O Pacote <code>dplyr</code></a></li>
+<li class="chapter" data-level="5.3" data-path="manipulando-data-frames-com-dplyr.html"><a href="manipulando-data-frames-com-dplyr.html#gramática-do-dplyr"><i class="fa fa-check"></i><b>5.3</b> Gramática do <code>dplyr</code></a></li>
+<li class="chapter" data-level="5.4" data-path="manipulando-data-frames-com-dplyr.html"><a href="manipulando-data-frames-com-dplyr.html#propriedades-das-funções-do-dplyr"><i class="fa fa-check"></i><b>5.4</b> Propriedades das funções do <code>dplyr</code></a></li>
+<li class="chapter" data-level="5.5" data-path="manipulando-data-frames-com-dplyr.html"><a href="manipulando-data-frames-com-dplyr.html#instalando-o-pacote-dplyr"><i class="fa fa-check"></i><b>5.5</b> Instalando o Pacote <code>dplyr</code></a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -194,7 +198,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Apostila do Minicurso: introdução ao pacote dplyr</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Apostila: introdução ao pacote dplyr</a>
           </h1>
         </div>
 
@@ -206,6 +210,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">5</span> Manipulando Data Frames com <code>dplyr</code></h1>
 <div id="data-frames" class="section level2">
 <h2><span class="header-section-number">5.1</span> Data Frames</h2>
+</div>
+<div id="o-pacote-dplyr" class="section level2">
+<h2><span class="header-section-number">5.2</span> O Pacote <code>dplyr</code></h2>
+<p>O pacote <code>dplyr</code> foi desenvolvido por Hadley Wickham, cientista chefe do RStudio. É uma versão otimizada do pacote <code>plyr</code>. O pacote <code>dplyr</code> não fornece nenhuma funcionalidade “nova” ao R, pois já é feito com base no R, mas simplifica <strong>bastante</strong> a funcionalidade no R.</p>
+<p>Uma contribuição importante do <code>dplyr</code> é que ele fornece uma “gramática” (em particular, verbos) para manipulação</p>
+</div>
+<div id="gramática-do-dplyr" class="section level2">
+<h2><span class="header-section-number">5.3</span> Gramática do <code>dplyr</code></h2>
+<p>Alguns dos principais “verbos” fornecidos pelo <code>dplyr</code> são:</p>
+<p>-<code>select</code>: retorna um subconjunto das colunas de um data.frames, usando uma notação flexível;</p>
+<p>-<code>filter</code>: extrair um subconjunto de linhas(observações) de um data.frames com base em condições lógicas;</p>
+<p>-<code>arrange</code>: reordenar linhas de um data.frames;</p>
+<p>-<code>rename</code>: renomear variáveis em um data.frames;</p>
+<p>-<code>mutate</code>: adiciona novas variáveis/colunas ou transforme variáveis existentes;</p>
+<p>-<code>summarise/summarize</code>: gera estatísticas resumidas de diferentes variáveis no data.frames, possivelmente dentro dos estratos.</p>
+</div>
+<div id="propriedades-das-funções-do-dplyr" class="section level2">
+<h2><span class="header-section-number">5.4</span> Propriedades das funções do <code>dplyr</code></h2>
+<p>As funções têm algumas características comuns:</p>
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>O primeiro argumento é um data.frames;</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>Os argumentos subsequentes descrevem o que fazer com o data.frames especificado no primeiro argumento;</li>
+</ol></li>
+<li><ol start="3" style="list-style-type: decimal">
+<li>O resultado de retorno de uma função é um novo data.frames;</li>
+</ol></li>
+<li><ol start="4" style="list-style-type: decimal">
+<li>Os data.frames devem devidamente formatados e anotados para que tudo isso seja útil. Em particular, os dados devem estar <em>organizados</em>.</li>
+</ol></li>
+</ul>
+</div>
+<div id="instalando-o-pacote-dplyr" class="section level2">
+<h2><span class="header-section-number">5.5</span> Instalando o Pacote <code>dplyr</code></h2>
+<p>O pacote pode ser instalado a partir do CRAN ou do GitHub usando o pacote <code>devtools</code> com a função <code>install_github()</code>. O repositório GitHub normalmente contém as versões mais atualizadas dos pacotes.</p>
+<p>Para instalar a partir do CRAN, bastar executar:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</a></code></pre></div>
 
 </div>
 </div>
