@@ -7,7 +7,7 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-github-repo: rstudio/bookdown-demo
+github-repo: Doug7Vinicius/introduction-dplyr
 description: "Minicurso sobre introdução ao pacote dplyr ministrado na XIX SEMAT.."
 ---
 

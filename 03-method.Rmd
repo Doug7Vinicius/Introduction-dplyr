@@ -56,7 +56,7 @@ Uma das funções básicas mais importantes para começarmos a trabalhar com *da
 - 2.Os data frames podem ser indexados com a mesma sintaxe utilizada para matrizes?
 - 3.Qual função básica que utilizamos para verificar a estrutura dos dados de um data frame?
 
-## Operador *pipe* ` %>% `
+## Operador *pipe* `%>%`
 
 ```{r figure9, echo=FALSE, fig.align='center', out.width='25%'}
 knitr::include_graphics("imagens/magritt.png")
@@ -114,6 +114,19 @@ saida <- round(media, 1)<br/>
 ### Exercícios
 
 ## `select()`
+
+### Exercícios
+
+-1. Obter um subconjunto com as seguintes variáveis selecionadas: `dep_time`, `dep_delay`, `arr_time`, e `arr_delayde` do banco `flights`.
+
+-2. O que acontece se você incluir o nome de uma variável várias vezes em uma `select()` chamada?
+
+-3. O que a `one_of()` função faz? Por que pode ser útil em conjunto com esse vetor?
+
+>vars <- c("year", "month", "day", "dep_delay", "arr_delay")
+
+-4. 
+
 
 Esta função permite 
 

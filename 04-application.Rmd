@@ -28,13 +28,13 @@ Alguns dos principais "verbos" fornecidos pelo `dplyr` são:
 
 As funções têm algumas características comuns:
 
-  - 1. O primeiro argumento é um data.frames;
+  -1.O primeiro argumento é um data.frames;
   
-  - 2. Os argumentos subsequentes descrevem o que fazer com o data.frames especificado no primeiro argumento;
+  -2.Os argumentos subsequentes descrevem o que fazer com o data.frames especificado no primeiro argumento;
   
-  - 3. O resultado de retorno de uma função é um novo data.frames;
+  -3.O resultado de retorno de uma função é um novo data.frames;
   
-  - 4. Os data.frames devem devidamente formatados e anotados para que tudo isso seja útil. Em particular, os dados devem estar *organizados*.
+  -4.Os data.frames devem devidamente formatados e anotados para que tudo isso seja útil. Em particular, os dados devem estar *organizados*.
   
 ## Instalando o Pacote `dplyr`
 
@@ -108,4 +108,73 @@ head(subset2)
 ```
 
 o que indica que estamos incluindo todas as variáveis, exceto as variáveis `city` até `dptp`.
+
+O código equivalente ao anterior sem o uso do pacote seria:
+
+```{r}
+i <- match("city", names(chicago))
+j <- match("dptp", names(chicago))
+head(chicago[, -(i:j)])
+```
+
+A função de correspondência `mathc()` retorna um vetor das posições das (primeiras) correspondências de seu primeiro argumento no segundo. De acordo com a [Documentação R](https://stat.ethz.ch/R-manual/R-devel/library/base/html/match.html), a função é equivalente ao operador `%in%` que indica se uma correspondência foi localizada para o vetor1 no vetor2. O valor do resultado será VERDADEIRO ou FALSO, mas nunca NA. Portanto, o operador `%in%` pode ser útil em condições `if`.
+
+Exemplos:
+
+```{r}
+#função math().
+v1 <- c("a1","b2","c1","d2")
+v2 <- c("g1","x2","d2","e2","f1","a1","c2","b2","a2")
+x <- match(v1,v2)
+x
+
+#com o operador %in%.
+v1 <- c("a1","b2","c1","d2")
+v2 <- c("g1","x2","d2","e2","f1","a1","c2","b2","a2")
+v1 %in% v2
+```
+
+A função `select()` permite uma sintaxe especial que especifica nomes de variáveis com base em padrões. Por exemplo, há várias funções auxiliares que você pode usar:
+
+  -1.`starts_with("abc")`: corresponde aos nomes que começam com "abc";
+
+```{r}
+#Queremos manter todas as variáveis que começam com um "d":
+subset3 <- select(chicago, starts_with("d"))
+str(subset3)
+```
+
+  -2.`ends_with("xyz")`: corresponde aos nomes que terminam com "xyz";
+
+```{r}
+subset4 <- select(chicago, ends_with("2"))
+str(subset4)
+```
+
+  -3.`contains("ijk")`: corresponde aos nomes que contêm "ijk";
+
+```{r}
+subset5 <- select(chicago, contains("tmean"))
+head(subset5)
+```
+  
+  -4.`matches("(.)\\1")`: selecionar variáveis que correspondem a uma expressão regular. Esta corresponde a qualquer variável que contenha caracteres repetidos. Você aprenderá mais sobre expressões regulares em [strings]().
+
+```{r}
+subset6 <- select(chicago, matches(c("tm"), names(chicago)))
+head(subset6)
+```
+  
+  -5.`num_range("x", 1:3)`: Corresponde x1, x2 e x3.
+
+```{r}
+subset7 <- select(chicago, num_range())
+head(subset7)
+```
+
+Você também pode usar expressões regulares mais gerais, se necessário. Veja a página de ajuda (?select) para mais detalhes.
+
+`select()` pode ser usado para renomear variáveis, mas raramente é útil porque descarta todas as variáveis não mencionadas explicitamente. Em vez disso, use `rename()`, que é uma variante de `select()` que mantém todas as variáveis que não são mencionadas explicitamente.
+
+## Exercícios
 

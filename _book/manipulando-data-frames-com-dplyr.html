@@ -233,18 +233,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.4</span> Propriedades das funções do <code>dplyr</code></h2>
 <p>As funções têm algumas características comuns:</p>
 <ul>
-<li><ol style="list-style-type: decimal">
-<li>O primeiro argumento é um data.frames;</li>
-</ol></li>
-<li><ol start="2" style="list-style-type: decimal">
-<li>Os argumentos subsequentes descrevem o que fazer com o data.frames especificado no primeiro argumento;</li>
-</ol></li>
-<li><ol start="3" style="list-style-type: decimal">
-<li>O resultado de retorno de uma função é um novo data.frames;</li>
-</ol></li>
-<li><ol start="4" style="list-style-type: decimal">
-<li>Os data.frames devem devidamente formatados e anotados para que tudo isso seja útil. Em particular, os dados devem estar <em>organizados</em>.</li>
-</ol></li>
+<li><p>1.O primeiro argumento é um data.frames;</p></li>
+<li><p>2.Os argumentos subsequentes descrevem o que fazer com o data.frames especificado no primeiro argumento;</p></li>
+<li><p>3.O resultado de retorno de uma função é um novo data.frames;</p></li>
+<li><p>4.Os data.frames devem devidamente formatados e anotados para que tudo isso seja útil. Em particular, os dados devem estar <em>organizados</em>.</p></li>
 </ul>
 </div>
 <div id="instalando-o-pacote-dplyr" class="section level2">
@@ -315,6 +307,70 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 1987-01-04         NA   47.00000 4.375000  30.43452
 ## 5 1987-01-05         NA         NA 4.750000  30.33333
 ## 6 1987-01-06         NA   48.00000 5.833333  25.77233</code></pre>
+<p>o que indica que estamos incluindo todas as variáveis, exceto as variáveis <code>city</code> até <code>dptp</code>.</p>
+<p>O código equivalente ao anterior sem o uso do pacote seria:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1">i &lt;-<span class="st"> </span><span class="kw">match</span>(<span class="st">&quot;city&quot;</span>, <span class="kw">names</span>(chicago))</a>
+<a class="sourceLine" id="cb19-2" title="2">j &lt;-<span class="st"> </span><span class="kw">match</span>(<span class="st">&quot;dptp&quot;</span>, <span class="kw">names</span>(chicago))</a>
+<a class="sourceLine" id="cb19-3" title="3"><span class="kw">head</span>(chicago[, <span class="op">-</span>(i<span class="op">:</span>j)])</a></code></pre></div>
+<pre><code>##         date pm25tmean2 pm10tmean2 o3tmean2 no2tmean2
+## 1 1987-01-01         NA   34.00000 4.250000  19.98810
+## 2 1987-01-02         NA         NA 3.304348  23.19099
+## 3 1987-01-03         NA   34.16667 3.333333  23.81548
+## 4 1987-01-04         NA   47.00000 4.375000  30.43452
+## 5 1987-01-05         NA         NA 4.750000  30.33333
+## 6 1987-01-06         NA   48.00000 5.833333  25.77233</code></pre>
+<p>A função de correspondência <code>mathc()</code> retorna um vetor das posições das (primeiras) correspondências de seu primeiro argumento no segundo. De acordo com a <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/match.html">Documentação R</a>, a função é equivalente ao operador <code>%in%</code> que indica se uma correspondência foi localizada para o vetor1 no vetor2. O valor do resultado será VERDADEIRO ou FALSO, mas nunca NA. Portanto, o operador <code>%in%</code> pode ser útil em condições <code>if</code>.</p>
+<p>Exemplos:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="co">#função math().</span></a>
+<a class="sourceLine" id="cb21-2" title="2">v1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a1&quot;</span>,<span class="st">&quot;b2&quot;</span>,<span class="st">&quot;c1&quot;</span>,<span class="st">&quot;d2&quot;</span>)</a>
+<a class="sourceLine" id="cb21-3" title="3">v2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;g1&quot;</span>,<span class="st">&quot;x2&quot;</span>,<span class="st">&quot;d2&quot;</span>,<span class="st">&quot;e2&quot;</span>,<span class="st">&quot;f1&quot;</span>,<span class="st">&quot;a1&quot;</span>,<span class="st">&quot;c2&quot;</span>,<span class="st">&quot;b2&quot;</span>,<span class="st">&quot;a2&quot;</span>)</a>
+<a class="sourceLine" id="cb21-4" title="4">x &lt;-<span class="st"> </span><span class="kw">match</span>(v1,v2)</a>
+<a class="sourceLine" id="cb21-5" title="5">x</a></code></pre></div>
+<pre><code>## [1]  6  8 NA  3</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="co">#com o operador %in%.</span></a>
+<a class="sourceLine" id="cb23-2" title="2">v1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a1&quot;</span>,<span class="st">&quot;b2&quot;</span>,<span class="st">&quot;c1&quot;</span>,<span class="st">&quot;d2&quot;</span>)</a>
+<a class="sourceLine" id="cb23-3" title="3">v2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;g1&quot;</span>,<span class="st">&quot;x2&quot;</span>,<span class="st">&quot;d2&quot;</span>,<span class="st">&quot;e2&quot;</span>,<span class="st">&quot;f1&quot;</span>,<span class="st">&quot;a1&quot;</span>,<span class="st">&quot;c2&quot;</span>,<span class="st">&quot;b2&quot;</span>,<span class="st">&quot;a2&quot;</span>)</a>
+<a class="sourceLine" id="cb23-4" title="4">v1 <span class="op">%in%</span><span class="st"> </span>v2</a></code></pre></div>
+<pre><code>## [1]  TRUE  TRUE FALSE  TRUE</code></pre>
+<p>A função <code>select()</code> permite uma sintaxe especial que especifica nomes de variáveis com base em padrões. Por exemplo, há várias funções auxiliares que você pode usar:</p>
+<p>-1.<code>starts_with("abc")</code>: corresponde aos nomes que começam com “abc”;</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="co">#Queremos manter todas as variáveis que começam com um &quot;d&quot;:</span></a>
+<a class="sourceLine" id="cb25-2" title="2">subset3 &lt;-<span class="st"> </span><span class="kw">select</span>(chicago, <span class="kw">starts_with</span>(<span class="st">&quot;d&quot;</span>))</a>
+<a class="sourceLine" id="cb25-3" title="3"><span class="kw">str</span>(subset3)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    6940 obs. of  2 variables:
+##  $ dptp: num  31.5 29.9 27.4 28.6 28.9 ...
+##  $ date: Date, format: &quot;1987-01-01&quot; &quot;1987-01-02&quot; ...</code></pre>
+<p>-2.<code>ends_with("xyz")</code>: corresponde aos nomes que terminam com “xyz”;</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1">subset4 &lt;-<span class="st"> </span><span class="kw">select</span>(chicago, <span class="kw">ends_with</span>(<span class="st">&quot;2&quot;</span>))</a>
+<a class="sourceLine" id="cb27-2" title="2"><span class="kw">str</span>(subset4)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    6940 obs. of  4 variables:
+##  $ pm25tmean2: num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ pm10tmean2: num  34 NA 34.2 47 NA ...
+##  $ o3tmean2  : num  4.25 3.3 3.33 4.38 4.75 ...
+##  $ no2tmean2 : num  20 23.2 23.8 30.4 30.3 ...</code></pre>
+<p>-3.<code>contains("ijk")</code>: corresponde aos nomes que contêm “ijk”;</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1">subset5 &lt;-<span class="st"> </span><span class="kw">select</span>(chicago, <span class="kw">contains</span>(<span class="st">&quot;tmean&quot;</span>))</a>
+<a class="sourceLine" id="cb29-2" title="2"><span class="kw">head</span>(subset5)</a></code></pre></div>
+<pre><code>##   pm25tmean2 pm10tmean2 o3tmean2 no2tmean2
+## 1         NA   34.00000 4.250000  19.98810
+## 2         NA         NA 3.304348  23.19099
+## 3         NA   34.16667 3.333333  23.81548
+## 4         NA   47.00000 4.375000  30.43452
+## 5         NA         NA 4.750000  30.33333
+## 6         NA   48.00000 5.833333  25.77233</code></pre>
+<p>-4.<code>matches("(.)\\1")</code>: selecionar variáveis que correspondem a uma expressão regular. Esta corresponde a qualquer variável que contenha caracteres repetidos. Você aprenderá mais sobre expressões regulares em <a href="">strings</a>.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1">subset6 &lt;-<span class="st"> </span><span class="kw">select</span>(chicago, <span class="kw">matches</span>(<span class="kw">c</span>(<span class="st">&quot;tm&quot;</span>), <span class="kw">names</span>(chicago)))</a>
+<a class="sourceLine" id="cb31-2" title="2"><span class="kw">head</span>(subset6)</a></code></pre></div>
+<pre><code>##   tmpd pm25tmean2 pm10tmean2 o3tmean2 no2tmean2
+## 1 31.5         NA   34.00000 4.250000  19.98810
+## 2 33.0         NA         NA 3.304348  23.19099
+## 3 33.0         NA   34.16667 3.333333  23.81548
+## 4 29.0         NA   47.00000 4.375000  30.43452
+## 5 32.0         NA         NA 4.750000  30.33333
+## 6 40.0         NA   48.00000 5.833333  25.77233</code></pre>
+<p>-5.</p>
+<p>Você também pode usar expressões regulares mais gerais, se necessário. Veja a página de ajuda (?select) para mais detalhes.</p>
+<p><code>select()</code> pode ser usado para renomear variáveis, mas raramente é útil porque descarta todas as variáveis não mencionadas explicitamente. Em vez disso, use <code>rename()</code>, que é uma variante de <code>select()</code> que mantém todas as variáveis que não são mencionadas explicitamente.</p>
 
 </div>
 </div>
