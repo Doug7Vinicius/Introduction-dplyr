@@ -106,3 +106,6 @@ Pode **omitir** variáveis usando a função `select()` usando o sinal negativo.
 subset2 <- select(chicago, -(city:dptp))
 head(subset2)
 ```
+
+o que indica que estamos incluindo todas as variáveis, exceto as variáveis `city` até `dptp`.
+
