@@ -33,3 +33,5 @@ O livro [R for data science](https://r4ds.had.co.nz/) é o mais indicado para ap
 
 ## Pré-requisitos
 
+## Referências
+
