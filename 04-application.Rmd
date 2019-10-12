@@ -136,7 +136,7 @@ v1 %in% v2
 
 A função `select()` permite uma sintaxe especial que especifica nomes de variáveis com base em padrões. Por exemplo, há várias funções auxiliares que você pode usar:
 
-  -1.`starts_with("abc")`: corresponde aos nomes que começam com "abc";
+    1.`starts_with("abc")`: corresponde aos nomes que começam com "abc";
 
 ```{r}
 #Queremos manter todas as variáveis que começam com um "d":
@@ -144,32 +144,31 @@ subset3 <- select(chicago, starts_with("d"))
 str(subset3)
 ```
 
-  -2.`ends_with("xyz")`: corresponde aos nomes que terminam com "xyz";
+    2.`ends_with("xyz")`: corresponde aos nomes que terminam com "xyz";
 
 ```{r}
 subset4 <- select(chicago, ends_with("2"))
 str(subset4)
 ```
 
-  -3.`contains("ijk")`: corresponde aos nomes que contêm "ijk";
+    3.`contains("ijk")`: corresponde aos nomes que contêm "ijk";
 
 ```{r}
 subset5 <- select(chicago, contains("tmean"))
 head(subset5)
 ```
   
-  -4.`matches("(.)\\1")`: selecionar variáveis que correspondem a uma expressão regular. Esta corresponde a qualquer variável que contenha caracteres repetidos. Você aprenderá mais sobre expressões regulares em [strings]().
+    4.`matches("(.)\\1")`: selecionar variáveis que correspondem a uma expressão regular. Esta corresponde a qualquer variável que contenha caracteres repetidos. Você aprenderá mais sobre expressões regulares em [strings]().
 
 ```{r}
 subset6 <- select(chicago, matches(c("tm"), names(chicago)))
 head(subset6)
 ```
   
-  -5.`num_range("x", 1:3)`: Corresponde x1, x2 e x3.
+    5.`num_range("x", 1:3)`: Corresponde x1, x2 e x3.
 
 ```{r}
-subset7 <- select(chicago, num_range())
-head(subset7)
+
 ```
 
 Você também pode usar expressões regulares mais gerais, se necessário. Veja a página de ajuda (?select) para mais detalhes.

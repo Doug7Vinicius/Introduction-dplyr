@@ -4,19 +4,19 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Transformação de Dados com dplyr | Apostila do Minicurso: introdução ao pacote dplyr</title>
+  <title>4 Transformação de Dados com dplyr | Apostila: introdução ao pacote dplyr</title>
   <meta name="description" content="Minicurso sobre introdução ao pacote dplyr ministrado na XIX SEMAT.." />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Transformação de Dados com dplyr | Apostila do Minicurso: introdução ao pacote dplyr" />
+  <meta property="og:title" content="4 Transformação de Dados com dplyr | Apostila: introdução ao pacote dplyr" />
   <meta property="og:type" content="book" />
   
   
   <meta property="og:description" content="Minicurso sobre introdução ao pacote dplyr ministrado na XIX SEMAT.." />
-  <meta name="github-repo" content="rstudio/bookdown-demo" />
+  <meta name="github-repo" content="Doug7Vinicius/introduction-dplyr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Transformação de Dados com dplyr | Apostila do Minicurso: introdução ao pacote dplyr" />
+  <meta name="twitter:title" content="4 Transformação de Dados com dplyr | Apostila: introdução ao pacote dplyr" />
   
   <meta name="twitter:description" content="Minicurso sobre introdução ao pacote dplyr ministrado na XIX SEMAT.." />
   
@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="o-que-é-dados-organizados.html"/>
+<link rel="prev" href="breve-introdução-ao-r.html"/>
 <link rel="next" href="manipulando-data-frames-com-dplyr.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -135,15 +135,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#público-alvo"><i class="fa fa-check"></i><b>1.1</b> Público-alvo</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#conteúdo"><i class="fa fa-check"></i><b>1.2</b> Conteúdo:</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#pré-requisitos"><i class="fa fa-check"></i><b>1.3</b> Pré-requisitos</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#referências"><i class="fa fa-check"></i><b>1.4</b> Referências</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introdução</a><ul>
 <li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#r-e-rstudio"><i class="fa fa-check"></i><b>2.1</b> R e RStudio</a></li>
 <li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#swirl"><i class="fa fa-check"></i><b>2.2</b> <em>swirl</em></a></li>
 <li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#universo-tidyverse"><i class="fa fa-check"></i><b>2.3</b> Universo <code>tidyverse</code></a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="o-que-é-dados-organizados.html"><a href="o-que-é-dados-organizados.html"><i class="fa fa-check"></i><b>3</b> O que é Dados organizados?</a><ul>
-<li class="chapter" data-level="3.1" data-path="o-que-é-dados-organizados.html"><a href="o-que-é-dados-organizados.html#introdução-ao-tidyr"><i class="fa fa-check"></i><b>3.1</b> Introdução ao <code>tidyr</code></a><ul>
-<li class="chapter" data-level="3.1.1" data-path="o-que-é-dados-organizados.html"><a href="o-que-é-dados-organizados.html#gather"><i class="fa fa-check"></i><b>3.1.1</b> <code>gather</code></a></li>
+<li class="chapter" data-level="3" data-path="breve-introdução-ao-r.html"><a href="breve-introdução-ao-r.html"><i class="fa fa-check"></i><b>3</b> Breve Introdução ao R</a><ul>
+<li class="chapter" data-level="3.1" data-path="breve-introdução-ao-r.html"><a href="breve-introdução-ao-r.html#o-que-é-dados-organizados"><i class="fa fa-check"></i><b>3.1</b> O que é Dados organizados?</a></li>
+<li class="chapter" data-level="3.2" data-path="breve-introdução-ao-r.html"><a href="breve-introdução-ao-r.html#introdução-ao-tidyr"><i class="fa fa-check"></i><b>3.2</b> Introdução ao <code>tidyr</code></a><ul>
+<li class="chapter" data-level="3.2.1" data-path="breve-introdução-ao-r.html"><a href="breve-introdução-ao-r.html#gather"><i class="fa fa-check"></i><b>3.2.1</b> <code>gather</code></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="transformação-de-dados-com-dplyr.html"><a href="transformação-de-dados-com-dplyr.html"><i class="fa fa-check"></i><b>4</b> Transformação de Dados com <code>dplyr</code></a><ul>
@@ -166,10 +168,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4.7" data-path="transformação-de-dados-com-dplyr.html"><a href="transformação-de-dados-com-dplyr.html#select"><i class="fa fa-check"></i><b>4.7</b> <code>select()</code></a><ul>
 <li class="chapter" data-level="4.7.1" data-path="transformação-de-dados-com-dplyr.html"><a href="transformação-de-dados-com-dplyr.html#exercícios-4"><i class="fa fa-check"></i><b>4.7.1</b> Exercícios</a></li>
+<li class="chapter" data-level="4.7.2" data-path="transformação-de-dados-com-dplyr.html"><a href="transformação-de-dados-com-dplyr.html#exercícios-5"><i class="fa fa-check"></i><b>4.7.2</b> Exercícios</a></li>
 </ul></li>
 <li class="chapter" data-level="4.8" data-path="transformação-de-dados-com-dplyr.html"><a href="transformação-de-dados-com-dplyr.html#mutate"><i class="fa fa-check"></i><b>4.8</b> <code>mutate()</code></a><ul>
 <li class="chapter" data-level="4.8.1" data-path="transformação-de-dados-com-dplyr.html"><a href="transformação-de-dados-com-dplyr.html#funções-úteis-de-criação"><i class="fa fa-check"></i><b>4.8.1</b> Funções úteis de criação</a></li>
-<li class="chapter" data-level="4.8.2" data-path="transformação-de-dados-com-dplyr.html"><a href="transformação-de-dados-com-dplyr.html#exercícios-5"><i class="fa fa-check"></i><b>4.8.2</b> Exercícios</a></li>
+<li class="chapter" data-level="4.8.2" data-path="transformação-de-dados-com-dplyr.html"><a href="transformação-de-dados-com-dplyr.html#exercícios-6"><i class="fa fa-check"></i><b>4.8.2</b> Exercícios</a></li>
 </ul></li>
 <li class="chapter" data-level="4.9" data-path="transformação-de-dados-com-dplyr.html"><a href="transformação-de-dados-com-dplyr.html#summarise"><i class="fa fa-check"></i><b>4.9</b> <code>summarise()</code></a><ul>
 <li class="chapter" data-level="4.9.1" data-path="transformação-de-dados-com-dplyr.html"><a href="transformação-de-dados-com-dplyr.html#combinando-várias-operações-com-pipe"><i class="fa fa-check"></i><b>4.9.1</b> <code>%&gt;%</code> Combinando várias operações com pipe</a></li>
@@ -178,12 +181,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="manipulando-data-frames-com-dplyr.html"><a href="manipulando-data-frames-com-dplyr.html"><i class="fa fa-check"></i><b>5</b> Manipulando Data Frames com <code>dplyr</code></a><ul>
 <li class="chapter" data-level="5.1" data-path="manipulando-data-frames-com-dplyr.html"><a href="manipulando-data-frames-com-dplyr.html#data-frames"><i class="fa fa-check"></i><b>5.1</b> Data Frames</a></li>
+<li class="chapter" data-level="5.2" data-path="manipulando-data-frames-com-dplyr.html"><a href="manipulando-data-frames-com-dplyr.html#o-pacote-dplyr"><i class="fa fa-check"></i><b>5.2</b> O Pacote <code>dplyr</code></a></li>
+<li class="chapter" data-level="5.3" data-path="manipulando-data-frames-com-dplyr.html"><a href="manipulando-data-frames-com-dplyr.html#gramática-do-dplyr"><i class="fa fa-check"></i><b>5.3</b> Gramática do <code>dplyr</code></a></li>
+<li class="chapter" data-level="5.4" data-path="manipulando-data-frames-com-dplyr.html"><a href="manipulando-data-frames-com-dplyr.html#propriedades-das-funções-do-dplyr"><i class="fa fa-check"></i><b>5.4</b> Propriedades das funções do <code>dplyr</code></a></li>
+<li class="chapter" data-level="5.5" data-path="manipulando-data-frames-com-dplyr.html"><a href="manipulando-data-frames-com-dplyr.html#instalando-o-pacote-dplyr"><i class="fa fa-check"></i><b>5.5</b> Instalando o Pacote <code>dplyr</code></a></li>
+<li class="chapter" data-level="5.6" data-path="manipulando-data-frames-com-dplyr.html"><a href="manipulando-data-frames-com-dplyr.html#select-1"><i class="fa fa-check"></i><b>5.6</b> <code>select()</code></a></li>
+<li class="chapter" data-level="5.7" data-path="manipulando-data-frames-com-dplyr.html"><a href="manipulando-data-frames-com-dplyr.html#exercícios-7"><i class="fa fa-check"></i><b>5.7</b> Exercícios</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><center><img src="imagens/bookdown-logo.png" alt="logo" width="30%" height="30%"style="margin: 15px 0 0 0"></center></li>
 <li><center><a href="https://github.com/rstudio/bookdown" target="blank">Publicado em bookdown</a></center></li>
+<li><center><img src="imagens/soli.png" alt="Soli Deo Gloria" width="21%" height="21%"style="margin: 15px 0 0 0"></center></li>
 
 </ul>
 
@@ -194,7 +204,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Apostila do Minicurso: introdução ao pacote dplyr</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Apostila: introdução ao pacote dplyr</a>
           </h1>
         </div>
 
@@ -211,13 +221,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="pré-requisitos-1" class="section level2">
 <h2><span class="header-section-number">4.2</span> Pré-requisitos</h2>
 <p>Neste capítulo, vamos nos concentrar em como usar o pacote <code>dplyr</code>, outro membro central do <code>tidyverse</code>. Ilustraremos as ideias principais usando dados do pacote <code>nycflights13</code> e usaremos o <code>ggplot2</code> para nos ajudar a entender os dados.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="kw">library</span>(nycflights13)</a>
-<a class="sourceLine" id="cb27-2" title="2"><span class="kw">library</span>(tidyverse) <span class="co"># ou isoladamente: library(dplyr).</span></a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="kw">library</span>(nycflights13)</a>
+<a class="sourceLine" id="cb20-2" title="2"><span class="kw">library</span>(tidyverse) <span class="co"># ou isoladamente: library(dplyr).</span></a></code></pre></div>
 </div>
 <div id="nycflights13" class="section level2">
 <h2><span class="header-section-number">4.3</span> nycflights13</h2>
 <p>Esse data frames contém todos os 336.776 vôos que partiram de Nova York em 2013. Os dados são do <a href="https://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=120&amp;Link=0">Bureau of Transportation Statistics</a> dos EUA e estão documentados em <code>?flights</code>.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1">flights</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">flights</a></code></pre></div>
 <pre><code>## # A tibble: 336,776 x 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;
@@ -264,8 +274,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="imagens/magritt.png" width="25%" style="display: block; margin: auto;" /></p>
 <p>Os tubos são uma ferramenta poderosa para expressar claramente uma sequência de várias operações. O pipe, <code>%&gt;%</code> vem do pacote <code>magrittr</code> de Stefan Milton Bache. Pacotes no <code>tidyverse</code> carregam <code>%&gt;%</code> automaticamente, para que normalmente não carregue o magrittr explicitamente.</p>
 <p>Para começar a utilizar o <em>pipe</em>, instale e carregue o pacote <code>magrittr</code>.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;magrittr&quot;</span>)</a>
-<a class="sourceLine" id="cb30-2" title="2"><span class="kw">library</span>(magrittr)</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;magrittr&quot;</span>)</a>
+<a class="sourceLine" id="cb23-2" title="2"><span class="kw">library</span>(magrittr)</a></code></pre></div>
 <p>Para mais informações sobre o <em>pipe</em>, outros operadores relacionados e exemplos de utilização, visite a página <a href="https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html">Ceci n’est pas un pipe</a></p>
 <div id="exercícios-1" class="section level3">
 <h3><span class="header-section-number">4.4.1</span> Exercícios</h3>
@@ -329,6 +339,17 @@ equals(5)</p>
 <h2><span class="header-section-number">4.7</span> <code>select()</code></h2>
 <div id="exercícios-4" class="section level3">
 <h3><span class="header-section-number">4.7.1</span> Exercícios</h3>
+<p>-1. Obter um subconjunto com as seguintes variáveis selecionadas: <code>dep_time</code>, <code>dep_delay</code>, <code>arr_time</code>, e <code>arr_delayde</code> do banco <code>flights</code>.</p>
+<p>-2. O que acontece se você incluir o nome de uma variável várias vezes em uma <code>select()</code> chamada?</p>
+<p>-3. O que a <code>one_of()</code> função faz? Por que pode ser útil em conjunto com esse vetor?</p>
+<blockquote>
+<p>vars &lt;- c(“year”, “month”, “day”, “dep_delay”, “arr_delay”)</p>
+</blockquote>
+<p>-4.</p>
+<p>Esta função permite</p>
+</div>
+<div id="exercícios-5" class="section level3">
+<h3><span class="header-section-number">4.7.2</span> Exercícios</h3>
 </div>
 </div>
 <div id="mutate" class="section level2">
@@ -336,7 +357,7 @@ equals(5)</p>
 <div id="funções-úteis-de-criação" class="section level3">
 <h3><span class="header-section-number">4.8.1</span> Funções úteis de criação</h3>
 </div>
-<div id="exercícios-5" class="section level3">
+<div id="exercícios-6" class="section level3">
 <h3><span class="header-section-number">4.8.2</span> Exercícios</h3>
 </div>
 </div>
@@ -356,7 +377,7 @@ equals(5)</p>
           </div>
         </div>
       </div>
-<a href="o-que-é-dados-organizados.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="breve-introdução-ao-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="manipulando-data-frames-com-dplyr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -396,7 +417,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["introduction-dplyr.pdf", "introduction-dplyr.epub"],
+"download": ["introduction-dplyr.pdf", "introduction-dplyr.epub", "introduction-dplyr.djvu"],
 "toc": {
 "collapse": "subsection"
 }
