@@ -5,8 +5,8 @@ account: doug7statistic
 server: beta.rstudioconnect.com
 hostUrl: https://beta.rstudioconnect.com/__api__
 appId: 6662
-bundleId: 15286
+bundleId: 15288
 url: https://beta.rstudioconnect.com/content/6662/
-when: 1571123860.95326
+when: 1571128411.85557
 asMultiple: FALSE
 asStatic: TRUE

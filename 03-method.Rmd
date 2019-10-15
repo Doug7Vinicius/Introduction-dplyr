@@ -91,9 +91,7 @@ Descrição do banco: tem 8 colunas e 6940 linhas. Cada linha refere-se a um dia
   
   - dptp:
     - temperatura do ponto de orvalho.
-```{r echo=FALSE}
-
-```  
+    
   - date:
     - tempo em dias.
   
@@ -248,4 +246,32 @@ A sintaxe dentro da `rename() ` função é ter o novo nome no lado esquerdo do 
 ### Exercícios
 
 ## `mutate()`
+
+Em certas situações é útil adicionar novas colunas/variáveis que são funções de colunas existentes no data frames, ou seja, criar novas variáveis derivadas de variáveis existentes. Esse é o trabalho de `mutate()`. Esta função adiciona novas colunas no final do seu conjunto de dados. `mutate()` fornece uma interface limpa para fazer isso. Lembre-se de que, quando você está no RStudio, a maneira mais fácil de ver todas as colunas é `View()`.
+
+Por exemplo, com os dados de poluição do ar, subtraindo a média dos dados. Dessa forma, podemos verificar se o nível de poluição do ar de um determinado dia é maior ou menor que a média (em oposição a observar seu nível absoluto).
+
+Aqui, criamos uma variável `pm25difmean` que subtrai a média da variável `pm25`.
+
+```{r}
+chicago <- mutate(chicago, pm25difmean = pm25 - mean(pm25, na.rm = TRUE))
+head(chicago)
+```
+
+Há também a função relacionada `transmute()`, que faz a mesma coisa que, `mutate()`, mas elimina todas as variáveis não transformadas.
+
+Aqui, desprezamos as variáveis PM10 e ozônio (O3).
+
+```{r}
+head(transmute(chicago, 
+               pm10difmean = pm10tmean2 - mean(pm10tmean2, na.rm = TRUE),
+               O3difmean = o3tmean2 - mean(o3tmean2, na.rm = TRUE)))
+```
+
+Observe que existem apenas duas colunas no quadro de dados transformadas.
+
+### Exercícios
+
+
+## `filter()`
 

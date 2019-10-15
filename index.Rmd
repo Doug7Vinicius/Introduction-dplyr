@@ -19,7 +19,7 @@ knitr::include_graphics("imagens/dplyr.png")
 
 Este material foi elaborado com o proprósito de um minicurso, que tem como objetivo apresentar algumas ideias das funções básicas do pacote `dplyr`, podemos usar um computador e um pouco de criatividade para explorar essas idéias em uma variedade de situações. Usamos R com o RStudio para fazer todo o nosso trabalho.
 
-O livro [R for data science](https://r4ds.had.co.nz/) é o mais indicado para aprender sobre o universo `tidyverse`. Nesse minicurso abordamos mais sobre a gramática das funções básicas do `dplyr` alguns exemplos e exercícios abordados. 
+O livro [R for data science](https://r4ds.had.co.nz/) é o mais indicado para aprender sobre o universo `tidyverse`. Foi usado o livro do Roger D. Peng [R Programming for Data Science](https://bookdown.org/rdpeng/rprogdatascience/) essencial para compreender as noções básicas do R. Nesse minicurso abordamos mais sobre a gramática das funções básicas do `dplyr` alguns exemplos e exercícios abordados. 
 
 ## Público-alvo
 

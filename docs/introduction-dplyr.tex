@@ -315,11 +315,8 @@ Assim como o processo típico do passo a passo apresentando anteriormente para a
 ##      *  . /___/      o      .       *
 \end{verbatim}
 
-\hypertarget{breve-introduuxe7uxe3o-ao-r}{%
-\chapter{Breve Introdução ao R}\label{breve-introduuxe7uxe3o-ao-r}}
-
 \hypertarget{o-que-uxe9-dados-organizados}{%
-\section{O que é Dados organizados?}\label{o-que-uxe9-dados-organizados}}
+\chapter{O que é Dados organizados?}\label{o-que-uxe9-dados-organizados}}
 
 \begin{quote}
 ``Famílias felizes são todas iguais; toda família infeliz é infeliz à sua maneira.'' -- Leo Tolstoi
@@ -917,18 +914,18 @@ A função \texttt{select()} permite uma sintaxe especial que especifica nomes d
 
 \begin{verbatim}
 ## # A tibble: 10 x 8
-##       V4    V7     V1     V9     V8       V5     V2      V6
-##    <dbl> <dbl>  <dbl>  <dbl>  <dbl>    <dbl>  <dbl>   <dbl>
-##  1 0.234 0.989 0.700  0.332  0.649  0.988    0.349  0.374  
-##  2 0.856 0.936 0.555  0.433  0.847  0.630    0.102  0.728  
-##  3 0.751 0.963 0.891  0.267  0.983  0.442    0.971  0.768  
-##  4 0.738 0.424 0.459  0.132  0.138  0.902    0.0361 0.565  
-##  5 0.450 0.810 0.0195 0.581  0.226  0.598    0.934  0.505  
-##  6 0.942 0.217 0.722  0.449  0.970  0.000319 0.294  0.987  
-##  7 0.197 0.292 0.404  0.449  0.690  0.723    0.663  0.179  
-##  8 0.575 0.216 0.804  0.793  0.796  0.364    0.427  0.916  
-##  9 0.586 0.342 0.330  0.0276 0.505  0.371    0.250  0.00756
-## 10 0.683 0.905 0.245  0.633  0.0147 0.208    0.779  0.638
+##        V4      V7    V1     V9     V8     V5     V2     V6
+##     <dbl>   <dbl> <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>
+##  1 0.501  0.326   0.482 0.887  0.364  0.780  0.479  0.0956
+##  2 0.262  0.680   0.558 0.955  0.344  0.675  0.696  0.572 
+##  3 0.151  0.00109 0.510 0.803  0.339  0.620  0.389  0.231 
+##  4 0.720  0.986   0.229 0.493  0.177  0.351  0.0609 0.933 
+##  5 0.324  0.760   0.942 0.479  0.608  0.446  0.732  0.811 
+##  6 0.225  0.0249  0.702 0.163  0.489  0.670  0.623  0.0737
+##  7 0.248  0.329   0.630 0.758  0.268  0.619  0.130  0.0993
+##  8 0.736  0.531   0.463 0.0824 0.811  0.0620 0.152  0.267 
+##  9 0.410  0.700   0.646 0.546  0.0725 0.440  0.344  0.849 
+## 10 0.0221 0.107   0.496 0.356  0.130  0.359  0.576  0.880
 \end{verbatim}
 
 \begin{Shaded}
@@ -939,18 +936,18 @@ A função \texttt{select()} permite uma sintaxe especial que especifica nomes d
 
 \begin{verbatim}
 ## # A tibble: 10 x 3
-##       V4       V5      V6
-##    <dbl>    <dbl>   <dbl>
-##  1 0.234 0.988    0.374  
-##  2 0.856 0.630    0.728  
-##  3 0.751 0.442    0.768  
-##  4 0.738 0.902    0.565  
-##  5 0.450 0.598    0.505  
-##  6 0.942 0.000319 0.987  
-##  7 0.197 0.723    0.179  
-##  8 0.575 0.364    0.916  
-##  9 0.586 0.371    0.00756
-## 10 0.683 0.208    0.638
+##        V4     V5     V6
+##     <dbl>  <dbl>  <dbl>
+##  1 0.501  0.780  0.0956
+##  2 0.262  0.675  0.572 
+##  3 0.151  0.620  0.231 
+##  4 0.720  0.351  0.933 
+##  5 0.324  0.446  0.811 
+##  6 0.225  0.670  0.0737
+##  7 0.248  0.619  0.0993
+##  8 0.736  0.0620 0.267 
+##  9 0.410  0.440  0.849 
+## 10 0.0221 0.359  0.880
 \end{verbatim}
 
 Você também pode usar expressões regulares mais gerais, se necessário. Veja a página de ajuda (?select) para mais detalhes.
