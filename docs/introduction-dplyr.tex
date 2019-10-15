@@ -318,8 +318,8 @@ O \emph{swirl} é um pacote do R construído para transformar o console em uma f
 O \emph{swirl} dá acesso às tarefas de cursos de R que estão disponíveis também no Coursera, como o \emph{R Programming}: \emph{The basics of programming in R}, em \url{https://pt.coursera.org/learn/r-programming}. Além deste, estão
 disponíveis no \emph{swirl}: \emph{Regression Models: The basics of regression modeling in R, Statistical Inference: The basics of statistical inference in R, e Exploratory Data Analysis: The basics of exploring data in R}.
 
-\hypertarget{o-que-uxe9-dados-organizados}{%
-\chapter{O que é Dados organizados?}\label{o-que-uxe9-dados-organizados}}
+\hypertarget{literature}{%
+\chapter{O que é Dados organizados?}\label{literature}}
 
 \begin{quote}
 ``Famílias felizes são todas iguais; toda família infeliz é infeliz à sua maneira.'' -- Leo Tolstoi
@@ -500,8 +500,8 @@ Vamos criar um \texttt{tibble} no formato \emph{wide} e transformá-lo em um dad
 ## 2 SP        11     10
 \end{verbatim}
 
-\hypertarget{manipulando-data-frames-com-dplyr}{%
-\chapter{\texorpdfstring{Manipulando Data Frames com \texttt{dplyr}}{Manipulando Data Frames com dplyr}}\label{manipulando-data-frames-com-dplyr}}
+\hypertarget{method}{%
+\chapter{\texorpdfstring{Manipulando Data Frames com \texttt{dplyr}}{Manipulando Data Frames com dplyr}}\label{method}}
 
 \hypertarget{data-frames}{%
 \section{Data Frames}\label{data-frames}}
@@ -917,18 +917,18 @@ A função \texttt{select()} permite uma sintaxe especial que especifica nomes d
 
 \begin{verbatim}
 ## # A tibble: 10 x 8
-##        V4     V7    V1     V9    V8    V5     V2     V6
-##     <dbl>  <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl>  <dbl>
-##  1 0.192  0.307  0.339 0.411  0.259 0.908 0.0474 0.777 
-##  2 0.595  0.816  0.111 0.0151 0.253 0.621 0.725  0.708 
-##  3 0.492  0.0701 0.507 0.184  0.597 0.910 0.947  0.642 
-##  4 0.108  0.841  0.207 0.843  0.350 0.418 0.315  0.490 
-##  5 0.687  0.255  0.613 0.664  0.648 0.766 0.513  0.823 
-##  6 0.436  0.482  0.415 0.608  0.771 0.730 0.861  0.224 
-##  7 0.0644 0.234  0.342 0.783  0.202 0.169 0.686  0.174 
-##  8 0.775  0.985  0.349 0.456  0.206 0.360 0.964  0.639 
-##  9 0.913  0.979  0.112 0.805  0.682 0.254 0.528  0.0243
-## 10 0.0615 0.981  0.701 0.185  0.954 0.168 0.569  0.250
+##       V4     V7     V1     V9    V8    V5    V2      V6
+##    <dbl>  <dbl>  <dbl>  <dbl> <dbl> <dbl> <dbl>   <dbl>
+##  1 0.758 0.886  0.0648 0.376  0.219 0.286 0.267 0.547  
+##  2 0.533 0.0474 0.525  0.188  0.195 0.761 0.735 0.295  
+##  3 0.420 0.110  0.420  0.794  0.519 0.105 0.203 0.00707
+##  4 0.736 0.374  0.528  0.552  0.913 0.275 0.496 0.786  
+##  5 0.358 0.0236 0.0309 0.0886 0.215 0.622 0.470 0.449  
+##  6 0.983 0.440  0.403  0.670  0.985 0.872 0.234 0.506  
+##  7 0.655 0.428  0.314  0.636  0.397 0.720 0.631 0.686  
+##  8 0.802 0.0162 0.712  0.661  0.500 0.775 0.929 0.555  
+##  9 0.256 0.832  0.428  0.479  0.713 0.406 0.665 0.981  
+## 10 0.842 0.714  0.364  0.417  0.405 0.312 0.306 0.407
 \end{verbatim}
 
 \begin{Shaded}
@@ -939,18 +939,18 @@ A função \texttt{select()} permite uma sintaxe especial que especifica nomes d
 
 \begin{verbatim}
 ## # A tibble: 10 x 3
-##        V4    V5     V6
-##     <dbl> <dbl>  <dbl>
-##  1 0.192  0.908 0.777 
-##  2 0.595  0.621 0.708 
-##  3 0.492  0.910 0.642 
-##  4 0.108  0.418 0.490 
-##  5 0.687  0.766 0.823 
-##  6 0.436  0.730 0.224 
-##  7 0.0644 0.169 0.174 
-##  8 0.775  0.360 0.639 
-##  9 0.913  0.254 0.0243
-## 10 0.0615 0.168 0.250
+##       V4    V5      V6
+##    <dbl> <dbl>   <dbl>
+##  1 0.758 0.286 0.547  
+##  2 0.533 0.761 0.295  
+##  3 0.420 0.105 0.00707
+##  4 0.736 0.275 0.786  
+##  5 0.358 0.622 0.449  
+##  6 0.983 0.872 0.506  
+##  7 0.655 0.720 0.686  
+##  8 0.802 0.775 0.555  
+##  9 0.256 0.406 0.981  
+## 10 0.842 0.312 0.407
 \end{verbatim}
 
 Você também pode usar expressões regulares mais gerais, se necessário. Veja a página de ajuda (?select) para mais detalhes.
@@ -1119,8 +1119,8 @@ Há inúmeras funções que . A propriedade é que a função deva ser vetorizad
 \hypertarget{filter}{%
 \section{\texorpdfstring{\texttt{filter()}}{filter()}}\label{filter}}
 
-\hypertarget{vuxf4os-em-nova-york-de-2013}{%
-\chapter{Vôos em Nova York de 2013}\label{vuxf4os-em-nova-york-de-2013}}
+\hypertarget{application}{%
+\chapter{Vôos em Nova York de 2013}\label{application}}
 
 \hypertarget{introduuxe7uxe3o}{%
 \section{Introdução}\label{introduuxe7uxe3o}}
@@ -1315,8 +1315,8 @@ equals(5)
 \hypertarget{exercuxedcios-7}{%
 \subsection{Exercícios}\label{exercuxedcios-7}}
 
-\hypertarget{conclusuxe3o}{%
-\chapter{Conclusão}\label{conclusuxe3o}}
+\hypertarget{summary}{%
+\chapter{Conclusão}\label{summary}}
 
 Peng, R.D. and Welty, L.J. (2004) The NMMAPSdata package. R News 4(2).
 
