@@ -116,10 +116,3 @@ saida <- round(media, 1)<br/>
 ## `select()`
 
 ### Exercícios
-
-
-
-
-
-Esta função permite 
-

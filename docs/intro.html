@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Introdução | Apostila: introdução ao pacote dplyr</title>
+  <meta name="description" content="Minicurso sobre introdução ao pacote dplyr ministrado na XIX SEMAT.." />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Introdução | Apostila: introdução ao pacote dplyr" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Minicurso sobre introdução ao pacote dplyr ministrado na XIX SEMAT.." />
+  <meta name="github-repo" content="Doug7Vinicius/introduction-dplyr" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Introdução | Apostila: introdução ao pacote dplyr" />
+  
+  <meta name="twitter:description" content="Minicurso sobre introdução ao pacote dplyr ministrado na XIX SEMAT.." />
+  
+
+<meta name="author" content="Me. Elisângela C. Biazatti Douglas Vinícius Jossivana Macedo" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="breve-introdução-ao-r.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><center><img src="imagens/dplyr.png" alt="logo" width="50%" height="50%"style="margin: 15px 0 0 0"></center></li>
+<li><center><a href="./">dplyr</a></center></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prefácio</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#público-alvo"><i class="fa fa-check"></i><b>1.1</b> Público-alvo</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#conteúdo"><i class="fa fa-check"></i><b>1.2</b> Conteúdo:</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#pré-requisitos"><i class="fa fa-check"></i><b>1.3</b> Pré-requisitos</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introdução</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#r-e-rstudio"><i class="fa fa-check"></i><b>2.1</b> R e RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#objetos-r"><i class="fa fa-check"></i><b>2.2</b> Objetos R</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#swirl"><i class="fa fa-check"></i><b>2.3</b> <em>swirl</em></a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#universo-tidyverse"><i class="fa fa-check"></i><b>2.4</b> Universo <code>tidyverse</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="breve-introdução-ao-r.html"><a href="breve-introdução-ao-r.html"><i class="fa fa-check"></i><b>3</b> Breve Introdução ao R</a><ul>
+<li class="chapter" data-level="3.1" data-path="breve-introdução-ao-r.html"><a href="breve-introdução-ao-r.html#o-que-é-dados-organizados"><i class="fa fa-check"></i><b>3.1</b> O que é Dados organizados?</a></li>
+<li class="chapter" data-level="3.2" data-path="breve-introdução-ao-r.html"><a href="breve-introdução-ao-r.html#breve-introdução-ao-tidyr"><i class="fa fa-check"></i><b>3.2</b> Breve Introdução ao <code>tidyr</code></a><ul>
+<li class="chapter" data-level="3.2.1" data-path="breve-introdução-ao-r.html"><a href="breve-introdução-ao-r.html#gather"><i class="fa fa-check"></i><b>3.2.1</b> <code>gather</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="manipulando-data-frames-com-dplyr.html"><a href="manipulando-data-frames-com-dplyr.html"><i class="fa fa-check"></i><b>4</b> Manipulando Data Frames com <code>dplyr</code></a><ul>
+<li class="chapter" data-level="4.1" data-path="manipulando-data-frames-com-dplyr.html"><a href="manipulando-data-frames-com-dplyr.html#data-frames"><i class="fa fa-check"></i><b>4.1</b> Data Frames</a></li>
+<li class="chapter" data-level="4.2" data-path="manipulando-data-frames-com-dplyr.html"><a href="manipulando-data-frames-com-dplyr.html#o-pacote-dplyr"><i class="fa fa-check"></i><b>4.2</b> O Pacote <code>dplyr</code></a></li>
+<li class="chapter" data-level="4.3" data-path="manipulando-data-frames-com-dplyr.html"><a href="manipulando-data-frames-com-dplyr.html#gramática-do-dplyr"><i class="fa fa-check"></i><b>4.3</b> Gramática do <code>dplyr</code></a></li>
+<li class="chapter" data-level="4.4" data-path="manipulando-data-frames-com-dplyr.html"><a href="manipulando-data-frames-com-dplyr.html#propriedades-das-funções-do-dplyr"><i class="fa fa-check"></i><b>4.4</b> Propriedades das funções do <code>dplyr</code></a></li>
+<li class="chapter" data-level="4.5" data-path="manipulando-data-frames-com-dplyr.html"><a href="manipulando-data-frames-com-dplyr.html#instalando-o-pacote-dplyr"><i class="fa fa-check"></i><b>4.5</b> Instalando o Pacote <code>dplyr</code></a></li>
+<li class="chapter" data-level="4.6" data-path="manipulando-data-frames-com-dplyr.html"><a href="manipulando-data-frames-com-dplyr.html#select"><i class="fa fa-check"></i><b>4.6</b> <code>select()</code></a><ul>
+<li class="chapter" data-level="4.6.1" data-path="manipulando-data-frames-com-dplyr.html"><a href="manipulando-data-frames-com-dplyr.html#exercícios"><i class="fa fa-check"></i><b>4.6.1</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="manipulando-data-frames-com-dplyr.html"><a href="manipulando-data-frames-com-dplyr.html#rename"><i class="fa fa-check"></i><b>4.7</b> <code>rename()</code></a><ul>
+<li class="chapter" data-level="4.7.1" data-path="manipulando-data-frames-com-dplyr.html"><a href="manipulando-data-frames-com-dplyr.html#exercícios-1"><i class="fa fa-check"></i><b>4.7.1</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="manipulando-data-frames-com-dplyr.html"><a href="manipulando-data-frames-com-dplyr.html#mutate"><i class="fa fa-check"></i><b>4.8</b> <code>mutate()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="transformação-de-dados-com-dplyr.html"><a href="transformação-de-dados-com-dplyr.html"><i class="fa fa-check"></i><b>5</b> Transformação de Dados com <code>dplyr</code></a><ul>
+<li class="chapter" data-level="5.1" data-path="transformação-de-dados-com-dplyr.html"><a href="transformação-de-dados-com-dplyr.html#introdução"><i class="fa fa-check"></i><b>5.1</b> Introdução</a></li>
+<li class="chapter" data-level="5.2" data-path="transformação-de-dados-com-dplyr.html"><a href="transformação-de-dados-com-dplyr.html#pré-requisitos-1"><i class="fa fa-check"></i><b>5.2</b> Pré-requisitos</a></li>
+<li class="chapter" data-level="5.3" data-path="transformação-de-dados-com-dplyr.html"><a href="transformação-de-dados-com-dplyr.html#nycflights13"><i class="fa fa-check"></i><b>5.3</b> nycflights13</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="transformação-de-dados-com-dplyr.html"><a href="transformação-de-dados-com-dplyr.html#exercícios-2"><i class="fa fa-check"></i><b>5.3.1</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="transformação-de-dados-com-dplyr.html"><a href="transformação-de-dados-com-dplyr.html#operador-pipe"><i class="fa fa-check"></i><b>5.4</b> Operador <em>pipe</em> <code>%&gt;%</code></a><ul>
+<li class="chapter" data-level="5.4.1" data-path="transformação-de-dados-com-dplyr.html"><a href="transformação-de-dados-com-dplyr.html#exercícios-3"><i class="fa fa-check"></i><b>5.4.1</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="transformação-de-dados-com-dplyr.html"><a href="transformação-de-dados-com-dplyr.html#filter"><i class="fa fa-check"></i><b>5.5</b> <code>filter()</code></a><ul>
+<li class="chapter" data-level="5.5.1" data-path="transformação-de-dados-com-dplyr.html"><a href="transformação-de-dados-com-dplyr.html#comparações"><i class="fa fa-check"></i><b>5.5.1</b> Comparações</a></li>
+<li class="chapter" data-level="5.5.2" data-path="transformação-de-dados-com-dplyr.html"><a href="transformação-de-dados-com-dplyr.html#operadores-lógicos"><i class="fa fa-check"></i><b>5.5.2</b> Operadores Lógicos</a></li>
+<li class="chapter" data-level="5.5.3" data-path="transformação-de-dados-com-dplyr.html"><a href="transformação-de-dados-com-dplyr.html#valores-ausentes"><i class="fa fa-check"></i><b>5.5.3</b> Valores Ausentes</a></li>
+<li class="chapter" data-level="5.5.4" data-path="transformação-de-dados-com-dplyr.html"><a href="transformação-de-dados-com-dplyr.html#exercícios-4"><i class="fa fa-check"></i><b>5.5.4</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="transformação-de-dados-com-dplyr.html"><a href="transformação-de-dados-com-dplyr.html#arrange"><i class="fa fa-check"></i><b>5.6</b> <code>arrange()</code></a><ul>
+<li class="chapter" data-level="5.6.1" data-path="transformação-de-dados-com-dplyr.html"><a href="transformação-de-dados-com-dplyr.html#exercícios-5"><i class="fa fa-check"></i><b>5.6.1</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="transformação-de-dados-com-dplyr.html"><a href="transformação-de-dados-com-dplyr.html#select-1"><i class="fa fa-check"></i><b>5.7</b> <code>select()</code></a><ul>
+<li class="chapter" data-level="5.7.1" data-path="transformação-de-dados-com-dplyr.html"><a href="transformação-de-dados-com-dplyr.html#exercícios-6"><i class="fa fa-check"></i><b>5.7.1</b> Exercícios</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="conclusão.html"><a href="conclusão.html"><i class="fa fa-check"></i><b>6</b> Conclusão</a></li>
+<li class="chapter" data-level="" data-path="referências.html"><a href="referências.html"><i class="fa fa-check"></i>Referências</a></li>
+<li class="divider"></li>
+<li><center><img src="imagens/bookdown-logo.png" alt="logo" width="30%" height="30%"style="margin: 15px 0 0 0"></center></li>
+<li><center><a href="https://github.com/rstudio/bookdown" target="blank">Publicado em bookdown</a></center></li>
+<li><center><img src="imagens/soli.png" alt="Soli Deo Gloria" width="27%" height="27%"style="margin: 15px 0 0 0"></center></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Apostila: introdução ao pacote dplyr</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro" class="section level1">
+<h1><span class="header-section-number">2</span> Introdução</h1>
+<blockquote>
+<p>“Existem apenas dois tipos de idiomas: os que as pessoas reclamam e os que ninguém usa”. - Bjarne Stroustrup</p>
+</blockquote>
+<p>O modelo típico de análise de dados é similar:</p>
+<p><img src="imagens/data-science.png" width="75%" style="display: block; margin: auto;" /></p>
+<p>Primeiramente, você deve <strong>importar</strong> seus dados para o R. Significa que você pega os dados armazenados em um arquivo, banco de dados ou API da Web e carrega-os em um data frames no R.</p>
+<p>Logo após, a ideia é <strong>organizá</strong>-los. Significa armazená-los de forma consistente.</p>
+<p>Depois de arrumar os dados, o próximo passo é <strong>transformá</strong>-los. Significa restringir observações de interesse, criar novas variáveis</p>
+<p>Depois de organizar os dados com as variáveis necessárias, existem dois mecanismos principais de geração de conhecimento: visualização e modelagem. Eles têm pontos fortes e fracos complementares, portanto qualquer análise real se repetirá entre eles várias vezes.</p>
+<p>A <strong>visualização</strong> é uma atividade fundamentalmente humana. Uma boa visualização mostrará coisas que você não esperava, ou fará novas perguntas sobre os dados.</p>
+<p><strong>Modelos</strong> são ferramentas complementares para visualização. Depois de fazer suas perguntas suficientemente precisas, você pode usar um modelo para respondê-las.</p>
+<p>O último passo da ciência de dados é a <strong>comunicação</strong>, uma parte absolutamente crítica de qualquer projeto de análise de dados. Não importa o quão bem seus modelos e visualização levaram você a entender os dados, a menos que você também possa comunicar seus resultados a outras pessoas.</p>
+<p>Ao redor de todas essas ferramentas está a programação. A programação é uma ferramenta transversal que você usa em todas as partes do projeto. Você não precisa ser um programador especialista para ser um cientista de dados, mas aprender mais sobre programação compensa, porque se tornar um programador melhor permite automatizar tarefas comuns e resolver novos problemas com maior facilidade.</p>
+<div id="r-e-rstudio" class="section level2">
+<h2><span class="header-section-number">2.1</span> R e RStudio</h2>
+<p>A primeira coisa que você precisa fazer para iniciar o R é instalá-lo no seu computador. O R funciona em praticamente todas as plataformas disponíveis, incluindo os sistemas Windows, Mac OS X e Linux amplamente disponíveis.</p>
+<p>Uma nova versão principal do R sai uma vez por ano, e há 2 ou 3 versões menores a cada ano. É uma boa ideia atualizar regularmente. A atualização pode ser um pouco complicada, especialmente para as versões principais, que exigem a reinstalação de todos os seus pacotes.</p>
+<p>Há também um ambiente de desenvolvimento integrado (IDE) disponível para o R, construído pelo RStudio. IDE, do inglês <strong>Integrated Development Environment</strong> ou Ambiente de Desenvolvimento Integrado, é um programa de computador que reúne características e ferramentas de apoio ao desenvolvimento de software com o objetivo de agilizar este processo. O RStudio é atualizado duas vezes por ano. Quando uma nova versão estiver disponível, o RStudio informará você.</p>
+<p>Você pode ver como instalar o R e o RStudio aqui:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=orjLGFmx6l4">Instalando o RStudio</a></li>
+</ul>
+<p>Após instalado, o R tem uma interface assim, com apenas o console para digitar comandos:</p>
+<p><img src="imagens/r-project.png" width="90%" style="display: block; margin: auto;" /></p>
+<p>Experimente um comando: 2+2, cujo output é 4:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span></a></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<p>E a interface do RStudio é dividida, inicialmente, em 3 partes:</p>
+<p><img src="imagens/rstudio-console.png" width="90%" style="display: block; margin: auto;" /></p>
+<p>Do lado esquerdo fica o console, onde os comandos podem ser digitados e onde ficam os <em>outputs</em>.</p>
+<p>No lado superior direito há duas abas:</p>
+<p>-i) <em>Environment</em>, que é onde ficam armazendos os objetos criados, bases de dados importadas, etc; e</p>
+<p>-ii) <em>History</em>, onde ficam o histórico dos comandos executados.</p>
+<p>A forma mais eficiente e prática de usar o R ou o RStudio é através de um <em>script</em>. No RStudio, vá em <em>File</em> → <em>New File</em> → <em>R Script</em>. A interface agora fica dividida em 4 partes:</p>
+<p><img src="imagens/rstudio-editor.png" width="90%" style="display: block; margin: auto;" /></p>
+<p>No <em>script</em> você pode digitar comandos a serem executados e também comentários.</p>
+</div>
+<div id="objetos-r" class="section level2">
+<h2><span class="header-section-number">2.2</span> Objetos R</h2>
+<p>R possui cinco classes básicas ou “atômicas” de objetos:</p>
+<ul>
+<li><p>character</p></li>
+<li><p>numeric (real numbers)</p></li>
+<li><p>integer</p></li>
+<li><p>complex</p></li>
+<li><p>logical (True/False)</p></li>
+</ul>
+<p>O tipo mais básico de objeto R é um vetor. Vetores vazios podem ser criados com a função <code>vector()</code>. Existe apenas uma regra sobre vetores em R, que um vetor pode conter apenas objetos da mesma classe.</p>
+<p>Mas é claro que, como qualquer boa regra, há uma exceção, que é uma lista , que abordaremos um pouco mais tarde. Uma lista é representada como um vetor, mas pode conter objetos de diferentes classes. De fato, geralmente é por isso que os usamos.</p>
+</div>
+<div id="swirl" class="section level2">
+<h2><span class="header-section-number">2.3</span> <em>swirl</em></h2>
+<p>O <em>swirl</em> é um pacote do R construído para transformar o console em uma ferramenta interativa para aprender R. <em>swirl</em> ensina programação de R e ciência de dados interativamente, no seu próprio ritmo e diretamente no console do R. Para entender melhor do projeto, veja <a href="http://swirlstats.com/" class="uri">http://swirlstats.com/</a>. Em <a href="http://swirlstats.com/students" class="uri">http://swirlstats.com/students</a>. Nestes endereços de são dados os detalhes sobre como usar o <em>swirl</em>. Uma vez intalado e carregado o pacote, você é levado a efetuar tarefas:
+<img src="imagens/swirl.PNG" width="90%" style="display: block; margin: auto;" /></p>
+<p>O <em>swirl</em> dá acesso às tarefas de cursos de R que estão disponíveis também no Coursera, como o <em>R Programming</em>: <em>The basics of programming in R</em>, em <a href="https://pt.coursera.org/learn/r-programming" class="uri">https://pt.coursera.org/learn/r-programming</a>. Além deste, estão
+disponíveis no <em>swirl</em>: <em>Regression Models: The basics of regression modeling in R, Statistical Inference: The basics of statistical inference in R, e Exploratory Data Analysis: The basics of exploring data in R</em>.</p>
+</div>
+<div id="universo-tidyverse" class="section level2">
+<h2><span class="header-section-number">2.4</span> Universo <code>tidyverse</code></h2>
+<p><img src="imagens/hex-tidyverse.png" width="25%" style="display: block; margin: auto;" /></p>
+<p>O tidyverse é uma coleção opinativa de pacotes R projetados para ciência de dados. Todos os pacotes compartilham uma filosofia de design, gramática e estruturas de dados subjacentes.</p>
+<p>Os princípios fundamentais do <code>tidyverse</code> são:</p>
+<ul>
+<li>1.Reutilizar estruturas de dados existentes;</li>
+<li>2.Organizar funções simples usando o pipe;</li>
+<li>3.Aderir à programação funcional;</li>
+<li>4.Projetado para ser usado por seres humanos.</li>
+</ul>
+<p>Assim como o processo típico do passo a passo apresentando anteriormente para análise de dados, o <code>tidyverse</code> é a ferramenta que o ajuda eficientemente a executar este processo.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">library</span>(tidyverse) <span class="co">#Carregar o pacote.</span></a></code></pre></div>
+<pre><code>## -- Attaching packages ------------------------------ tidyverse 1.2.1 --</code></pre>
+<pre><code>## v ggplot2 3.2.1     v purrr   0.3.2
+## v tibble  2.1.3     v dplyr   0.8.3
+## v tidyr   1.0.0     v stringr 1.4.0
+## v readr   1.3.1     v forcats 0.4.0</code></pre>
+<pre><code>## -- Conflicts --------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">tidyverse_logo</span>() <span class="co">#Logo</span></a></code></pre></div>
+<pre><code>## * __  _    __   .    o           *  . 
+##  / /_(_)__/ /_ ___  _____ _______ ___ 
+## / __/ / _  / // / |/ / -_) __(_-&lt;/ -_)
+## \__/_/\_,_/\_, /|___/\__/_/ /___/\__/ 
+##      *  . /___/      o      .       *</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="breve-introdução-ao-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["introduction-dplyr.pdf", "introduction-dplyr.epub", "introduction-dplyr.djvu"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
