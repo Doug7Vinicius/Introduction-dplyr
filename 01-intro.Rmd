@@ -70,6 +70,24 @@ knitr::include_graphics("imagens/rstudio-editor.png")
 
 No *script* você pode digitar comandos a serem executados e também comentários.
 
+## Objetos R
+
+R possui cinco classes básicas ou "atômicas" de objetos:
+
+  - character
+
+  - numeric (real numbers)
+
+  - integer
+
+  - complex
+
+  - logical (True/False)
+
+O tipo mais básico de objeto R é um vetor. Vetores vazios podem ser criados com a função `vector()`. Existe apenas uma regra sobre vetores em R, que um vetor pode conter apenas objetos da mesma classe.
+
+Mas é claro que, como qualquer boa regra, há uma exceção, que é uma lista , que abordaremos um pouco mais tarde. Uma lista é representada como um vetor, mas pode conter objetos de diferentes classes. De fato, geralmente é por isso que os usamos.
+
 ## *swirl*
 
 O *swirl* é um pacote do R construído para transformar o console em uma ferramenta interativa para aprender R. *swirl* ensina programação de R e ciência de dados interativamente, no seu próprio ritmo e diretamente no console do R. Para entender melhor do projeto, veja <http://swirlstats.com/>. Em <http://swirlstats.com/students>. Nestes endereços de são dados os detalhes sobre como usar o *swirl*. Uma vez intalado e carregado o pacote, você é levado a efetuar tarefas:

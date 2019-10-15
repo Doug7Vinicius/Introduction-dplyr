@@ -8,7 +8,7 @@ bookdown::gitbook:
       after: |
         <li><center><img src="imagens/bookdown-logo.png" alt="logo" width="30%" height="30%"style="margin: 15px 0 0 0"></center></li>
         <li><center><a href="https://github.com/rstudio/bookdown" target="blank">Publicado em bookdown</a></center></li>
-        <li><center><img src="imagens/soli.png" alt="Soli Deo Gloria" width="21%" height="21%"style="margin: 15px 0 0 0"></center></li>
+        <li><center><img src="imagens/soli.png" alt="Soli Deo Gloria" width="27%" height="27%"style="margin: 15px 0 0 0"></center></li>
     download: ["pdf", "epub", "djvu"]
 bookdown::pdf_book:
   includes:

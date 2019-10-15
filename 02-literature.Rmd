@@ -9,7 +9,7 @@
 
 >“Os conjuntos de dados organizados são todos iguais, mas todos os conjuntos de dados confusos são confusos à sua maneira.” – Hadley Wickham
 
-Você vai precisar instalar os pacotes `tidyr`, `devtools` e `DSR`. Para instalar tidyr e devtools, abra o RStudio e execute o comando:
+Você vai precisar instalar os pacotes `tidyr`, `devtools` e `DSR`. Para instalar `tidyr` e `devtools`, abra o RStudio e execute o comando:
 
 ```{r eval=FALSE}
 install.packages(c("tidyr", "devtools"))
@@ -59,7 +59,7 @@ knitr::include_graphics("imagens/tidy-1.png")
 
 Em `table1`, cada variável é colocada em sua própria coluna, cada observação em sua própria linha e cada valor em sua própria célula.
 
-## Introdução ao `tidyr`
+## Breve Introdução ao `tidyr`
 
 ```{r figure7, echo=FALSE, fig.align='center', out.width="25%"}
 knitr::include_graphics("imagens/tidyr.png")
@@ -81,9 +81,11 @@ Além disso, existem duas funções que podem ser importantes na nossa análise:
 ### `gather`
 
 Vamos criar um `tibble` no formato *wide* e transformá-lo em um dado *tidy*:
+
 ```{r}
 library(tibble)
 tb <- tibble(uf = c("RJ", "SP"), `2017` = c(10, 11), `2018` = c(11, 10))
 tb
 ```
+
 

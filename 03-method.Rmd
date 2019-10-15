@@ -1,145 +1,251 @@
-# Transformação de Dados com `dplyr`
+# Manipulando Data Frames com `dplyr`
 
-## Introdução
+## Data Frames
 
-A visualização é uma ferramenta importante para a geração de *insights*, mas é raro você obter os dados exatamente da forma correta de que precisa. Freqüentemente, você precisará criar algumas novas variáveis ou resumos, ou talvez apenas queira renomear as variáveis ou reordenar as observações para tornar os dados um pouco mais fáceis de trabalhar. Você aprenderá como fazer tudo isso (e muito mais!) Neste capítulo, que ensinará como transformar seus dados usando o pacote `dplyr` e um novo conjunto de dados em voos partindo de Nova York em 2013.
+## O Pacote `dplyr` 
 
-## Pré-requisitos
+O pacote `dplyr` foi desenvolvido por Hadley Wickham, cientista chefe do RStudio. É uma versão otimizada do pacote `plyr`. O pacote `dplyr` não fornece nenhuma funcionalidade "nova" ao R, pois já é feito com base no R, mas simplifica **bastante** a funcionalidade no R.
 
-Neste capítulo, vamos nos concentrar em como usar o pacote `dplyr`, outro membro central do `tidyverse`. Ilustraremos as ideias principais usando dados do pacote `nycflights13` e usaremos o `ggplot2` para nos ajudar a entender os dados.
+Uma contribuição importante do `dplyr` é que ele fornece uma "gramática" (em particular, verbos) para manipulação 
 
-```{r setup1, warning=FALSE}
-library(nycflights13)
-library(tidyverse) # ou isoladamente: library(dplyr).
-```
+## Gramática do `dplyr`
 
-## nycflights13
+Alguns dos principais "verbos" fornecidos pelo `dplyr` são:
 
-Esse data frames contém todos os 336.776 vôos que partiram de Nova York em 2013. Os dados são do [Bureau of Transportation Statistics](https://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=120&Link=0) dos EUA e estão documentados em `?flights`.
-
-```{r}
-flights
-```
-
-Para ver todo o conjunto de dados, você pode executar o `View(flights)` que abrirá o conjunto de dados no visualizador do RStudio. Imprime de forma distinta do data frame, porque é um `tibble`. O que é um *tibble*?
-*Tibbles* são similares aos *data frames*, porém diferentes em dois aspectos: **impressão** e **indexação**
-
-Na impressão no console, os *tibbles* apresentam apenas as dez primeiras linhas e todas as colunas que cabem na tela, tornando mais fácil o trabalho com grandes volumes de dados. Além disso, cada coluna apresenta o seu tipo, algo semelhante ao apresentado quando utilizamos a função `str()`. A segunda diferença, não menos importante, é a forma de indexação. Para indexar um `tibble` devemos utilizar o nome completo da variável que desejamos. Caso contrário, ocorrerá um erro.
-
-Ainda sobre a indexação, sempre que indexarmos um `tibble` usando `[`, o resultado será outro `tibble`. Usando `[[` o resultados será um vetor.
-
-Abreviações de letras sob os nomes das colunas. Eles descrevem o tipo de cada variável:
-
--`int` significa números inteiros;
-
--`dbl` significa números duplos ou reais;
-
--`chr` significa vetores de caracteres ou seqüências de caracteres;
-
--`dttm` significa data e hora (uma data + uma hora).
-
--`lgl` significa vetores lógicos que contêm apenas `TRUE` ou `FALSE`;
-
--`fctr` significa fatores, que R usa para representar variáveis categóricas com valores possíveis fixos.
-
--`data` significa data.
-
-Existem outros tipos comuns de variáveis que não são usadas neste conjunto de dados.
-
-Em síntese, *data frames* são tabelas de dados. Em seu formato, são bem parecidos com as matrizes, no entanto, possuem algumas diferenças significativas. Podemos idealizar os *data frames* como sendo matrizes em que cada coluna pode armazenar um tipo de dado diferente. Logo, estamos lidando com um objeto bem mais versátil do que as matrizes e os vetores.
-
-Uma das funções básicas mais importantes para começarmos a trabalhar com *data frames* é a `str()`. Essa função dá uma visão clara da estrutura do nosso objeto, bem como informa os tipos de dados existentes.
-
-### Exercícios
-
-- 1.Qual a diferença entre uma matriz e um data frame no R?
-- 2.Os data frames podem ser indexados com a mesma sintaxe utilizada para matrizes?
-- 3.Qual função básica que utilizamos para verificar a estrutura dos dados de um data frame?
-
-## Operador *pipe* `%>%`
-
-```{r figure9, echo=FALSE, fig.align='center', out.width='25%'}
-knitr::include_graphics("imagens/magritt.png")
-```
-
-Os tubos são uma ferramenta poderosa para expressar claramente uma sequência de várias operações. O pipe, `%>%` vem do pacote `magrittr` de Stefan Milton Bache. Pacotes no `tidyverse` carregam `%>%` automaticamente, para que normalmente não carregue o magrittr explicitamente. 
-
-Para começar a utilizar o *pipe*, instale e carregue o pacote `magrittr`.
-
-```{r eval=FALSE}
-install.packages("magrittr")
-library(magrittr)
-```
-
-Para mais informações sobre o *pipe*, outros operadores relacionados e exemplos de utilização, visite a página [Ceci n’est pas un pipe](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html)
-
-### Exercícios
-
-  - 1. Reescreva a expressão abaixo utilizando o `%>%`.
-
-  >round(mean(sum(1:10)/3), digits = 1)
-
-**Dica**: utilize a função `magrittr::divide_by()`. Veja o help da função para mais informações.
-
-  - 2. Reescreva o código abaixo utilizando o `%>%`.
+  -`select`: retorna um subconjunto das colunas de um data.frames, usando uma notação flexível;
   
->x <- rnorm(100)<br/>
-x.pos <- x[x>0]<br/>
-media <- mean(x.pos)<br/>
-saida <- round(media, 1)<br/>
+  -`filter`: extrair um subconjunto de linhas(observações) de um data.frames com base em condições lógicas;
+  
+  -`arrange`: reordenar linhas de um data.frames;
+  
+  -`rename`: renomear variáveis em um data.frames;
+  
+  -`mutate`: adiciona novas variáveis/colunas ou transforme variáveis existentes;
+  
+  -`summarise/summarize`: gera estatísticas resumidas de diferentes variáveis no data.frames, possivelmente dentro dos estratos.
+  
+## Propriedades das funções do `dplyr`
 
+As funções têm algumas características comuns:
 
-  - 3. Sem rodar, diga qual a saída do código abaixo. Consulte o `help` das funções caso precise.
+  -1.O primeiro argumento é um data.frames;
+  
+  -2.Os argumentos subsequentes descrevem o que fazer com o data.frames especificado no primeiro argumento;
+  
+  -3.O resultado de retorno de uma função é um novo data.frames;
+  
+  -4.Os data.frames devem devidamente formatados e anotados para que tudo isso seja útil. Em particular, os dados devem estar *organizados*.
+  
+## Instalando o Pacote `dplyr`
 
->2 %>% <br/>
-  add(2) %>%<br/> 
-  c(6, NA) %>% <br/>
-  mean(na.rm = T) %>%<br/> 
-  equals(5)
+O pacote pode ser instalado a partir do CRAN ou do GitHub usando o pacote `devtools` com a função `install_github()`. O repositório GitHub normalmente contém as versões mais atualizadas dos pacotes.
 
-## `filter()`
+Para instalar a partir do CRAN, bastar executar:
 
-`filter()` permite agrupar observações com base em seus valores. O primeiro argumento da função é o nome do data frames. Por exemplo, podemos selecionar todos os valores 
+````{r script4.1, eval=FALSE}
+install.packages("dplyr")
+```
 
-### Comparações
+Para instalar a partir do GitHub, execute:
 
-### Operadores Lógicos
+```{r script4.2, eval=FALSE}
+library(devtools) #carregar o pacote 'devtools' antes.
+devtools::install_github("hadley/dplyr")
+```
 
-### Valores Ausentes
+Após a instalação do pacote, carregá-lo com a função `library()`:
 
-### Exercícios
+```{r script4.3}
+library(dplyr)
+```
 
-## `arrange()`
-
-### Exercícios
+Ao carregar o pacote você pode receber alguns avisos, porque há funções no `dplyr`que têm o mesmo nome que as funções em outros pacotes. Por enquanto pode ignorar os avisos.
 
 ## `select()`
 
+Para melhor apresentar as funcionalidades da função, usaremos um conjunto de dados diários sobre poluição do ar e taxa de mortalidade da [cidade de Chicago](http://www.biostat.jhsph.edu/~rpeng/leanpub/rprog/chicago_data.zip), nos EUA. 
+
+Você pode carregar os dados no R usando a função `readRDS()`:
+
+```{r script4.4}
+chicago <- readRDS("data/chicago.rds")
+```
+
+Este banco de dados encontra no seguinte endereço:  <http://www.biostat.jhsph.edu/~rpeng/leanpub/rprog/chicago_data.zip> e está em um arquivo zipado. Uma das formas para facilitar o processo de descompactação do arquivo pelo R é:
+
+```{r eval=FALSE}
+# objeto caracter, endereço do arquivo.
+fileURL <- "http://www.biostat.jhsph.edu/~rpeng/leanpub/rprog/chicago_data.zip"
+
+#Esta função pode ser usada para baixar um arquivo da Internet.
+download.file(fileURL, destfile = "data/chicago.rds", method = "curl", extra='-L') 
+```
+
+Descrição do banco: tem 8 colunas e 6940 linhas. Cada linha refere-se a um dia. As colunas são:
+
+  - city:
+    - cidade, neste campo tem apenas "chic" referenciando a cidade de Chicago.
+
+  - tmpd:
+    - temperatura em Fahrenheit.
+  
+  - dptp:
+    - temperatura do ponto de orvalho.
+```{r echo=FALSE}
+
+```  
+  - date:
+    - tempo em dias.
+  
+  - pm25tmean2:
+    - partículas médias < 2,5mg por m cúbico (mais perigoso).
+    
+  - pm10tmean2:
+    - partículas médias em 2,5^-10 por m cúbico.
+  
+  - o3tmean2:
+    - Ozônio em partes por bilhão.
+  
+  - no2tmean2:
+    - Medição mediana de dióxido de sulfato.
+  
+Umas das formas de ter informações do seu banco de dados é utilizar as seguintes funções `dim()` e `str()`. A primeira especifica a dimensão do seu banco e a segunda a estrutura do seu banco de dados.
+
+```{r script4.5}
+dim(chicago)
+str(chicago)
+```
+
+Muitas vezes teremos um data.frames contendo um grande número de dados. Com isso, a função `select()` permite obter as poucas colunas que você pode precisar.
+
+Suponhamos que desejássemos pegar as 3 primeiras colunas. Há algumas maneiras de fazer isto. Poderíamos, por exemplo, usar o índices númericos. Mas também podemos usar os nomes diretamente. 
+
+```{r script4.6}
+names(chicago[1:3]) 
+subset1 <- select(chicago, city:dptp)
+head(subset1)
+```
+
+Normalmente `:` não pode ser usado com nomes ou sequências de caracteres, mas dentro da função `select()` pode usá-lo para especificar um intervalo de nomes de variáveis.
+
+Pode **omitir** variáveis usando a função `select()` usando o sinal negativo.
+
+```{r script4.7}
+subset2 <- select(chicago, -(city:dptp))
+head(subset2)
+```
+
+o que indica que estamos incluindo todas as variáveis, exceto as variáveis `city` até `dptp`.
+
+O código equivalente ao anterior sem o uso do pacote seria:
+
+```{r}
+i <- match("city", names(chicago))
+j <- match("dptp", names(chicago))
+head(chicago[, -(i:j)])
+```
+
+A função de correspondência `mathc()` retorna um vetor das posições das (primeiras) correspondências de seu primeiro argumento no segundo. De acordo com a [Documentação R](https://stat.ethz.ch/R-manual/R-devel/library/base/html/match.html), a função é equivalente ao operador `%in%` que indica se uma correspondência foi localizada para o vetor1 no vetor2. O valor do resultado será VERDADEIRO ou FALSO, mas nunca NA. Portanto, o operador `%in%` pode ser útil em condições `if`.
+
+Exemplos:
+
+```{r}
+#função math().
+v1 <- c("a1","b2","c1","d2")
+v2 <- c("g1","x2","d2","e2","f1","a1","c2","b2","a2")
+x <- match(v1,v2)
+x
+
+#com o operador %in%.
+v1 <- c("a1","b2","c1","d2")
+v2 <- c("g1","x2","d2","e2","f1","a1","c2","b2","a2")
+v1 %in% v2
+```
+
+A função `select()` permite uma sintaxe especial que especifica nomes de variáveis com base em padrões. Por exemplo, há várias funções auxiliares que você pode usar:
+
+  - 1.`starts_with("abc")`: corresponde aos nomes que começam com "abc";
+
+```{r}
+#Queremos manter todas as variáveis que começam com um "d":
+subset3 <- select(chicago, starts_with("d"))
+head(subset3)
+```
+
+  - 2.`ends_with("xyz")`: corresponde aos nomes que terminam com "xyz";
+
+```{r}
+subset4 <- select(chicago, ends_with("2"))
+head(subset4)
+```
+
+  - 3.`contains("ijk")`: corresponde aos nomes que contêm "ijk";
+
+```{r}
+subset5 <- select(chicago, contains("tmean"))
+head(subset5)
+```
+  
+  - 4.`matches("(.)\\1")`: selecionar variáveis que correspondem a uma expressão regular. Esta corresponde a qualquer variável que contenha caracteres repetidos. Você aprenderá mais sobre expressões regulares no capítulo  [Strings](https://r4ds.had.co.nz/strings.html) do livro [R for data science](https://r4ds.had.co.nz/).
+
+```{r}
+subset6 <- select(chicago, matches(c(".m."), names(chicago)))
+head(subset6)
+```
+  
+  - 5.`num_range("x", 1:3)`: Corresponde x1, x2 e x3.
+
+```{r}
+#Criando um objeto df que é um data frame
+df <- as.data.frame(matrix(runif(100), nrow = 10)) 
+df <- tbl_df(df[c(3, 4, 7, 1, 9, 8, 5, 2, 6, 10)])
+select(df, V4:V6)
+select(df, num_range("V", 4:6))
+```
+
+Você também pode usar expressões regulares mais gerais, se necessário. Veja a página de ajuda (?select) para mais detalhes.
+
+`select()` pode ser usado para renomear variáveis, mas raramente é útil porque descarta todas as variáveis não mencionadas explicitamente. Em vez disso, use `rename()`, que é uma variante de `select()` que mantém todas as variáveis que não são mencionadas explicitamente.
+
+Outra opção é usar `select()` em conjunto com o `everything()` auxiliar. Isso é útil se você tiver um punhado de variáveis que deseja mover para o início do quadro de dados.
+
+```{r}
+subset7 <- select(chicago, o3tmean2, no2tmean2, everything())
+head(subset7)
+```
+
 ### Exercícios
 
--1. Obter um subconjunto com as seguintes variáveis selecionadas: `dep_time`, `dep_delay`, `arr_time`, e `arr_delayde` do banco `flights`.
+  - 1. Obter um subconjunto com as seguintes variáveis selecionadas: `dep_time`, `dep_delay`, `arr_time`, e `arr_delayde` do banco `flights`.
 
--2. O que acontece se você incluir o nome de uma variável várias vezes em uma `select()` chamada?
+  - 2. O que acontece se você incluir o nome de uma variável várias vezes em uma `select()` chamada?
 
--3. O que a `one_of()` função faz? Por que pode ser útil em conjunto com esse vetor?
-
+  - 3. O que a `one_of()` função faz? Por que pode ser útil em conjunto com esse vetor?
+    
 >vars <- c("year", "month", "day", "dep_delay", "arr_delay")
 
--4. 
 
+## `rename()`
 
-Esta função permite 
+Para renomear variáveis em uma data.frames em R não é tão prático. E a função `rename()` foi projetada para facilitar esse processo.
+
+Os nomes das cinco primeiras variáveis do data frame chicago.
+
+```{r}
+#Imprimir às 3 primeiras linhas da primeira a quinta coluna.
+head(chicago[, 1:5], 3)
+```
+
+A coluna `dptp` deve representar a temperatura do ponto de orvalho e a coluna `pm25tmean2` fornece os dados do PM2.5. No entanto, esses nomes são bastante obscuros ou estranhos e provavelmente serão renomeados para algo mais sensato.
+
+```{r}
+chicago <- rename(chicago, Temp_Orv = dptp, pm25 = pm25tmean2)
+head(chicago[, 1:5], 3)
+```
+
+A sintaxe dentro da `rename() ` função é ter o novo nome no lado esquerdo do `=` sinal e o nome antigo no lado direito.
 
 ### Exercícios
 
 ## `mutate()`
 
-### Funções úteis de criação
-
-### Exercícios
-
-## `summarise()`
-
-### ` %>% ` Combinando várias operações com pipe
-
-## `group_by()`

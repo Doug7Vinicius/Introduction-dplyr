@@ -1,8 +1,8 @@
 --- 
 title: "Apostila: introdução ao pacote dplyr"
-author: "Msc.Elisângela C. Biazatti<br/>Douglas Vinícius<br/>Jossivana Macedo"
+author: "Me. Elisângela C. Biazatti<br/>Douglas Vinícius<br/>Jossivana Macedo"
 date: "22 de outubro de 2019"
-site: bookdown::bookdown_site
+site: bookdown::bookdown_site 
 documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
@@ -13,7 +13,9 @@ description: "Minicurso sobre introdução ao pacote dplyr ministrado na XIX SEM
 
 # Prefácio
 
-<center><img src='imagens/dplyr.png' style = 'width:50%;'></center>
+```{r dplyr, echo=FALSE, fig.align='center', out.width="30%"}
+knitr::include_graphics("imagens/dplyr.png")
+```
 
 Este material foi elaborado com o proprósito de um minicurso, que tem como objetivo apresentar algumas ideias das funções básicas do pacote `dplyr`, podemos usar um computador e um pouco de criatividade para explorar essas idéias em uma variedade de situações. Usamos R com o RStudio para fazer todo o nosso trabalho.
 
@@ -26,12 +28,10 @@ O livro [R for data science](https://r4ds.had.co.nz/) é o mais indicado para ap
 
 ## Conteúdo:
 
-    - Primeiro dia (22/10): R básico, swirl, organização de dados, exercícios; 
-    - Segundo dia (23/10): select(), filter(), arrange(), mutate(), summarise(), exercícios;
+    - Primeiro dia (22/10): Breve introdução ao R, organização de dados, exercícios; 
+    - Segundo dia (23/10): select(), rename(), arrange(), mutate(), summarise(), exercícios;
     - Terceiro dia (24/10): agrupar dados, combinar conjuntos de dados.
     
 
 ## Pré-requisitos
-
-## Referências
 
