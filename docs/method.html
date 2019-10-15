@@ -189,7 +189,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>6</b> Conclusão</a></li>
-<li class="chapter" data-level="" data-path="referências.html"><a href="referências.html"><i class="fa fa-check"></i>Referências</a></li>
+<li class="chapter" data-level="7" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>7</b> Referências</a></li>
 <li class="divider"></li>
 <li><center><img src="imagens/bookdown-logo.png" alt="logo" width="30%" height="30%"style="margin: 15px 0 0 0"></center></li>
 <li><center><a href="https://github.com/rstudio/bookdown" target="blank">Publicado em bookdown</a></center></li>
@@ -418,32 +418,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb56-3" title="3">df &lt;-<span class="st"> </span><span class="kw">tbl_df</span>(df[<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">1</span>, <span class="dv">9</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">10</span>)])</a>
 <a class="sourceLine" id="cb56-4" title="4"><span class="kw">select</span>(df, V4<span class="op">:</span>V6)</a></code></pre></div>
 <pre><code>## # A tibble: 10 x 8
-##        V4    V7      V1     V9     V8     V5     V2     V6
-##     &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-##  1 0.613  0.195 0.168   0.460  0.0313 0.319  0.750  0.910 
-##  2 0.321  0.953 0.225   0.0284 0.0760 0.0182 0.628  0.382 
-##  3 0.468  0.846 0.00652 0.940  0.920  0.919  0.619  0.157 
-##  4 0.607  0.532 0.656   0.151  0.251  0.130  0.891  0.383 
-##  5 0.407  0.908 0.389   0.835  0.777  0.667  0.160  0.360 
-##  6 0.0474 0.372 0.786   0.356  0.593  0.511  0.381  0.664 
-##  7 0.801  0.892 0.410   0.542  0.479  0.323  0.0551 0.588 
-##  8 0.794  0.809 0.568   0.329  0.301  0.663  0.154  0.753 
-##  9 0.267  0.458 0.699   0.117  0.864  0.279  0.363  0.101 
-## 10 0.787  0.698 0.719   0.270  0.585  0.854  0.440  0.0963</code></pre>
+##        V4     V7      V1    V9     V8     V5    V2     V6
+##     &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+##  1 0.500  0.0186 0.234   0.358 0.204  0.913  0.718 0.923 
+##  2 0.774  0.362  0.729   0.822 0.0620 0.608  0.244 0.459 
+##  3 0.704  0.0714 0.00529 0.882 0.920  0.755  0.613 0.427 
+##  4 0.734  0.427  0.586   0.624 0.866  0.0435 0.757 0.868 
+##  5 0.0243 0.327  0.823   0.392 0.0262 0.490  0.781 0.915 
+##  6 0.548  0.747  0.0405  0.309 0.449  0.342  0.593 0.920 
+##  7 0.302  0.601  0.918   0.303 0.775  0.641  0.129 0.286 
+##  8 0.598  0.172  0.178   0.122 0.723  0.307  0.894 0.0793
+##  9 0.888  0.492  0.521   0.614 0.861  0.141  0.631 0.141 
+## 10 0.333  0.569  0.222   0.105 0.899  0.483  0.405 0.976</code></pre>
 <div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1"><span class="kw">select</span>(df, <span class="kw">num_range</span>(<span class="st">&quot;V&quot;</span>, <span class="dv">4</span><span class="op">:</span><span class="dv">6</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 10 x 3
 ##        V4     V5     V6
 ##     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-##  1 0.613  0.319  0.910 
-##  2 0.321  0.0182 0.382 
-##  3 0.468  0.919  0.157 
-##  4 0.607  0.130  0.383 
-##  5 0.407  0.667  0.360 
-##  6 0.0474 0.511  0.664 
-##  7 0.801  0.323  0.588 
-##  8 0.794  0.663  0.753 
-##  9 0.267  0.279  0.101 
-## 10 0.787  0.854  0.0963</code></pre>
+##  1 0.500  0.913  0.923 
+##  2 0.774  0.608  0.459 
+##  3 0.704  0.755  0.427 
+##  4 0.734  0.0435 0.868 
+##  5 0.0243 0.490  0.915 
+##  6 0.548  0.342  0.920 
+##  7 0.302  0.641  0.286 
+##  8 0.598  0.307  0.0793
+##  9 0.888  0.141  0.141 
+## 10 0.333  0.483  0.976</code></pre>
 <p>Você também pode usar expressões regulares mais gerais, se necessário. Veja a página de ajuda (?select) para mais detalhes.</p>
 <p><code>select()</code> pode ser usado para renomear variáveis, mas raramente é útil porque descarta todas as variáveis não mencionadas explicitamente. Em vez disso, use <code>rename()</code>, que é uma variante de <code>select()</code> que mantém todas as variáveis que não são mencionadas explicitamente.</p>
 <p>Outra opção é usar <code>select()</code> em conjunto com o <code>everything()</code> auxiliar. Isso é útil se você tiver um punhado de variáveis que deseja mover para o início do quadro de dados.</p>
