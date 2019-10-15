@@ -46,6 +46,10 @@ library(tidyverse) #Carregar o pacote.
 tidyverse_logo() #Logo
 ```
 
+## Tibbles
+
+
+
 ## R e RStudio
 
 A primeira coisa que você precisa fazer para iniciar o R é instalá-lo no seu computador. O R funciona em praticamente todas as plataformas disponíveis, incluindo os sistemas Windows, Mac OS X e Linux amplamente disponíveis. 
