@@ -142,7 +142,7 @@
 
 Este material foi elaborado com o proprósito de um minicurso, que tem como objetivo apresentar algumas ideias das funções básicas do pacote \texttt{dplyr}, podemos usar um computador e um pouco de criatividade para explorar essas idéias em uma variedade de situações. Usamos R com o RStudio para fazer todo o nosso trabalho.
 
-O livro \href{https://r4ds.had.co.nz/}{R for data science} é o mais indicado para aprender sobre o universo \texttt{tidyverse}. Nesse minicurso abordamos mais sobre a gramática das funções básicas do \texttt{dplyr} alguns exemplos e exercícios abordados.
+O livro \href{https://r4ds.had.co.nz/}{R for data science} é o mais indicado para aprender sobre o universo \texttt{tidyverse}. Foi usado o livro do Roger D. Peng \href{https://bookdown.org/rdpeng/rprogdatascience/}{R Programming for Data Science} essencial para compreender as noções básicas do R. Nesse minicurso abordamos mais sobre a gramática das funções básicas do \texttt{dplyr} alguns exemplos e exercícios abordados.
 
 \hypertarget{puxfablico-alvo}{%
 \section{Público-alvo}\label{puxfablico-alvo}}
@@ -152,7 +152,7 @@ O livro \href{https://r4ds.had.co.nz/}{R for data science} é o mais indicado pa
 \item
   Estudantes de estatística que desejam ganhar tempo nos trabalhos da faculdade;
 \item
-  Acadêmicos com interesse em tornar suas análises e códigos mais legíveis em R.
+  Acadêmicos com interesse em aprender análises e códigos mais legíveis em R.
 \end{itemize}
 
 \hypertarget{conteuxfado}{%
@@ -193,6 +193,47 @@ A \textbf{visualização} é uma atividade fundamentalmente humana. Uma boa visu
 O último passo da ciência de dados é a \textbf{comunicação}, uma parte absolutamente crítica de qualquer projeto de análise de dados. Não importa o quão bem seus modelos e visualização levaram você a entender os dados, a menos que você também possa comunicar seus resultados a outras pessoas.
 
 Ao redor de todas essas ferramentas está a programação. A programação é uma ferramenta transversal que você usa em todas as partes do projeto. Você não precisa ser um programador especialista para ser um cientista de dados, mas aprender mais sobre programação compensa, porque se tornar um programador melhor permite automatizar tarefas comuns e resolver novos problemas com maior facilidade.
+
+\hypertarget{universo-tidyverse}{%
+\section{\texorpdfstring{Universo \texttt{tidyverse}}{Universo tidyverse}}\label{universo-tidyverse}}
+
+\begin{center}\includegraphics[width=0.25\linewidth]{imagens/hex-tidyverse} \end{center}
+
+O tidyverse é uma coleção de pacotes R projetados para ciência de dados. Todos os pacotes compartilham uma filosofia de design, gramática e estruturas de dados subjacentes.
+
+Os princípios fundamentais do \texttt{tidyverse} são:
+
+\begin{itemize}
+\tightlist
+\item
+  1.Reutilizar estruturas de dados existentes;
+\item
+  2.Organizar funções simples usando o pipe;
+\item
+  3.Aderir à programação funcional;
+\item
+  4.Projetado para ser usado por seres humanos.
+\end{itemize}
+
+Assim como o processo típico do passo a passo apresentando anteriormente para análise de dados, o \texttt{tidyverse} é a ferramenta que o ajuda eficientemente a executar este processo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse) }\CommentTok{#Carregar o pacote.}
+\KeywordTok{tidyverse_logo}\NormalTok{() }\CommentTok{#Logo}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## * __  _    __   .    o           *  . 
+##  / /_(_)__/ /_ ___  _____ _______ ___ 
+## / __/ / _  / // / |/ / -_) __(_-</ -_)
+## \__/_/\_,_/\_, /|___/\__/_/ /___/\__/ 
+##      *  . /___/      o      .       *
+\end{verbatim}
+
+\hypertarget{tibbles}{%
+\section{Tibbles}\label{tibbles}}
 
 \hypertarget{r-e-rstudio}{%
 \section{R e RStudio}\label{r-e-rstudio}}
@@ -265,7 +306,7 @@ R possui cinco classes básicas ou ``atômicas'' de objetos:
 
 O tipo mais básico de objeto R é um vetor. Vetores vazios podem ser criados com a função \texttt{vector()}. Existe apenas uma regra sobre vetores em R, que um vetor pode conter apenas objetos da mesma classe.
 
-Mas é claro que, como qualquer boa regra, há uma exceção, que é uma lista , que abordaremos um pouco mais tarde. Uma lista é representada como um vetor, mas pode conter objetos de diferentes classes. De fato, geralmente é por isso que os usamos.
+Mas há uma exceção, que é uma lista. Uma lista é representada como um vetor, mas pode conter objetos de diferentes classes. De fato, geralmente é por isso que os usamos.
 
 \hypertarget{swirl}{%
 \section{\texorpdfstring{\emph{swirl}}{swirl}}\label{swirl}}
@@ -276,44 +317,6 @@ O \emph{swirl} é um pacote do R construído para transformar o console em uma f
 
 O \emph{swirl} dá acesso às tarefas de cursos de R que estão disponíveis também no Coursera, como o \emph{R Programming}: \emph{The basics of programming in R}, em \url{https://pt.coursera.org/learn/r-programming}. Além deste, estão
 disponíveis no \emph{swirl}: \emph{Regression Models: The basics of regression modeling in R, Statistical Inference: The basics of statistical inference in R, e Exploratory Data Analysis: The basics of exploring data in R}.
-
-\hypertarget{universo-tidyverse}{%
-\section{\texorpdfstring{Universo \texttt{tidyverse}}{Universo tidyverse}}\label{universo-tidyverse}}
-
-\begin{center}\includegraphics[width=0.25\linewidth]{imagens/hex-tidyverse} \end{center}
-
-O tidyverse é uma coleção opinativa de pacotes R projetados para ciência de dados. Todos os pacotes compartilham uma filosofia de design, gramática e estruturas de dados subjacentes.
-
-Os princípios fundamentais do \texttt{tidyverse} são:
-
-\begin{itemize}
-\tightlist
-\item
-  1.Reutilizar estruturas de dados existentes;
-\item
-  2.Organizar funções simples usando o pipe;
-\item
-  3.Aderir à programação funcional;
-\item
-  4.Projetado para ser usado por seres humanos.
-\end{itemize}
-
-Assim como o processo típico do passo a passo apresentando anteriormente para análise de dados, o \texttt{tidyverse} é a ferramenta que o ajuda eficientemente a executar este processo.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(tidyverse) }\CommentTok{#Carregar o pacote.}
-\KeywordTok{tidyverse_logo}\NormalTok{() }\CommentTok{#Logo}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## * __  _    __   .    o           *  . 
-##  / /_(_)__/ /_ ___  _____ _______ ___ 
-## / __/ / _  / // / |/ / -_) __(_-</ -_)
-## \__/_/\_,_/\_, /|___/\__/_/ /___/\__/ 
-##      *  . /___/      o      .       *
-\end{verbatim}
 
 \hypertarget{o-que-uxe9-dados-organizados}{%
 \chapter{O que é Dados organizados?}\label{o-que-uxe9-dados-organizados}}
@@ -914,18 +917,18 @@ A função \texttt{select()} permite uma sintaxe especial que especifica nomes d
 
 \begin{verbatim}
 ## # A tibble: 10 x 8
-##        V4      V7    V1     V9     V8     V5     V2     V6
-##     <dbl>   <dbl> <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>
-##  1 0.501  0.326   0.482 0.887  0.364  0.780  0.479  0.0956
-##  2 0.262  0.680   0.558 0.955  0.344  0.675  0.696  0.572 
-##  3 0.151  0.00109 0.510 0.803  0.339  0.620  0.389  0.231 
-##  4 0.720  0.986   0.229 0.493  0.177  0.351  0.0609 0.933 
-##  5 0.324  0.760   0.942 0.479  0.608  0.446  0.732  0.811 
-##  6 0.225  0.0249  0.702 0.163  0.489  0.670  0.623  0.0737
-##  7 0.248  0.329   0.630 0.758  0.268  0.619  0.130  0.0993
-##  8 0.736  0.531   0.463 0.0824 0.811  0.0620 0.152  0.267 
-##  9 0.410  0.700   0.646 0.546  0.0725 0.440  0.344  0.849 
-## 10 0.0221 0.107   0.496 0.356  0.130  0.359  0.576  0.880
+##        V4     V7    V1     V9    V8    V5     V2     V6
+##     <dbl>  <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl>  <dbl>
+##  1 0.192  0.307  0.339 0.411  0.259 0.908 0.0474 0.777 
+##  2 0.595  0.816  0.111 0.0151 0.253 0.621 0.725  0.708 
+##  3 0.492  0.0701 0.507 0.184  0.597 0.910 0.947  0.642 
+##  4 0.108  0.841  0.207 0.843  0.350 0.418 0.315  0.490 
+##  5 0.687  0.255  0.613 0.664  0.648 0.766 0.513  0.823 
+##  6 0.436  0.482  0.415 0.608  0.771 0.730 0.861  0.224 
+##  7 0.0644 0.234  0.342 0.783  0.202 0.169 0.686  0.174 
+##  8 0.775  0.985  0.349 0.456  0.206 0.360 0.964  0.639 
+##  9 0.913  0.979  0.112 0.805  0.682 0.254 0.528  0.0243
+## 10 0.0615 0.981  0.701 0.185  0.954 0.168 0.569  0.250
 \end{verbatim}
 
 \begin{Shaded}
@@ -936,18 +939,18 @@ A função \texttt{select()} permite uma sintaxe especial que especifica nomes d
 
 \begin{verbatim}
 ## # A tibble: 10 x 3
-##        V4     V5     V6
-##     <dbl>  <dbl>  <dbl>
-##  1 0.501  0.780  0.0956
-##  2 0.262  0.675  0.572 
-##  3 0.151  0.620  0.231 
-##  4 0.720  0.351  0.933 
-##  5 0.324  0.446  0.811 
-##  6 0.225  0.670  0.0737
-##  7 0.248  0.619  0.0993
-##  8 0.736  0.0620 0.267 
-##  9 0.410  0.440  0.849 
-## 10 0.0221 0.359  0.880
+##        V4    V5     V6
+##     <dbl> <dbl>  <dbl>
+##  1 0.192  0.908 0.777 
+##  2 0.595  0.621 0.708 
+##  3 0.492  0.910 0.642 
+##  4 0.108  0.418 0.490 
+##  5 0.687  0.766 0.823 
+##  6 0.436  0.730 0.224 
+##  7 0.0644 0.169 0.174 
+##  8 0.775  0.360 0.639 
+##  9 0.913  0.254 0.0243
+## 10 0.0615 0.168 0.250
 \end{verbatim}
 
 Você também pode usar expressões regulares mais gerais, se necessário. Veja a página de ajuda (?select) para mais detalhes.
@@ -1051,8 +1054,73 @@ A sintaxe dentro da \texttt{rename()} função é ter o novo nome no lado esquer
 \hypertarget{mutate}{%
 \section{\texorpdfstring{\texttt{mutate()}}{mutate()}}\label{mutate}}
 
-\hypertarget{transformauxe7uxe3o-de-dados-com-dplyr}{%
-\chapter{\texorpdfstring{Transformação de Dados com \texttt{dplyr}}{Transformação de Dados com dplyr}}\label{transformauxe7uxe3o-de-dados-com-dplyr}}
+Em certas situações é útil adicionar novas colunas/variáveis que são funções de colunas existentes no data frames, ou seja, criar novas variáveis derivadas de variáveis existentes. Esse é o trabalho de \texttt{mutate()}. Esta função adiciona novas colunas no final do seu conjunto de dados. \texttt{mutate()} fornece uma interface limpa para fazer isso. Lembre-se de que, quando você está no RStudio, a maneira mais fácil de ver todas as colunas é \texttt{View()}.
+
+Por exemplo, com os dados de poluição do ar, subtraindo a média dos dados. Dessa forma, podemos verificar se o nível de poluição do ar de um determinado dia é maior ou menor que a média (em oposição a observar seu nível absoluto).
+
+Aqui, criamos uma variável \texttt{pm25difmean} que subtrai a média da variável \texttt{pm25}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chicago <-}\StringTok{ }\KeywordTok{mutate}\NormalTok{(chicago, }\DataTypeTok{pm25difmean =}\NormalTok{ pm25 }\OperatorTok{-}\StringTok{ }\KeywordTok{mean}\NormalTok{(pm25, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{))}
+\KeywordTok{head}\NormalTok{(chicago)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   city tmpd Temp_Orv       date pm25 pm10tmean2 o3tmean2 no2tmean2
+## 1 chic 31.5   31.500 1987-01-01   NA   34.00000 4.250000  19.98810
+## 2 chic 33.0   29.875 1987-01-02   NA         NA 3.304348  23.19099
+## 3 chic 33.0   27.375 1987-01-03   NA   34.16667 3.333333  23.81548
+## 4 chic 29.0   28.625 1987-01-04   NA   47.00000 4.375000  30.43452
+## 5 chic 32.0   28.875 1987-01-05   NA         NA 4.750000  30.33333
+## 6 chic 40.0   35.125 1987-01-06   NA   48.00000 5.833333  25.77233
+##   pm25difmean
+## 1          NA
+## 2          NA
+## 3          NA
+## 4          NA
+## 5          NA
+## 6          NA
+\end{verbatim}
+
+Há também a função relacionada \texttt{transmute()}, que faz a mesma coisa que, \texttt{mutate()}, mas elimina todas as variáveis não transformadas.
+
+Aqui, desprezamos as variáveis PM10 e ozônio (O3).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(}\KeywordTok{transmute}\NormalTok{(chicago, }
+               \DataTypeTok{pm10difmean =}\NormalTok{ pm10tmean2 }\OperatorTok{-}\StringTok{ }\KeywordTok{mean}\NormalTok{(pm10tmean2, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+               \DataTypeTok{O3difmean =}\NormalTok{ o3tmean2 }\OperatorTok{-}\StringTok{ }\KeywordTok{mean}\NormalTok{(o3tmean2, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   pm10difmean O3difmean
+## 1   0.1047939 -15.18551
+## 2          NA -16.13117
+## 3   0.2714605 -16.10218
+## 4  13.1047939 -15.06051
+## 5          NA -14.68551
+## 6  14.1047939 -13.60218
+\end{verbatim}
+
+Observe que existem apenas duas colunas no quadro de dados transformados.
+
+\hypertarget{funuxe7uxf5es-uxfateis-de-criauxe7uxe3o}{%
+\subsection{Funções úteis de criação}\label{funuxe7uxf5es-uxfateis-de-criauxe7uxe3o}}
+
+Há inúmeras funções que . A propriedade é que a função deva ser vetorizada: ela deve pegar um vetor de valores como entrada, retornar um vetor com o mesmo número de valores que a saída. Não há como listar todas as funções possíveis que você possa usar, mas aqui está uma seleção de funções frequentemente úteis:
+
+\hypertarget{exercuxedcios-2}{%
+\subsection{Exercícios}\label{exercuxedcios-2}}
+
+\hypertarget{filter}{%
+\section{\texorpdfstring{\texttt{filter()}}{filter()}}\label{filter}}
+
+\hypertarget{vuxf4os-em-nova-york-de-2013}{%
+\chapter{Vôos em Nova York de 2013}\label{vuxf4os-em-nova-york-de-2013}}
 
 \hypertarget{introduuxe7uxe3o}{%
 \section{Introdução}\label{introduuxe7uxe3o}}
@@ -1131,8 +1199,8 @@ Em síntese, \emph{data frames} são tabelas de dados. Em seu formato, são bem 
 
 Uma das funções básicas mais importantes para começarmos a trabalhar com \emph{data frames} é a \texttt{str()}. Essa função dá uma visão clara da estrutura do nosso objeto, bem como informa os tipos de dados existentes.
 
-\hypertarget{exercuxedcios-2}{%
-\subsection{Exercícios}\label{exercuxedcios-2}}
+\hypertarget{exercuxedcios-3}{%
+\subsection{Exercícios}\label{exercuxedcios-3}}
 
 \begin{itemize}
 \tightlist
@@ -1162,8 +1230,8 @@ Para começar a utilizar o \emph{pipe}, instale e carregue o pacote \texttt{magr
 
 Para mais informações sobre o \emph{pipe}, outros operadores relacionados e exemplos de utilização, visite a página \href{https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html}{Ceci n'est pas un pipe}
 
-\hypertarget{exercuxedcios-3}{%
-\subsection{Exercícios}\label{exercuxedcios-3}}
+\hypertarget{exercuxedcios-4}{%
+\subsection{Exercícios}\label{exercuxedcios-4}}
 
 \begin{itemize}
 \item
@@ -1218,8 +1286,8 @@ mean(na.rm = T) \%\textgreater\%
 equals(5)
 \end{quote}
 
-\hypertarget{filter}{%
-\section{\texorpdfstring{\texttt{filter()}}{filter()}}\label{filter}}
+\hypertarget{filter-1}{%
+\section{\texorpdfstring{\texttt{filter()}}{filter()}}\label{filter-1}}
 
 \texttt{filter()} permite agrupar observações com base em seus valores. O primeiro argumento da função é o nome do data frames. Por exemplo, podemos selecionar todos os valores
 
@@ -1232,20 +1300,20 @@ equals(5)
 \hypertarget{valores-ausentes}{%
 \subsection{Valores Ausentes}\label{valores-ausentes}}
 
-\hypertarget{exercuxedcios-4}{%
-\subsection{Exercícios}\label{exercuxedcios-4}}
+\hypertarget{exercuxedcios-5}{%
+\subsection{Exercícios}\label{exercuxedcios-5}}
 
 \hypertarget{arrange}{%
 \section{\texorpdfstring{\texttt{arrange()}}{arrange()}}\label{arrange}}
 
-\hypertarget{exercuxedcios-5}{%
-\subsection{Exercícios}\label{exercuxedcios-5}}
+\hypertarget{exercuxedcios-6}{%
+\subsection{Exercícios}\label{exercuxedcios-6}}
 
 \hypertarget{select-1}{%
 \section{\texorpdfstring{\texttt{select()}}{select()}}\label{select-1}}
 
-\hypertarget{exercuxedcios-6}{%
-\subsection{Exercícios}\label{exercuxedcios-6}}
+\hypertarget{exercuxedcios-7}{%
+\subsection{Exercícios}\label{exercuxedcios-7}}
 
 \hypertarget{conclusuxe3o}{%
 \chapter{Conclusão}\label{conclusuxe3o}}
