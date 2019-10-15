@@ -24,6 +24,28 @@ O último passo da ciência de dados é a **comunicação**, uma parte absolutam
 
 Ao redor de todas essas ferramentas está a programação. A programação é uma ferramenta transversal que você usa em todas as partes do projeto. Você não precisa ser um programador especialista para ser um cientista de dados, mas aprender mais sobre programação compensa, porque se tornar um programador melhor permite automatizar tarefas comuns e resolver novos problemas com maior facilidade.
 
+## Universo `tidyverse`
+
+```{r figure8, echo=FALSE, fig.align='center', out.width="25%"}
+knitr::include_graphics("imagens/hex-tidyverse.png")
+```
+
+O tidyverse é uma coleção de pacotes R projetados para ciência de dados. Todos os pacotes compartilham uma filosofia de design, gramática e estruturas de dados subjacentes.
+
+Os princípios fundamentais do `tidyverse` são:
+
+  - 1.Reutilizar estruturas de dados existentes;
+  - 2.Organizar funções simples usando o pipe;
+  - 3.Aderir à programação funcional;
+  - 4.Projetado para ser usado por seres humanos.
+  
+Assim como o processo típico do passo a passo apresentando anteriormente para análise de dados, o `tidyverse` é a ferramenta que o ajuda eficientemente a executar este processo.
+
+```{r}
+library(tidyverse) #Carregar o pacote.
+tidyverse_logo() #Logo
+```
+
 ## R e RStudio
 
 A primeira coisa que você precisa fazer para iniciar o R é instalá-lo no seu computador. O R funciona em praticamente todas as plataformas disponíveis, incluindo os sistemas Windows, Mac OS X e Linux amplamente disponíveis. 
@@ -86,7 +108,7 @@ R possui cinco classes básicas ou "atômicas" de objetos:
 
 O tipo mais básico de objeto R é um vetor. Vetores vazios podem ser criados com a função `vector()`. Existe apenas uma regra sobre vetores em R, que um vetor pode conter apenas objetos da mesma classe.
 
-Mas é claro que, como qualquer boa regra, há uma exceção, que é uma lista , que abordaremos um pouco mais tarde. Uma lista é representada como um vetor, mas pode conter objetos de diferentes classes. De fato, geralmente é por isso que os usamos.
+Mas há uma exceção, que é uma lista. Uma lista é representada como um vetor, mas pode conter objetos de diferentes classes. De fato, geralmente é por isso que os usamos.
 
 ## *swirl*
 
@@ -98,25 +120,4 @@ knitr::include_graphics("imagens/swirl.png")
 O *swirl* dá acesso às tarefas de cursos de R que estão disponíveis também no Coursera, como o *R Programming*: *The basics of programming in R*, em <https://pt.coursera.org/learn/r-programming>. Além deste, estão
 disponíveis no *swirl*: *Regression Models: The basics of regression modeling in R, Statistical Inference: The basics of statistical inference in R, e Exploratory Data Analysis: The basics of exploring data in R*.
 
-## Universo `tidyverse`
-
-```{r figure8, echo=FALSE, fig.align='center', out.width="25%"}
-knitr::include_graphics("imagens/hex-tidyverse.png")
-```
-
-O tidyverse é uma coleção opinativa de pacotes R projetados para ciência de dados. Todos os pacotes compartilham uma filosofia de design, gramática e estruturas de dados subjacentes.
-
-Os princípios fundamentais do `tidyverse` são:
-
-  - 1.Reutilizar estruturas de dados existentes;
-  - 2.Organizar funções simples usando o pipe;
-  - 3.Aderir à programação funcional;
-  - 4.Projetado para ser usado por seres humanos.
-  
-Assim como o processo típico do passo a passo apresentando anteriormente para análise de dados, o `tidyverse` é a ferramenta que o ajuda eficientemente a executar este processo.
-
-```{r}
-library(tidyverse) #Carregar o pacote.
-tidyverse_logo() #Logo
-```
 

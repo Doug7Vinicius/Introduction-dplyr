@@ -268,7 +268,13 @@ head(transmute(chicago,
                O3difmean = o3tmean2 - mean(o3tmean2, na.rm = TRUE)))
 ```
 
-Observe que existem apenas duas colunas no quadro de dados transformadas.
+Observe que existem apenas duas colunas no quadro de dados transformados.
+
+### Funções úteis de criação
+
+Há inúmeras funções que . A propriedade é que a função deva ser vetorizada: ela deve pegar um vetor de valores como entrada, retornar um vetor com o mesmo número de valores que a saída. Não há como listar todas as funções possíveis que você possa usar, mas aqui está uma seleção de funções frequentemente úteis:
+
+
 
 ### Exercícios
 

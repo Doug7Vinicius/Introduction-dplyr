@@ -1,8 +1,4 @@
-# Introdução ao R
-
-
-
-## O que é Dados organizados?
+# O que é Dados organizados?
 
 >“Famílias felizes são todas iguais; toda família infeliz é infeliz à sua maneira. ” – Leo Tolstoi
 
