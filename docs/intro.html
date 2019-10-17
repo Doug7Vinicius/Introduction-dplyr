@@ -139,7 +139,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introdução</a><ul>
 <li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#universo-tidyverse"><i class="fa fa-check"></i><b>2.1</b> Universo <code>tidyverse</code></a></li>
 <li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#tibbles"><i class="fa fa-check"></i><b>2.2</b> Tibbles</a></li>
-<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#r-e-rstudio"><i class="fa fa-check"></i><b>2.3</b> R e RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#porque-devo-aprender-r-e-rstudio"><i class="fa fa-check"></i><b>2.3</b> Porque devo aprender R e RStudio?</a></li>
 <li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#objetos-r"><i class="fa fa-check"></i><b>2.4</b> Objetos R</a></li>
 <li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#swirl"><i class="fa fa-check"></i><b>2.5</b> <em>swirl</em></a></li>
 </ul></li>
@@ -239,16 +239,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>4.Projetado para ser usado por seres humanos.</li>
 </ul>
 <p>Assim como o processo típico do passo a passo apresentando anteriormente para análise de dados, o <code>tidyverse</code> é a ferramenta que o ajuda eficientemente a executar este processo.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">library</span>(tidyverse) <span class="co">#Carregar o pacote.</span></a></code></pre></div>
-<pre><code>## -- Attaching packages ------------------------------ tidyverse 1.2.1 --</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(tidyverse) <span class="co">#Carregar o pacote.</span></a></code></pre></div>
+<pre><code>## -- Attaching packages ------------------------------------------- tidyverse 1.2.1 --</code></pre>
 <pre><code>## v ggplot2 3.2.1     v purrr   0.3.2
 ## v tibble  2.1.3     v dplyr   0.8.3
 ## v tidyr   1.0.0     v stringr 1.4.0
 ## v readr   1.3.1     v forcats 0.4.0</code></pre>
-<pre><code>## -- Conflicts --------------------------------- tidyverse_conflicts() --
+<pre><code>## -- Conflicts ---------------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">tidyverse_logo</span>() <span class="co">#Logo</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">tidyverse_logo</span>() <span class="co">#Logo</span></a></code></pre></div>
 <pre><code>## * __  _    __   .    o           *  . 
 ##  / /_(_)__/ /_ ___  _____ _______ ___ 
 ## / __/ / _  / // / |/ / -_) __(_-&lt;/ -_)
@@ -258,8 +258,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="tibbles" class="section level2">
 <h2><span class="header-section-number">2.2</span> Tibbles</h2>
 </div>
-<div id="r-e-rstudio" class="section level2">
-<h2><span class="header-section-number">2.3</span> R e RStudio</h2>
+<div id="porque-devo-aprender-r-e-rstudio" class="section level2">
+<h2><span class="header-section-number">2.3</span> Porque devo aprender R e RStudio?</h2>
+<p>R é uma linguagem de programação estatística que vem passando por diversas evoluções e se tornando cada vez mais uma linguagem de amplos objetivos. Podemos entender o R também como um conjunto de pacotes e ferramentas estatísticas, munido de funções que facilitam sua utilização, desde a criação de simples rotinas até análises de dados complexas, com visualizações bem acabadas.</p>
+<p>Segue alguns motivos para aprender-se R:</p>
+<ul>
+<li>É completamente gratuito e de livre distribuição;</li>
+<li>Curva de aprendizado bastante amigável, sendo muito fácil de se aprender;</li>
+<li>Enorme quantidade de tutoriais e ajuda disponíveis gratuitamente na internet;</li>
+<li>É excelente para criar rotinas e sistematizar tarefas repetitivas;</li>
+<li>Amplamente utilizado pela comunidade acadêmica e pelo mercado;</li>
+<li>Quantidade enorme de pacotes, para diversos tipos de necessidades;</li>
+<li>Ótima ferramenta para criar relatórios e gráficos.</li>
+</ul>
+<p>Apenas para exemplificar-se sua versatilidade, este eBook e os slides das aulas foram todos feitos em R.</p>
 <p>A primeira coisa que você precisa fazer para iniciar o R é instalá-lo no seu computador. O R funciona em praticamente todas as plataformas disponíveis, incluindo os sistemas Windows, Mac OS X e Linux amplamente disponíveis.</p>
 <p>Uma nova versão principal do R sai uma vez por ano, e há 2 ou 3 versões menores a cada ano. É uma boa ideia atualizar regularmente. A atualização pode ser um pouco complicada, especialmente para as versões principais, que exigem a reinstalação de todos os seus pacotes.</p>
 <p>Há também um ambiente de desenvolvimento integrado (IDE) disponível para o R, construído pelo RStudio. IDE, do inglês <strong>Integrated Development Environment</strong> ou Ambiente de Desenvolvimento Integrado, é um programa de computador que reúne características e ferramentas de apoio ao desenvolvimento de software com o objetivo de agilizar este processo. O RStudio é atualizado duas vezes por ano. Quando uma nova versão estiver disponível, o RStudio informará você.</p>
@@ -270,7 +282,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Após instalado, o R tem uma interface assim, com apenas o console para digitar comandos:</p>
 <p><img src="imagens/r-project.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Experimente um comando: 2+2, cujo output é 4:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span></a></code></pre></div>
 <pre><code>## [1] 4</code></pre>
 <p>E a interface do RStudio é dividida, inicialmente, em 3 partes:</p>
 <p><img src="imagens/rstudio-console.png" width="90%" style="display: block; margin: auto;" /></p>

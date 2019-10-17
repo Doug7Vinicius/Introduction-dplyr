@@ -50,9 +50,26 @@ tidyverse_logo() #Logo
 
 
 
-## R e RStudio
+## Porque devo aprender R e RStudio?
+
+R é uma linguagem de programação estatística que vem passando por diversas evoluções e se tornando cada vez mais uma linguagem de amplos objetivos. Podemos entender o R também como um conjunto de pacotes e ferramentas estatísticas, munido de funções que facilitam sua utilização, desde a criação de simples rotinas até análises de dados complexas, com visualizações bem acabadas.
+
+Segue alguns motivos para aprender-se R:
+
+  - É completamente gratuito e de livre distribuição;
+  - Curva de aprendizado bastante amigável, sendo muito fácil de se aprender;
+  - Enorme quantidade de tutoriais e ajuda disponíveis gratuitamente na internet;
+  - É excelente para criar rotinas e sistematizar tarefas repetitivas;
+  - Amplamente utilizado pela comunidade acadêmica e pelo mercado;
+  - Quantidade enorme de pacotes, para diversos tipos de necessidades;
+  - Ótima ferramenta para criar relatórios e gráficos.
+
+Apenas para exemplificar-se sua versatilidade, este eBook e os slides das aulas foram todos feitos em R.
 
 A primeira coisa que você precisa fazer para iniciar o R é instalá-lo no seu computador. O R funciona em praticamente todas as plataformas disponíveis, incluindo os sistemas Windows, Mac OS X e Linux amplamente disponíveis. 
+
+  - Para instalar o R, baixe a versão adequada para seu computador em: <https://cloud.r-project.org/>
+  - Para instalar o RStudio, baixe a versão adequada para seu computador em: <https://www.rstudio.com/products/rstudio/download/>
 
 Uma nova versão principal do R sai uma vez por ano, e há 2 ou 3 versões menores a cada ano. É uma boa ideia atualizar regularmente. A atualização pode ser um pouco complicada, especialmente para as versões principais, que exigem a reinstalação de todos os seus pacotes.
 

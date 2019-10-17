@@ -1,7 +1,5 @@
 # Manipulando Data Frames com `dplyr` {#method}
 
-## Data Frames
-
 ## O Pacote `dplyr` 
 
 O pacote `dplyr` foi desenvolvido por Hadley Wickham, cientista chefe do RStudio. É uma versão otimizada do pacote `plyr`. O pacote `dplyr` não fornece nenhuma funcionalidade "nova" ao R, pois já é feito com base no R, mas simplifica **bastante** a funcionalidade no R.
@@ -270,9 +268,7 @@ head(transmute(chicago,
 
 Observe que existem apenas duas colunas no quadro de dados transformados.
 
-### Funções úteis de criação
-
-Há inúmeras funções que . A propriedade é que a função deva ser vetorizada: ela deve pegar um vetor de valores como entrada, retornar um vetor com o mesmo número de valores que a saída. Não há como listar todas as funções possíveis que você possa usar, mas aqui está uma seleção de funções frequentemente úteis:
+Há inúmeras funções que pode ser feita, a propriedade é que a função deva ser vetorizada: ela deve pegar um vetor de valores como entrada, retornar um vetor com o mesmo número de valores que a saída. Não há como listar todas as funções possíveis que você possa usar, mas aqui está uma seleção de funções frequentemente úteis:
 
 
 
@@ -280,4 +276,13 @@ Há inúmeras funções que . A propriedade é que a função deva ser vetorizad
 
 
 ## `filter()`
+
+A função `filter()` é usada para extrair subconjuntos de linhas de um data frame.
+
+Suponhamos que desejássemos extrair as linhas do banco `chicago` em que o níveis de PM2,5 sejam maiores que 30, poderíamos fazer 
+
+```{r}
+chic.f <- filter(chicago, pm25tmean2 > 30)
+str(chic.f)
+```
 
