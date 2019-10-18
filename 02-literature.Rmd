@@ -16,7 +16,7 @@ install.packages(c("tidyr", "devtools"))
 devtools::install_github("garrettgman/DSR")
 ```
 
-Os dados tabulares podem ser organizados de várias maneiras. Os conjuntos de dados abaixo mostram os mesmos dados organizados de quatro maneiras diferentes, sendo que possuem as mesmas variáveis: país, ano, população e casos. Mas cada conjunto organiza os valores em forma de layout diferente. 
+Os dados tabulares podem ser organizados de várias maneiras. Os conjuntos de dados abaixo mostram os mesmos dados organizados de quatro maneiras diferentes, sendo que possuem as mesmas variáveis: país, ano, população e casos. Mas cada conjunto organiza os valores em forma de layout diferente. Vejamos essas tabelas de dados seguintes:
 
 
 ```{r}
@@ -53,6 +53,24 @@ knitr::include_graphics("imagens/tidy-1.png")
 ```
 
 Em `table1`, cada variável é colocada em sua própria coluna, cada observação em sua própria linha e cada valor em sua própria célula.
+
+## Tibbles x Data frames
+
+O que é um *tibble*? *Tibbles* são similares aos *data frames*, porém diferentes em dois aspectos: **impressão** e **indexação**
+
+Na impressão no console, os *tibbles* apresentam apenas as dez primeiras linhas e todas as colunas que cabem na tela, tornando mais fácil o trabalho com grandes volumes de dados. Além disso, cada coluna apresenta o seu tipo, algo semelhante ao apresentado quando utilizamos a função `str()`. A segunda diferença, não menos importante, é a forma de indexação. Para indexar um `tibble` devemos utilizar o nome completo da variável que desejamos. Caso contrário, ocorrerá um erro.
+
+Ainda sobre a indexação, sempre que indexarmos um `tibble` usando `[`, o resultado será outro `tibble`. Usando `[[` o resultados será um vetor.
+
+Em síntese, *data frames* são tabelas de dados. Em seu formato, são bem parecidos com as matrizes, no entanto, possuem algumas diferenças significativas. Podemos idealizar os *data frames* como sendo matrizes em que cada coluna pode armazenar um tipo de dado diferente. Logo, estamos lidando com um objeto bem mais versátil do que as matrizes e os vetores.
+
+Uma das funções básicas mais importantes para começarmos a trabalhar com *data frames* é a `str()`. Essa função dá uma visão clara da estrutura do nosso objeto, bem como informa os tipos de dados existentes.
+
+### Exercícios
+
+- 1.Qual a diferença entre uma matriz e um data frame no R?
+- 2.Os data frames podem ser indexados com a mesma sintaxe utilizada para matrizes?
+- 3.Qual função básica que utilizamos para verificar a estrutura dos dados de um data frame?
 
 ## Breve Introdução ao `tidyr`
 

@@ -46,15 +46,11 @@ library(tidyverse) #Carregar o pacote.
 tidyverse_logo() #Logo
 ```
 
-## Tibbles
-
-
-
 ## Porque devo aprender R e RStudio?
 
 R é uma linguagem de programação estatística que vem passando por diversas evoluções e se tornando cada vez mais uma linguagem de amplos objetivos. Podemos entender o R também como um conjunto de pacotes e ferramentas estatísticas, munido de funções que facilitam sua utilização, desde a criação de simples rotinas até análises de dados complexas, com visualizações bem acabadas.
 
-Segue alguns motivos para aprender-se R:
+Segue alguns motivos para aprender o R:
 
   - É completamente gratuito e de livre distribuição;
   - Curva de aprendizado bastante amigável, sendo muito fácil de se aprender;
@@ -64,20 +60,21 @@ Segue alguns motivos para aprender-se R:
   - Quantidade enorme de pacotes, para diversos tipos de necessidades;
   - Ótima ferramenta para criar relatórios e gráficos.
 
-Apenas para exemplificar-se sua versatilidade, este eBook e os slides das aulas foram todos feitos em R.
+Apenas para exemplificar-se sua versatilidade, esta apostila e os slides das aulas foram todos feitos em R.
 
 A primeira coisa que você precisa fazer para iniciar o R é instalá-lo no seu computador. O R funciona em praticamente todas as plataformas disponíveis, incluindo os sistemas Windows, Mac OS X e Linux amplamente disponíveis. 
 
-  - Para instalar o R, baixe a versão adequada para seu computador em: <https://cloud.r-project.org/>
-  - Para instalar o RStudio, baixe a versão adequada para seu computador em: <https://www.rstudio.com/products/rstudio/download/>
+  - Para instalar o R, baixe a versão adequada para seu computador em: <https://cloud.r-project.org/>.
 
 Uma nova versão principal do R sai uma vez por ano, e há 2 ou 3 versões menores a cada ano. É uma boa ideia atualizar regularmente. A atualização pode ser um pouco complicada, especialmente para as versões principais, que exigem a reinstalação de todos os seus pacotes.
 
 Há também um ambiente de desenvolvimento integrado (IDE) disponível para o R, construído pelo RStudio. IDE, do inglês **Integrated Development Environment** ou Ambiente de Desenvolvimento Integrado, é um programa de computador que reúne características e ferramentas de apoio ao desenvolvimento de software com o objetivo de agilizar este processo. O RStudio é atualizado duas vezes por ano. Quando uma nova versão estiver disponível, o RStudio informará você.
 
+- Para instalar o RStudio, baixe a versão adequada para seu computador em: <https://www.rstudio.com/products/rstudio/download/>.
+
 Você pode ver como instalar o R e o RStudio aqui:
 
-- [Instalando o RStudio](https://www.youtube.com/watch?v=orjLGFmx6l4)
+- [Instalando o RStudio](https://www.youtube.com/watch?v=orjLGFmx6l4).
 
 Após instalado, o R tem uma interface assim, com apenas o console para digitar comandos:
 
@@ -133,7 +130,7 @@ Mas há uma exceção, que é uma lista. Uma lista é representada como um vetor
 
 ## *swirl*
 
-O *swirl* é um pacote do R construído para transformar o console em uma ferramenta interativa para aprender R. *swirl* ensina programação de R e ciência de dados interativamente, no seu próprio ritmo e diretamente no console do R. Para entender melhor do projeto, veja <http://swirlstats.com/>. Em <http://swirlstats.com/students>. Nestes endereços de são dados os detalhes sobre como usar o *swirl*. Uma vez intalado e carregado o pacote, você é levado a efetuar tarefas:
+O *swirl* é um pacote do R construído para transformar o console em uma ferramenta interativa para aprender R. *swirl* ensina programação de R e ciência de dados interativamente, no seu próprio ritmo e diretamente no console do R. Para entender melhor o projeto, veja <http://swirlstats.com/> e  <http://swirlstats.com/students>. Nestes endereços são dados os detalhes sobre como usar o *swirl*. Uma vez intalado e carregado o pacote, você é levado a efetuar tarefas:
 ```{r figure6, echo=FALSE, fig.align='center', out.width="90%"}
 knitr::include_graphics("imagens/swirl.png")
 ```

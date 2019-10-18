@@ -11,13 +11,17 @@ github-repo: Doug7Vinicius/introduction-dplyr
 description: "Minicurso sobre introdução ao pacote dplyr ministrado na XIX SEMAT.."
 ---
 
+```{r, include=FALSE}
+options(tinytex.verbose = TRUE)
+```
+
 # Prefácio
 
 ```{r dplyr, echo=FALSE, fig.align='center', out.width="30%"}
 knitr::include_graphics("imagens/dplyr.png")
 ```
 
-Este material foi elaborado com o proprósito de um minicurso, que tem como objetivo apresentar algumas ideias das funções básicas do pacote `dplyr`, podemos usar um computador e um pouco de criatividade para explorar essas idéias em uma variedade de situações. Usamos R com o RStudio para fazer todo o nosso trabalho.
+Este material foi elaborado com o proprósito de um minicurso, que tem como objetivo apresentar algumas ideias das funções básicas do pacote `dplyr`. Este material baseou-se em vários em livros, podemos usar um computador e um pouco de criatividade para explorar essas idéias em uma variedade de situações. Usamos R com o RStudio para fazer todo o nosso trabalho.
 
 O livro [R for data science](https://r4ds.had.co.nz/) é o mais indicado para aprender sobre o universo `tidyverse`. Foi usado o livro do Roger D. Peng [R Programming for Data Science](https://bookdown.org/rdpeng/rprogdatascience/) essencial para compreender as noções básicas do R. Nesse minicurso abordamos mais sobre a gramática das funções básicas do `dplyr` alguns exemplos e exercícios abordados. 
 
@@ -28,8 +32,12 @@ O livro [R for data science](https://r4ds.had.co.nz/) é o mais indicado para ap
 
 ## Conteúdo:
 
-    - Primeiro dia (22/10): Breve introdução ao R, organização de dados, exercícios; 
-    - Segundo dia (23/10): select(), rename(), arrange(), mutate(), summarise(), exercícios;
+    - Primeiro dia (22/10): Breve introdução ao R, organização de dados,
+    exercícios; 
+    
+    - Segundo dia (23/10): select(), rename(), arrange(), 
+    mutate(), summarise(), exercícios;
+    
     - Terceiro dia (24/10): agrupar dados, combinar conjuntos de dados.
     
 

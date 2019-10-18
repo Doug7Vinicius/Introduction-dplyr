@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 O que é Dados organizados? | Apostila: introdução ao pacote dplyr</title>
+  <title>Apêndice A | Apostila: introdução ao pacote dplyr</title>
   <meta name="description" content="Minicurso sobre introdução ao pacote dplyr ministrado na XIX SEMAT.." />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 O que é Dados organizados? | Apostila: introdução ao pacote dplyr" />
+  <meta property="og:title" content="Apêndice A | Apostila: introdução ao pacote dplyr" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="Doug7Vinicius/introduction-dplyr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 O que é Dados organizados? | Apostila: introdução ao pacote dplyr" />
+  <meta name="twitter:title" content="Apêndice A | Apostila: introdução ao pacote dplyr" />
   
   <meta name="twitter:description" content="Minicurso sobre introdução ao pacote dplyr ministrado na XIX SEMAT.." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="intro.html"/>
-<link rel="next" href="method.html"/>
+<link rel="prev" href="references.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -204,136 +204,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="literature" class="section level1">
-<h1><span class="header-section-number">3</span> O que é Dados organizados?</h1>
-<blockquote>
-<p>“Famílias felizes são todas iguais; toda família infeliz é infeliz à sua maneira.” – Leo Tolstoi</p>
-</blockquote>
-<blockquote>
-<p>“Os conjuntos de dados organizados são todos iguais, mas todos os conjuntos de dados confusos são confusos à sua maneira.” – Hadley Wickham</p>
-</blockquote>
-<p>Você vai precisar instalar os pacotes <code>tidyr</code>, <code>devtools</code> e <code>DSR</code>. Para instalar <code>tidyr</code> e <code>devtools</code>, abra o RStudio e execute o comando:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&quot;tidyr&quot;</span>, <span class="st">&quot;devtools&quot;</span>))</a></code></pre></div>
-<p><code>DSR</code> é uma coleção de conjuntos de dados. Para instalar DSR, execute o comando:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;garrettgman/DSR&quot;</span>)</a></code></pre></div>
-<p>Os dados tabulares podem ser organizados de várias maneiras. Os conjuntos de dados abaixo mostram os mesmos dados organizados de quatro maneiras diferentes, sendo que possuem as mesmas variáveis: país, ano, população e casos. Mas cada conjunto organiza os valores em forma de layout diferente. Vejamos essas tabelas de dados seguintes:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">library</span>(DSR)</a></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;DSR&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:tidyr&#39;:
-## 
-##     population, table1, table2, table3, table5, who</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="co"># Primeiro conjunto de dados.</span></a>
-<a class="sourceLine" id="cb15-2" title="2">table1</a></code></pre></div>
-<pre><code>## # A tibble: 6 x 4
-##   country      year  cases population
-##   &lt;fct&gt;       &lt;int&gt;  &lt;int&gt;      &lt;int&gt;
-## 1 Afghanistan  1999    745   19987071
-## 2 Afghanistan  2000   2666   20595360
-## 3 Brazil       1999  37737  172006362
-## 4 Brazil       2000  80488  174504898
-## 5 China        1999 212258 1272915272
-## 6 China        2000 213766 1280428583</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="co"># Segundo conjunto de dados.</span></a>
-<a class="sourceLine" id="cb17-2" title="2">table2</a></code></pre></div>
-<pre><code>## # A tibble: 12 x 4
-##    country      year key             value
-##    &lt;fct&gt;       &lt;int&gt; &lt;fct&gt;           &lt;int&gt;
-##  1 Afghanistan  1999 cases             745
-##  2 Afghanistan  1999 population   19987071
-##  3 Afghanistan  2000 cases            2666
-##  4 Afghanistan  2000 population   20595360
-##  5 Brazil       1999 cases           37737
-##  6 Brazil       1999 population  172006362
-##  7 Brazil       2000 cases           80488
-##  8 Brazil       2000 population  174504898
-##  9 China        1999 cases          212258
-## 10 China        1999 population 1272915272
-## 11 China        2000 cases          213766
-## 12 China        2000 population 1280428583</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="co"># Terceiro conjunto de dados.</span></a>
-<a class="sourceLine" id="cb19-2" title="2">table3</a></code></pre></div>
-<pre><code>## # A tibble: 6 x 3
-##   country      year rate             
-##   &lt;fct&gt;       &lt;int&gt; &lt;chr&gt;            
-## 1 Afghanistan  1999 745/19987071     
-## 2 Afghanistan  2000 2666/20595360    
-## 3 Brazil       1999 37737/172006362  
-## 4 Brazil       2000 80488/174504898  
-## 5 China        1999 212258/1272915272
-## 6 China        2000 213766/1280428583</code></pre>
-<p>O último conjunto de dados é uma coleção de duas tabelas.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="co"># Quarto conjunto de dados.</span></a>
-<a class="sourceLine" id="cb21-2" title="2">table4 <span class="co"># cases</span></a></code></pre></div>
-<pre><code>## # A tibble: 3 x 3
-##   country     `1999` `2000`
-##   &lt;fct&gt;        &lt;int&gt;  &lt;int&gt;
-## 1 Afghanistan    745   2666
-## 2 Brazil       37737  80488
-## 3 China       212258 213766</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1">table5 <span class="co"># population</span></a></code></pre></div>
-<pre><code>## # A tibble: 3 x 3
-##   country         `1999`     `2000`
-##   &lt;fct&gt;            &lt;int&gt;      &lt;int&gt;
-## 1 Afghanistan   19987071   20595360
-## 2 Brazil       172006362  174504898
-## 3 China       1272915272 1280428583</code></pre>
-<p>R segue um conjunto de convenções que tornam um layout de dados tabulares muito mais fácil de trabalhar do que outros. Seus dados serão mais fáceis de trabalhar no R se seguirem três regras:</p>
-<ul>
-<li>1.Cada variável no conjunto de dados é colocada em sua própria coluna;</li>
-<li>2.Cada observação é colocada em sua própria linha;</li>
-<li>3.Cada valor é colocado em sua própria célula.</li>
-</ul>
-<p>Os dados que satisfazem essas regras são conhecidos como dados organizados. Observe que <code>table1</code> são dados organizados.</p>
-<p><img src="imagens/tidy-1.png" width="90%" style="display: block; margin: auto;" /></p>
-<p>Em <code>table1</code>, cada variável é colocada em sua própria coluna, cada observação em sua própria linha e cada valor em sua própria célula.</p>
-<div id="tibbles-x-data-frames" class="section level2">
-<h2><span class="header-section-number">3.1</span> Tibbles x Data frames</h2>
-<p>O que é um <em>tibble</em>? <em>Tibbles</em> são similares aos <em>data frames</em>, porém diferentes em dois aspectos: <strong>impressão</strong> e <strong>indexação</strong></p>
-<p>Na impressão no console, os <em>tibbles</em> apresentam apenas as dez primeiras linhas e todas as colunas que cabem na tela, tornando mais fácil o trabalho com grandes volumes de dados. Além disso, cada coluna apresenta o seu tipo, algo semelhante ao apresentado quando utilizamos a função <code>str()</code>. A segunda diferença, não menos importante, é a forma de indexação. Para indexar um <code>tibble</code> devemos utilizar o nome completo da variável que desejamos. Caso contrário, ocorrerá um erro.</p>
-<p>Ainda sobre a indexação, sempre que indexarmos um <code>tibble</code> usando <code>[</code>, o resultado será outro <code>tibble</code>. Usando <code>[[</code> o resultados será um vetor.</p>
-<p>Em síntese, <em>data frames</em> são tabelas de dados. Em seu formato, são bem parecidos com as matrizes, no entanto, possuem algumas diferenças significativas. Podemos idealizar os <em>data frames</em> como sendo matrizes em que cada coluna pode armazenar um tipo de dado diferente. Logo, estamos lidando com um objeto bem mais versátil do que as matrizes e os vetores.</p>
-<p>Uma das funções básicas mais importantes para começarmos a trabalhar com <em>data frames</em> é a <code>str()</code>. Essa função dá uma visão clara da estrutura do nosso objeto, bem como informa os tipos de dados existentes.</p>
-<div id="exercícios" class="section level3">
-<h3><span class="header-section-number">3.1.1</span> Exercícios</h3>
-<ul>
-<li>1.Qual a diferença entre uma matriz e um data frame no R?</li>
-<li>2.Os data frames podem ser indexados com a mesma sintaxe utilizada para matrizes?</li>
-<li>3.Qual função básica que utilizamos para verificar a estrutura dos dados de um data frame?</li>
-</ul>
-</div>
-</div>
-<div id="breve-introdução-ao-tidyr" class="section level2">
-<h2><span class="header-section-number">3.2</span> Breve Introdução ao <code>tidyr</code></h2>
-<p><img src="imagens/tidyr.png" width="25%" style="display: block; margin: auto;" /></p>
-<p>O pacote tidyr tem como principal objetivo transformar um data frame para o formato tidy, ou limpo.</p>
-<p>De acordo com as regras ditas anteriormente, um dado limpo é aquele com formato <em>long</em>, ou seja, com mais linhas. O outro formato é chamado de <em>wide</em>, com mais colunas. No caso deste exemplo, ano é uma variável, logo é necessário existir uma coluna com os valores de ano. O valor relacionado a UF naqueles anos também é outra variável, então precisa de uma coluna pra representá-lo. Além disso, a própria UF precisa de uma coluna.</p>
-<p>O <code>tidyr</code> possui duas funções principais:</p>
-<p><code>gather</code>: Transforma um <code>tibble</code> <em>wide</em> em <em>long</em>, ou seja, transforma os dados no formato <em>tidy</em>.</p>
-<p><code>spread</code>: Transforma um <code>tibble</code> <em>long</em> em <em>wide</em>, ou seja, transforma dados que estão no formato <em>tidy</em> em formato não <em>tidy</em>.</p>
-<p>Além disso, existem duas funções que podem ser importantes na nossa análise: <code>separate</code> e <code>unite</code>, que separa uma coluna em duas e vice versa.</p>
-<div id="gather" class="section level3">
-<h3><span class="header-section-number">3.2.1</span> <code>gather</code></h3>
-<p>Vamos criar um <code>tibble</code> no formato <em>wide</em> e transformá-lo em um dado <em>tidy</em>:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="kw">library</span>(tibble)</a>
-<a class="sourceLine" id="cb25-2" title="2">tb &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">uf =</span> <span class="kw">c</span>(<span class="st">&quot;RJ&quot;</span>, <span class="st">&quot;SP&quot;</span>), <span class="st">`</span><span class="dt">2017</span><span class="st">`</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">11</span>), <span class="st">`</span><span class="dt">2018</span><span class="st">`</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">11</span>, <span class="dv">10</span>))</a>
-<a class="sourceLine" id="cb25-3" title="3">tb</a></code></pre></div>
-<pre><code>## # A tibble: 2 x 3
-##   uf    `2017` `2018`
-##   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-## 1 RJ        10     11
-## 2 SP        11     10</code></pre>
+<div id="apêndice-a" class="section level1 unnumbered">
+<h1>Apêndice A</h1>
+<p>Respostas…</p>
 
-</div>
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="method.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="references.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

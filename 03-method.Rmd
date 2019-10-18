@@ -1,5 +1,7 @@
 # Manipulando Data Frames com `dplyr` {#method}
 
+Entendamos a manipulação de dados como o ato de transformar, reestruturar, limpar, agregar e juntar os dados. Para se ter uma noção da importância dessa fase, alguns estudiosos da área de Ciência de Dados costumam afirmar que 80% do trabalho é encontrar uma boa fonte de dados, limpar e preparar os dados, sendo que os 20% restantes seriam o trabalho de aplicar modelos e realizar alguma análise propriamente dita.
+
 ## O Pacote `dplyr` 
 
 O pacote `dplyr` foi desenvolvido por Hadley Wickham, cientista chefe do RStudio. É uma versão otimizada do pacote `plyr`. O pacote `dplyr` não fornece nenhuma funcionalidade "nova" ao R, pois já é feito com base no R, mas simplifica **bastante** a funcionalidade no R.
@@ -282,7 +284,55 @@ A função `filter()` é usada para extrair subconjuntos de linhas de um data fr
 Suponhamos que desejássemos extrair as linhas do banco `chicago` em que o níveis de PM2,5 sejam maiores que 30, poderíamos fazer 
 
 ```{r}
-chic.f <- filter(chicago, pm25tmean2 > 30)
+chic.f <- filter(chicago, pm25 > 30)
 str(chic.f)
 ```
 
+
+## `arrange()`
+
+
+
+## `group_by()`
+
+
+## Operador *pipe* `%>%`
+
+```{r figure9, echo=FALSE, fig.align='center', out.width='25%'}
+knitr::include_graphics("imagens/magritt.png")
+```
+
+O operador do pipeline `%>%é` é muito útil para reunir várias funções em uma sequência de operações. Os tubos são uma ferramenta poderosa para expressar claramente uma sequência de várias operações. O pipe, `%>%` vem do pacote `magrittr` de Stefan Milton Bache. Pacotes no `tidyverse` carregam `%>%` automaticamente, para que normalmente não carregue o magrittr explicitamente. 
+
+Para começar a utilizar o *pipe*, instale e carregue o pacote `magrittr`.
+
+```{r eval=FALSE}
+install.packages("magrittr")
+library(magrittr)
+```
+
+Para mais informações sobre o *pipe*, outros operadores relacionados e exemplos de utilização, visite a página [Ceci n’est pas un pipe](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html)
+
+### Exercícios
+
+  - 1. Reescreva a expressão abaixo utilizando o `%>%`.
+
+  >round(mean(sum(1:10)/3), digits = 1)
+
+**Dica**: utilize a função `magrittr::divide_by()`. Veja o help da função para mais informações.
+
+  - 2. Reescreva o código abaixo utilizando o `%>%`.
+  
+>x <- rnorm(100)<br/>
+x.pos <- x[x>0]<br/>
+media <- mean(x.pos)<br/>
+saida <- round(media, 1)<br/>
+
+
+  - 3. Sem rodar, diga qual a saída do código abaixo. Consulte o `help` das funções caso precise.
+
+>2 %>% <br/>
+  add(2) %>%<br/> 
+  c(6, NA) %>% <br/>
+  mean(na.rm = T) %>%<br/> 
+  equals(5)

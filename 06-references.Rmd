@@ -9,3 +9,10 @@ Wood, S.N. (2006, 2017) Generalized Additive Models: An Introduction with R.
 Peng, R.D., Exploratory Data Analysis with R (2016) This version was published on 2016-07-20. This book is for sale at http://leanpub.com/exdata
 
 OLIVEIRA, Paulo Felipe de; GUERRA, Saulo; MCDONNELL, Robert. Ciência de Dados com R – Introdução. Brasília: Editora IBPAD, 2018.
+
+https://www.curso-r.com/material/pipe/
+
+
+# Apêndice A {-}
+
+Respostas...
