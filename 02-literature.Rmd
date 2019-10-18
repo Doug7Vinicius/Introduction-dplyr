@@ -100,5 +100,3 @@ library(tibble)
 tb <- tibble(uf = c("RJ", "SP"), `2017` = c(10, 11), `2018` = c(11, 10))
 tb
 ```
-
-
