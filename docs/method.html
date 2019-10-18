@@ -408,32 +408,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb56-3" title="3">df &lt;-<span class="st"> </span><span class="kw">tbl_df</span>(df[<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">1</span>, <span class="dv">9</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">10</span>)])</a>
 <a class="sourceLine" id="cb56-4" title="4"><span class="kw">select</span>(df, V4<span class="op">:</span>V6)</a></code></pre></div>
 <pre><code>## # A tibble: 10 x 8
-##        V4     V7     V1    V9     V8     V5    V2      V6
-##     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
-##  1 0.0124 0.0341 0.649  0.547 0.850  0.196  0.673 0.965  
-##  2 0.820  0.938  0.0725 0.186 0.784  0.497  0.627 0.845  
-##  3 0.947  0.642  0.807  0.246 0.449  0.313  0.794 0.355  
-##  4 0.781  0.766  0.860  0.255 0.594  0.345  0.111 0.411  
-##  5 0.326  0.568  0.557  0.770 0.410  0.0861 0.919 0.00870
-##  6 0.385  0.552  0.589  0.958 0.0978 0.221  0.188 0.168  
-##  7 0.276  0.735  0.927  0.709 0.928  0.571  0.543 0.888  
-##  8 0.663  0.547  0.852  0.366 0.944  0.235  0.682 0.723  
-##  9 0.248  0.227  0.264  0.371 0.326  0.984  0.862 0.608  
-## 10 0.111  0.763  0.874  0.102 0.729  0.934  0.104 0.402</code></pre>
+##        V4     V7    V1     V9     V8      V5     V2     V6
+##     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1 0.827  0.583  0.164 0.550  0.0666 0.795   0.607  0.0267
+##  2 0.543  0.433  0.568 0.265  0.761  0.104   0.0269 0.600 
+##  3 0.434  0.791  0.201 0.502  0.450  0.00324 0.223  0.776 
+##  4 0.0376 0.0460 0.698 0.0428 0.235  0.467   0.631  0.684 
+##  5 0.547  0.443  0.345 0.701  0.574  0.847   0.300  0.599 
+##  6 0.475  0.489  0.826 0.150  0.643  0.464   0.378  0.129 
+##  7 0.521  0.454  0.853 0.0692 0.408  0.171   0.720  0.149 
+##  8 0.879  0.813  0.143 0.257  0.183  0.950   0.296  0.934 
+##  9 0.978  0.628  0.633 0.492  0.339  0.115   0.120  0.0672
+## 10 0.898  0.280  0.895 0.514  0.666  0.109   0.980  0.459</code></pre>
 <div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1"><span class="kw">select</span>(df, <span class="kw">num_range</span>(<span class="st">&quot;V&quot;</span>, <span class="dv">4</span><span class="op">:</span><span class="dv">6</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 10 x 3
-##        V4     V5      V6
-##     &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
-##  1 0.0124 0.196  0.965  
-##  2 0.820  0.497  0.845  
-##  3 0.947  0.313  0.355  
-##  4 0.781  0.345  0.411  
-##  5 0.326  0.0861 0.00870
-##  6 0.385  0.221  0.168  
-##  7 0.276  0.571  0.888  
-##  8 0.663  0.235  0.723  
-##  9 0.248  0.984  0.608  
-## 10 0.111  0.934  0.402</code></pre>
+##        V4      V5     V6
+##     &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
+##  1 0.827  0.795   0.0267
+##  2 0.543  0.104   0.600 
+##  3 0.434  0.00324 0.776 
+##  4 0.0376 0.467   0.684 
+##  5 0.547  0.847   0.599 
+##  6 0.475  0.464   0.129 
+##  7 0.521  0.171   0.149 
+##  8 0.879  0.950   0.934 
+##  9 0.978  0.115   0.0672
+## 10 0.898  0.109   0.459</code></pre>
 <p>Você também pode usar expressões regulares mais gerais, se necessário. Veja a página de ajuda (?select) para mais detalhes.</p>
 <p><code>select()</code> pode ser usado para renomear variáveis, mas raramente é útil porque descarta todas as variáveis não mencionadas explicitamente. Em vez disso, use <code>rename()</code>, que é uma variante de <code>select()</code> que mantém todas as variáveis que não são mencionadas explicitamente.</p>
 <p>Outra opção é usar <code>select()</code> em conjunto com o <code>everything()</code> auxiliar. Isso é útil se você tiver um punhado de variáveis que deseja mover para o início do quadro de dados.</p>
