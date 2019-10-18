@@ -192,12 +192,10 @@ O livro \href{https://r4ds.had.co.nz/}{R for data science} é o mais indicado pa
 \section{Conteúdo:}\label{conteuxfado}}
 
 \begin{verbatim}
-- Primeiro dia (22/10): Breve introdução ao R, organização de dados,
-exercícios; 
-
+- Primeiro dia (22/10): Breve introdução ao R, Tibbles e Data frames,
+tidyr, exercícios; 
 - Segundo dia (23/10): select(), rename(), arrange(), 
 mutate(), summarise(), exercícios;
-
 - Terceiro dia (24/10): agrupar dados, combinar conjuntos de dados.
 \end{verbatim}
 
@@ -389,17 +387,40 @@ O \emph{swirl} dá acesso às tarefas de cursos de R que estão disponíveis tam
 disponíveis no \emph{swirl}: \emph{Regression Models: The basics of regression modeling in R, Statistical Inference: The basics of statistical inference in R, e Exploratory Data Analysis: The basics of exploring data in R}.
 
 \hypertarget{literature}{%
-\chapter{O que é Dados organizados?}\label{literature}}
+\chapter{Tibbles x Data frames}\label{literature}}
 
 \begin{quote}
 ``Famílias felizes são todas iguais; toda família infeliz é infeliz à sua maneira.'' -- Leo Tolstoi
 \end{quote}
 
+O que é um \emph{tibble}? \emph{Tibbles} são similares aos \emph{data frames}, porém diferentes em dois aspectos: \textbf{impressão} e \textbf{indexação}
+
+Na impressão no console, os \emph{tibbles} apresentam apenas as dez primeiras linhas e todas as colunas que cabem na tela, tornando mais fácil o trabalho com grandes volumes de dados. Além disso, cada coluna apresenta o seu tipo, algo semelhante ao apresentado quando utilizamos a função \texttt{str()}. A segunda diferença, não menos importante, é a forma de indexação. Para indexar um \texttt{tibble} devemos utilizar o nome completo da variável que desejamos. Caso contrário, ocorrerá um erro.
+
+Ainda sobre a indexação, sempre que indexarmos um \texttt{tibble} usando \texttt{{[}}, o resultado será outro \texttt{tibble}. Usando \texttt{{[}{[}} o resultados será um vetor.
+
+Em síntese, \emph{data frames} são tabelas de dados. Em seu formato, são bem parecidos com as matrizes, no entanto, possuem algumas diferenças significativas. Podemos idealizar os \emph{data frames} como sendo matrizes em que cada coluna pode armazenar um tipo de dado diferente. Logo, estamos lidando com um objeto bem mais versátil do que as matrizes e os vetores.
+
+Uma das funções básicas mais importantes para começarmos a trabalhar com \emph{data frames} é a \texttt{str()}. Essa função dá uma visão clara da estrutura do nosso objeto, bem como informa os tipos de dados existentes.
+
+A função \texttt{View()} chama um visualizador de dados no estilo de planilhas em um objeto R. Semelhante a planilha do excel.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{View}\NormalTok{(x, title)}
+\end{Highlighting}
+\end{Shaded}
+
+Os argumentos da função são: \texttt{x} um objeto do R que pode ser coagido a um quadro de dados. E \texttt{title}, título para a janela do visualizador. O padrão é o nome de x prefixado.
+
+\hypertarget{o-que-uxe9-dados-organizados}{%
+\section{O que é Dados organizados?}\label{o-que-uxe9-dados-organizados}}
+
 \begin{quote}
 ``Os conjuntos de dados organizados são todos iguais, mas todos os conjuntos de dados confusos são confusos à sua maneira.'' -- Hadley Wickham
 \end{quote}
 
-Você vai precisar instalar os pacotes \texttt{tidyr}, \texttt{devtools} e \texttt{DSR}. Para instalar \texttt{tidyr} e \texttt{devtools}, abra o RStudio e execute o comando:
+Costuma-se dizer que 80\% da análise de dados é gasta no processo de limpeza e preparação os dados (Dasu e Johnson 2003). A preparação de dados não é apenas um primeiro passo, mas deve ser repetidos muitos ao longo da análise, à medida que novos problemas surgem ou novos dados são coletados.Você vai precisar instalar os pacotes \texttt{tidyr}, \texttt{devtools} e \texttt{DSR}. Para instalar \texttt{tidyr} e \texttt{devtools}, abra o RStudio e execute o comando:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -532,18 +553,95 @@ Os dados que satisfazem essas regras são conhecidos como dados organizados. Obs
 
 Em \texttt{table1}, cada variável é colocada em sua própria coluna, cada observação em sua própria linha e cada valor em sua própria célula.
 
-\hypertarget{tibbles-x-data-frames}{%
-\section{Tibbles x Data frames}\label{tibbles-x-data-frames}}
+\hypertarget{operador-pipe}{%
+\section{\texorpdfstring{Operador \emph{pipe} \texttt{\%\textgreater{}\%}}{Operador pipe \%\textgreater\%}}\label{operador-pipe}}
 
-O que é um \emph{tibble}? \emph{Tibbles} são similares aos \emph{data frames}, porém diferentes em dois aspectos: \textbf{impressão} e \textbf{indexação}
+\begin{center}\includegraphics[width=0.25\linewidth]{imagens/magritt} \end{center}
 
-Na impressão no console, os \emph{tibbles} apresentam apenas as dez primeiras linhas e todas as colunas que cabem na tela, tornando mais fácil o trabalho com grandes volumes de dados. Além disso, cada coluna apresenta o seu tipo, algo semelhante ao apresentado quando utilizamos a função \texttt{str()}. A segunda diferença, não menos importante, é a forma de indexação. Para indexar um \texttt{tibble} devemos utilizar o nome completo da variável que desejamos. Caso contrário, ocorrerá um erro.
+O pacote \texttt{magrittr} oferece um conjunto de operadores que promovem semânticas que melhorara seu código que deixa mais claro a compreensão:
 
-Ainda sobre a indexação, sempre que indexarmos um \texttt{tibble} usando \texttt{{[}}, o resultado será outro \texttt{tibble}. Usando \texttt{{[}{[}} o resultados será um vetor.
+\begin{itemize}
+\tightlist
+\item
+  estruturar seqüências de operações de dados da esquerda para a direita (em oposição a de dentro e de fora);
+\item
+  evitando chamadas de função aninhadas;
+\item
+  minimizar a necessidade de variáveis locais e definições de função, e
+  facilitando a adição de etapas em qualquer lugar da sequência de operações.
+\end{itemize}
 
-Em síntese, \emph{data frames} são tabelas de dados. Em seu formato, são bem parecidos com as matrizes, no entanto, possuem algumas diferenças significativas. Podemos idealizar os \emph{data frames} como sendo matrizes em que cada coluna pode armazenar um tipo de dado diferente. Logo, estamos lidando com um objeto bem mais versátil do que as matrizes e os vetores.
+\hypertarget{recursos}{%
+\subsection{Recursos}\label{recursos}}
 
-Uma das funções básicas mais importantes para começarmos a trabalhar com \emph{data frames} é a \texttt{str()}. Essa função dá uma visão clara da estrutura do nosso objeto, bem como informa os tipos de dados existentes.
+Tubulação básica:
+
+\begin{itemize}
+\tightlist
+\item
+  x \texttt{\%\textgreater{}\%} \textbf{f} é equivalente a \textbf{f(x)};
+\item
+  x \texttt{\%\textgreater{}\%} \textbf{f(y)} é equivalente a \textbf{f(x, y)};
+\item
+  x \texttt{\%\textgreater{}\%} \textbf{f} \texttt{\%\textgreater{}\%} \textbf{g} \texttt{\%\textgreater{}\%} \textbf{h} é equivalente a \textbf{h(g(f(x)))}.
+\end{itemize}
+
+O operador do \textbf{pipeline} \texttt{\%\textgreater{}\%} é muito útil para reunir várias funções em uma sequência de operações. Os tubos são uma ferramenta poderosa para expressar claramente as operações. O \textbf{pipe}, \texttt{\%\textgreater{}\%} vem do pacote \texttt{magrittr} de Stefan Milton Bache. Pacotes no \texttt{tidyverse} carregam \texttt{\%\textgreater{}\%} automaticamente, para que normalmente não carregue o magrittr explicitamente.
+
+\begin{quote}
+third(second(first(x)))
+\end{quote}
+
+Para começar a utilizar o \emph{pipe}, instale e carregue o pacote \texttt{magrittr}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"magrittr"}\NormalTok{)}
+\KeywordTok{library}\NormalTok{(magrittr)}
+\end{Highlighting}
+\end{Shaded}
+
+Para mais informações sobre o \emph{pipe}, outros operadores relacionados e exemplos de utilização, visite a página \href{https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html}{Ceci n'est pas un pipe}. Ou consulte a vinheta do pacote \texttt{vignette("magrittr")}.
+
+\hypertarget{breve-introduuxe7uxe3o-ao-tidyr}{%
+\section{\texorpdfstring{Breve Introdução ao \texttt{tidyr}}{Breve Introdução ao tidyr}}\label{breve-introduuxe7uxe3o-ao-tidyr}}
+
+\begin{center}\includegraphics[width=0.25\linewidth]{imagens/tidyr} \end{center}
+
+O pacote tidyr tem como principal objetivo transformar um data frame para o formato tidy, ou limpo.
+
+De acordo com as regras ditas anteriormente, um dado limpo/organizado é aquele com formato \emph{long}, ou seja, com mais linhas. O outro formato é chamado de \emph{wide}, com mais colunas. No caso deste exemplo, ano é uma variável, logo é necessário existir uma coluna com os valores de ano. O valor relacionado a UF naqueles anos também é outra variável, então precisa de uma coluna pra representá-lo. Além disso, a própria UF precisa de uma coluna.
+
+O \texttt{tidyr} possui duas funções principais:
+
+\texttt{gather}: Transforma um \texttt{tibble} \emph{wide} em \emph{long}, ou seja, transforma os dados no formato \emph{tidy}.
+
+\texttt{spread}: Transforma um \texttt{tibble} \emph{long} em \emph{wide}, ou seja, transforma dados que estão no formato \emph{tidy} em formato não \emph{tidy}.
+
+Além disso, existem duas funções que podem ser importantes na nossa análise: \texttt{separate} e \texttt{unite}, que separa uma coluna em duas e vice versa.
+
+\hypertarget{gather}{%
+\subsection{\texorpdfstring{\texttt{gather()}}{gather()}}\label{gather}}
+
+Vamos criar um \texttt{tibble} no formato \emph{wide} e transformá-lo em um dado \emph{tidy}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tibble)}
+\NormalTok{dados_wide <-}\StringTok{ }\KeywordTok{tibble}\NormalTok{(}\DataTypeTok{uf =} \KeywordTok{c}\NormalTok{(}\StringTok{"RJ"}\NormalTok{, }\StringTok{"SP"}\NormalTok{), }\StringTok{`}\DataTypeTok{2017}\StringTok{`}\NormalTok{ =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{), }\StringTok{`}\DataTypeTok{2018}\StringTok{`}\NormalTok{ =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{11}\NormalTok{, }\DecValTok{10}\NormalTok{))}
+\NormalTok{dados_wide}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 3
+##   uf    `2017` `2018`
+##   <chr>  <dbl>  <dbl>
+## 1 RJ        10     11
+## 2 SP        11     10
+\end{verbatim}
+
+a função \texttt{gather()} retorna um \texttt{tibble} com duas colunas, por padrão, isso se não inserirmos nenhum parâmetro além do \texttt{tibble}.
 
 \hypertarget{exercuxedcios}{%
 \subsection{Exercícios}\label{exercuxedcios}}
@@ -558,43 +656,61 @@ Uma das funções básicas mais importantes para começarmos a trabalhar com \em
   3.Qual função básica que utilizamos para verificar a estrutura dos dados de um data frame?
 \end{itemize}
 
-\hypertarget{breve-introduuxe7uxe3o-ao-tidyr}{%
-\section{\texorpdfstring{Breve Introdução ao \texttt{tidyr}}{Breve Introdução ao tidyr}}\label{breve-introduuxe7uxe3o-ao-tidyr}}
+\hypertarget{exercuxedcios-1}{%
+\subsection{Exercícios}\label{exercuxedcios-1}}
 
-\begin{center}\includegraphics[width=0.25\linewidth]{imagens/tidyr} \end{center}
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    Reescreva a expressão abaixo utilizando o \texttt{\%\textgreater{}\%}.
+  \end{enumerate}
+\end{itemize}
 
-O pacote tidyr tem como principal objetivo transformar um data frame para o formato tidy, ou limpo.
+\begin{quote}
+round(mean(sum(1:10)/3), digits = 1)
+\end{quote}
 
-De acordo com as regras ditas anteriormente, um dado limpo é aquele com formato \emph{long}, ou seja, com mais linhas. O outro formato é chamado de \emph{wide}, com mais colunas. No caso deste exemplo, ano é uma variável, logo é necessário existir uma coluna com os valores de ano. O valor relacionado a UF naqueles anos também é outra variável, então precisa de uma coluna pra representá-lo. Além disso, a própria UF precisa de uma coluna.
+\textbf{Dica}: utilize a função \texttt{magrittr::divide\_by()}. Veja o help da função para mais informações.
 
-O \texttt{tidyr} possui duas funções principais:
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    Reescreva o código abaixo utilizando o \texttt{\%\textgreater{}\%}.
+  \end{enumerate}
+\end{itemize}
 
-\texttt{gather}: Transforma um \texttt{tibble} \emph{wide} em \emph{long}, ou seja, transforma os dados no formato \emph{tidy}.
+\begin{quote}
+x \textless- rnorm(100)
+x.pos \textless- x{[}x\textgreater0{]}
+media \textless- mean(x.pos)
+saida \textless- round(media, 1)
+\end{quote}
 
-\texttt{spread}: Transforma um \texttt{tibble} \emph{long} em \emph{wide}, ou seja, transforma dados que estão no formato \emph{tidy} em formato não \emph{tidy}.
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \setcounter{enumi}{2}
+  \tightlist
+  \item
+    Sem rodar, diga qual a saída do código abaixo. Consulte o \texttt{help} das funções caso precise.
+  \end{enumerate}
+\end{itemize}
 
-Além disso, existem duas funções que podem ser importantes na nossa análise: \texttt{separate} e \texttt{unite}, que separa uma coluna em duas e vice versa.
-
-\hypertarget{gather}{%
-\subsection{\texorpdfstring{\texttt{gather}}{gather}}\label{gather}}
-
-Vamos criar um \texttt{tibble} no formato \emph{wide} e transformá-lo em um dado \emph{tidy}:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(tibble)}
-\NormalTok{tb <-}\StringTok{ }\KeywordTok{tibble}\NormalTok{(}\DataTypeTok{uf =} \KeywordTok{c}\NormalTok{(}\StringTok{"RJ"}\NormalTok{, }\StringTok{"SP"}\NormalTok{), }\StringTok{`}\DataTypeTok{2017}\StringTok{`}\NormalTok{ =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{), }\StringTok{`}\DataTypeTok{2018}\StringTok{`}\NormalTok{ =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{11}\NormalTok{, }\DecValTok{10}\NormalTok{))}
-\NormalTok{tb}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## # A tibble: 2 x 3
-##   uf    `2017` `2018`
-##   <chr>  <dbl>  <dbl>
-## 1 RJ        10     11
-## 2 SP        11     10
-\end{verbatim}
+\begin{quote}
+2 \%\textgreater\%
+add(2) \%\textgreater\%
+c(6, NA) \%\textgreater\%
+mean(na.rm = T) \%\textgreater\%
+equals(5)
+\end{quote}
 
 \hypertarget{method}{%
 \chapter{\texorpdfstring{Manipulando Data Frames com \texttt{dplyr}}{Manipulando Data Frames com dplyr}}\label{method}}
@@ -611,9 +727,15 @@ Uma contribuição importante do \texttt{dplyr} é que ele fornece uma ``gramát
 \hypertarget{gramuxe1tica-do-dplyr}{%
 \section{\texorpdfstring{Gramática do \texttt{dplyr}}{Gramática do dplyr}}\label{gramuxe1tica-do-dplyr}}
 
-Alguns dos principais ``verbos'' fornecidos pelo \texttt{dplyr} são:
+Alguns dos principais ``verbos'' básicos de tablea única fornecidos pelo \texttt{dplyr} são:
 
 -\texttt{select}: retorna um subconjunto das colunas de um data.frames, usando uma notação flexível;
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{pull()}: retire uma única variável;
+\end{itemize}
 
 -\texttt{filter}: extrair um subconjunto de linhas(observações) de um data.frames com base em condições lógicas;
 
@@ -1012,18 +1134,18 @@ A função \texttt{select()} permite uma sintaxe especial que especifica nomes d
 
 \begin{verbatim}
 ## # A tibble: 10 x 8
-##        V4     V7      V1     V9     V8     V5     V2    V6
-##     <dbl>  <dbl>   <dbl>  <dbl>  <dbl>  <dbl>  <dbl> <dbl>
-##  1 0.436  0.769  0.434   0.559  0.428  0.0125 0.0767 0.962
-##  2 0.605  0.408  0.713   0.985  0.865  0.0833 0.233  0.716
-##  3 0.0288 0.446  0.951   0.293  0.704  0.340  0.179  0.781
-##  4 0.771  0.300  0.399   0.0210 0.189  0.383  0.353  0.277
-##  5 0.970  0.346  0.162   0.393  0.864  0.732  0.233  0.773
-##  6 0.860  0.903  0.179   0.808  0.0847 0.689  0.428  0.994
-##  7 0.635  0.0747 0.994   0.903  0.828  0.348  0.440  0.645
-##  8 0.616  0.697  0.316   0.745  0.336  0.878  0.229  0.705
-##  9 0.349  0.823  0.00991 0.792  0.327  0.644  0.939  0.611
-## 10 0.533  0.809  0.903   0.906  0.321  0.538  0.577  0.403
+##       V4    V7     V1     V9     V8     V5     V2    V6
+##    <dbl> <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl> <dbl>
+##  1 0.926 0.736 0.998  0.982  0.192  0.508  0.283  0.813
+##  2 0.764 0.942 0.833  0.800  0.834  0.574  0.323  0.379
+##  3 0.960 0.889 0.671  0.0182 0.328  0.197  0.919  0.311
+##  4 0.993 0.653 0.289  0.639  0.609  0.974  0.0767 0.111
+##  5 0.362 0.578 0.874  0.590  0.798  0.407  0.105  0.829
+##  6 0.789 0.838 0.177  0.507  0.645  0.289  0.534  0.793
+##  7 0.119 0.485 0.0443 0.880  0.0532 0.0609 0.948  0.564
+##  8 0.529 0.416 0.0603 0.544  0.318  0.826  0.265  0.565
+##  9 0.915 0.130 0.666  0.153  0.830  0.937  0.0548 0.426
+## 10 0.587 0.347 0.922  0.945  0.271  0.596  0.810  0.358
 \end{verbatim}
 
 \begin{Shaded}
@@ -1034,18 +1156,18 @@ A função \texttt{select()} permite uma sintaxe especial que especifica nomes d
 
 \begin{verbatim}
 ## # A tibble: 10 x 3
-##        V4     V5    V6
-##     <dbl>  <dbl> <dbl>
-##  1 0.436  0.0125 0.962
-##  2 0.605  0.0833 0.716
-##  3 0.0288 0.340  0.781
-##  4 0.771  0.383  0.277
-##  5 0.970  0.732  0.773
-##  6 0.860  0.689  0.994
-##  7 0.635  0.348  0.645
-##  8 0.616  0.878  0.705
-##  9 0.349  0.644  0.611
-## 10 0.533  0.538  0.403
+##       V4     V5    V6
+##    <dbl>  <dbl> <dbl>
+##  1 0.926 0.508  0.813
+##  2 0.764 0.574  0.379
+##  3 0.960 0.197  0.311
+##  4 0.993 0.974  0.111
+##  5 0.362 0.407  0.829
+##  6 0.789 0.289  0.793
+##  7 0.119 0.0609 0.564
+##  8 0.529 0.826  0.565
+##  9 0.915 0.937  0.426
+## 10 0.587 0.596  0.358
 \end{verbatim}
 
 Você também pode usar expressões regulares mais gerais, se necessário. Veja a página de ajuda (?select) para mais detalhes.
@@ -1071,8 +1193,8 @@ Outra opção é usar \texttt{select()} em conjunto com o \texttt{everything()} 
 ## 6 5.833333  25.77233 chic 40.0 35.125 1987-01-06         NA   48.00000
 \end{verbatim}
 
-\hypertarget{exercuxedcios-1}{%
-\subsection{Exercícios}\label{exercuxedcios-1}}
+\hypertarget{exercuxedcios-2}{%
+\subsection{Exercícios}\label{exercuxedcios-2}}
 
 \begin{itemize}
 \item
@@ -1143,8 +1265,8 @@ A coluna \texttt{dptp} deve representar a temperatura do ponto de orvalho e a co
 
 A sintaxe dentro da \texttt{rename()} função é ter o novo nome no lado esquerdo do \texttt{=} sinal e o nome antigo no lado direito.
 
-\hypertarget{exercuxedcios-2}{%
-\subsection{Exercícios}\label{exercuxedcios-2}}
+\hypertarget{exercuxedcios-3}{%
+\subsection{Exercícios}\label{exercuxedcios-3}}
 
 \hypertarget{mutate}{%
 \section{\texorpdfstring{\texttt{mutate()}}{mutate()}}\label{mutate}}
@@ -1205,8 +1327,8 @@ Observe que existem apenas duas colunas no quadro de dados transformados.
 
 Há inúmeras funções que pode ser feita, a propriedade é que a função deva ser vetorizada: ela deve pegar um vetor de valores como entrada, retornar um vetor com o mesmo número de valores que a saída. Não há como listar todas as funções possíveis que você possa usar, mas aqui está uma seleção de funções frequentemente úteis:
 
-\hypertarget{exercuxedcios-3}{%
-\subsection{Exercícios}\label{exercuxedcios-3}}
+\hypertarget{exercuxedcios-4}{%
+\subsection{Exercícios}\label{exercuxedcios-4}}
 
 \hypertarget{filter}{%
 \section{\texorpdfstring{\texttt{filter()}}{filter()}}\label{filter}}
@@ -1240,80 +1362,6 @@ Suponhamos que desejássemos extrair as linhas do banco \texttt{chicago} em que 
 
 \hypertarget{group_by}{%
 \section{\texorpdfstring{\texttt{group\_by()}}{group\_by()}}\label{group_by}}
-
-\hypertarget{operador-pipe}{%
-\section{\texorpdfstring{Operador \emph{pipe} \texttt{\%\textgreater{}\%}}{Operador pipe \%\textgreater\%}}\label{operador-pipe}}
-
-\begin{center}\includegraphics[width=0.25\linewidth]{imagens/magritt} \end{center}
-
-O operador do pipeline \texttt{\%\textgreater{}\%é} é muito útil para reunir várias funções em uma sequência de operações. Os tubos são uma ferramenta poderosa para expressar claramente uma sequência de várias operações. O pipe, \texttt{\%\textgreater{}\%} vem do pacote \texttt{magrittr} de Stefan Milton Bache. Pacotes no \texttt{tidyverse} carregam \texttt{\%\textgreater{}\%} automaticamente, para que normalmente não carregue o magrittr explicitamente.
-
-Para começar a utilizar o \emph{pipe}, instale e carregue o pacote \texttt{magrittr}.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{install.packages}\NormalTok{(}\StringTok{"magrittr"}\NormalTok{)}
-\KeywordTok{library}\NormalTok{(magrittr)}
-\end{Highlighting}
-\end{Shaded}
-
-Para mais informações sobre o \emph{pipe}, outros operadores relacionados e exemplos de utilização, visite a página \href{https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html}{Ceci n'est pas un pipe}
-
-\hypertarget{exercuxedcios-4}{%
-\subsection{Exercícios}\label{exercuxedcios-4}}
-
-\begin{itemize}
-\item
-  \begin{enumerate}
-  \def\labelenumi{\arabic{enumi}.}
-  \tightlist
-  \item
-    Reescreva a expressão abaixo utilizando o \texttt{\%\textgreater{}\%}.
-  \end{enumerate}
-\end{itemize}
-
-\begin{quote}
-round(mean(sum(1:10)/3), digits = 1)
-\end{quote}
-
-\textbf{Dica}: utilize a função \texttt{magrittr::divide\_by()}. Veja o help da função para mais informações.
-
-\begin{itemize}
-\item
-  \begin{enumerate}
-  \def\labelenumi{\arabic{enumi}.}
-  \setcounter{enumi}{1}
-  \tightlist
-  \item
-    Reescreva o código abaixo utilizando o \texttt{\%\textgreater{}\%}.
-  \end{enumerate}
-\end{itemize}
-
-\begin{quote}
-x \textless- rnorm(100)
-x.pos \textless- x{[}x\textgreater0{]}
-media \textless- mean(x.pos)
-saida \textless- round(media, 1)
-\end{quote}
-
-\begin{itemize}
-\item
-  \begin{enumerate}
-  \def\labelenumi{\arabic{enumi}.}
-  \setcounter{enumi}{2}
-  \tightlist
-  \item
-    Sem rodar, diga qual a saída do código abaixo. Consulte o \texttt{help} das funções caso precise.
-  \end{enumerate}
-\end{itemize}
-
-\begin{quote}
-2 \%\textgreater\%
-add(2) \%\textgreater\%
-c(6, NA) \%\textgreater\%
-mean(na.rm = T) \%\textgreater\%
-equals(5)
-\end{quote}
 
 \hypertarget{application}{%
 \chapter{Vôos em Nova York de 2013}\label{application}}
@@ -1409,11 +1457,13 @@ OLIVEIRA, Paulo Felipe de; GUERRA, Saulo; MCDONNELL, Robert. Ciência de Dados c
 
 \url{https://www.curso-r.com/material/pipe/}
 
-\hypertarget{apuxeandice-a}{%
-\chapter*{Apêndice A}\label{apuxeandice-a}}
-\addcontentsline{toc}{chapter}{Apêndice A}
+\url{https://www.nytimes.com/2014/08/18/technology/for-big-data-scientists-hurdle-to-insights-is-janitor-work.html}
 
-Respostas\ldots{}
+Dasu T, Johnson T (2003). Exploratory Data Mining and Data Cleaning. Wiley-IEEE.
+
+\hypertarget{apuxeandice-a-respostas-dos-exercuxedcios}{%
+\chapter*{Apêndice A: Respostas dos Exercícios}\label{apuxeandice-a-respostas-dos-exercuxedcios}}
+\addcontentsline{toc}{chapter}{Apêndice A: Respostas dos Exercícios}
 
 \bibliography{book.bib,packages.bib}
 

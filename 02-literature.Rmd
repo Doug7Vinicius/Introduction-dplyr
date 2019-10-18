@@ -1,10 +1,30 @@
-# O que é Dados organizados? {#literature}
+# Tibbles x Data frames {#literature}
 
 >“Famílias felizes são todas iguais; toda família infeliz é infeliz à sua maneira. ” – Leo Tolstoi
 
+O que é um *tibble*? *Tibbles* são similares aos *data frames*, porém diferentes em dois aspectos: **impressão** e **indexação**
+
+Na impressão no console, os *tibbles* apresentam apenas as dez primeiras linhas e todas as colunas que cabem na tela, tornando mais fácil o trabalho com grandes volumes de dados. Além disso, cada coluna apresenta o seu tipo, algo semelhante ao apresentado quando utilizamos a função `str()`. A segunda diferença, não menos importante, é a forma de indexação. Para indexar um `tibble` devemos utilizar o nome completo da variável que desejamos. Caso contrário, ocorrerá um erro.
+
+Ainda sobre a indexação, sempre que indexarmos um `tibble` usando `[`, o resultado será outro `tibble`. Usando `[[` o resultados será um vetor.
+
+Em síntese, *data frames* são tabelas de dados. Em seu formato, são bem parecidos com as matrizes, no entanto, possuem algumas diferenças significativas. Podemos idealizar os *data frames* como sendo matrizes em que cada coluna pode armazenar um tipo de dado diferente. Logo, estamos lidando com um objeto bem mais versátil do que as matrizes e os vetores.
+
+Uma das funções básicas mais importantes para começarmos a trabalhar com *data frames* é a `str()`. Essa função dá uma visão clara da estrutura do nosso objeto, bem como informa os tipos de dados existentes.
+
+A função `View()` chama um visualizador de dados no estilo de planilhas em um objeto R. Semelhante a planilha do excel.
+
+```{r eval=FALSE}
+View(x, title)
+```
+
+Os argumentos da função são: `x` um objeto do R que pode ser coagido a um quadro de dados. E `title`, título para a janela do visualizador. O padrão é o nome de x prefixado.
+
+## O que é Dados organizados? 
+
 >“Os conjuntos de dados organizados são todos iguais, mas todos os conjuntos de dados confusos são confusos à sua maneira.” – Hadley Wickham
 
-Você vai precisar instalar os pacotes `tidyr`, `devtools` e `DSR`. Para instalar `tidyr` e `devtools`, abra o RStudio e execute o comando:
+Costuma-se dizer que 80% da análise de dados é gasta no processo de limpeza e preparação os dados (Dasu e Johnson 2003). A preparação de dados não é apenas um primeiro passo, mas deve ser repetidos muitos ao longo da análise, à medida que novos problemas surgem ou novos dados são coletados.Você vai precisar instalar os pacotes `tidyr`, `devtools` e `DSR`. Para instalar `tidyr` e `devtools`, abra o RStudio e execute o comando:
 
 ```{r eval=FALSE}
 install.packages(c("tidyr", "devtools"))
@@ -54,23 +74,40 @@ knitr::include_graphics("imagens/tidy-1.png")
 
 Em `table1`, cada variável é colocada em sua própria coluna, cada observação em sua própria linha e cada valor em sua própria célula.
 
-## Tibbles x Data frames
+## Operador *pipe* `%>%`
 
-O que é um *tibble*? *Tibbles* são similares aos *data frames*, porém diferentes em dois aspectos: **impressão** e **indexação**
+```{r figure9, echo=FALSE, fig.align='center', out.width='25%'}
+knitr::include_graphics("imagens/magritt.png")
+```
 
-Na impressão no console, os *tibbles* apresentam apenas as dez primeiras linhas e todas as colunas que cabem na tela, tornando mais fácil o trabalho com grandes volumes de dados. Além disso, cada coluna apresenta o seu tipo, algo semelhante ao apresentado quando utilizamos a função `str()`. A segunda diferença, não menos importante, é a forma de indexação. Para indexar um `tibble` devemos utilizar o nome completo da variável que desejamos. Caso contrário, ocorrerá um erro.
+O pacote `magrittr` oferece um conjunto de operadores que promovem semânticas que melhorara seu código que deixa mais claro a compreensão:
 
-Ainda sobre a indexação, sempre que indexarmos um `tibble` usando `[`, o resultado será outro `tibble`. Usando `[[` o resultados será um vetor.
+  - estruturar seqüências de operações de dados da esquerda para a direita (em oposição a de dentro e de fora);
+  - evitando chamadas de função aninhadas;
+  - minimizar a necessidade de variáveis locais e definições de função, e
+facilitando a adição de etapas em qualquer lugar da sequência de operações.
 
-Em síntese, *data frames* são tabelas de dados. Em seu formato, são bem parecidos com as matrizes, no entanto, possuem algumas diferenças significativas. Podemos idealizar os *data frames* como sendo matrizes em que cada coluna pode armazenar um tipo de dado diferente. Logo, estamos lidando com um objeto bem mais versátil do que as matrizes e os vetores.
+### Recursos
 
-Uma das funções básicas mais importantes para começarmos a trabalhar com *data frames* é a `str()`. Essa função dá uma visão clara da estrutura do nosso objeto, bem como informa os tipos de dados existentes.
+Tubulação básica:
 
-### Exercícios
+  - x `%>%` **f** é equivalente a **f(x)**;
+  - x `%>%` **f(y)** é equivalente a **f(x, y)**;
+  - x `%>%` **f** `%>%` **g** `%>%` **h** é equivalente a **h(g(f(x)))**.
 
-- 1.Qual a diferença entre uma matriz e um data frame no R?
-- 2.Os data frames podem ser indexados com a mesma sintaxe utilizada para matrizes?
-- 3.Qual função básica que utilizamos para verificar a estrutura dos dados de um data frame?
+O operador do **pipeline** `%>%` é muito útil para reunir várias funções em uma sequência de operações. Os tubos são uma ferramenta poderosa para expressar claramente as operações. O **pipe**, `%>%` vem do pacote `magrittr` de Stefan Milton Bache. Pacotes no `tidyverse` carregam `%>%` automaticamente, para que normalmente não carregue o magrittr explicitamente. 
+
+> third(second(first(x)))
+
+Para começar a utilizar o *pipe*, instale e carregue o pacote `magrittr`.
+
+```{r eval=FALSE}
+install.packages("magrittr")
+library(magrittr)
+```
+
+Para mais informações sobre o *pipe*, outros operadores relacionados e exemplos de utilização, visite a página [Ceci n’est pas un pipe](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html). Ou consulte a vinheta do pacote `vignette("magrittr")`.
+
 
 ## Breve Introdução ao `tidyr`
 
@@ -80,8 +117,7 @@ knitr::include_graphics("imagens/tidyr.png")
 
 O pacote tidyr tem como principal objetivo transformar um data frame para o formato tidy, ou limpo.
 
-
-De acordo com as regras ditas anteriormente, um dado limpo é aquele com formato *long*, ou seja, com mais linhas. O outro formato é chamado de *wide*, com mais colunas. No caso deste exemplo, ano é uma variável, logo é necessário existir uma coluna com os valores de ano. O valor relacionado a UF naqueles anos também é outra variável, então precisa de uma coluna pra representá-lo. Além disso, a própria UF precisa de uma coluna.
+De acordo com as regras ditas anteriormente, um dado limpo/organizado é aquele com formato *long*, ou seja, com mais linhas. O outro formato é chamado de *wide*, com mais colunas. No caso deste exemplo, ano é uma variável, logo é necessário existir uma coluna com os valores de ano. O valor relacionado a UF naqueles anos também é outra variável, então precisa de uma coluna pra representá-lo. Além disso, a própria UF precisa de uma coluna.
 
 O `tidyr` possui duas funções principais:
 
@@ -91,12 +127,44 @@ O `tidyr` possui duas funções principais:
 
 Além disso, existem duas funções que podem ser importantes na nossa análise: `separate` e `unite`, que separa uma coluna em duas e vice versa.
 
-### `gather`
+### `gather()`
 
 Vamos criar um `tibble` no formato *wide* e transformá-lo em um dado *tidy*:
 
 ```{r}
 library(tibble)
-tb <- tibble(uf = c("RJ", "SP"), `2017` = c(10, 11), `2018` = c(11, 10))
-tb
+dados_wide <- tibble(uf = c("RJ", "SP"), `2017` = c(10, 11), `2018` = c(11, 10))
+dados_wide
 ```
+
+a função `gather()` retorna um `tibble` com duas colunas, por padrão, isso se não inserirmos nenhum parâmetro além do `tibble`.
+
+### Exercícios
+
+- 1.Qual a diferença entre uma matriz e um data frame no R?
+- 2.Os data frames podem ser indexados com a mesma sintaxe utilizada para matrizes?
+- 3.Qual função básica que utilizamos para verificar a estrutura dos dados de um data frame?
+
+### Exercícios
+
+  - 1. Reescreva a expressão abaixo utilizando o `%>%`.
+
+  >round(mean(sum(1:10)/3), digits = 1)
+
+**Dica**: utilize a função `magrittr::divide_by()`. Veja o help da função para mais informações.
+
+  - 2. Reescreva o código abaixo utilizando o `%>%`.
+  
+>x <- rnorm(100)<br/>
+x.pos <- x[x>0]<br/>
+media <- mean(x.pos)<br/>
+saida <- round(media, 1)<br/>
+
+
+  - 3. Sem rodar, diga qual a saída do código abaixo. Consulte o `help` das funções caso precise.
+
+>2 %>% <br/>
+  add(2) %>%<br/> 
+  c(6, NA) %>% <br/>
+  mean(na.rm = T) %>%<br/> 
+  equals(5)

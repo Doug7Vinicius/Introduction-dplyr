@@ -10,9 +10,11 @@ Uma contribuição importante do `dplyr` é que ele fornece uma "gramática" (em
 
 ## Gramática do `dplyr`
 
-Alguns dos principais "verbos" fornecidos pelo `dplyr` são:
+Alguns dos principais "verbos" básicos de tablea única fornecidos pelo `dplyr` são:
 
   -`select`: retorna um subconjunto das colunas de um data.frames, usando uma notação flexível;
+  
+  - `pull()`: retire uma única variável;
   
   -`filter`: extrair um subconjunto de linhas(observações) de um data.frames com base em condições lógicas;
   
@@ -296,43 +298,3 @@ str(chic.f)
 ## `group_by()`
 
 
-## Operador *pipe* `%>%`
-
-```{r figure9, echo=FALSE, fig.align='center', out.width='25%'}
-knitr::include_graphics("imagens/magritt.png")
-```
-
-O operador do pipeline `%>%é` é muito útil para reunir várias funções em uma sequência de operações. Os tubos são uma ferramenta poderosa para expressar claramente uma sequência de várias operações. O pipe, `%>%` vem do pacote `magrittr` de Stefan Milton Bache. Pacotes no `tidyverse` carregam `%>%` automaticamente, para que normalmente não carregue o magrittr explicitamente. 
-
-Para começar a utilizar o *pipe*, instale e carregue o pacote `magrittr`.
-
-```{r eval=FALSE}
-install.packages("magrittr")
-library(magrittr)
-```
-
-Para mais informações sobre o *pipe*, outros operadores relacionados e exemplos de utilização, visite a página [Ceci n’est pas un pipe](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html)
-
-### Exercícios
-
-  - 1. Reescreva a expressão abaixo utilizando o `%>%`.
-
-  >round(mean(sum(1:10)/3), digits = 1)
-
-**Dica**: utilize a função `magrittr::divide_by()`. Veja o help da função para mais informações.
-
-  - 2. Reescreva o código abaixo utilizando o `%>%`.
-  
->x <- rnorm(100)<br/>
-x.pos <- x[x>0]<br/>
-media <- mean(x.pos)<br/>
-saida <- round(media, 1)<br/>
-
-
-  - 3. Sem rodar, diga qual a saída do código abaixo. Consulte o `help` das funções caso precise.
-
->2 %>% <br/>
-  add(2) %>%<br/> 
-  c(6, NA) %>% <br/>
-  mean(na.rm = T) %>%<br/> 
-  equals(5)

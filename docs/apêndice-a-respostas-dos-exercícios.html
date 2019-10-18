@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5 Vôos em Nova York de 2013 | Apostila: introdução ao pacote dplyr</title>
+  <title>Apêndice A: Respostas dos Exercícios | Apostila: introdução ao pacote dplyr</title>
   <meta name="description" content="Minicurso sobre introdução ao pacote dplyr ministrado na XIX SEMAT.." />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5 Vôos em Nova York de 2013 | Apostila: introdução ao pacote dplyr" />
+  <meta property="og:title" content="Apêndice A: Respostas dos Exercícios | Apostila: introdução ao pacote dplyr" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="Doug7Vinicius/introduction-dplyr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 Vôos em Nova York de 2013 | Apostila: introdução ao pacote dplyr" />
+  <meta name="twitter:title" content="Apêndice A: Respostas dos Exercícios | Apostila: introdução ao pacote dplyr" />
   
   <meta name="twitter:description" content="Minicurso sobre introdução ao pacote dplyr ministrado na XIX SEMAT.." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="method.html"/>
-<link rel="next" href="summary.html"/>
+<link rel="prev" href="references.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -204,66 +204,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="application" class="section level1">
-<h1><span class="header-section-number">5</span> Vôos em Nova York de 2013</h1>
-<p>A visualização é uma ferramenta importante para a geração de <em>insights</em>, mas é raro você obter os dados exatamente da forma correta de que precisa. Freqüentemente, você precisará criar algumas novas variáveis ou resumos, ou talvez apenas queira renomear as variáveis ou reordenar as observações para tornar os dados um pouco mais fáceis de trabalhar. Você aprenderá como fazer tudo isso (e muito mais!) Neste capítulo, que ensinará como transformar seus dados usando o pacote <code>dplyr</code> e um novo conjunto de dados em voos partindo de Nova York em 2013.</p>
-<p>Neste capítulo, vamos nos concentrar em como usar o pacote <code>dplyr</code>, outro membro central do <code>tidyverse</code>. Ilustraremos as ideias principais usando dados do pacote <code>nycflights13</code> e usaremos o <code>ggplot2</code> para nos ajudar a entender os dados.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1"><span class="kw">library</span>(nycflights13)</a>
-<a class="sourceLine" id="cb74-2" title="2"><span class="kw">library</span>(tidyverse) <span class="co"># ou isoladamente: library(dplyr).</span></a></code></pre></div>
-<div id="nycflights13" class="section level2">
-<h2><span class="header-section-number">5.1</span> nycflights13</h2>
-<p>Esse data frames contém todos os 336.776 vôos que partiram de Nova York em 2013. Os dados são do <a href="https://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=120&amp;Link=0">Bureau of Transportation Statistics</a> dos EUA e estão documentados em <code>?flights</code>.</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1">flights</a></code></pre></div>
-<pre><code>## # A tibble: 336,776 x 19
-##     year month   day dep_time sched_dep_time dep_delay arr_time
-##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;
-##  1  2013     1     1      517            515         2      830
-##  2  2013     1     1      533            529         4      850
-##  3  2013     1     1      542            540         2      923
-##  4  2013     1     1      544            545        -1     1004
-##  5  2013     1     1      554            600        -6      812
-##  6  2013     1     1      554            558        -4      740
-##  7  2013     1     1      555            600        -5      913
-##  8  2013     1     1      557            600        -3      709
-##  9  2013     1     1      557            600        -3      838
-## 10  2013     1     1      558            600        -2      753
-## # ... with 336,766 more rows, and 12 more variables: sched_arr_time &lt;int&gt;,
-## #   arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;,
-## #   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,
-## #   minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-<p>Para ver todo o conjunto de dados, você pode executar o <code>View(flights)</code> que abrirá o conjunto de dados no visualizador do RStudio. Imprime de forma distinta do data frame, porque é um <code>tibble</code>.</p>
-<p>Abreviações de letras sob os nomes das colunas. Eles descrevem o tipo de cada variável:</p>
-<p>-<code>int</code> significa números inteiros;</p>
-<p>-<code>dbl</code> significa números duplos ou reais;</p>
-<p>-<code>chr</code> significa vetores de caracteres ou seqüências de caracteres;</p>
-<p>-<code>dttm</code> significa data e hora (uma data + uma hora).</p>
-<p>-<code>lgl</code> significa vetores lógicos que contêm apenas <code>TRUE</code> ou <code>FALSE</code>;</p>
-<p>-<code>fctr</code> significa fatores, que R usa para representar variáveis categóricas com valores possíveis fixos.</p>
-<p>-<code>data</code> significa data.</p>
-<p>Existem outros tipos comuns de variáveis que não são usadas neste conjunto de dados.</p>
-</div>
-<div id="filter-1" class="section level2">
-<h2><span class="header-section-number">5.2</span> <code>filter()</code></h2>
-<p><code>filter()</code> permite agrupar observações com base em seus valores. O primeiro argumento da função é o nome do data frames. Por exemplo, podemos selecionar todos os valores</p>
-<div id="comparações" class="section level3">
-<h3><span class="header-section-number">5.2.1</span> Comparações</h3>
-</div>
-<div id="operadores-lógicos" class="section level3">
-<h3><span class="header-section-number">5.2.2</span> Operadores Lógicos</h3>
-</div>
-<div id="valores-ausentes" class="section level3">
-<h3><span class="header-section-number">5.2.3</span> Valores Ausentes</h3>
+<div id="apêndice-a-respostas-dos-exercícios" class="section level1 unnumbered">
+<h1>Apêndice A: Respostas dos Exercícios</h1>
 
-</div>
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="method.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="summary.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="references.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

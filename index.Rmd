@@ -32,12 +32,10 @@ O livro [R for data science](https://r4ds.had.co.nz/) é o mais indicado para ap
 
 ## Conteúdo:
 
-    - Primeiro dia (22/10): Breve introdução ao R, organização de dados,
-    exercícios; 
-    
+    - Primeiro dia (22/10): Breve introdução ao R, Tibbles e Data frames,
+    tidyr, exercícios; 
     - Segundo dia (23/10): select(), rename(), arrange(), 
     mutate(), summarise(), exercícios;
-    
     - Terceiro dia (24/10): agrupar dados, combinar conjuntos de dados.
     
 
