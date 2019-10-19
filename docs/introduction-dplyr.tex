@@ -168,8 +168,8 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\hypertarget{prefuxe1cio}{%
-\chapter{Prefácio}\label{prefuxe1cio}}
+\hypertarget{prefacio}{%
+\chapter{Prefácio}\label{prefacio}}
 
 \begin{center}\includegraphics[width=0.3\linewidth]{imagens/dplyr} \end{center}
 
@@ -177,8 +177,8 @@ Este material foi elaborado com o proprósito de um minicurso, que tem como obje
 
 O livro \href{https://r4ds.had.co.nz/}{R for data science} é o mais indicado para aprender sobre o universo \texttt{tidyverse}. Foi usado o livro do Roger D. Peng \href{https://bookdown.org/rdpeng/rprogdatascience/}{R Programming for Data Science} essencial para compreender as noções básicas do R. Nesse minicurso abordamos mais sobre a gramática das funções básicas do \texttt{dplyr} alguns exemplos e exercícios abordados.
 
-\hypertarget{puxfablico-alvo}{%
-\section{Público-alvo}\label{puxfablico-alvo}}
+\hypertarget{publico-alvo}{%
+\section{Público-alvo}\label{publico-alvo}}
 
 \begin{itemize}
 \tightlist
@@ -188,8 +188,8 @@ O livro \href{https://r4ds.had.co.nz/}{R for data science} é o mais indicado pa
   Acadêmicos com interesse em aprender análises e códigos mais legíveis em R.
 \end{itemize}
 
-\hypertarget{conteuxfado}{%
-\section{Conteúdo:}\label{conteuxfado}}
+\hypertarget{conteudo}{%
+\section{Conteúdo:}\label{conteudo}}
 
 \begin{verbatim}
 - Primeiro dia (22/10): Breve introdução ao R, Tibbles e Data frames,
@@ -199,8 +199,8 @@ mutate(), summarise(), exercícios;
 - Terceiro dia (24/10): agrupar dados, combinar conjuntos de dados.
 \end{verbatim}
 
-\hypertarget{pruxe9-requisitos}{%
-\section{Pré-requisitos}\label{pruxe9-requisitos}}
+\hypertarget{pre-requisitos}{%
+\section{Pré-requisitos}\label{pre-requisitos}}
 
 \hypertarget{intro}{%
 \chapter{Introdução}\label{intro}}
@@ -413,8 +413,8 @@ A função \texttt{View()} chama um visualizador de dados no estilo de planilhas
 
 Os argumentos da função são: \texttt{x} um objeto do R que pode ser coagido a um quadro de dados. E \texttt{title}, título para a janela do visualizador. O padrão é o nome de x prefixado.
 
-\hypertarget{o-que-uxe9-dados-organizados}{%
-\section{O que é Dados organizados?}\label{o-que-uxe9-dados-organizados}}
+\hypertarget{o-que-e-dados-organizados}{%
+\section{O que é Dados organizados?}\label{o-que-e-dados-organizados}}
 
 \begin{quote}
 ``Os conjuntos de dados organizados são todos iguais, mas todos os conjuntos de dados confusos são confusos à sua maneira.'' -- Hadley Wickham
@@ -554,7 +554,7 @@ Os dados que satisfazem essas regras são conhecidos como dados organizados. Obs
 Em \texttt{table1}, cada variável é colocada em sua própria coluna, cada observação em sua própria linha e cada valor em sua própria célula.
 
 \hypertarget{operador-pipe}{%
-\section{\texorpdfstring{Operador \emph{pipe} \texttt{\%\textgreater{}\%}}{Operador pipe \%\textgreater\%}}\label{operador-pipe}}
+\section{\texorpdfstring{Operador \emph{pipe} \texttt{\%\textgreater{}\%}}{Operador pipe \%\textgreater{}\%}}\label{operador-pipe}}
 
 \begin{center}\includegraphics[width=0.25\linewidth]{imagens/magritt} \end{center}
 
@@ -603,8 +603,8 @@ Para começar a utilizar o \emph{pipe}, instale e carregue o pacote \texttt{magr
 
 Para mais informações sobre o \emph{pipe}, outros operadores relacionados e exemplos de utilização, visite a página \href{https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html}{Ceci n'est pas un pipe}. Ou consulte a vinheta do pacote \texttt{vignette("magrittr")}.
 
-\hypertarget{breve-introduuxe7uxe3o-ao-tidyr}{%
-\section{\texorpdfstring{Breve Introdução ao \texttt{tidyr}}{Breve Introdução ao tidyr}}\label{breve-introduuxe7uxe3o-ao-tidyr}}
+\hypertarget{breve-introducao-ao-tidyr}{%
+\section{\texorpdfstring{Breve Introdução ao \texttt{tidyr}}{Breve Introdução ao tidyr}}\label{breve-introducao-ao-tidyr}}
 
 \begin{center}\includegraphics[width=0.25\linewidth]{imagens/tidyr} \end{center}
 
@@ -620,8 +620,8 @@ O \texttt{tidyr} possui duas funções principais:
 
 Além disso, existem duas funções que podem ser importantes na nossa análise: \texttt{separate} e \texttt{unite}, que separa uma coluna em duas e vice versa.
 
-\hypertarget{gather}{%
-\subsection{\texorpdfstring{\texttt{gather()}}{gather()}}\label{gather}}
+\hypertarget{funcao-gather}{%
+\subsection{\texorpdfstring{Função \texttt{gather()}}{Função gather()}}\label{funcao-gather}}
 
 Vamos criar um \texttt{tibble} no formato \emph{wide} e transformá-lo em um dado \emph{tidy}:
 
@@ -643,8 +643,11 @@ Vamos criar um \texttt{tibble} no formato \emph{wide} e transformá-lo em um dad
 
 a função \texttt{gather()} retorna um \texttt{tibble} com duas colunas, por padrão, isso se não inserirmos nenhum parâmetro além do \texttt{tibble}.
 
-\hypertarget{exercuxedcios}{%
-\subsection{Exercícios}\label{exercuxedcios}}
+\hypertarget{funcao-spread}{%
+\chapter{\texorpdfstring{Função \texttt{spread()}}{Função spread()}}\label{funcao-spread}}
+
+\hypertarget{exercicios}{%
+\subsection{Exercícios}\label{exercicios}}
 
 \begin{itemize}
 \tightlist
@@ -656,8 +659,8 @@ a função \texttt{gather()} retorna um \texttt{tibble} com duas colunas, por pa
   3.Qual função básica que utilizamos para verificar a estrutura dos dados de um data frame?
 \end{itemize}
 
-\hypertarget{exercuxedcios-1}{%
-\subsection{Exercícios}\label{exercuxedcios-1}}
+\hypertarget{exercicios-1}{%
+\subsection{Exercícios}\label{exercicios-1}}
 
 \begin{itemize}
 \item
@@ -687,10 +690,10 @@ round(mean(sum(1:10)/3), digits = 1)
 \end{itemize}
 
 \begin{quote}
-x \textless- rnorm(100)
-x.pos \textless- x{[}x\textgreater0{]}
-media \textless- mean(x.pos)
-saida \textless- round(media, 1)
+x \textless{}- rnorm(100)
+x.pos \textless{}- x{[}x\textgreater{}0{]}
+media \textless{}- mean(x.pos)
+saida \textless{}- round(media, 1)
 \end{quote}
 
 \begin{itemize}
@@ -705,10 +708,10 @@ saida \textless- round(media, 1)
 \end{itemize}
 
 \begin{quote}
-2 \%\textgreater\%
-add(2) \%\textgreater\%
-c(6, NA) \%\textgreater\%
-mean(na.rm = T) \%\textgreater\%
+2 \%\textgreater{}\%
+add(2) \%\textgreater{}\%
+c(6, NA) \%\textgreater{}\%
+mean(na.rm = T) \%\textgreater{}\%
 equals(5)
 \end{quote}
 
@@ -724,8 +727,8 @@ O pacote \texttt{dplyr} foi desenvolvido por Hadley Wickham, cientista chefe do 
 
 Uma contribuição importante do \texttt{dplyr} é que ele fornece uma ``gramática'' (em particular, verbos) para manipulação
 
-\hypertarget{gramuxe1tica-do-dplyr}{%
-\section{\texorpdfstring{Gramática do \texttt{dplyr}}{Gramática do dplyr}}\label{gramuxe1tica-do-dplyr}}
+\hypertarget{gramatica-do-dplyr}{%
+\section{\texorpdfstring{Gramática do \texttt{dplyr}}{Gramática do dplyr}}\label{gramatica-do-dplyr}}
 
 Alguns dos principais ``verbos'' básicos de tablea única fornecidos pelo \texttt{dplyr} são:
 
@@ -747,8 +750,8 @@ Alguns dos principais ``verbos'' básicos de tablea única fornecidos pelo \text
 
 -\texttt{summarise/summarize}: gera estatísticas resumidas de diferentes variáveis no data.frames, possivelmente dentro dos estratos.
 
-\hypertarget{propriedades-das-funuxe7uxf5es-do-dplyr}{%
-\section{\texorpdfstring{Propriedades das funções do \texttt{dplyr}}{Propriedades das funções do dplyr}}\label{propriedades-das-funuxe7uxf5es-do-dplyr}}
+\hypertarget{propriedades-das-funcoes-do-dplyr}{%
+\section{\texorpdfstring{Propriedades das funções do \texttt{dplyr}}{Propriedades das funções do dplyr}}\label{propriedades-das-funcoes-do-dplyr}}
 
 As funções têm algumas características comuns:
 
@@ -1134,18 +1137,18 @@ A função \texttt{select()} permite uma sintaxe especial que especifica nomes d
 
 \begin{verbatim}
 ## # A tibble: 10 x 8
-##       V4     V7     V1    V9    V8    V5    V2     V6
-##    <dbl>  <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl>  <dbl>
-##  1 0.831 0.0204 0.0734 0.957 0.997 0.214 0.377 0.471 
-##  2 0.587 0.672  0.573  0.408 0.298 0.250 0.208 0.623 
-##  3 0.495 0.597  0.155  0.418 0.917 0.128 0.547 0.998 
-##  4 0.544 0.997  0.0111 0.392 0.814 0.776 0.109 0.120 
-##  5 0.749 0.552  0.835  0.136 0.550 0.179 0.971 0.686 
-##  6 0.669 0.151  0.0465 0.804 0.425 0.966 0.626 0.129 
-##  7 0.593 0.152  0.602  0.490 0.132 0.236 0.383 0.232 
-##  8 0.675 0.711  0.875  0.177 0.394 0.592 0.977 0.600 
-##  9 0.731 0.474  0.322  0.274 0.135 0.195 0.908 0.559 
-## 10 0.125 0.595  0.606  0.411 0.191 0.986 0.634 0.0677
+##        V4     V7     V1    V9    V8    V5     V2     V6
+##     <dbl>  <dbl>  <dbl> <dbl> <dbl> <dbl>  <dbl>  <dbl>
+##  1 0.141  0.816  0.303  0.151 0.699 0.775 0.548  0.0866
+##  2 0.252  0.962  0.215  0.927 0.213 0.943 0.0928 0.361 
+##  3 0.0525 0.536  0.0995 0.477 0.557 0.731 0.456  0.393 
+##  4 0.339  0.189  0.750  0.538 0.863 0.767 0.176  0.535 
+##  5 0.104  0.0244 0.198  0.465 0.286 0.592 0.640  0.126 
+##  6 0.737  0.994  0.243  0.844 0.286 0.271 0.691  0.963 
+##  7 0.794  0.0861 0.781  0.149 0.891 0.646 0.0250 0.0231
+##  8 0.106  0.540  0.677  0.189 0.161 0.190 0.350  0.495 
+##  9 0.855  0.338  0.162  0.133 0.790 0.500 0.236  0.589 
+## 10 0.772  0.121  0.0717 0.774 0.832 0.805 0.277  0.873
 \end{verbatim}
 
 \begin{Shaded}
@@ -1156,18 +1159,18 @@ A função \texttt{select()} permite uma sintaxe especial que especifica nomes d
 
 \begin{verbatim}
 ## # A tibble: 10 x 3
-##       V4    V5     V6
-##    <dbl> <dbl>  <dbl>
-##  1 0.831 0.214 0.471 
-##  2 0.587 0.250 0.623 
-##  3 0.495 0.128 0.998 
-##  4 0.544 0.776 0.120 
-##  5 0.749 0.179 0.686 
-##  6 0.669 0.966 0.129 
-##  7 0.593 0.236 0.232 
-##  8 0.675 0.592 0.600 
-##  9 0.731 0.195 0.559 
-## 10 0.125 0.986 0.0677
+##        V4    V5     V6
+##     <dbl> <dbl>  <dbl>
+##  1 0.141  0.775 0.0866
+##  2 0.252  0.943 0.361 
+##  3 0.0525 0.731 0.393 
+##  4 0.339  0.767 0.535 
+##  5 0.104  0.592 0.126 
+##  6 0.737  0.271 0.963 
+##  7 0.794  0.646 0.0231
+##  8 0.106  0.190 0.495 
+##  9 0.855  0.500 0.589 
+## 10 0.772  0.805 0.873
 \end{verbatim}
 
 Você também pode usar expressões regulares mais gerais, se necessário. Veja a página de ajuda (?select) para mais detalhes.
@@ -1193,8 +1196,8 @@ Outra opção é usar \texttt{select()} em conjunto com o \texttt{everything()} 
 ## 6 5.833333  25.77233 chic 40.0 35.125 1987-01-06         NA   48.00000
 \end{verbatim}
 
-\hypertarget{exercuxedcios-2}{%
-\subsection{Exercícios}\label{exercuxedcios-2}}
+\hypertarget{exercicios-2}{%
+\subsection{Exercícios}\label{exercicios-2}}
 
 \begin{itemize}
 \item
@@ -1223,7 +1226,7 @@ Outra opção é usar \texttt{select()} em conjunto com o \texttt{everything()} 
 \end{itemize}
 
 \begin{quote}
-vars \textless- c(``year'', ``month'', ``day'', ``dep\_delay'', ``arr\_delay'')
+vars \textless{}- c(``year'', ``month'', ``day'', ``dep\_delay'', ``arr\_delay'')
 \end{quote}
 
 \hypertarget{rename}{%
@@ -1265,8 +1268,8 @@ A coluna \texttt{dptp} deve representar a temperatura do ponto de orvalho e a co
 
 A sintaxe dentro da \texttt{rename()} função é ter o novo nome no lado esquerdo do \texttt{=} sinal e o nome antigo no lado direito.
 
-\hypertarget{exercuxedcios-3}{%
-\subsection{Exercícios}\label{exercuxedcios-3}}
+\hypertarget{exercicios-3}{%
+\subsection{Exercícios}\label{exercicios-3}}
 
 \hypertarget{mutate}{%
 \section{\texorpdfstring{\texttt{mutate()}}{mutate()}}\label{mutate}}
@@ -1327,8 +1330,8 @@ Observe que existem apenas duas colunas no quadro de dados transformados.
 
 Há inúmeras funções que pode ser feita, a propriedade é que a função deva ser vetorizada: ela deve pegar um vetor de valores como entrada, retornar um vetor com o mesmo número de valores que a saída. Não há como listar todas as funções possíveis que você possa usar, mas aqui está uma seleção de funções frequentemente úteis:
 
-\hypertarget{exercuxedcios-4}{%
-\subsection{Exercícios}\label{exercuxedcios-4}}
+\hypertarget{exercicios-4}{%
+\subsection{Exercícios}\label{exercicios-4}}
 
 \hypertarget{filter}{%
 \section{\texorpdfstring{\texttt{filter()}}{filter()}}\label{filter}}
@@ -1366,9 +1369,7 @@ Suponhamos que desejássemos extrair as linhas do banco \texttt{chicago} em que 
 \hypertarget{application}{%
 \chapter{Vôos em Nova York de 2013}\label{application}}
 
-A visualização é uma ferramenta importante para a geração de \emph{insights}, mas é raro você obter os dados exatamente da forma correta de que precisa. Freqüentemente, você precisará criar algumas novas variáveis ou resumos, ou talvez apenas queira renomear as variáveis ou reordenar as observações para tornar os dados um pouco mais fáceis de trabalhar. Você aprenderá como fazer tudo isso (e muito mais!) Neste capítulo, que ensinará como transformar seus dados usando o pacote \texttt{dplyr} e um novo conjunto de dados em voos partindo de Nova York em 2013.
-
-Neste capítulo, vamos nos concentrar em como usar o pacote \texttt{dplyr}, outro membro central do \texttt{tidyverse}. Ilustraremos as ideias principais usando dados do pacote \texttt{nycflights13} e usaremos o \texttt{ggplot2} para nos ajudar a entender os dados.
+Neste capítulo, vamos nos concentrar em como usar o pacote \texttt{dplyr} e o que aprendemos no capítulo anterior. Ilustraremos as ideias principais usando dados do pacote \texttt{nycflights13} e usaremos o \texttt{ggplot2} para nos ajudar a entender os dados.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1380,7 +1381,7 @@ Neste capítulo, vamos nos concentrar em como usar o pacote \texttt{dplyr}, outr
 \hypertarget{nycflights13}{%
 \section{nycflights13}\label{nycflights13}}
 
-Esse data frames contém todos os 336.776 vôos que partiram de Nova York em 2013. Os dados são do \href{https://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=120\&Link=0}{Bureau of Transportation Statistics} dos EUA e estão documentados em \texttt{?flights}.
+Este quadro de dados contém todos os 336.776 vôos que partiram de Nova York em 2013. Os dados são do \href{https://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=120\&Link=0}{Bureau of Transportation Statistics} dos EUA e estão documentados em \texttt{?flights}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1408,9 +1409,9 @@ Esse data frames contém todos os 336.776 vôos que partiram de Nova York em 201
 ## #   minute <dbl>, time_hour <dttm>
 \end{verbatim}
 
-Para ver todo o conjunto de dados, você pode executar o \texttt{View(flights)} que abrirá o conjunto de dados no visualizador do RStudio. Imprime de forma distinta do data frame, porque é um \texttt{tibble}.
+Para ver todo o conjunto de dados, você pode executar o \texttt{View(flights)} que abrirá o conjunto de dados no visualizador do RStudio.
 
-Abreviações de letras sob os nomes das colunas. Eles descrevem o tipo de cada variável:
+As abreviações de letras sob os nomes das colunas descrevem o tipo de cada variável:
 
 -\texttt{int} significa números inteiros;
 
@@ -1428,16 +1429,47 @@ Abreviações de letras sob os nomes das colunas. Eles descrevem o tipo de cada 
 
 Existem outros tipos comuns de variáveis que não são usadas neste conjunto de dados.
 
+\hypertarget{formato}{%
+\section{Formato}\label{formato}}
+
+Vamos entender o formato do nosso banco e suas variáveis. Fazendo alterações e modificações necessárias para melhor compreender o processo.
+
+Colunas do quadro de dados:
+
+\begin{itemize}
+\item
+  year, month e day referência a data de partida. Poderemos alterar os nomes para o nosso vernáculo.
+\item
+  dep\_time e arr\_time: horários reais de partida e chegada (formato em minutos)
+\item
+  sched\_dep\_time, sched\_arr\_time: horários de partida e chegada programados (formato em minutos)
+\item
+  dep\_delay, arr\_delay: Atrasos de partida e chegada, em minutos. Tempos negativos representam partidas/chegadas antecipadas.
+\item
+  carrier: códigos de operadoras das companhias aéreas.
+\item
+  flight: número do vôo.
+\item
+  tailnum:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Voos <-}\StringTok{ }\NormalTok{flights }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{rename}\NormalTok{(}\DataTypeTok{Ano =}\NormalTok{ year, }\StringTok{"Mês" = month, Dia = day, )}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{filter-1}{%
 \section{\texorpdfstring{\texttt{filter()}}{filter()}}\label{filter-1}}
 
 \texttt{filter()} permite agrupar observações com base em seus valores. O primeiro argumento da função é o nome do data frames. Por exemplo, podemos selecionar todos os valores
 
-\hypertarget{comparauxe7uxf5es}{%
-\subsection{Comparações}\label{comparauxe7uxf5es}}
+\hypertarget{comparacoes}{%
+\subsection{Comparações}\label{comparacoes}}
 
-\hypertarget{operadores-luxf3gicos}{%
-\subsection{Operadores Lógicos}\label{operadores-luxf3gicos}}
+\hypertarget{operadores-logicos}{%
+\subsection{Operadores Lógicos}\label{operadores-logicos}}
 
 \hypertarget{valores-ausentes}{%
 \subsection{Valores Ausentes}\label{valores-ausentes}}
@@ -1461,8 +1493,8 @@ OLIVEIRA, Paulo Felipe de; GUERRA, Saulo; MCDONNELL, Robert. Ciência de Dados c
 
 Dasu T, Johnson T (2003). Exploratory Data Mining and Data Cleaning. Wiley-IEEE.
 
-\hypertarget{apuxeandice-a-respostas-dos-exercuxedcios}{%
-\chapter*{Apêndice A: Respostas dos Exercícios}\label{apuxeandice-a-respostas-dos-exercuxedcios}}
+\hypertarget{apendice-a-respostas-dos-exercicios}{%
+\chapter*{Apêndice A: Respostas dos Exercícios}\label{apendice-a-respostas-dos-exercicios}}
 \addcontentsline{toc}{chapter}{Apêndice A: Respostas dos Exercícios}
 
 \bibliography{book.bib,packages.bib}

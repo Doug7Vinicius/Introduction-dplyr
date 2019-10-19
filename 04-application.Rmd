@@ -1,8 +1,6 @@
 # Vôos em Nova York de 2013 {#application}
 
-A visualização é uma ferramenta importante para a geração de *insights*, mas é raro você obter os dados exatamente da forma correta de que precisa. Freqüentemente, você precisará criar algumas novas variáveis ou resumos, ou talvez apenas queira renomear as variáveis ou reordenar as observações para tornar os dados um pouco mais fáceis de trabalhar. Você aprenderá como fazer tudo isso (e muito mais!) Neste capítulo, que ensinará como transformar seus dados usando o pacote `dplyr` e um novo conjunto de dados em voos partindo de Nova York em 2013.
-
-Neste capítulo, vamos nos concentrar em como usar o pacote `dplyr`, outro membro central do `tidyverse`. Ilustraremos as ideias principais usando dados do pacote `nycflights13` e usaremos o `ggplot2` para nos ajudar a entender os dados.
+Neste capítulo, vamos nos concentrar em como usar o pacote `dplyr` e o que aprendemos no capítulo anterior. Ilustraremos as ideias principais usando dados do pacote `nycflights13` e usaremos o `ggplot2` para nos ajudar a entender os dados.
 
 ```{r setup1, warning=FALSE}
 library(nycflights13)
@@ -11,15 +9,15 @@ library(tidyverse) # ou isoladamente: library(dplyr).
 
 ## nycflights13
 
-Esse data frames contém todos os 336.776 vôos que partiram de Nova York em 2013. Os dados são do [Bureau of Transportation Statistics](https://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=120&Link=0) dos EUA e estão documentados em `?flights`.
+Este quadro de dados contém todos os 336.776 vôos que partiram de Nova York em 2013. Os dados são do [Bureau of Transportation Statistics](https://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=120&Link=0) dos EUA e estão documentados em `?flights`.
 
 ```{r}
 flights
 ```
 
-Para ver todo o conjunto de dados, você pode executar o `View(flights)` que abrirá o conjunto de dados no visualizador do RStudio. Imprime de forma distinta do data frame, porque é um `tibble`. 
+Para ver todo o conjunto de dados, você pode executar o `View(flights)` que abrirá o conjunto de dados no visualizador do RStudio.
 
-Abreviações de letras sob os nomes das colunas. Eles descrevem o tipo de cada variável:
+As abreviações de letras sob os nomes das colunas descrevem o tipo de cada variável:
 
 -`int` significa números inteiros;
 
@@ -36,6 +34,33 @@ Abreviações de letras sob os nomes das colunas. Eles descrevem o tipo de cada 
 -`data` significa data.
 
 Existem outros tipos comuns de variáveis que não são usadas neste conjunto de dados.
+
+## Formato 
+
+Vamos entender o formato do nosso banco e suas variáveis. Fazendo alterações e modificações necessárias para melhor compreender o processo.
+
+Colunas do quadro de dados:
+
+  - year, month e day referência a data de partida. Poderemos alterar os nomes para o nosso vernáculo.
+
+  - dep_time e arr_time: horários reais de partida e chegada (formato em minutos)
+
+  - sched_dep_time, sched_arr_time: horários de partida e chegada programados (formato em minutos)
+  
+  - dep_delay, arr_delay: Atrasos de partida e chegada, em minutos. Tempos negativos representam partidas/chegadas antecipadas.
+  
+  - carrier: códigos de operadoras das companhias aéreas.
+  
+  - flight: número do vôo.
+  
+  - tailnum:
+
+
+
+```{r}
+Voos <- flights %>% 
+  rename(Ano = year, "Mês" = month, Dia = day, )
+```
 
 
 ## `filter()`

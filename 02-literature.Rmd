@@ -127,7 +127,7 @@ O `tidyr` possui duas funções principais:
 
 Além disso, existem duas funções que podem ser importantes na nossa análise: `separate` e `unite`, que separa uma coluna em duas e vice versa.
 
-### `gather()`
+### Função `gather()`
 
 Vamos criar um `tibble` no formato *wide* e transformá-lo em um dado *tidy*:
 
@@ -139,6 +139,9 @@ dados_wide
 
 a função `gather()` retorna um `tibble` com duas colunas, por padrão, isso se não inserirmos nenhum parâmetro além do `tibble`.
 
+# Função `spread()`
+
+
 ### Exercícios
 
 - 1.Qual a diferença entre uma matriz e um data frame no R?
@@ -149,7 +152,7 @@ a função `gather()` retorna um `tibble` com duas colunas, por padrão, isso se
 
   - 1. Reescreva a expressão abaixo utilizando o `%>%`.
 
-  >round(mean(sum(1:10)/3), digits = 1)
+>round(mean(sum(1:10)/3), digits = 1)
 
 **Dica**: utilize a função `magrittr::divide_by()`. Veja o help da função para mais informações.
 
