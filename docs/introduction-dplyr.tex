@@ -579,11 +579,11 @@ Tubulação básica:
 \begin{itemize}
 \tightlist
 \item
-  x \texttt{\%\textgreater{}\%} \textbf{f} é equivalente a \textbf{f(x)};
+  x \texttt{\%\textgreater{}\%} \emph{f} é equivalente a \emph{f(x)};
 \item
-  x \texttt{\%\textgreater{}\%} \textbf{f(y)} é equivalente a \textbf{f(x, y)};
+  x \texttt{\%\textgreater{}\%} \emph{f(y)} é equivalente a \emph{f(x, y)};
 \item
-  x \texttt{\%\textgreater{}\%} \textbf{f} \texttt{\%\textgreater{}\%} \textbf{g} \texttt{\%\textgreater{}\%} \textbf{h} é equivalente a \textbf{h(g(f(x)))}.
+  x \texttt{\%\textgreater{}\%} \emph{f} \texttt{\%\textgreater{}\%} \emph{g} \texttt{\%\textgreater{}\%} \emph{h} é equivalente a \emph{h(g(f(x)))}.
 \end{itemize}
 
 O operador do \textbf{pipeline} \texttt{\%\textgreater{}\%} é muito útil para reunir várias funções em uma sequência de operações. Os tubos são uma ferramenta poderosa para expressar claramente as operações. O \textbf{pipe}, \texttt{\%\textgreater{}\%} vem do pacote \texttt{magrittr} de Stefan Milton Bache. Pacotes no \texttt{tidyverse} carregam \texttt{\%\textgreater{}\%} automaticamente, para que normalmente não carregue o magrittr explicitamente.
@@ -1134,18 +1134,18 @@ A função \texttt{select()} permite uma sintaxe especial que especifica nomes d
 
 \begin{verbatim}
 ## # A tibble: 10 x 8
-##       V4    V7     V1     V9     V8     V5     V2    V6
-##    <dbl> <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl> <dbl>
-##  1 0.926 0.736 0.998  0.982  0.192  0.508  0.283  0.813
-##  2 0.764 0.942 0.833  0.800  0.834  0.574  0.323  0.379
-##  3 0.960 0.889 0.671  0.0182 0.328  0.197  0.919  0.311
-##  4 0.993 0.653 0.289  0.639  0.609  0.974  0.0767 0.111
-##  5 0.362 0.578 0.874  0.590  0.798  0.407  0.105  0.829
-##  6 0.789 0.838 0.177  0.507  0.645  0.289  0.534  0.793
-##  7 0.119 0.485 0.0443 0.880  0.0532 0.0609 0.948  0.564
-##  8 0.529 0.416 0.0603 0.544  0.318  0.826  0.265  0.565
-##  9 0.915 0.130 0.666  0.153  0.830  0.937  0.0548 0.426
-## 10 0.587 0.347 0.922  0.945  0.271  0.596  0.810  0.358
+##       V4     V7     V1    V9    V8    V5    V2     V6
+##    <dbl>  <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl>  <dbl>
+##  1 0.831 0.0204 0.0734 0.957 0.997 0.214 0.377 0.471 
+##  2 0.587 0.672  0.573  0.408 0.298 0.250 0.208 0.623 
+##  3 0.495 0.597  0.155  0.418 0.917 0.128 0.547 0.998 
+##  4 0.544 0.997  0.0111 0.392 0.814 0.776 0.109 0.120 
+##  5 0.749 0.552  0.835  0.136 0.550 0.179 0.971 0.686 
+##  6 0.669 0.151  0.0465 0.804 0.425 0.966 0.626 0.129 
+##  7 0.593 0.152  0.602  0.490 0.132 0.236 0.383 0.232 
+##  8 0.675 0.711  0.875  0.177 0.394 0.592 0.977 0.600 
+##  9 0.731 0.474  0.322  0.274 0.135 0.195 0.908 0.559 
+## 10 0.125 0.595  0.606  0.411 0.191 0.986 0.634 0.0677
 \end{verbatim}
 
 \begin{Shaded}
@@ -1156,18 +1156,18 @@ A função \texttt{select()} permite uma sintaxe especial que especifica nomes d
 
 \begin{verbatim}
 ## # A tibble: 10 x 3
-##       V4     V5    V6
-##    <dbl>  <dbl> <dbl>
-##  1 0.926 0.508  0.813
-##  2 0.764 0.574  0.379
-##  3 0.960 0.197  0.311
-##  4 0.993 0.974  0.111
-##  5 0.362 0.407  0.829
-##  6 0.789 0.289  0.793
-##  7 0.119 0.0609 0.564
-##  8 0.529 0.826  0.565
-##  9 0.915 0.937  0.426
-## 10 0.587 0.596  0.358
+##       V4    V5     V6
+##    <dbl> <dbl>  <dbl>
+##  1 0.831 0.214 0.471 
+##  2 0.587 0.250 0.623 
+##  3 0.495 0.128 0.998 
+##  4 0.544 0.776 0.120 
+##  5 0.749 0.179 0.686 
+##  6 0.669 0.966 0.129 
+##  7 0.593 0.236 0.232 
+##  8 0.675 0.592 0.600 
+##  9 0.731 0.195 0.559 
+## 10 0.125 0.986 0.0677
 \end{verbatim}
 
 Você também pode usar expressões regulares mais gerais, se necessário. Veja a página de ajuda (?select) para mais detalhes.

@@ -91,9 +91,9 @@ facilitando a adição de etapas em qualquer lugar da sequência de operações.
 
 Tubulação básica:
 
-  - x `%>%` **f** é equivalente a **f(x)**;
-  - x `%>%` **f(y)** é equivalente a **f(x, y)**;
-  - x `%>%` **f** `%>%` **g** `%>%` **h** é equivalente a **h(g(f(x)))**.
+  - x `%>%` *f* é equivalente a *f(x)*;
+  - x `%>%` *f(y)* é equivalente a *f(x, y)*;
+  - x `%>%` *f* `%>%` *g* `%>%` *h* é equivalente a *h(g(f(x)))*.
 
 O operador do **pipeline** `%>%` é muito útil para reunir várias funções em uma sequência de operações. Os tubos são uma ferramenta poderosa para expressar claramente as operações. O **pipe**, `%>%` vem do pacote `magrittr` de Stefan Milton Bache. Pacotes no `tidyverse` carregam `%>%` automaticamente, para que normalmente não carregue o magrittr explicitamente. 
 

@@ -312,9 +312,9 @@ facilitando a adição de etapas em qualquer lugar da sequência de operações.
 <h3><span class="header-section-number">3.2.1</span> Recursos</h3>
 <p>Tubulação básica:</p>
 <ul>
-<li>x <code>%&gt;%</code> <strong>f</strong> é equivalente a <strong>f(x)</strong>;</li>
-<li>x <code>%&gt;%</code> <strong>f(y)</strong> é equivalente a <strong>f(x, y)</strong>;</li>
-<li>x <code>%&gt;%</code> <strong>f</strong> <code>%&gt;%</code> <strong>g</strong> <code>%&gt;%</code> <strong>h</strong> é equivalente a <strong>h(g(f(x)))</strong>.</li>
+<li>x <code>%&gt;%</code> <em>f</em> é equivalente a <em>f(x)</em>;</li>
+<li>x <code>%&gt;%</code> <em>f(y)</em> é equivalente a <em>f(x, y)</em>;</li>
+<li>x <code>%&gt;%</code> <em>f</em> <code>%&gt;%</code> <em>g</em> <code>%&gt;%</code> <em>h</em> é equivalente a <em>h(g(f(x)))</em>.</li>
 </ul>
 <p>O operador do <strong>pipeline</strong> <code>%&gt;%</code> é muito útil para reunir várias funções em uma sequência de operações. Os tubos são uma ferramenta poderosa para expressar claramente as operações. O <strong>pipe</strong>, <code>%&gt;%</code> vem do pacote <code>magrittr</code> de Stefan Milton Bache. Pacotes no <code>tidyverse</code> carregam <code>%&gt;%</code> automaticamente, para que normalmente não carregue o magrittr explicitamente.</p>
 <blockquote>
