@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3 Tibbles x Data frames | Apostila: introdução ao pacote dplyr</title>
   <meta name="description" content="Minicurso sobre introdução ao pacote dplyr ministrado na XIX SEMAT.." />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3 Tibbles x Data frames | Apostila: introdução ao pacote dplyr" />
   <meta property="og:type" content="book" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="intro.html">
-<link rel="next" href="funcao-spread.html">
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="função-spread.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -39,6 +39,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -129,9 +132,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prefácio</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#publico-alvo"><i class="fa fa-check"></i><b>1.1</b> Público-alvo</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#conteudo"><i class="fa fa-check"></i><b>1.2</b> Conteúdo:</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#pre-requisitos"><i class="fa fa-check"></i><b>1.3</b> Pré-requisitos</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#público-alvo"><i class="fa fa-check"></i><b>1.1</b> Público-alvo</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#conteúdo"><i class="fa fa-check"></i><b>1.2</b> Conteúdo:</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#pré-requisitos"><i class="fa fa-check"></i><b>1.3</b> Pré-requisitos</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introdução</a><ul>
 <li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#universo-tidyverse"><i class="fa fa-check"></i><b>2.1</b> Universo <code>tidyverse</code></a></li>
@@ -140,31 +143,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#swirl"><i class="fa fa-check"></i><b>2.4</b> <em>swirl</em></a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>3</b> Tibbles x Data frames</a><ul>
-<li class="chapter" data-level="3.1" data-path="literature.html"><a href="literature.html#o-que-e-dados-organizados"><i class="fa fa-check"></i><b>3.1</b> O que é Dados organizados?</a></li>
+<li class="chapter" data-level="3.1" data-path="literature.html"><a href="literature.html#o-que-é-dados-organizados"><i class="fa fa-check"></i><b>3.1</b> O que é Dados organizados?</a></li>
 <li class="chapter" data-level="3.2" data-path="literature.html"><a href="literature.html#operador-pipe"><i class="fa fa-check"></i><b>3.2</b> Operador <em>pipe</em> <code>%&gt;%</code></a><ul>
 <li class="chapter" data-level="3.2.1" data-path="literature.html"><a href="literature.html#recursos"><i class="fa fa-check"></i><b>3.2.1</b> Recursos</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="literature.html"><a href="literature.html#breve-introducao-ao-tidyr"><i class="fa fa-check"></i><b>3.3</b> Breve Introdução ao <code>tidyr</code></a><ul>
-<li class="chapter" data-level="3.3.1" data-path="literature.html"><a href="literature.html#funcao-gather"><i class="fa fa-check"></i><b>3.3.1</b> Função <code>gather()</code></a></li>
+<li class="chapter" data-level="3.3" data-path="literature.html"><a href="literature.html#breve-introdução-ao-tidyr"><i class="fa fa-check"></i><b>3.3</b> Breve Introdução ao <code>tidyr</code></a><ul>
+<li class="chapter" data-level="3.3.1" data-path="literature.html"><a href="literature.html#função-gather"><i class="fa fa-check"></i><b>3.3.1</b> Função <code>gather()</code></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="funcao-spread.html"><a href="funcao-spread.html"><i class="fa fa-check"></i><b>4</b> Função <code>spread()</code></a><ul>
-<li class="chapter" data-level="4.0.1" data-path="funcao-spread.html"><a href="funcao-spread.html#exercicios"><i class="fa fa-check"></i><b>4.0.1</b> Exercícios</a></li>
-<li class="chapter" data-level="4.0.2" data-path="funcao-spread.html"><a href="funcao-spread.html#exercicios-1"><i class="fa fa-check"></i><b>4.0.2</b> Exercícios</a></li>
+<li class="chapter" data-level="4" data-path="função-spread.html"><a href="função-spread.html"><i class="fa fa-check"></i><b>4</b> Função <code>spread()</code></a><ul>
+<li class="chapter" data-level="4.0.1" data-path="função-spread.html"><a href="função-spread.html#exercícios"><i class="fa fa-check"></i><b>4.0.1</b> Exercícios</a></li>
+<li class="chapter" data-level="4.0.2" data-path="função-spread.html"><a href="função-spread.html#exercícios-1"><i class="fa fa-check"></i><b>4.0.2</b> Exercícios</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="method.html"><a href="method.html"><i class="fa fa-check"></i><b>5</b> Manipulando Data Frames com <code>dplyr</code></a><ul>
 <li class="chapter" data-level="5.1" data-path="method.html"><a href="method.html#o-pacote-dplyr"><i class="fa fa-check"></i><b>5.1</b> O Pacote <code>dplyr</code></a></li>
-<li class="chapter" data-level="5.2" data-path="method.html"><a href="method.html#gramatica-do-dplyr"><i class="fa fa-check"></i><b>5.2</b> Gramática do <code>dplyr</code></a></li>
-<li class="chapter" data-level="5.3" data-path="method.html"><a href="method.html#propriedades-das-funcoes-do-dplyr"><i class="fa fa-check"></i><b>5.3</b> Propriedades das funções do <code>dplyr</code></a></li>
+<li class="chapter" data-level="5.2" data-path="method.html"><a href="method.html#gramática-do-dplyr"><i class="fa fa-check"></i><b>5.2</b> Gramática do <code>dplyr</code></a></li>
+<li class="chapter" data-level="5.3" data-path="method.html"><a href="method.html#propriedades-das-funções-do-dplyr"><i class="fa fa-check"></i><b>5.3</b> Propriedades das funções do <code>dplyr</code></a></li>
 <li class="chapter" data-level="5.4" data-path="method.html"><a href="method.html#instalando-o-pacote-dplyr"><i class="fa fa-check"></i><b>5.4</b> Instalando o Pacote <code>dplyr</code></a></li>
 <li class="chapter" data-level="5.5" data-path="method.html"><a href="method.html#select"><i class="fa fa-check"></i><b>5.5</b> <code>select()</code></a><ul>
-<li class="chapter" data-level="5.5.1" data-path="method.html"><a href="method.html#exercicios-2"><i class="fa fa-check"></i><b>5.5.1</b> Exercícios</a></li>
+<li class="chapter" data-level="5.5.1" data-path="method.html"><a href="method.html#exercícios-2"><i class="fa fa-check"></i><b>5.5.1</b> Exercícios</a></li>
 </ul></li>
 <li class="chapter" data-level="5.6" data-path="method.html"><a href="method.html#rename"><i class="fa fa-check"></i><b>5.6</b> <code>rename()</code></a><ul>
-<li class="chapter" data-level="5.6.1" data-path="method.html"><a href="method.html#exercicios-3"><i class="fa fa-check"></i><b>5.6.1</b> Exercícios</a></li>
+<li class="chapter" data-level="5.6.1" data-path="method.html"><a href="method.html#exercícios-3"><i class="fa fa-check"></i><b>5.6.1</b> Exercícios</a></li>
 </ul></li>
 <li class="chapter" data-level="5.7" data-path="method.html"><a href="method.html#mutate"><i class="fa fa-check"></i><b>5.7</b> <code>mutate()</code></a><ul>
-<li class="chapter" data-level="5.7.1" data-path="method.html"><a href="method.html#exercicios-4"><i class="fa fa-check"></i><b>5.7.1</b> Exercícios</a></li>
+<li class="chapter" data-level="5.7.1" data-path="method.html"><a href="method.html#exercícios-4"><i class="fa fa-check"></i><b>5.7.1</b> Exercícios</a></li>
 </ul></li>
 <li class="chapter" data-level="5.8" data-path="method.html"><a href="method.html#filter"><i class="fa fa-check"></i><b>5.8</b> <code>filter()</code></a></li>
 <li class="chapter" data-level="5.9" data-path="method.html"><a href="method.html#arrange"><i class="fa fa-check"></i><b>5.9</b> <code>arrange()</code></a></li>
@@ -174,14 +177,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="application.html"><a href="application.html#nycflights13"><i class="fa fa-check"></i><b>6.1</b> nycflights13</a></li>
 <li class="chapter" data-level="6.2" data-path="application.html"><a href="application.html#formato"><i class="fa fa-check"></i><b>6.2</b> Formato</a></li>
 <li class="chapter" data-level="6.3" data-path="application.html"><a href="application.html#filter-1"><i class="fa fa-check"></i><b>6.3</b> <code>filter()</code></a><ul>
-<li class="chapter" data-level="6.3.1" data-path="application.html"><a href="application.html#comparacoes"><i class="fa fa-check"></i><b>6.3.1</b> Comparações</a></li>
-<li class="chapter" data-level="6.3.2" data-path="application.html"><a href="application.html#operadores-logicos"><i class="fa fa-check"></i><b>6.3.2</b> Operadores Lógicos</a></li>
+<li class="chapter" data-level="6.3.1" data-path="application.html"><a href="application.html#comparações"><i class="fa fa-check"></i><b>6.3.1</b> Comparações</a></li>
+<li class="chapter" data-level="6.3.2" data-path="application.html"><a href="application.html#operadores-lógicos"><i class="fa fa-check"></i><b>6.3.2</b> Operadores Lógicos</a></li>
 <li class="chapter" data-level="6.3.3" data-path="application.html"><a href="application.html#valores-ausentes"><i class="fa fa-check"></i><b>6.3.3</b> Valores Ausentes</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>7</b> Conclusão</a></li>
 <li class="chapter" data-level="8" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>8</b> Referências</a></li>
-<li class="chapter" data-level="" data-path="apendice-a-respostas-dos-exercicios.html"><a href="apendice-a-respostas-dos-exercicios.html"><i class="fa fa-check"></i>Apêndice A: Respostas dos Exercícios</a></li>
+<li class="chapter" data-level="" data-path="apêndice-a-respostas-dos-exercícios.html"><a href="apêndice-a-respostas-dos-exercícios.html"><i class="fa fa-check"></i>Apêndice A: Respostas dos Exercícios</a></li>
 <li class="divider"></li>
 <li><center><img src="imagens/bookdown-logo.png" alt="logo" width="30%" height="30%"style="margin: 15px 0 0 0"></center></li>
 <li><center><a href="https://github.com/rstudio/bookdown" target="blank">Publicado em bookdown</a></center></li>
@@ -217,7 +220,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>A função <code>View()</code> chama um visualizador de dados no estilo de planilhas em um objeto R. Semelhante a planilha do excel.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">View</span>(x, title)</a></code></pre></div>
 <p>Os argumentos da função são: <code>x</code> um objeto do R que pode ser coagido a um quadro de dados. E <code>title</code>, título para a janela do visualizador. O padrão é o nome de x prefixado.</p>
-<div id="o-que-e-dados-organizados" class="section level2">
+<div id="o-que-é-dados-organizados" class="section level2">
 <h2><span class="header-section-number">3.1</span> O que é Dados organizados?</h2>
 <blockquote>
 <p>“Os conjuntos de dados organizados são todos iguais, mas todos os conjuntos de dados confusos são confusos à sua maneira.” – Hadley Wickham</p>
@@ -296,12 +299,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Os dados que satisfazem essas regras são conhecidos como dados organizados. Observe que <code>table1</code> são dados organizados.</p>
 <p><img src="imagens/tidy-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p>Essas três regras estão inter-relacionadas, porque é impossível satisfazer apenas duas das três. Essa inter-relação leva a um conjunto ainda mais simples de instruções práticas:</p>
+<ul>
+<li><p>Coloque cada conjunto de dados em um <code>tibble</code>;</p></li>
+<li><p>Coloque cada variável em uma coluna.</p></li>
+</ul>
 <p>Em <code>table1</code>, cada variável é colocada em sua própria coluna, cada observação em sua própria linha e cada valor em sua própria célula.</p>
+<p>Por que garantir que seus dados estejam organizados? Existem duas vantagens principais:</p>
+<ul>
+<li><p>Há uma vantagem geral em escolher uma maneira consistente de armazenar dados. Se você possui uma estrutura de dados consistente, é mais fácil aprender as ferramentas que funcionam com ela porque elas têm uma uniformidade subjacente;</p></li>
+<li><p>Há uma vantagem específica em colocar variáveis em colunas porque permite que a natureza vetorizada de R seja eficiente. Você aprenderá nas funções <code>mutate</code> e <code>summary</code>, a maioria das funções R internas trabalha com vetores de valores. Isso faz com que a transformação de dados organizados pareça particularmente natural.</p></li>
+</ul>
 </div>
 <div id="operador-pipe" class="section level2">
 <h2><span class="header-section-number">3.2</span> Operador <em>pipe</em> <code>%&gt;%</code></h2>
 <p><img src="imagens/magritt.png" width="25%" style="display: block; margin: auto;" /></p>
-<p>O pacote <code>magrittr</code> oferece um conjunto de operadores que promovem semânticas que melhorara seu código que deixa mais claro a compreensão:</p>
+<p>O pacote <code>magrittr</code> tem dois objetivos: diminuir o tempo de desenvolvimento e melhorar a legibilidade e a manutenção do código.
+O pacote <code>magrittr</code> oferece um conjunto de operadores que promovem semânticas que melhorara seu código que deixa mais claro a compreensão:</p>
 <ul>
 <li>estruturar seqüências de operações de dados da esquerda para a direita (em oposição a de dentro e de fora);</li>
 <li>evitando chamadas de função aninhadas;</li>
@@ -323,10 +337,11 @@ facilitando a adição de etapas em qualquer lugar da sequência de operações.
 <p>Para começar a utilizar o <em>pipe</em>, instale e carregue o pacote <code>magrittr</code>.</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;magrittr&quot;</span>)</a>
 <a class="sourceLine" id="cb26-2" title="2"><span class="kw">library</span>(magrittr)</a></code></pre></div>
+<p>O <code>magrittr</code> também fornece três operadores de tubos relacionados. Eles não são tão comuns quanto, <code>%&gt;%</code> mas se tornam úteis em casos especiais.</p>
 <p>Para mais informações sobre o <em>pipe</em>, outros operadores relacionados e exemplos de utilização, visite a página <a href="https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html">Ceci n’est pas un pipe</a>. Ou consulte a vinheta do pacote <code>vignette("magrittr")</code>.</p>
 </div>
 </div>
-<div id="breve-introducao-ao-tidyr" class="section level2">
+<div id="breve-introdução-ao-tidyr" class="section level2">
 <h2><span class="header-section-number">3.3</span> Breve Introdução ao <code>tidyr</code></h2>
 <p><img src="imagens/tidyr.png" width="25%" style="display: block; margin: auto;" /></p>
 <p>O pacote tidyr tem como principal objetivo transformar um data frame para o formato tidy, ou limpo.</p>
@@ -335,7 +350,7 @@ facilitando a adição de etapas em qualquer lugar da sequência de operações.
 <p><code>gather</code>: Transforma um <code>tibble</code> <em>wide</em> em <em>long</em>, ou seja, transforma os dados no formato <em>tidy</em>.</p>
 <p><code>spread</code>: Transforma um <code>tibble</code> <em>long</em> em <em>wide</em>, ou seja, transforma dados que estão no formato <em>tidy</em> em formato não <em>tidy</em>.</p>
 <p>Além disso, existem duas funções que podem ser importantes na nossa análise: <code>separate</code> e <code>unite</code>, que separa uma coluna em duas e vice versa.</p>
-<div id="funcao-gather" class="section level3">
+<div id="função-gather" class="section level3">
 <h3><span class="header-section-number">3.3.1</span> Função <code>gather()</code></h3>
 <p>Vamos criar um <code>tibble</code> no formato <em>wide</em> e transformá-lo em um dado <em>tidy</em>:</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="kw">library</span>(tibble)</a>
@@ -356,16 +371,18 @@ facilitando a adição de etapas em qualquer lugar da sequência de operações.
         </div>
       </div>
 <a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="funcao-spread.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="função-spread.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({

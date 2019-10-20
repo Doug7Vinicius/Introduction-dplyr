@@ -72,7 +72,19 @@ Os dados que satisfazem essas regras são conhecidos como dados organizados. Obs
 knitr::include_graphics("imagens/tidy-1.png")
 ```
 
+Essas três regras estão inter-relacionadas, porque é impossível satisfazer apenas duas das três. Essa inter-relação leva a um conjunto ainda mais simples de instruções práticas:
+
+  - Coloque cada conjunto de dados em um `tibble`;
+
+  - Coloque cada variável em uma coluna.
+
 Em `table1`, cada variável é colocada em sua própria coluna, cada observação em sua própria linha e cada valor em sua própria célula.
+
+Por que garantir que seus dados estejam organizados? Existem duas vantagens principais:
+
+ - Há uma vantagem geral em escolher uma maneira consistente de armazenar dados. Se você possui uma estrutura de dados consistente, é mais fácil aprender as ferramentas que funcionam com ela porque elas têm uma uniformidade subjacente;
+
+  - Há uma vantagem específica em colocar variáveis em colunas porque permite que a natureza vetorizada de R seja eficiente. Você aprenderá nas funções `mutate` e `summary`, a maioria das funções R internas trabalha com vetores de valores. Isso faz com que a transformação de dados organizados pareça particularmente natural.
 
 ## Operador *pipe* `%>%`
 
@@ -80,6 +92,7 @@ Em `table1`, cada variável é colocada em sua própria coluna, cada observaçã
 knitr::include_graphics("imagens/magritt.png")
 ```
 
+O pacote `magrittr` tem dois objetivos: diminuir o tempo de desenvolvimento e melhorar a legibilidade e a manutenção do código. 
 O pacote `magrittr` oferece um conjunto de operadores que promovem semânticas que melhorara seu código que deixa mais claro a compreensão:
 
   - estruturar seqüências de operações de dados da esquerda para a direita (em oposição a de dentro e de fora);
@@ -105,6 +118,10 @@ Para começar a utilizar o *pipe*, instale e carregue o pacote `magrittr`.
 install.packages("magrittr")
 library(magrittr)
 ```
+
+O `magrittr` também fornece três operadores de tubos relacionados. Eles não são tão comuns quanto, `%>%` mas se tornam úteis em casos especiais.
+
+
 
 Para mais informações sobre o *pipe*, outros operadores relacionados e exemplos de utilização, visite a página [Ceci n’est pas un pipe](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html). Ou consulte a vinheta do pacote `vignette("magrittr")`.
 

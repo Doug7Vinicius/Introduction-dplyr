@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5 Manipulando Data Frames com dplyr | Apostila: introdução ao pacote dplyr</title>
   <meta name="description" content="Minicurso sobre introdução ao pacote dplyr ministrado na XIX SEMAT.." />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5 Manipulando Data Frames com dplyr | Apostila: introdução ao pacote dplyr" />
   <meta property="og:type" content="book" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="funcao-spread.html">
-<link rel="next" href="application.html">
+<link rel="prev" href="função-spread.html"/>
+<link rel="next" href="application.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -39,6 +39,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -129,9 +132,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prefácio</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#publico-alvo"><i class="fa fa-check"></i><b>1.1</b> Público-alvo</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#conteudo"><i class="fa fa-check"></i><b>1.2</b> Conteúdo:</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#pre-requisitos"><i class="fa fa-check"></i><b>1.3</b> Pré-requisitos</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#público-alvo"><i class="fa fa-check"></i><b>1.1</b> Público-alvo</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#conteúdo"><i class="fa fa-check"></i><b>1.2</b> Conteúdo:</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#pré-requisitos"><i class="fa fa-check"></i><b>1.3</b> Pré-requisitos</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introdução</a><ul>
 <li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#universo-tidyverse"><i class="fa fa-check"></i><b>2.1</b> Universo <code>tidyverse</code></a></li>
@@ -140,31 +143,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#swirl"><i class="fa fa-check"></i><b>2.4</b> <em>swirl</em></a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>3</b> Tibbles x Data frames</a><ul>
-<li class="chapter" data-level="3.1" data-path="literature.html"><a href="literature.html#o-que-e-dados-organizados"><i class="fa fa-check"></i><b>3.1</b> O que é Dados organizados?</a></li>
+<li class="chapter" data-level="3.1" data-path="literature.html"><a href="literature.html#o-que-é-dados-organizados"><i class="fa fa-check"></i><b>3.1</b> O que é Dados organizados?</a></li>
 <li class="chapter" data-level="3.2" data-path="literature.html"><a href="literature.html#operador-pipe"><i class="fa fa-check"></i><b>3.2</b> Operador <em>pipe</em> <code>%&gt;%</code></a><ul>
 <li class="chapter" data-level="3.2.1" data-path="literature.html"><a href="literature.html#recursos"><i class="fa fa-check"></i><b>3.2.1</b> Recursos</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="literature.html"><a href="literature.html#breve-introducao-ao-tidyr"><i class="fa fa-check"></i><b>3.3</b> Breve Introdução ao <code>tidyr</code></a><ul>
-<li class="chapter" data-level="3.3.1" data-path="literature.html"><a href="literature.html#funcao-gather"><i class="fa fa-check"></i><b>3.3.1</b> Função <code>gather()</code></a></li>
+<li class="chapter" data-level="3.3" data-path="literature.html"><a href="literature.html#breve-introdução-ao-tidyr"><i class="fa fa-check"></i><b>3.3</b> Breve Introdução ao <code>tidyr</code></a><ul>
+<li class="chapter" data-level="3.3.1" data-path="literature.html"><a href="literature.html#função-gather"><i class="fa fa-check"></i><b>3.3.1</b> Função <code>gather()</code></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="funcao-spread.html"><a href="funcao-spread.html"><i class="fa fa-check"></i><b>4</b> Função <code>spread()</code></a><ul>
-<li class="chapter" data-level="4.0.1" data-path="funcao-spread.html"><a href="funcao-spread.html#exercicios"><i class="fa fa-check"></i><b>4.0.1</b> Exercícios</a></li>
-<li class="chapter" data-level="4.0.2" data-path="funcao-spread.html"><a href="funcao-spread.html#exercicios-1"><i class="fa fa-check"></i><b>4.0.2</b> Exercícios</a></li>
+<li class="chapter" data-level="4" data-path="função-spread.html"><a href="função-spread.html"><i class="fa fa-check"></i><b>4</b> Função <code>spread()</code></a><ul>
+<li class="chapter" data-level="4.0.1" data-path="função-spread.html"><a href="função-spread.html#exercícios"><i class="fa fa-check"></i><b>4.0.1</b> Exercícios</a></li>
+<li class="chapter" data-level="4.0.2" data-path="função-spread.html"><a href="função-spread.html#exercícios-1"><i class="fa fa-check"></i><b>4.0.2</b> Exercícios</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="method.html"><a href="method.html"><i class="fa fa-check"></i><b>5</b> Manipulando Data Frames com <code>dplyr</code></a><ul>
 <li class="chapter" data-level="5.1" data-path="method.html"><a href="method.html#o-pacote-dplyr"><i class="fa fa-check"></i><b>5.1</b> O Pacote <code>dplyr</code></a></li>
-<li class="chapter" data-level="5.2" data-path="method.html"><a href="method.html#gramatica-do-dplyr"><i class="fa fa-check"></i><b>5.2</b> Gramática do <code>dplyr</code></a></li>
-<li class="chapter" data-level="5.3" data-path="method.html"><a href="method.html#propriedades-das-funcoes-do-dplyr"><i class="fa fa-check"></i><b>5.3</b> Propriedades das funções do <code>dplyr</code></a></li>
+<li class="chapter" data-level="5.2" data-path="method.html"><a href="method.html#gramática-do-dplyr"><i class="fa fa-check"></i><b>5.2</b> Gramática do <code>dplyr</code></a></li>
+<li class="chapter" data-level="5.3" data-path="method.html"><a href="method.html#propriedades-das-funções-do-dplyr"><i class="fa fa-check"></i><b>5.3</b> Propriedades das funções do <code>dplyr</code></a></li>
 <li class="chapter" data-level="5.4" data-path="method.html"><a href="method.html#instalando-o-pacote-dplyr"><i class="fa fa-check"></i><b>5.4</b> Instalando o Pacote <code>dplyr</code></a></li>
 <li class="chapter" data-level="5.5" data-path="method.html"><a href="method.html#select"><i class="fa fa-check"></i><b>5.5</b> <code>select()</code></a><ul>
-<li class="chapter" data-level="5.5.1" data-path="method.html"><a href="method.html#exercicios-2"><i class="fa fa-check"></i><b>5.5.1</b> Exercícios</a></li>
+<li class="chapter" data-level="5.5.1" data-path="method.html"><a href="method.html#exercícios-2"><i class="fa fa-check"></i><b>5.5.1</b> Exercícios</a></li>
 </ul></li>
 <li class="chapter" data-level="5.6" data-path="method.html"><a href="method.html#rename"><i class="fa fa-check"></i><b>5.6</b> <code>rename()</code></a><ul>
-<li class="chapter" data-level="5.6.1" data-path="method.html"><a href="method.html#exercicios-3"><i class="fa fa-check"></i><b>5.6.1</b> Exercícios</a></li>
+<li class="chapter" data-level="5.6.1" data-path="method.html"><a href="method.html#exercícios-3"><i class="fa fa-check"></i><b>5.6.1</b> Exercícios</a></li>
 </ul></li>
 <li class="chapter" data-level="5.7" data-path="method.html"><a href="method.html#mutate"><i class="fa fa-check"></i><b>5.7</b> <code>mutate()</code></a><ul>
-<li class="chapter" data-level="5.7.1" data-path="method.html"><a href="method.html#exercicios-4"><i class="fa fa-check"></i><b>5.7.1</b> Exercícios</a></li>
+<li class="chapter" data-level="5.7.1" data-path="method.html"><a href="method.html#exercícios-4"><i class="fa fa-check"></i><b>5.7.1</b> Exercícios</a></li>
 </ul></li>
 <li class="chapter" data-level="5.8" data-path="method.html"><a href="method.html#filter"><i class="fa fa-check"></i><b>5.8</b> <code>filter()</code></a></li>
 <li class="chapter" data-level="5.9" data-path="method.html"><a href="method.html#arrange"><i class="fa fa-check"></i><b>5.9</b> <code>arrange()</code></a></li>
@@ -174,14 +177,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="application.html"><a href="application.html#nycflights13"><i class="fa fa-check"></i><b>6.1</b> nycflights13</a></li>
 <li class="chapter" data-level="6.2" data-path="application.html"><a href="application.html#formato"><i class="fa fa-check"></i><b>6.2</b> Formato</a></li>
 <li class="chapter" data-level="6.3" data-path="application.html"><a href="application.html#filter-1"><i class="fa fa-check"></i><b>6.3</b> <code>filter()</code></a><ul>
-<li class="chapter" data-level="6.3.1" data-path="application.html"><a href="application.html#comparacoes"><i class="fa fa-check"></i><b>6.3.1</b> Comparações</a></li>
-<li class="chapter" data-level="6.3.2" data-path="application.html"><a href="application.html#operadores-logicos"><i class="fa fa-check"></i><b>6.3.2</b> Operadores Lógicos</a></li>
+<li class="chapter" data-level="6.3.1" data-path="application.html"><a href="application.html#comparações"><i class="fa fa-check"></i><b>6.3.1</b> Comparações</a></li>
+<li class="chapter" data-level="6.3.2" data-path="application.html"><a href="application.html#operadores-lógicos"><i class="fa fa-check"></i><b>6.3.2</b> Operadores Lógicos</a></li>
 <li class="chapter" data-level="6.3.3" data-path="application.html"><a href="application.html#valores-ausentes"><i class="fa fa-check"></i><b>6.3.3</b> Valores Ausentes</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>7</b> Conclusão</a></li>
 <li class="chapter" data-level="8" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>8</b> Referências</a></li>
-<li class="chapter" data-level="" data-path="apendice-a-respostas-dos-exercicios.html"><a href="apendice-a-respostas-dos-exercicios.html"><i class="fa fa-check"></i>Apêndice A: Respostas dos Exercícios</a></li>
+<li class="chapter" data-level="" data-path="apêndice-a-respostas-dos-exercícios.html"><a href="apêndice-a-respostas-dos-exercícios.html"><i class="fa fa-check"></i>Apêndice A: Respostas dos Exercícios</a></li>
 <li class="divider"></li>
 <li><center><img src="imagens/bookdown-logo.png" alt="logo" width="30%" height="30%"style="margin: 15px 0 0 0"></center></li>
 <li><center><a href="https://github.com/rstudio/bookdown" target="blank">Publicado em bookdown</a></center></li>
@@ -212,7 +215,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>O pacote <code>dplyr</code> foi desenvolvido por Hadley Wickham, cientista chefe do RStudio. É uma versão otimizada do pacote <code>plyr</code>. O pacote <code>dplyr</code> não fornece nenhuma funcionalidade “nova” ao R, pois já é feito com base no R, mas simplifica <strong>bastante</strong> a funcionalidade no R.</p>
 <p>Uma contribuição importante do <code>dplyr</code> é que ele fornece uma “gramática” (em particular, verbos) para manipulação</p>
 </div>
-<div id="gramatica-do-dplyr" class="section level2">
+<div id="gramática-do-dplyr" class="section level2">
 <h2><span class="header-section-number">5.2</span> Gramática do <code>dplyr</code></h2>
 <p>Alguns dos principais “verbos” básicos de tablea única fornecidos pelo <code>dplyr</code> são:</p>
 <p>-<code>select</code>: retorna um subconjunto das colunas de um data.frames, usando uma notação flexível;</p>
@@ -225,7 +228,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>-<code>mutate</code>: adiciona novas variáveis/colunas ou transforme variáveis existentes;</p>
 <p>-<code>summarise/summarize</code>: gera estatísticas resumidas de diferentes variáveis no data.frames, possivelmente dentro dos estratos.</p>
 </div>
-<div id="propriedades-das-funcoes-do-dplyr" class="section level2">
+<div id="propriedades-das-funções-do-dplyr" class="section level2">
 <h2><span class="header-section-number">5.3</span> Propriedades das funções do <code>dplyr</code></h2>
 <p>As funções têm algumas características comuns:</p>
 <p>-1.O primeiro argumento é um data.frames;</p>
@@ -411,32 +414,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb58-3" title="3">df &lt;-<span class="st"> </span><span class="kw">tbl_df</span>(df[<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">1</span>, <span class="dv">9</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">10</span>)])</a>
 <a class="sourceLine" id="cb58-4" title="4"><span class="kw">select</span>(df, V4<span class="op">:</span>V6)</a></code></pre></div>
 <pre><code>## # A tibble: 10 x 8
-##         V4     V7     V1     V9     V8     V5    V2     V6
-##      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
-##  1 0.313   0.335  0.489  0.681  0.734  0.369  0.143 0.260 
-##  2 0.927   0.791  0.295  0.102  0.853  0.743  0.905 0.0749
-##  3 0.195   0.902  0.200  0.980  0.232  0.895  0.741 0.781 
-##  4 0.894   0.0168 0.0337 0.304  0.767  0.969  0.783 0.286 
-##  5 0.955   0.454  0.946  0.0621 0.458  0.226  0.499 0.182 
-##  6 0.00351 0.428  0.959  0.626  0.251  0.111  0.130 0.646 
-##  7 0.0878  0.553  0.973  0.498  0.898  0.993  0.423 0.179 
-##  8 0.945   0.735  0.722  0.444  0.435  0.292  0.239 0.334 
-##  9 0.950   0.379  0.311  0.504  0.0822 0.0230 0.827 0.189 
-## 10 0.924   0.485  0.602  0.0806 0.120  0.347  0.266 0.855</code></pre>
+##        V4     V7    V1    V9      V8     V5     V2     V6
+##     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1 0.840  0.551  0.604 0.581 0.563   0.891  0.240  0.344 
+##  2 0.969  0.897  0.138 0.348 0.109   0.574  0.0559 0.374 
+##  3 0.293  0.322  0.196 0.100 0.869   0.298  0.560  0.485 
+##  4 0.248  0.720  0.155 0.802 0.647   0.366  0.401  0.821 
+##  5 0.0319 0.304  0.701 0.825 0.325   0.0532 0.0715 0.414 
+##  6 0.677  0.0534 0.185 0.168 0.804   0.683  0.549  0.296 
+##  7 0.771  0.804  0.130 0.918 0.207   0.667  0.267  0.605 
+##  8 0.336  0.290  0.239 0.384 0.00264 0.400  0.148  0.0412
+##  9 0.349  0.821  0.726 0.152 0.431   0.929  0.358  0.358 
+## 10 0.151  0.658  0.435 0.830 0.831   0.893  0.906  0.543</code></pre>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1"><span class="kw">select</span>(df, <span class="kw">num_range</span>(<span class="st">&quot;V&quot;</span>, <span class="dv">4</span><span class="op">:</span><span class="dv">6</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 10 x 3
-##         V4     V5     V6
-##      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-##  1 0.313   0.369  0.260 
-##  2 0.927   0.743  0.0749
-##  3 0.195   0.895  0.781 
-##  4 0.894   0.969  0.286 
-##  5 0.955   0.226  0.182 
-##  6 0.00351 0.111  0.646 
-##  7 0.0878  0.993  0.179 
-##  8 0.945   0.292  0.334 
-##  9 0.950   0.0230 0.189 
-## 10 0.924   0.347  0.855</code></pre>
+##        V4     V5     V6
+##     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1 0.840  0.891  0.344 
+##  2 0.969  0.574  0.374 
+##  3 0.293  0.298  0.485 
+##  4 0.248  0.366  0.821 
+##  5 0.0319 0.0532 0.414 
+##  6 0.677  0.683  0.296 
+##  7 0.771  0.667  0.605 
+##  8 0.336  0.400  0.0412
+##  9 0.349  0.929  0.358 
+## 10 0.151  0.893  0.543</code></pre>
 <p>Você também pode usar expressões regulares mais gerais, se necessário. Veja a página de ajuda (?select) para mais detalhes.</p>
 <p><code>select()</code> pode ser usado para renomear variáveis, mas raramente é útil porque descarta todas as variáveis não mencionadas explicitamente. Em vez disso, use <code>rename()</code>, que é uma variante de <code>select()</code> que mantém todas as variáveis que não são mencionadas explicitamente.</p>
 <p>Outra opção é usar <code>select()</code> em conjunto com o <code>everything()</code> auxiliar. Isso é útil se você tiver um punhado de variáveis que deseja mover para o início do quadro de dados.</p>
@@ -449,7 +452,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 4.375000  30.43452 chic 29.0 28.625 1987-01-04         NA   47.00000
 ## 5 4.750000  30.33333 chic 32.0 28.875 1987-01-05         NA         NA
 ## 6 5.833333  25.77233 chic 40.0 35.125 1987-01-06         NA   48.00000</code></pre>
-<div id="exercicios-2" class="section level3">
+<div id="exercícios-2" class="section level3">
 <h3><span class="header-section-number">5.5.1</span> Exercícios</h3>
 <ul>
 <li><ol style="list-style-type: decimal">
@@ -485,7 +488,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2 chic 33.0   29.875 1987-01-02   NA
 ## 3 chic 33.0   27.375 1987-01-03   NA</code></pre>
 <p>A sintaxe dentro da <code>rename()</code> função é ter o novo nome no lado esquerdo do <code>=</code> sinal e o nome antigo no lado direito.</p>
-<div id="exercicios-3" class="section level3">
+<div id="exercícios-3" class="section level3">
 <h3><span class="header-section-number">5.6.1</span> Exercícios</h3>
 </div>
 </div>
@@ -524,7 +527,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6  14.1047939 -13.60218</code></pre>
 <p>Observe que existem apenas duas colunas no quadro de dados transformados.</p>
 <p>Há inúmeras funções que pode ser feita, a propriedade é que a função deva ser vetorizada: ela deve pegar um vetor de valores como entrada, retornar um vetor com o mesmo número de valores que a saída. Não há como listar todas as funções possíveis que você possa usar, mas aqui está uma seleção de funções frequentemente úteis:</p>
-<div id="exercicios-4" class="section level3">
+<div id="exercícios-4" class="section level3">
 <h3><span class="header-section-number">5.7.1</span> Exercícios</h3>
 </div>
 </div>
@@ -558,17 +561,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="funcao-spread.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="função-spread.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="application.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({

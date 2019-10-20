@@ -1,0 +1,493 @@
+---
+title: "Introdução ao Pacote dplyr"
+subtitle: "R Básico + dplyr"
+author: 
+  - "Me Elisangela, Douglas Vinícius, Jossivana Macedo"
+institute: "Universidade Federal de Rondônia"
+date: "22 de Outubro de 2019"
+output:
+  xaringan::moon_reader:
+    css: [default, maynooth, maynooth-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+editor_options: 
+  chunk_output_type: console
+---
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(message = FALSE, 
+                      warning = FALSE, 
+                      echo = FALSE, 
+                      fig.align = 'center')
+library(RefManageR)
+library(tidyverse)
+
+bibs <- ReadBib("bibliography.bib", check = FALSE)
+```
+
+
+# Partes
+
+  1. Introdução sobre R
+  2. Tidyr
+    - Trees
+    - Random Forests
+  3. Regularization
+    - Regularization in Random Forests (RRF)
+    - Guided Regularization in Random Forests (GRRF)
+  4. Exploring the GRRF model
+    - Evaluating the GRRF
+    - Extending the GRRF
+  5. Conclusions and Final Remarks
+
+
+---
+class: inverse, middle, center
+
+
+# 1.  Introdução Básica Sobre R
+
+---
+# O ambiente R
+
+R é um conjunto integrado de instalações de software para manipulação de dados, cálculo e exibição gráfica. Inclui:
+
+-uma instalação eficaz de manipulação e armazenamento de dados;
+
+--
+
+-um conjunto de operadores para cálculos;
+
+--
+
+-uma coleção grande, coerente e integrada de ferramentas intermediárias para análise de dados;
+
+--
+
+-instalações gráficas para análise de dados e exibição na tela ou em cópia impressa; e
+
+--
+
+-uma linguagem de programação bem desenvolvida, simples e eficaz, que inclui condicionais, loops, funções recursivas definidas pelo usuário e recursos de entrada e saída.
+
+---
+
+# Objetos R
+
+R possui cinco classes básicas ou "atômicas" de objetos:
+
+- **Character**: texto
+
+- **Integer**: números inteiros
+
+- **Numeric**: números reais
+
+- **Complex**: números complexos (raramente usados)
+
+- **Logical**: TRUE, FALSE
+
+- **Factor**: variáveis categóricas
+
+---
+
+# Tipos de Objetos
+
+- **Vector**: unidimensional, apenas uma classe
+
+- **Matriz**: bidimensional, apenas uma classe
+
+- **Data.frame**: lista de vetores
+
+- **List**: pode contar diferentes classes
+
+O objeto mais básico é um vetor.
+
+
+---
+
+# O *tidyverse*
+
+> O tidyverse é uma coleção de pacotes R projetados para ciência de dados. Todos os pacotes compartilham uma filosofia de design, gramática e estruturas de dados subjacentes.
+
+```{r, echo = FALSE, out.width="90%", fig.align='center'}
+knitr::include_graphics("imagens/tidyverse.png")
+```
+
+---
+class: inverse, middle, center
+
+# Usando o dplyr
+
+---
+
+# Tibbles x Data frames
+
+Mas afinal, como dois quadros de dados aparecem totalmente diferentes no console?
+
+
+
+---
+
+# remark.js vs xaringan
+
+Some differences between using remark.js (left) and using **xaringan** (right):
+
+.pull-left[
+1. Start with a boilerplate HTML file;
+
+1. Plain Markdown;
+
+1. Write JavaScript to autoplay slides;
+
+1. Manually configure MathJax;
+
+1. Highlight code with `*`;
+
+1. Edit Markdown source and refresh browser to see updated slides;
+]
+
+.pull-right[
+1. Start with an R Markdown document;
+
+1. R Markdown (can embed R/other code chunks);
+
+1. Provide an option `autoplay`;
+
+1. MathJax just works;<sup>*</sup>
+
+1. Highlight code with `{{}}`;
+
+1. The RStudio addin "Infinite Moon Reader" automatically refreshes slides on changes;
+]
+
+.footnote[[*] Not really. See next page.]
+
+---
+
+# Por que deveria ser isso?
+
+R segue um conjunto de convenções que tornam um layout de dados tabulares muito mais fácil de trabalhar do que outros. Seus dados serão mais fáceis de trabalhar no R se seguirem três regras:
+
+.pull-left[
+
+1. Cada variável no conjunto de dados é colocada em sua própria coluna
+
+1. Cada observação é colocada em sua própria linha
+
+1. Cada valor é colocado em sua própria célula *
+]
+
+.pull-left[]
+
+Os dados que satisfazem essas regras são conhecidos como dados organizados . Observe que table1são dados organizados.
+
+```{r, echo = FALSE, out.width="90%", fig.align='center'}
+knitr::include_graphics("imagens/tidy-1.png")
+```
+
+.footnote[[*] .]
+---
+
+# Introdução
+
+A visualização é uma ferramenta importante para a geração de *insights*, mas é raro você obter os dados exatamente da forma correta de que precisa. Frequentemente, você precisará criar algumas novas variáveis ou resumos, ou talvez apenas queira renomear as variáveis ou reordenar as observações para tornar os dados um pouco mais fáceis de trabalhar. Você aprenderá como fazer tudo isso (e muito mais!) Neste capítulo, que ensinará como transformar seus dados usando o pacote dplyr e um novo conjunto de dados em voos partindo de Nova York em 2013.
+
+---
+
+# R Plots
+
+```{r}
+library(nycflights13)
+library(tidyverse)
+```
+
+---
+
+# Tables
+
+If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
+
+```{r}
+knitr::kable(head(iris), format = 'html')
+```
+
+---
+
+# Operadores Lógicos
+
+Vários argumentos para filter()são combinados com "e”: toda expressão deve ser verdadeira para que uma linha seja incluída na saída. Para outros tipos de combinações, você precisará usar operadores booleanos: & é "e", | é "ou" e ! é "não". A Figura mostra o conjunto completo de operações booleanas.
+
+```{r, echo = FALSE, out.width="80%", fig.align='center', fig.cap='Conjunto completo de operações booleanas. x é o círculo do lado esquerdo, y é o círculo do lado direito e a região sombreada mostra quais partes cada operador seleciona.'}
+knitr::include_graphics("imagens/transform-logical.png")
+```
+
+
+---
+
+# Dados Organizados
+
+>“Famílias felizes são todas iguais; toda família infeliz é infeliz à sua maneira. ” – Leo Tolstoi
+
+>“Os conjuntos de dados organizados são todos iguais, mas todos os conjuntos de dados confusos são confusos à sua maneira.” – Hadley Wickham
+
+
+---
+
+# Os 6 verbos do dplyr
+
+select(): seleciona colunas
+
+filter(): seleciona linhas
+
+arrange(): ordena de acordo com uma ou mais colunas
+
+mutate(): cria/modifica colunas
+
+summarise(): sumariza/agrega colunas
+
+group_by(): agrupa colunas
+
+---
+
+# `select()`
+
+---
+
+# `filter()`
+
+---
+
+# `arrange()`
+
+---
+
+# `mutate()`
+
+---
+
+# `summarise()`
+
+---
+
+# `group_by()`
+
+---
+
+# ` %>% ` pipe
+
+O pipe `%>%` vem do pacote **magrittr** de Stefan Milton Bache. Pacotes no tidyverse carregam `%>%` para você automaticamente, para que você normalmente não carregue o magrittr explicitamente. 
+
+**Atalho**: CTRL + SHIFT + M
+
+---
+
+# Some Tips
+
+- To make slides work offline, you need to download a copy of remark.js in advance, because **xaringan** uses the online version by default (see the help page `?xaringan::moon_reader`).
+
+- You can use `xaringan::summon_remark()` to download the latest or a specified version of remark.js. By default, it is downloaded to `libs/remark-latest.min.js`.
+
+- Then change the `chakra` option in YAML to point to this file, e.g.
+
+    ```yaml
+    output:
+      xaringan::moon_reader:
+        chakra: libs/remark-latest.min.js
+    ```
+
+- If you used Google fonts in slides (the default theme uses _Yanone Kaffeesatz_, _Droid Serif_, and _Source Code Pro_), they won't work offline unless you download or install them locally. The Heroku app [google-webfonts-helper](https://google-webfonts-helper.herokuapp.com/fonts) can help you download fonts and generate the necessary CSS.
+
+---
+
+# Macros
+
+- remark.js [allows users to define custom macros](https://github.com/yihui/xaringan/issues/80) (JS functions) that can be applied to Markdown text using the syntax `![:macroName arg1, arg2, ...]` or `![:macroName arg1, arg2, ...](this)`. For example, before remark.js initializes the slides, you can define a macro named `scale`:
+
+    ```js
+    remark.macros.scale = function (percentage) {
+      var url = this;
+      return '<img src="' + url + '" style="width: ' + percentage + '" />';
+    };
+    ```
+
+    Then the Markdown text
+
+    ```markdown
+    ![:scale 50%](image.jpg)
+    ```
+
+    will be translated to
+    
+    ```html
+    <img src="image.jpg" style="width: 50%" />
+    ```
+
+---
+
+# Macros (continued)
+
+- To insert macros in **xaringan** slides, you can use the option `beforeInit` under the option `nature`, e.g.,
+
+    ```yaml
+    output:
+      xaringan::moon_reader:
+        nature:
+          beforeInit: "macros.js"
+    ```
+
+    You save your remark.js macros in the file `macros.js`.
+
+- The `beforeInit` option can be used to insert arbitrary JS code before `remark.create()`. Inserting macros is just one of its possible applications.
+
+---
+
+# CSS
+
+Among all options in `xaringan::moon_reader`, the most challenging but perhaps also the most rewarding one is `css`, because it allows you to customize the appearance of your slides using any CSS rules or hacks you know.
+
+You can see the default CSS file [here](https://github.com/yihui/xaringan/blob/master/inst/rmarkdown/templates/xaringan/resources/default.css). You can completely replace it with your own CSS files, or define new rules to override the default. See the help page `?xaringan::moon_reader` for more information.
+
+---
+
+# CSS
+
+For example, suppose you want to change the font for code from the default "Source Code Pro" to "Ubuntu Mono". You can create a CSS file named, say, `ubuntu-mono.css`:
+
+```css
+@import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+.remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+```
+
+Then set the `css` option in the YAML metadata:
+
+```yaml
+output:
+  xaringan::moon_reader:
+    css: ["default", "ubuntu-mono.css"]
+```
+
+Here I assume `ubuntu-mono.css` is under the same directory as your Rmd.
+
+See [yihui/xaringan#83](https://github.com/yihui/xaringan/issues/83) for an example of using the [Fira Code](https://github.com/tonsky/FiraCode) font, which supports ligatures in program code.
+
+---
+
+# Themes
+
+Don't want to learn CSS? Okay, you can use some user-contributed themes. A theme typically consists of two CSS files `foo.css` and `foo-fonts.css`, where `foo` is the theme name. Below are some existing themes:
+
+```{r}
+names(xaringan:::list_css())
+```
+
+---
+
+# Themes
+
+To use a theme, you can specify the `css` option as an array of CSS filenames (without the `.css` extensions), e.g.,
+
+```yaml
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts]
+```
+
+If you want to contribute a theme to **xaringan**, please read [this blog post](https://yihui.name/en/2017/10/xaringan-themes).
+
+---
+class: inverse, middle, center
+background-image: url(https://upload.wikimedia.org/wikipedia/commons/3/39/Naruto_Shiki_Fujin.svg)
+background-size: contain
+
+# Naruto
+
+---
+background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
+background-size: 100px
+background-position: 90% 8%
+
+# Sharingan
+
+The R package name **xaringan** was derived<sup>1</sup> from **Sharingan**, a dōjutsu in the Japanese anime _Naruto_ with two abilities:
+
+- the "Eye of Insight"
+
+- the "Eye of Hypnotism"
+
+I think a presentation is basically a way to communicate insights to the audience, and a great presentation may even "hypnotize" the audience.<sup>2,3</sup>
+
+.footnote[
+[1] In Chinese, the pronounciation of _X_ is _Sh_ /ʃ/ (as in _shrimp_). Now you should have a better idea of how to pronounce my last name _Xie_.
+
+[2] By comparison, bad presentations only put the audience to sleep.
+
+[3] Personally I find that setting background images for slides is a killer feature of remark.js. It is an effective way to bring visual impact into your presentations.
+]
+
+---
+
+# Naruto terminology
+
+The **xaringan** package borrowed a few terms from Naruto, such as
+
+- [Sharingan](http://naruto.wikia.com/wiki/Sharingan) (写輪眼; the package name)
+
+- The [moon reader](http://naruto.wikia.com/wiki/Moon_Reader) (月読; an attractive R Markdown output format)
+
+- [Chakra](http://naruto.wikia.com/wiki/Chakra) (查克拉; the path to the remark.js library, which is the power to drive the presentation)
+
+- [Nature transformation](http://naruto.wikia.com/wiki/Nature_Transformation) (性質変化; transform the chakra by setting different options)
+
+- The [infinite moon reader](http://naruto.wikia.com/wiki/Infinite_Tsukuyomi) (無限月読; start a local web server to continuously serve your slides)
+
+- The [summoning technique](http://naruto.wikia.com/wiki/Summoning_Technique) (download remark.js from the web)
+
+You can click the links to know more about them if you want. The jutsu "Moon Reader" may seem a little evil, but that does not mean your slides are evil.
+
+---
+
+class: center
+
+# Hand seals (印)
+
+Press `h` or `?` to see the possible ninjutsu you can use in remark.js.
+
+![](https://upload.wikimedia.org/wikipedia/commons/6/6f/ChessSet.jpg)
+
+---
+
+class: center, middle
+
+# Thanks!
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
+
+The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](http://yihui.name/knitr), and [R Markdown](https://rmarkdown.rstudio.com).
+---
+# Bibliography
+
+
+```{r, results='asis'}
+print(bibs[key = c("guided", "Hesterberg2011", "HastieTrevor",
+                  "Breiman2001", "Friedman1991")], 
+      .opts = list(check.entries = FALSE, 
+                   style = "html", 
+                   bib.style = "authoryear"))
+```
+
+
+---
+class: center, middle, inverse
+
+# Obrigado!
+
+
+<img src= "https://s3.amazonaws.com/kleebtronics-media/img/icons/github-white.png", width="50", height="50",  align="middle"> 
+
+<b>
+
+[@Doug7Vinicius](https://github.com/Doug7Vinicius/introduction-dplyr)
