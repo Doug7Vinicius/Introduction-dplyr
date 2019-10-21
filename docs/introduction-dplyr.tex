@@ -192,15 +192,12 @@ O livro \href{https://r4ds.had.co.nz/}{R for data science} é o mais indicado pa
 \section{Conteúdo:}\label{conteuxfado}}
 
 \begin{verbatim}
-- Primeiro dia (22/10): Breve introdução ao R, Tibbles e Data frames,
-tidyr, exercícios; 
-- Segundo dia (23/10): select(), rename(), arrange(), 
-mutate(), summarise(), exercícios;
-- Terceiro dia (24/10): agrupar dados, combinar conjuntos de dados.
+- Primeiro dia (22/10): Breve introdução ao R, Tibbles x Data frames,
+tidyr, select(), rename(), mutate(), exercícios; 
+- Segundo dia (23/10): filter(), arrange(), group_by(), summarise(),
+exercícios;
+- Terceiro dia (24/10): .
 \end{verbatim}
-
-\hypertarget{pruxe9-requisitos}{%
-\section{Pré-requisitos}\label{pruxe9-requisitos}}
 
 \hypertarget{intro}{%
 \chapter{Introdução}\label{intro}}
@@ -354,27 +351,124 @@ A forma mais eficiente e prática de usar o R ou o RStudio é através de um \em
 
 No \emph{script} você pode digitar comandos a serem executados e também comentários.
 
-\hypertarget{objetos-r}{%
-\section{Objetos R}\label{objetos-r}}
+\hypertarget{classes-de-objetos-r}{%
+\section{Classes de Objetos R}\label{classes-de-objetos-r}}
 
-R possui cinco classes básicas ou ``atômicas'' de objetos:
+R possui 5 classes básicas de objetos, também chamados de objetos ``atômicas'':
 
 \begin{itemize}
 \item
-  character
+  character;
 \item
-  numeric (real numbers)
+  numeric (real numbers);
 \item
-  integer
+  integer;
 \item
-  complex
+  complex;
 \item
-  logical (True/False)
+  logical (True/False).
 \end{itemize}
 
-O tipo mais básico de objeto R é um vetor. Vetores vazios podem ser criados com a função \texttt{vector()}. Existe apenas uma regra sobre vetores em R, que um vetor pode conter apenas objetos da mesma classe.
+O tipo mais básico de objeto R é um vetor. Um vetor só pode conter elementos de uma mesma classe. Mas há uma exceção, que é uma lista. Uma lista é representada como um vetor, mas pode conter objetos de diferentes classes.
 
-Mas há uma exceção, que é uma lista. Uma lista é representada como um vetor, mas pode conter objetos de diferentes classes. De fato, geralmente é por isso que os usamos.
+Características do vetor:
+
+\begin{itemize}
+\item
+  Coleção ordenada de valores;
+\item
+  Estrutura unidimensional.
+\end{itemize}
+
+Usando a função \texttt{c()} para criar vetores:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{num <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{)}
+\NormalTok{num}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 10  5  2  4  8  9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{(num) }\CommentTok{# para saber a classe do objeto, usamos a função class().}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "numeric"
+\end{verbatim}
+
+Por que \texttt{numeric} e não \texttt{integer}? Para forçar a representação de um número para inteiro é necessário usar o sufixo L.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(10L, 5L, 2L, 4L, 8L, 9L)}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 10  5  2  4  8  9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "integer"
+\end{verbatim}
+
+Note que a diferença entre \texttt{numeric} e \texttt{integer} também possui impacto computacional, pois o armazenamento de números inteiros ocupa menos espaço na memória. Dessa forma, esperamos que o vetor x acima ocupe menos espaço na memória do que o vetor num, embora sejam aparentemente idênticos. Usamos a função \texttt{object.size()} fornece uma estimativa da memória que está sendo usada para armazenar um objeto R.Veja:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{object.size}\NormalTok{(num)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 96 bytes
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{object.size}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 80 bytes
+\end{verbatim}
+
+A diferença pode parecer pequena, mas pode ter um grande impacto computacional quando os vetores são formados por milhares ou milhões de números
+
+\hypertarget{atributos}{%
+\section{Atributos}\label{atributos}}
+
+Os objetos R podem ter atributos, como metadados para o objeto. Esses metadados podem ser muito úteis, pois ajudam a descrever o objeto. Por exemplo, nomes de colunas em um quadro de dados ajudam a nos dizer quais dados estão contidos em cada uma das colunas. Alguns exemplos de atributos de objeto R são:
+
+\begin{itemize}
+\item
+  nomes, dimnames;
+\item
+  dimensões (por exemplo, matrizes, matrizes);
+\item
+  classe (por exemplo, inteiro, numérico);
+\item
+  comprimento;
+\item
+  outros atributos/metadados definidos pelo usuário.
+\end{itemize}
+
+Os atributos de um objeto (se houver) podem ser acessados usando a função \texttt{attributes()}. Nem todos os objetos R contêm atributos; nesse caso, a \texttt{attributes()} retorna \texttt{NULL}.
 
 \hypertarget{swirl}{%
 \section{\texorpdfstring{\emph{swirl}}{swirl}}\label{swirl}}
@@ -576,22 +670,19 @@ Por que garantir que seus dados estejam organizados? Existem duas vantagens prin
 
 \begin{center}\includegraphics[width=0.25\linewidth]{imagens/magritt} \end{center}
 
-O pacote \texttt{magrittr} tem dois objetivos: diminuir o tempo de desenvolvimento e melhorar a legibilidade e a manutenção do código.
-O pacote \texttt{magrittr} oferece um conjunto de operadores que promovem semânticas que melhorara seu código que deixa mais claro a compreensão:
+O pacote \texttt{magrittr} tem dois objetivos: diminuir o tempo de desenvolvimento e melhorar a legibilidade e a manutenção do código. Para começar a utilizar o \emph{pipe}, instale e carregue o pacote \texttt{magrittr}.
 
-\begin{itemize}
-\tightlist
-\item
-  estruturar seqüências de operações de dados da esquerda para a direita (em oposição a de dentro e de fora);
-\item
-  evitando chamadas de função aninhadas;
-\item
-  minimizar a necessidade de variáveis locais e definições de função, e
-  facilitando a adição de etapas em qualquer lugar da sequência de operações.
-\end{itemize}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"magrittr"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
-\hypertarget{recursos}{%
-\subsection{Recursos}\label{recursos}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(magrittr)}
+\end{Highlighting}
+\end{Shaded}
 
 Tubulação básica:
 
@@ -605,22 +696,96 @@ Tubulação básica:
   x \texttt{\%\textgreater{}\%} \emph{f} \texttt{\%\textgreater{}\%} \emph{g} \texttt{\%\textgreater{}\%} \emph{h} é equivalente a \emph{h(g(f(x)))}.
 \end{itemize}
 
-O operador do \textbf{pipeline} \texttt{\%\textgreater{}\%} é muito útil para reunir várias funções em uma sequência de operações. Os tubos são uma ferramenta poderosa para expressar claramente as operações. O \textbf{pipe}, \texttt{\%\textgreater{}\%} vem do pacote \texttt{magrittr} de Stefan Milton Bache. Pacotes no \texttt{tidyverse} carregam \texttt{\%\textgreater{}\%} automaticamente, para que normalmente não carregue o magrittr explicitamente.
+O operador do \textbf{pipeline} \texttt{\%\textgreater{}\%} é muito útil para reunir várias funções em uma sequência de operações. Os tubos são uma ferramenta poderosa para expressar claramente as operações. O \textbf{pipe}, \texttt{\%\textgreater{}\%} vem do pacote \texttt{magrittr} de Stefan Milton Bache. Pacotes no \texttt{tidyverse} carregam \texttt{\%\textgreater{}\%} automaticamente, para que normalmente não carregue o magrittr explicitamente. Observe abaixo que toda vez que desejamos aplicar mais de uma função, a sequência é ocultada em uma sequência de chamadas de funções aninhadas difíceis de ler, ou seja:
 
 \begin{quote}
 third(second(first(x)))
 \end{quote}
 
-Para começar a utilizar o \emph{pipe}, instale e carregue o pacote \texttt{magrittr}.
+Esse aninhamento não é uma maneira natural de pensar em uma sequência de operações. O \texttt{\%\textgreater{}\%} permite que você encadeie operações da esquerda para a direita, ou seja:
+
+\begin{quote}
+first(x) \%\textgreater\% second() \%\textgreater\% third()
+\end{quote}
+
+Por exemplo:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{install.packages}\NormalTok{(}\StringTok{"magrittr"}\NormalTok{)}
-\KeywordTok{library}\NormalTok{(magrittr)}
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{0.109}\NormalTok{, }\FloatTok{0.359}\NormalTok{, }\FloatTok{0.63}\NormalTok{, }\FloatTok{0.996}\NormalTok{, }\FloatTok{0.515}\NormalTok{, }\FloatTok{0.142}\NormalTok{, }\FloatTok{0.017}\NormalTok{, }\FloatTok{0.829}\NormalTok{, }\FloatTok{0.907}\NormalTok{)}
+
+\KeywordTok{round}\NormalTok{(}\KeywordTok{exp}\NormalTok{(}\KeywordTok{diff}\NormalTok{(}\KeywordTok{log}\NormalTok{(x))), }\DecValTok{1}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-O \texttt{magrittr} também fornece três operadores de tubos relacionados. Eles não são tão comuns quanto, \texttt{\%\textgreater{}\%} mas se tornam úteis em casos especiais.
+\begin{verbatim}
+## [1]  3.3  1.8  1.6  0.5  0.3  0.1 48.8  1.1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Com a ajuda de `%>%`, você pode reescrever o código acima da seguinte maneira:}
+
+\NormalTok{x }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{log}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{diff}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{exp}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{round}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  3.3  1.8  1.6  0.5  0.3  0.1 48.8  1.1
+\end{verbatim}
+
+Em resumo, aqui estão quatro razões pelas quais você deve usar tubos ou \emph{pipe} no R:
+
+\begin{itemize}
+\item
+  Estruturara a sequência de suas operações de dados da esquerda para a direita, ao contrário de dentro para fora;
+\item
+  evita chamadas de função aninhadas;
+\item
+  minimiza a necessidade de variáveis locais e definições de funções;
+\item
+  facilita a adição de etapas em qualquer lugar da sequência de operações.
+\end{itemize}
+
+Mesmo sendo \texttt{\%\textgreater{}\%} o operador de tubulação (principal) do pacote \texttt{magrittr}, existem alguns outros operadores que fazem parte do mesmo pacote:
+
+Ao trabalhar com tubos mais complexos, às vezes é útil chamar uma função por seus efeitos colaterais. Talvez você queira imprimir o objeto atual, plotá-lo ou salvá-lo em disco. Muitas vezes, essas funções não retornam nada, efetivamente encerrando o pipe.
+
+Para contornar esse problema, usar-se o tubo ``tee''. \texttt{\%T\textgreater{}\%} funciona como \texttt{\%\textgreater{}\%} exceto que retorna o lado esquerdo em vez do lado direito. É chamado de ``tee'' porque é como um tubo em forma de T literal.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{matrix}\NormalTok{(}\DataTypeTok{ncol =} \DecValTok{2}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{plot}\NormalTok{() }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{str}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{introduction-dplyr_files/figure-latex/unnamed-chunk-15-1.pdf}
+
+\begin{verbatim}
+##  NULL
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{matrix}\NormalTok{(}\DataTypeTok{ncol =} \DecValTok{2}\NormalTok{) }\OperatorTok{%T>%}
+\StringTok{  }\KeywordTok{plot}\NormalTok{() }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{str}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{introduction-dplyr_files/figure-latex/unnamed-chunk-16-1.pdf}
+
+\begin{verbatim}
+##  num [1:50, 1:2] -0.241 1.039 -0.417 -0.141 0.223 ...
+\end{verbatim}
 
 Para mais informações sobre o \emph{pipe}, outros operadores relacionados e exemplos de utilização, visite a página \href{https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html}{Ceci n'est pas un pipe}. Ou consulte a vinheta do pacote \texttt{vignette("magrittr")}.
 
@@ -665,7 +830,7 @@ Vamos criar um \texttt{tibble} no formato \emph{wide} e transformá-lo em um dad
 a função \texttt{gather()} retorna um \texttt{tibble} com duas colunas, por padrão, isso se não inserirmos nenhum parâmetro além do \texttt{tibble}.
 
 \hypertarget{funuxe7uxe3o-spread}{%
-\chapter{\texorpdfstring{Função \texttt{spread()}}{Função spread()}}\label{funuxe7uxe3o-spread}}
+\section{\texorpdfstring{Função \texttt{spread()}}{Função spread()}}\label{funuxe7uxe3o-spread}}
 
 \hypertarget{exercuxedcios}{%
 \subsection{Exercícios}\label{exercuxedcios}}
@@ -1158,18 +1323,18 @@ A função \texttt{select()} permite uma sintaxe especial que especifica nomes d
 
 \begin{verbatim}
 ## # A tibble: 10 x 8
-##       V4     V7     V1    V9      V8     V5     V2     V6
-##    <dbl>  <dbl>  <dbl> <dbl>   <dbl>  <dbl>  <dbl>  <dbl>
-##  1 0.284 0.966  0.0193 0.373 0.480   0.811  0.755  0.871 
-##  2 0.418 0.984  0.0615 0.860 0.493   0.654  0.918  0.627 
-##  3 0.971 0.0352 0.747  0.380 0.713   0.312  0.733  0.0569
-##  4 0.991 0.440  0.839  0.897 0.339   0.927  0.852  0.762 
-##  5 0.329 0.731  0.995  0.137 0.304   0.0157 0.136  0.0553
-##  6 0.413 0.0280 0.427  0.468 0.452   0.541  0.0122 0.784 
-##  7 0.692 0.998  0.815  0.251 0.430   0.0650 0.978  0.290 
-##  8 0.167 0.611  0.198  0.614 0.00415 0.167  0.529  0.125 
-##  9 0.466 0.521  0.833  0.517 0.638   0.523  0.516  0.0185
-## 10 0.811 0.970  0.845  0.724 0.0711  0.758  0.218  0.0395
+##        V4    V7      V1     V9     V8     V5    V2      V6
+##     <dbl> <dbl>   <dbl>  <dbl>  <dbl>  <dbl> <dbl>   <dbl>
+##  1 0.668  0.774 0.235   0.741  0.516  0.0811 0.243 0.00113
+##  2 0.794  0.296 0.244   0.992  0.586  0.623  0.719 0.612  
+##  3 0.0573 0.934 0.352   0.0167 0.448  0.470  0.881 0.162  
+##  4 0.482  0.796 0.0146  0.787  0.0656 0.0363 0.448 0.895  
+##  5 0.861  0.496 0.152   0.812  0.283  0.469  0.803 0.589  
+##  6 0.477  0.300 0.874   0.789  0.777  0.237  0.293 0.626  
+##  7 0.113  0.872 0.00457 0.0597 0.352  0.261  0.450 0.544  
+##  8 0.854  0.872 0.806   0.359  0.118  0.585  0.681 0.371  
+##  9 0.154  0.428 0.327   0.992  0.948  0.779  0.699 0.560  
+## 10 0.451  0.658 0.152   0.853  0.698  0.704  0.648 0.476
 \end{verbatim}
 
 \begin{Shaded}
@@ -1180,18 +1345,18 @@ A função \texttt{select()} permite uma sintaxe especial que especifica nomes d
 
 \begin{verbatim}
 ## # A tibble: 10 x 3
-##       V4     V5     V6
-##    <dbl>  <dbl>  <dbl>
-##  1 0.284 0.811  0.871 
-##  2 0.418 0.654  0.627 
-##  3 0.971 0.312  0.0569
-##  4 0.991 0.927  0.762 
-##  5 0.329 0.0157 0.0553
-##  6 0.413 0.541  0.784 
-##  7 0.692 0.0650 0.290 
-##  8 0.167 0.167  0.125 
-##  9 0.466 0.523  0.0185
-## 10 0.811 0.758  0.0395
+##        V4     V5      V6
+##     <dbl>  <dbl>   <dbl>
+##  1 0.668  0.0811 0.00113
+##  2 0.794  0.623  0.612  
+##  3 0.0573 0.470  0.162  
+##  4 0.482  0.0363 0.895  
+##  5 0.861  0.469  0.589  
+##  6 0.477  0.237  0.626  
+##  7 0.113  0.261  0.544  
+##  8 0.854  0.585  0.371  
+##  9 0.154  0.779  0.560  
+## 10 0.451  0.704  0.476
 \end{verbatim}
 
 Você também pode usar expressões regulares mais gerais, se necessário. Veja a página de ajuda (?select) para mais detalhes.
@@ -1513,6 +1678,8 @@ OLIVEIRA, Paulo Felipe de; GUERRA, Saulo; MCDONNELL, Robert. Ciência de Dados c
 \url{https://www.nytimes.com/2014/08/18/technology/for-big-data-scientists-hurdle-to-insights-is-janitor-work.html}
 
 Dasu T, Johnson T (2003). Exploratory Data Mining and Data Cleaning. Wiley-IEEE.
+
+\url{http://leg.ufpr.br/~fernandomayer/aulas/ce083-2016-2/02_funcoes_e_objetos.html\#classes_de_objetos}
 
 \hypertarget{apuxeandice-a-respostas-dos-exercuxedcios}{%
 \chapter*{Apêndice A: Respostas dos Exercícios}\label{apuxeandice-a-respostas-dos-exercuxedcios}}

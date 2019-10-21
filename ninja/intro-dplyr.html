@@ -25,65 +25,98 @@ class: center, middle, inverse, title-slide
 
 # Partes
 
-  1. Introdução sobre R
-  2. Tidyr
-    - Trees
-    - Random Forests
-  3. Regularization
-    - Regularization in Random Forests (RRF)
-    - Guided Regularization in Random Forests (GRRF)
-  4. Exploring the GRRF model
-    - Evaluating the GRRF
-    - Extending the GRRF
-  5. Conclusions and Final Remarks
-
+  1. Introdução sobre R e RStudio
+    - Universo `tidyverse`
+  2. Tibbles x Data Frames
+    - O que é Dados Organizados?
+    - Operador *pipe* `%&gt;%`
+    - Breve introdução ao Tidyr
+  3. Manipulando Data Frames com `dplyr`
+    - Funções básicas
+  4. Pacote `nycflights13`
+  5. Conclusão e Referências.
 
 ---
 class: inverse, middle, center
 
 
-# 1.  Introdução Básica Sobre R
+# R &amp; RStudio
 
 ---
 # O ambiente R
 
-R é um conjunto integrado de instalações de software para manipulação de dados, cálculo e exibição gráfica. Inclui:
-
--uma instalação eficaz de manipulação e armazenamento de dados;
-
---
-
--um conjunto de operadores para cálculos;
+R é uma linguagem de programação estatística que vem passando por diversas evoluções e se tornando cada vez mais uma linguagem de amplos objetivos.
+Excelente para manipulação de dados, cálculo e exibição gráfica. Segue alguns motivos para aprender o R:
 
 --
 
--uma coleção grande, coerente e integrada de ferramentas intermediárias para análise de dados;
+  - É completamente gratuito e de livre distribuição;
 
 --
 
--instalações gráficas para análise de dados e exibição na tela ou em cópia impressa; e
+  - Curva de aprendizado bastante amigável, sendo muito fácil de se aprender;
 
 --
 
--uma linguagem de programação bem desenvolvida, simples e eficaz, que inclui condicionais, loops, funções recursivas definidas pelo usuário e recursos de entrada e saída.
+  - Enorme quantidade de tutoriais e ajuda disponíveis gratuitamente na internet;
+
+--
+
+  - É excelente para criar rotinas e sistematizar tarefas repetitivas;
+
+--
+
+  - Amplamente utilizado pela comunidade acadêmica e pelo mercado;
+
+--
+
+  - Quantidade enorme de pacotes, para diversos tipos de necessidades;
+
+--
+
+  - Ótima ferramenta para criar relatórios e gráficos.
 
 ---
 
-# Objetos R
+# R
 
-R possui cinco classes básicas ou "atômicas" de objetos:
+Após instalado, o R tem uma interface assim, com apenas o console para digitar comandos.
 
-- **Character**: texto
+&lt;img src="imagens/r-project.png" width="80%" style="display: block; margin: auto;" /&gt;
 
-- **Integer**: números inteiros
+Experimente um comando: 2+2, cujo output é 4.
 
-- **Numeric**: números reais
+---
 
-- **Complex**: números complexos (raramente usados)
+# RStudio
 
-- **Logical**: TRUE, FALSE
+E a interface do RStudio é dividida, inicialmente, em 3 partes.
 
-- **Factor**: variáveis categóricas
+&lt;img src="imagens/rstudio-console.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+# RStudio
+
+A forma mais eficiente e prática de usar o R ou o RStudio é através de um script. No RStudio, vá em *File → New File → R Script*. A interface agora fica dividida em 4 partes.
+
+&lt;img src="imagens/rstudio-editor.png" width="75%" style="display: block; margin: auto;" /&gt;
+
+---
+# Classes de Objetos no R
+
+R possui 5 classes básicas de objetos, também chamados de objetos "atômicas":
+
+  - character;
+
+  - numeric (real numbers);
+
+  - integer;
+
+  - complex;
+
+  - logical (True/False).
+
+O tipo mais básico de objeto R é um vetor. Um vetor só pode conter elementos de uma mesma classe. Mas há uma exceção, que é uma lista. Uma lista é representada como um vetor, mas pode conter objetos de diferentes classes. 
 
 ---
 
@@ -97,22 +130,6 @@ R possui cinco classes básicas ou "atômicas" de objetos:
 
 - **List**: pode contar diferentes classes
 
-O objeto mais básico é um vetor.
-
-
----
-
-# O *tidyverse*
-
-&gt; O tidyverse é uma coleção de pacotes R projetados para ciência de dados. Todos os pacotes compartilham uma filosofia de design, gramática e estruturas de dados subjacentes.
-
-&lt;img src="imagens/tidyverse.png" width="90%" style="display: block; margin: auto;" /&gt;
-
----
-class: inverse, middle, center
-
-# Usando o dplyr
-
 ---
 
 # Tibbles x Data frames
@@ -120,6 +137,27 @@ class: inverse, middle, center
 Mas afinal, como dois quadros de dados aparecem totalmente diferentes no console?
 
 
+
+---
+class: inverse, middle, center
+
+
+# `tidyverse`
+
+---
+
+# Universo *tidyverse*
+
+&gt; O tidyverse é uma coleção de pacotes R projetados para ciência de dados. Todos os pacotes compartilham uma filosofia de design, gramática e estruturas de dados subjacentes.
+
+&lt;img src="imagens/tidyverse.png" width="45%" style="display: block; margin: auto;" /&gt;
+
+---
+
+---
+class: inverse, middle, center
+
+# `dplyr`
 
 ---
 
@@ -558,14 +596,14 @@ URL: &lt;a href="http://www.springerlink.com/index/10.1007/b94608"&gt;http://www
 ---
 class: center, middle, inverse
 
-# Thanks!
+# Obrigado!
 
 
 &lt;img src= "https://s3.amazonaws.com/kleebtronics-media/img/icons/github-white.png", width="50", height="50",  align="middle"&gt; 
 
 &lt;b&gt;
 
-[@brunaw](https://github.com/brunaw)
+[@Doug7Vinicius](https://github.com/Doug7Vinicius/introduction-dplyr)
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

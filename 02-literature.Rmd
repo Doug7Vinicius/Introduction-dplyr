@@ -92,15 +92,14 @@ Por que garantir que seus dados estejam organizados? Existem duas vantagens prin
 knitr::include_graphics("imagens/magritt.png")
 ```
 
-O pacote `magrittr` tem dois objetivos: diminuir o tempo de desenvolvimento e melhorar a legibilidade e a manutenção do código. 
-O pacote `magrittr` oferece um conjunto de operadores que promovem semânticas que melhorara seu código que deixa mais claro a compreensão:
+O pacote `magrittr` tem dois objetivos: diminuir o tempo de desenvolvimento e melhorar a legibilidade e a manutenção do código. Para começar a utilizar o *pipe*, instale e carregue o pacote `magrittr`.
 
-  - estruturar seqüências de operações de dados da esquerda para a direita (em oposição a de dentro e de fora);
-  - evitando chamadas de função aninhadas;
-  - minimizar a necessidade de variáveis locais e definições de função, e
-facilitando a adição de etapas em qualquer lugar da sequência de operações.
-
-### Recursos
+```{r eval=FALSE}
+install.packages("magrittr")
+```
+```{r}
+library(magrittr)
+```
 
 Tubulação básica:
 
@@ -108,20 +107,58 @@ Tubulação básica:
   - x `%>%` *f(y)* é equivalente a *f(x, y)*;
   - x `%>%` *f* `%>%` *g* `%>%` *h* é equivalente a *h(g(f(x)))*.
 
-O operador do **pipeline** `%>%` é muito útil para reunir várias funções em uma sequência de operações. Os tubos são uma ferramenta poderosa para expressar claramente as operações. O **pipe**, `%>%` vem do pacote `magrittr` de Stefan Milton Bache. Pacotes no `tidyverse` carregam `%>%` automaticamente, para que normalmente não carregue o magrittr explicitamente. 
+O operador do **pipeline** `%>%` é muito útil para reunir várias funções em uma sequência de operações. Os tubos são uma ferramenta poderosa para expressar claramente as operações. O **pipe**, `%>%` vem do pacote `magrittr` de Stefan Milton Bache. Pacotes no `tidyverse` carregam `%>%` automaticamente, para que normalmente não carregue o magrittr explicitamente. Observe abaixo que toda vez que desejamos aplicar mais de uma função, a sequência é ocultada em uma sequência de chamadas de funções aninhadas difíceis de ler, ou seja:
 
 > third(second(first(x)))
 
-Para começar a utilizar o *pipe*, instale e carregue o pacote `magrittr`.
+Esse aninhamento não é uma maneira natural de pensar em uma sequência de operações. O `%>%` permite que você encadeie operações da esquerda para a direita, ou seja:
 
-```{r eval=FALSE}
-install.packages("magrittr")
-library(magrittr)
+> first(x) %>% second() %>% third()
+
+Por exemplo:
+````{r}
+x <- c(0.109, 0.359, 0.63, 0.996, 0.515, 0.142, 0.017, 0.829, 0.907)
+
+round(exp(diff(log(x))), 1)
+
+#Com a ajuda de `%>%`, você pode reescrever o código acima da seguinte maneira:
+
+x %>% 
+  log() %>% 
+  diff() %>% 
+  exp() %>% 
+  round(1)
 ```
 
-O `magrittr` também fornece três operadores de tubos relacionados. Eles não são tão comuns quanto, `%>%` mas se tornam úteis em casos especiais.
+Em resumo, aqui estão quatro razões pelas quais você deve usar tubos ou *pipe* no R:
 
+  - Estruturara a sequência de suas operações de dados da esquerda para a direita, ao contrário de dentro para fora;
+  
+  - evita chamadas de função aninhadas;
+  
+  - minimiza a necessidade de variáveis locais e definições de funções; 
+  
+  - facilita a adição de etapas em qualquer lugar da sequência de operações.
 
+Mesmo sendo `%>%` o operador de tubulação (principal) do pacote `magrittr`, existem alguns outros operadores que fazem parte do mesmo pacote:
+
+Ao trabalhar com tubos mais complexos, às vezes é útil chamar uma função por seus efeitos colaterais. Talvez você queira imprimir o objeto atual, plotá-lo ou salvá-lo em disco. Muitas vezes, essas funções não retornam nada, efetivamente encerrando o pipe.
+
+Para contornar esse problema, usar-se o tubo "tee". `%T>%` funciona como `%>%` exceto que retorna o lado esquerdo em vez do lado direito. É chamado de "tee" porque é como um tubo em forma de T literal.
+
+```{r}
+rnorm(100) %>%
+  matrix(ncol = 2) %>%
+  plot() %>%
+  str()
+```
+
+```{r}
+rnorm(100) %>%
+  matrix(ncol = 2) %T>%
+  plot() %>%
+  str()
+```
 
 Para mais informações sobre o *pipe*, outros operadores relacionados e exemplos de utilização, visite a página [Ceci n’est pas un pipe](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html). Ou consulte a vinheta do pacote `vignette("magrittr")`.
 
@@ -156,7 +193,7 @@ dados_wide
 
 a função `gather()` retorna um `tibble` com duas colunas, por padrão, isso se não inserirmos nenhum parâmetro além do `tibble`.
 
-# Função `spread()`
+## Função `spread()`
 
 
 ### Exercícios
@@ -188,3 +225,4 @@ saida <- round(media, 1)<br/>
   c(6, NA) %>% <br/>
   mean(na.rm = T) %>%<br/> 
   equals(5)
+

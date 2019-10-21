@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5 Manipulando Data Frames com dplyr | Apostila: introdução ao pacote dplyr</title>
+  <title>4 Manipulando Data Frames com dplyr | Apostila: introdução ao pacote dplyr</title>
   <meta name="description" content="Minicurso sobre introdução ao pacote dplyr ministrado na XIX SEMAT.." />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5 Manipulando Data Frames com dplyr | Apostila: introdução ao pacote dplyr" />
+  <meta property="og:title" content="4 Manipulando Data Frames com dplyr | Apostila: introdução ao pacote dplyr" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="Doug7Vinicius/introduction-dplyr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 Manipulando Data Frames com dplyr | Apostila: introdução ao pacote dplyr" />
+  <meta name="twitter:title" content="4 Manipulando Data Frames com dplyr | Apostila: introdução ao pacote dplyr" />
   
   <meta name="twitter:description" content="Minicurso sobre introdução ao pacote dplyr ministrado na XIX SEMAT.." />
   
@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="função-spread.html"/>
+<link rel="prev" href="literature.html"/>
 <link rel="next" href="application.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -134,56 +134,54 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prefácio</a><ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#público-alvo"><i class="fa fa-check"></i><b>1.1</b> Público-alvo</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#conteúdo"><i class="fa fa-check"></i><b>1.2</b> Conteúdo:</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#pré-requisitos"><i class="fa fa-check"></i><b>1.3</b> Pré-requisitos</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introdução</a><ul>
 <li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#universo-tidyverse"><i class="fa fa-check"></i><b>2.1</b> Universo <code>tidyverse</code></a></li>
 <li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#porque-devo-aprender-r-e-rstudio"><i class="fa fa-check"></i><b>2.2</b> Porque devo aprender R e RStudio?</a></li>
-<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#objetos-r"><i class="fa fa-check"></i><b>2.3</b> Objetos R</a></li>
-<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#swirl"><i class="fa fa-check"></i><b>2.4</b> <em>swirl</em></a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#classes-de-objetos-r"><i class="fa fa-check"></i><b>2.3</b> Classes de Objetos R</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#atributos"><i class="fa fa-check"></i><b>2.4</b> Atributos</a></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#swirl"><i class="fa fa-check"></i><b>2.5</b> <em>swirl</em></a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>3</b> Tibbles x Data frames</a><ul>
 <li class="chapter" data-level="3.1" data-path="literature.html"><a href="literature.html#o-que-é-dados-organizados"><i class="fa fa-check"></i><b>3.1</b> O que é Dados organizados?</a></li>
-<li class="chapter" data-level="3.2" data-path="literature.html"><a href="literature.html#operador-pipe"><i class="fa fa-check"></i><b>3.2</b> Operador <em>pipe</em> <code>%&gt;%</code></a><ul>
-<li class="chapter" data-level="3.2.1" data-path="literature.html"><a href="literature.html#recursos"><i class="fa fa-check"></i><b>3.2.1</b> Recursos</a></li>
-</ul></li>
+<li class="chapter" data-level="3.2" data-path="literature.html"><a href="literature.html#operador-pipe"><i class="fa fa-check"></i><b>3.2</b> Operador <em>pipe</em> <code>%&gt;%</code></a></li>
 <li class="chapter" data-level="3.3" data-path="literature.html"><a href="literature.html#breve-introdução-ao-tidyr"><i class="fa fa-check"></i><b>3.3</b> Breve Introdução ao <code>tidyr</code></a><ul>
 <li class="chapter" data-level="3.3.1" data-path="literature.html"><a href="literature.html#função-gather"><i class="fa fa-check"></i><b>3.3.1</b> Função <code>gather()</code></a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="função-spread.html"><a href="função-spread.html"><i class="fa fa-check"></i><b>4</b> Função <code>spread()</code></a><ul>
-<li class="chapter" data-level="4.0.1" data-path="função-spread.html"><a href="função-spread.html#exercícios"><i class="fa fa-check"></i><b>4.0.1</b> Exercícios</a></li>
-<li class="chapter" data-level="4.0.2" data-path="função-spread.html"><a href="função-spread.html#exercícios-1"><i class="fa fa-check"></i><b>4.0.2</b> Exercícios</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="method.html"><a href="method.html"><i class="fa fa-check"></i><b>5</b> Manipulando Data Frames com <code>dplyr</code></a><ul>
-<li class="chapter" data-level="5.1" data-path="method.html"><a href="method.html#o-pacote-dplyr"><i class="fa fa-check"></i><b>5.1</b> O Pacote <code>dplyr</code></a></li>
-<li class="chapter" data-level="5.2" data-path="method.html"><a href="method.html#gramática-do-dplyr"><i class="fa fa-check"></i><b>5.2</b> Gramática do <code>dplyr</code></a></li>
-<li class="chapter" data-level="5.3" data-path="method.html"><a href="method.html#propriedades-das-funções-do-dplyr"><i class="fa fa-check"></i><b>5.3</b> Propriedades das funções do <code>dplyr</code></a></li>
-<li class="chapter" data-level="5.4" data-path="method.html"><a href="method.html#instalando-o-pacote-dplyr"><i class="fa fa-check"></i><b>5.4</b> Instalando o Pacote <code>dplyr</code></a></li>
-<li class="chapter" data-level="5.5" data-path="method.html"><a href="method.html#select"><i class="fa fa-check"></i><b>5.5</b> <code>select()</code></a><ul>
-<li class="chapter" data-level="5.5.1" data-path="method.html"><a href="method.html#exercícios-2"><i class="fa fa-check"></i><b>5.5.1</b> Exercícios</a></li>
-</ul></li>
-<li class="chapter" data-level="5.6" data-path="method.html"><a href="method.html#rename"><i class="fa fa-check"></i><b>5.6</b> <code>rename()</code></a><ul>
-<li class="chapter" data-level="5.6.1" data-path="method.html"><a href="method.html#exercícios-3"><i class="fa fa-check"></i><b>5.6.1</b> Exercícios</a></li>
-</ul></li>
-<li class="chapter" data-level="5.7" data-path="method.html"><a href="method.html#mutate"><i class="fa fa-check"></i><b>5.7</b> <code>mutate()</code></a><ul>
-<li class="chapter" data-level="5.7.1" data-path="method.html"><a href="method.html#exercícios-4"><i class="fa fa-check"></i><b>5.7.1</b> Exercícios</a></li>
-</ul></li>
-<li class="chapter" data-level="5.8" data-path="method.html"><a href="method.html#filter"><i class="fa fa-check"></i><b>5.8</b> <code>filter()</code></a></li>
-<li class="chapter" data-level="5.9" data-path="method.html"><a href="method.html#arrange"><i class="fa fa-check"></i><b>5.9</b> <code>arrange()</code></a></li>
-<li class="chapter" data-level="5.10" data-path="method.html"><a href="method.html#group_by"><i class="fa fa-check"></i><b>5.10</b> <code>group_by()</code></a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="application.html"><a href="application.html"><i class="fa fa-check"></i><b>6</b> Vôos em Nova York de 2013</a><ul>
-<li class="chapter" data-level="6.1" data-path="application.html"><a href="application.html#nycflights13"><i class="fa fa-check"></i><b>6.1</b> nycflights13</a></li>
-<li class="chapter" data-level="6.2" data-path="application.html"><a href="application.html#formato"><i class="fa fa-check"></i><b>6.2</b> Formato</a></li>
-<li class="chapter" data-level="6.3" data-path="application.html"><a href="application.html#filter-1"><i class="fa fa-check"></i><b>6.3</b> <code>filter()</code></a><ul>
-<li class="chapter" data-level="6.3.1" data-path="application.html"><a href="application.html#comparações"><i class="fa fa-check"></i><b>6.3.1</b> Comparações</a></li>
-<li class="chapter" data-level="6.3.2" data-path="application.html"><a href="application.html#operadores-lógicos"><i class="fa fa-check"></i><b>6.3.2</b> Operadores Lógicos</a></li>
-<li class="chapter" data-level="6.3.3" data-path="application.html"><a href="application.html#valores-ausentes"><i class="fa fa-check"></i><b>6.3.3</b> Valores Ausentes</a></li>
+<li class="chapter" data-level="3.4" data-path="literature.html"><a href="literature.html#função-spread"><i class="fa fa-check"></i><b>3.4</b> Função <code>spread()</code></a><ul>
+<li class="chapter" data-level="3.4.1" data-path="literature.html"><a href="literature.html#exercícios"><i class="fa fa-check"></i><b>3.4.1</b> Exercícios</a></li>
+<li class="chapter" data-level="3.4.2" data-path="literature.html"><a href="literature.html#exercícios-1"><i class="fa fa-check"></i><b>3.4.2</b> Exercícios</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>7</b> Conclusão</a></li>
-<li class="chapter" data-level="8" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>8</b> Referências</a></li>
+<li class="chapter" data-level="4" data-path="method.html"><a href="method.html"><i class="fa fa-check"></i><b>4</b> Manipulando Data Frames com <code>dplyr</code></a><ul>
+<li class="chapter" data-level="4.1" data-path="method.html"><a href="method.html#o-pacote-dplyr"><i class="fa fa-check"></i><b>4.1</b> O Pacote <code>dplyr</code></a></li>
+<li class="chapter" data-level="4.2" data-path="method.html"><a href="method.html#gramática-do-dplyr"><i class="fa fa-check"></i><b>4.2</b> Gramática do <code>dplyr</code></a></li>
+<li class="chapter" data-level="4.3" data-path="method.html"><a href="method.html#propriedades-das-funções-do-dplyr"><i class="fa fa-check"></i><b>4.3</b> Propriedades das funções do <code>dplyr</code></a></li>
+<li class="chapter" data-level="4.4" data-path="method.html"><a href="method.html#instalando-o-pacote-dplyr"><i class="fa fa-check"></i><b>4.4</b> Instalando o Pacote <code>dplyr</code></a></li>
+<li class="chapter" data-level="4.5" data-path="method.html"><a href="method.html#select"><i class="fa fa-check"></i><b>4.5</b> <code>select()</code></a><ul>
+<li class="chapter" data-level="4.5.1" data-path="method.html"><a href="method.html#exercícios-2"><i class="fa fa-check"></i><b>4.5.1</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="method.html"><a href="method.html#rename"><i class="fa fa-check"></i><b>4.6</b> <code>rename()</code></a><ul>
+<li class="chapter" data-level="4.6.1" data-path="method.html"><a href="method.html#exercícios-3"><i class="fa fa-check"></i><b>4.6.1</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="method.html"><a href="method.html#mutate"><i class="fa fa-check"></i><b>4.7</b> <code>mutate()</code></a><ul>
+<li class="chapter" data-level="4.7.1" data-path="method.html"><a href="method.html#exercícios-4"><i class="fa fa-check"></i><b>4.7.1</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="method.html"><a href="method.html#filter"><i class="fa fa-check"></i><b>4.8</b> <code>filter()</code></a></li>
+<li class="chapter" data-level="4.9" data-path="method.html"><a href="method.html#arrange"><i class="fa fa-check"></i><b>4.9</b> <code>arrange()</code></a></li>
+<li class="chapter" data-level="4.10" data-path="method.html"><a href="method.html#group_by"><i class="fa fa-check"></i><b>4.10</b> <code>group_by()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="application.html"><a href="application.html"><i class="fa fa-check"></i><b>5</b> Vôos em Nova York de 2013</a><ul>
+<li class="chapter" data-level="5.1" data-path="application.html"><a href="application.html#nycflights13"><i class="fa fa-check"></i><b>5.1</b> nycflights13</a></li>
+<li class="chapter" data-level="5.2" data-path="application.html"><a href="application.html#formato"><i class="fa fa-check"></i><b>5.2</b> Formato</a></li>
+<li class="chapter" data-level="5.3" data-path="application.html"><a href="application.html#filter-1"><i class="fa fa-check"></i><b>5.3</b> <code>filter()</code></a><ul>
+<li class="chapter" data-level="5.3.1" data-path="application.html"><a href="application.html#comparações"><i class="fa fa-check"></i><b>5.3.1</b> Comparações</a></li>
+<li class="chapter" data-level="5.3.2" data-path="application.html"><a href="application.html#operadores-lógicos"><i class="fa fa-check"></i><b>5.3.2</b> Operadores Lógicos</a></li>
+<li class="chapter" data-level="5.3.3" data-path="application.html"><a href="application.html#valores-ausentes"><i class="fa fa-check"></i><b>5.3.3</b> Valores Ausentes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>6</b> Conclusão</a></li>
+<li class="chapter" data-level="7" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>7</b> Referências</a></li>
 <li class="chapter" data-level="" data-path="apêndice-a-respostas-dos-exercícios.html"><a href="apêndice-a-respostas-dos-exercícios.html"><i class="fa fa-check"></i>Apêndice A: Respostas dos Exercícios</a></li>
 <li class="divider"></li>
 <li><center><img src="imagens/bookdown-logo.png" alt="logo" width="30%" height="30%"style="margin: 15px 0 0 0"></center></li>
@@ -208,15 +206,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="method" class="section level1">
-<h1><span class="header-section-number">5</span> Manipulando Data Frames com <code>dplyr</code></h1>
+<h1><span class="header-section-number">4</span> Manipulando Data Frames com <code>dplyr</code></h1>
 <p>Entendamos a manipulação de dados como o ato de transformar, reestruturar, limpar, agregar e juntar os dados. Para se ter uma noção da importância dessa fase, alguns estudiosos da área de Ciência de Dados costumam afirmar que 80% do trabalho é encontrar uma boa fonte de dados, limpar e preparar os dados, sendo que os 20% restantes seriam o trabalho de aplicar modelos e realizar alguma análise propriamente dita.</p>
 <div id="o-pacote-dplyr" class="section level2">
-<h2><span class="header-section-number">5.1</span> O Pacote <code>dplyr</code></h2>
+<h2><span class="header-section-number">4.1</span> O Pacote <code>dplyr</code></h2>
 <p>O pacote <code>dplyr</code> foi desenvolvido por Hadley Wickham, cientista chefe do RStudio. É uma versão otimizada do pacote <code>plyr</code>. O pacote <code>dplyr</code> não fornece nenhuma funcionalidade “nova” ao R, pois já é feito com base no R, mas simplifica <strong>bastante</strong> a funcionalidade no R.</p>
 <p>Uma contribuição importante do <code>dplyr</code> é que ele fornece uma “gramática” (em particular, verbos) para manipulação</p>
 </div>
 <div id="gramática-do-dplyr" class="section level2">
-<h2><span class="header-section-number">5.2</span> Gramática do <code>dplyr</code></h2>
+<h2><span class="header-section-number">4.2</span> Gramática do <code>dplyr</code></h2>
 <p>Alguns dos principais “verbos” básicos de tablea única fornecidos pelo <code>dplyr</code> são:</p>
 <p>-<code>select</code>: retorna um subconjunto das colunas de um data.frames, usando uma notação flexível;</p>
 <ul>
@@ -229,7 +227,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>-<code>summarise/summarize</code>: gera estatísticas resumidas de diferentes variáveis no data.frames, possivelmente dentro dos estratos.</p>
 </div>
 <div id="propriedades-das-funções-do-dplyr" class="section level2">
-<h2><span class="header-section-number">5.3</span> Propriedades das funções do <code>dplyr</code></h2>
+<h2><span class="header-section-number">4.3</span> Propriedades das funções do <code>dplyr</code></h2>
 <p>As funções têm algumas características comuns:</p>
 <p>-1.O primeiro argumento é um data.frames;</p>
 <p>-2.Os argumentos subsequentes descrevem o que fazer com o data.frames especificado no primeiro argumento;</p>
@@ -237,28 +235,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>-4.Os data.frames devem devidamente formatados e anotados para que tudo isso seja útil. Em particular, os dados devem estar <em>organizados</em>.</p>
 </div>
 <div id="instalando-o-pacote-dplyr" class="section level2">
-<h2><span class="header-section-number">5.4</span> Instalando o Pacote <code>dplyr</code></h2>
+<h2><span class="header-section-number">4.4</span> Instalando o Pacote <code>dplyr</code></h2>
 <p>O pacote pode ser instalado a partir do CRAN ou do GitHub usando o pacote <code>devtools</code> com a função <code>install_github()</code>. O repositório GitHub normalmente contém as versões mais atualizadas dos pacotes.</p>
 <p>Para instalar a partir do CRAN, bastar executar:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</a></code></pre></div>
 <p>Para instalar a partir do GitHub, execute:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="kw">library</span>(devtools) <span class="co">#carregar o pacote &#39;devtools&#39; antes.</span></a>
-<a class="sourceLine" id="cb30-2" title="2">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;hadley/dplyr&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1"><span class="kw">library</span>(devtools) <span class="co">#carregar o pacote &#39;devtools&#39; antes.</span></a>
+<a class="sourceLine" id="cb54-2" title="2">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;hadley/dplyr&quot;</span>)</a></code></pre></div>
 <p>Após a instalação do pacote, carregá-lo com a função <code>library()</code>:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="kw">library</span>(dplyr)</a></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1"><span class="kw">library</span>(dplyr)</a></code></pre></div>
 <p>Ao carregar o pacote você pode receber alguns avisos, porque há funções no <code>dplyr</code>que têm o mesmo nome que as funções em outros pacotes. Por enquanto pode ignorar os avisos.</p>
 </div>
 <div id="select" class="section level2">
-<h2><span class="header-section-number">5.5</span> <code>select()</code></h2>
+<h2><span class="header-section-number">4.5</span> <code>select()</code></h2>
 <p>Para melhor apresentar as funcionalidades da função, usaremos um conjunto de dados diários sobre poluição do ar e taxa de mortalidade da <a href="http://www.biostat.jhsph.edu/~rpeng/leanpub/rprog/chicago_data.zip">cidade de Chicago</a>, nos EUA.</p>
 <p>Você pode carregar os dados no R usando a função <code>readRDS()</code>:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1">chicago &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">&quot;data/chicago.rds&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1">chicago &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">&quot;data/chicago.rds&quot;</span>)</a></code></pre></div>
 <p>Este banco de dados encontra no seguinte endereço: <a href="http://www.biostat.jhsph.edu/~rpeng/leanpub/rprog/chicago_data.zip" class="uri">http://www.biostat.jhsph.edu/~rpeng/leanpub/rprog/chicago_data.zip</a> e está em um arquivo zipado. Uma das formas para facilitar o processo de descompactação do arquivo pelo R é:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="co"># objeto caracter, endereço do arquivo.</span></a>
-<a class="sourceLine" id="cb33-2" title="2">fileURL &lt;-<span class="st"> &quot;http://www.biostat.jhsph.edu/~rpeng/leanpub/rprog/chicago_data.zip&quot;</span></a>
-<a class="sourceLine" id="cb33-3" title="3"></a>
-<a class="sourceLine" id="cb33-4" title="4"><span class="co">#Esta função pode ser usada para baixar um arquivo da Internet.</span></a>
-<a class="sourceLine" id="cb33-5" title="5"><span class="kw">download.file</span>(fileURL, <span class="dt">destfile =</span> <span class="st">&quot;data/chicago.rds&quot;</span>, <span class="dt">method =</span> <span class="st">&quot;curl&quot;</span>, <span class="dt">extra=</span><span class="st">&#39;-L&#39;</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" title="1"><span class="co"># objeto caracter, endereço do arquivo.</span></a>
+<a class="sourceLine" id="cb57-2" title="2">fileURL &lt;-<span class="st"> &quot;http://www.biostat.jhsph.edu/~rpeng/leanpub/rprog/chicago_data.zip&quot;</span></a>
+<a class="sourceLine" id="cb57-3" title="3"></a>
+<a class="sourceLine" id="cb57-4" title="4"><span class="co">#Esta função pode ser usada para baixar um arquivo da Internet.</span></a>
+<a class="sourceLine" id="cb57-5" title="5"><span class="kw">download.file</span>(fileURL, <span class="dt">destfile =</span> <span class="st">&quot;data/chicago.rds&quot;</span>, <span class="dt">method =</span> <span class="st">&quot;curl&quot;</span>, <span class="dt">extra=</span><span class="st">&#39;-L&#39;</span>) </a></code></pre></div>
 <p>Descrição do banco: tem 8 colunas e 6940 linhas. Cada linha refere-se a um dia. As colunas são:</p>
 <ul>
 <li>city:
@@ -295,9 +293,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul>
 <p>Umas das formas de ter informações do seu banco de dados é utilizar as seguintes funções <code>dim()</code> e <code>str()</code>. A primeira especifica a dimensão do seu banco e a segunda a estrutura do seu banco de dados.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="kw">dim</span>(chicago)</a></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1"><span class="kw">dim</span>(chicago)</a></code></pre></div>
 <pre><code>## [1] 6940    8</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="kw">str</span>(chicago)</a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1"><span class="kw">str</span>(chicago)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    6940 obs. of  8 variables:
 ##  $ city      : chr  &quot;chic&quot; &quot;chic&quot; &quot;chic&quot; &quot;chic&quot; ...
 ##  $ tmpd      : num  31.5 33 33 29 32 40 34.5 29 26.5 32.5 ...
@@ -309,10 +307,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ no2tmean2 : num  20 23.2 23.8 30.4 30.3 ...</code></pre>
 <p>Muitas vezes teremos um data.frames contendo um grande número de dados. Com isso, a função <code>select()</code> permite obter as poucas colunas que você pode precisar.</p>
 <p>Suponhamos que desejássemos pegar as 3 primeiras colunas. Há algumas maneiras de fazer isto. Poderíamos, por exemplo, usar o índices númericos. Mas também podemos usar os nomes diretamente.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1"><span class="kw">names</span>(chicago[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]) </a></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1"><span class="kw">names</span>(chicago[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]) </a></code></pre></div>
 <pre><code>## [1] &quot;city&quot; &quot;tmpd&quot; &quot;dptp&quot;</code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1">subset1 &lt;-<span class="st"> </span><span class="kw">select</span>(chicago, city<span class="op">:</span>dptp)</a>
-<a class="sourceLine" id="cb40-2" title="2"><span class="kw">head</span>(subset1)</a></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1">subset1 &lt;-<span class="st"> </span><span class="kw">select</span>(chicago, city<span class="op">:</span>dptp)</a>
+<a class="sourceLine" id="cb64-2" title="2"><span class="kw">head</span>(subset1)</a></code></pre></div>
 <pre><code>##   city tmpd   dptp
 ## 1 chic 31.5 31.500
 ## 2 chic 33.0 29.875
@@ -322,8 +320,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6 chic 40.0 35.125</code></pre>
 <p>Normalmente <code>:</code> não pode ser usado com nomes ou sequências de caracteres, mas dentro da função <code>select()</code> pode usá-lo para especificar um intervalo de nomes de variáveis.</p>
 <p>Pode <strong>omitir</strong> variáveis usando a função <code>select()</code> usando o sinal negativo.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1">subset2 &lt;-<span class="st"> </span><span class="kw">select</span>(chicago, <span class="op">-</span>(city<span class="op">:</span>dptp))</a>
-<a class="sourceLine" id="cb42-2" title="2"><span class="kw">head</span>(subset2)</a></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1">subset2 &lt;-<span class="st"> </span><span class="kw">select</span>(chicago, <span class="op">-</span>(city<span class="op">:</span>dptp))</a>
+<a class="sourceLine" id="cb66-2" title="2"><span class="kw">head</span>(subset2)</a></code></pre></div>
 <pre><code>##         date pm25tmean2 pm10tmean2 o3tmean2 no2tmean2
 ## 1 1987-01-01         NA   34.00000 4.250000  19.98810
 ## 2 1987-01-02         NA         NA 3.304348  23.19099
@@ -333,9 +331,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6 1987-01-06         NA   48.00000 5.833333  25.77233</code></pre>
 <p>o que indica que estamos incluindo todas as variáveis, exceto as variáveis <code>city</code> até <code>dptp</code>.</p>
 <p>O código equivalente ao anterior sem o uso do pacote seria:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1">i &lt;-<span class="st"> </span><span class="kw">match</span>(<span class="st">&quot;city&quot;</span>, <span class="kw">names</span>(chicago))</a>
-<a class="sourceLine" id="cb44-2" title="2">j &lt;-<span class="st"> </span><span class="kw">match</span>(<span class="st">&quot;dptp&quot;</span>, <span class="kw">names</span>(chicago))</a>
-<a class="sourceLine" id="cb44-3" title="3"><span class="kw">head</span>(chicago[, <span class="op">-</span>(i<span class="op">:</span>j)])</a></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1">i &lt;-<span class="st"> </span><span class="kw">match</span>(<span class="st">&quot;city&quot;</span>, <span class="kw">names</span>(chicago))</a>
+<a class="sourceLine" id="cb68-2" title="2">j &lt;-<span class="st"> </span><span class="kw">match</span>(<span class="st">&quot;dptp&quot;</span>, <span class="kw">names</span>(chicago))</a>
+<a class="sourceLine" id="cb68-3" title="3"><span class="kw">head</span>(chicago[, <span class="op">-</span>(i<span class="op">:</span>j)])</a></code></pre></div>
 <pre><code>##         date pm25tmean2 pm10tmean2 o3tmean2 no2tmean2
 ## 1 1987-01-01         NA   34.00000 4.250000  19.98810
 ## 2 1987-01-02         NA         NA 3.304348  23.19099
@@ -345,24 +343,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6 1987-01-06         NA   48.00000 5.833333  25.77233</code></pre>
 <p>A função de correspondência <code>mathc()</code> retorna um vetor das posições das (primeiras) correspondências de seu primeiro argumento no segundo. De acordo com a <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/match.html">Documentação R</a>, a função é equivalente ao operador <code>%in%</code> que indica se uma correspondência foi localizada para o vetor1 no vetor2. O valor do resultado será VERDADEIRO ou FALSO, mas nunca NA. Portanto, o operador <code>%in%</code> pode ser útil em condições <code>if</code>.</p>
 <p>Exemplos:</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"><span class="co">#função math().</span></a>
-<a class="sourceLine" id="cb46-2" title="2">v1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a1&quot;</span>,<span class="st">&quot;b2&quot;</span>,<span class="st">&quot;c1&quot;</span>,<span class="st">&quot;d2&quot;</span>)</a>
-<a class="sourceLine" id="cb46-3" title="3">v2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;g1&quot;</span>,<span class="st">&quot;x2&quot;</span>,<span class="st">&quot;d2&quot;</span>,<span class="st">&quot;e2&quot;</span>,<span class="st">&quot;f1&quot;</span>,<span class="st">&quot;a1&quot;</span>,<span class="st">&quot;c2&quot;</span>,<span class="st">&quot;b2&quot;</span>,<span class="st">&quot;a2&quot;</span>)</a>
-<a class="sourceLine" id="cb46-4" title="4">x &lt;-<span class="st"> </span><span class="kw">match</span>(v1,v2)</a>
-<a class="sourceLine" id="cb46-5" title="5">x</a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1"><span class="co">#função math().</span></a>
+<a class="sourceLine" id="cb70-2" title="2">v1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a1&quot;</span>,<span class="st">&quot;b2&quot;</span>,<span class="st">&quot;c1&quot;</span>,<span class="st">&quot;d2&quot;</span>)</a>
+<a class="sourceLine" id="cb70-3" title="3">v2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;g1&quot;</span>,<span class="st">&quot;x2&quot;</span>,<span class="st">&quot;d2&quot;</span>,<span class="st">&quot;e2&quot;</span>,<span class="st">&quot;f1&quot;</span>,<span class="st">&quot;a1&quot;</span>,<span class="st">&quot;c2&quot;</span>,<span class="st">&quot;b2&quot;</span>,<span class="st">&quot;a2&quot;</span>)</a>
+<a class="sourceLine" id="cb70-4" title="4">x &lt;-<span class="st"> </span><span class="kw">match</span>(v1,v2)</a>
+<a class="sourceLine" id="cb70-5" title="5">x</a></code></pre></div>
 <pre><code>## [1]  6  8 NA  3</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="co">#com o operador %in%.</span></a>
-<a class="sourceLine" id="cb48-2" title="2">v1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a1&quot;</span>,<span class="st">&quot;b2&quot;</span>,<span class="st">&quot;c1&quot;</span>,<span class="st">&quot;d2&quot;</span>)</a>
-<a class="sourceLine" id="cb48-3" title="3">v2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;g1&quot;</span>,<span class="st">&quot;x2&quot;</span>,<span class="st">&quot;d2&quot;</span>,<span class="st">&quot;e2&quot;</span>,<span class="st">&quot;f1&quot;</span>,<span class="st">&quot;a1&quot;</span>,<span class="st">&quot;c2&quot;</span>,<span class="st">&quot;b2&quot;</span>,<span class="st">&quot;a2&quot;</span>)</a>
-<a class="sourceLine" id="cb48-4" title="4">v1 <span class="op">%in%</span><span class="st"> </span>v2</a></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="co">#com o operador %in%.</span></a>
+<a class="sourceLine" id="cb72-2" title="2">v1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a1&quot;</span>,<span class="st">&quot;b2&quot;</span>,<span class="st">&quot;c1&quot;</span>,<span class="st">&quot;d2&quot;</span>)</a>
+<a class="sourceLine" id="cb72-3" title="3">v2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;g1&quot;</span>,<span class="st">&quot;x2&quot;</span>,<span class="st">&quot;d2&quot;</span>,<span class="st">&quot;e2&quot;</span>,<span class="st">&quot;f1&quot;</span>,<span class="st">&quot;a1&quot;</span>,<span class="st">&quot;c2&quot;</span>,<span class="st">&quot;b2&quot;</span>,<span class="st">&quot;a2&quot;</span>)</a>
+<a class="sourceLine" id="cb72-4" title="4">v1 <span class="op">%in%</span><span class="st"> </span>v2</a></code></pre></div>
 <pre><code>## [1]  TRUE  TRUE FALSE  TRUE</code></pre>
 <p>A função <code>select()</code> permite uma sintaxe especial que especifica nomes de variáveis com base em padrões. Por exemplo, há várias funções auxiliares que você pode usar:</p>
 <ul>
 <li>1.<code>starts_with("abc")</code>: corresponde aos nomes que começam com “abc”;</li>
 </ul>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1"><span class="co">#Queremos manter todas as variáveis que começam com um &quot;d&quot;:</span></a>
-<a class="sourceLine" id="cb50-2" title="2">subset3 &lt;-<span class="st"> </span><span class="kw">select</span>(chicago, <span class="kw">starts_with</span>(<span class="st">&quot;d&quot;</span>))</a>
-<a class="sourceLine" id="cb50-3" title="3"><span class="kw">head</span>(subset3)</a></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1"><span class="co">#Queremos manter todas as variáveis que começam com um &quot;d&quot;:</span></a>
+<a class="sourceLine" id="cb74-2" title="2">subset3 &lt;-<span class="st"> </span><span class="kw">select</span>(chicago, <span class="kw">starts_with</span>(<span class="st">&quot;d&quot;</span>))</a>
+<a class="sourceLine" id="cb74-3" title="3"><span class="kw">head</span>(subset3)</a></code></pre></div>
 <pre><code>##     dptp       date
 ## 1 31.500 1987-01-01
 ## 2 29.875 1987-01-02
@@ -373,8 +371,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>2.<code>ends_with("xyz")</code>: corresponde aos nomes que terminam com “xyz”;</li>
 </ul>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1">subset4 &lt;-<span class="st"> </span><span class="kw">select</span>(chicago, <span class="kw">ends_with</span>(<span class="st">&quot;2&quot;</span>))</a>
-<a class="sourceLine" id="cb52-2" title="2"><span class="kw">head</span>(subset4)</a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1">subset4 &lt;-<span class="st"> </span><span class="kw">select</span>(chicago, <span class="kw">ends_with</span>(<span class="st">&quot;2&quot;</span>))</a>
+<a class="sourceLine" id="cb76-2" title="2"><span class="kw">head</span>(subset4)</a></code></pre></div>
 <pre><code>##   pm25tmean2 pm10tmean2 o3tmean2 no2tmean2
 ## 1         NA   34.00000 4.250000  19.98810
 ## 2         NA         NA 3.304348  23.19099
@@ -385,8 +383,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>3.<code>contains("ijk")</code>: corresponde aos nomes que contêm “ijk”;</li>
 </ul>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1">subset5 &lt;-<span class="st"> </span><span class="kw">select</span>(chicago, <span class="kw">contains</span>(<span class="st">&quot;tmean&quot;</span>))</a>
-<a class="sourceLine" id="cb54-2" title="2"><span class="kw">head</span>(subset5)</a></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1">subset5 &lt;-<span class="st"> </span><span class="kw">select</span>(chicago, <span class="kw">contains</span>(<span class="st">&quot;tmean&quot;</span>))</a>
+<a class="sourceLine" id="cb78-2" title="2"><span class="kw">head</span>(subset5)</a></code></pre></div>
 <pre><code>##   pm25tmean2 pm10tmean2 o3tmean2 no2tmean2
 ## 1         NA   34.00000 4.250000  19.98810
 ## 2         NA         NA 3.304348  23.19099
@@ -397,8 +395,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>4.<code>matches("(.)\\1")</code>: selecionar variáveis que correspondem a uma expressão regular. Esta corresponde a qualquer variável que contenha caracteres repetidos. Você aprenderá mais sobre expressões regulares no capítulo <a href="https://r4ds.had.co.nz/strings.html">Strings</a> do livro <a href="https://r4ds.had.co.nz/">R for data science</a>.</li>
 </ul>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1">subset6 &lt;-<span class="st"> </span><span class="kw">select</span>(chicago, <span class="kw">matches</span>(<span class="kw">c</span>(<span class="st">&quot;.m.&quot;</span>), <span class="kw">names</span>(chicago)))</a>
-<a class="sourceLine" id="cb56-2" title="2"><span class="kw">head</span>(subset6)</a></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1">subset6 &lt;-<span class="st"> </span><span class="kw">select</span>(chicago, <span class="kw">matches</span>(<span class="kw">c</span>(<span class="st">&quot;.m.&quot;</span>), <span class="kw">names</span>(chicago)))</a>
+<a class="sourceLine" id="cb80-2" title="2"><span class="kw">head</span>(subset6)</a></code></pre></div>
 <pre><code>##   tmpd pm25tmean2 pm10tmean2 o3tmean2 no2tmean2
 ## 1 31.5         NA   34.00000 4.250000  19.98810
 ## 2 33.0         NA         NA 3.304348  23.19099
@@ -409,42 +407,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>5.<code>num_range("x", 1:3)</code>: Corresponde x1, x2 e x3.</li>
 </ul>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1"><span class="co">#Criando um objeto df que é um data frame</span></a>
-<a class="sourceLine" id="cb58-2" title="2">df &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">matrix</span>(<span class="kw">runif</span>(<span class="dv">100</span>), <span class="dt">nrow =</span> <span class="dv">10</span>)) </a>
-<a class="sourceLine" id="cb58-3" title="3">df &lt;-<span class="st"> </span><span class="kw">tbl_df</span>(df[<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">1</span>, <span class="dv">9</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">10</span>)])</a>
-<a class="sourceLine" id="cb58-4" title="4"><span class="kw">select</span>(df, V4<span class="op">:</span>V6)</a></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1"><span class="co">#Criando um objeto df que é um data frame</span></a>
+<a class="sourceLine" id="cb82-2" title="2">df &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">matrix</span>(<span class="kw">runif</span>(<span class="dv">100</span>), <span class="dt">nrow =</span> <span class="dv">10</span>)) </a>
+<a class="sourceLine" id="cb82-3" title="3">df &lt;-<span class="st"> </span><span class="kw">tbl_df</span>(df[<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">1</span>, <span class="dv">9</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">10</span>)])</a>
+<a class="sourceLine" id="cb82-4" title="4"><span class="kw">select</span>(df, V4<span class="op">:</span>V6)</a></code></pre></div>
 <pre><code>## # A tibble: 10 x 8
-##        V4     V7    V1    V9      V8     V5     V2     V6
-##     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-##  1 0.840  0.551  0.604 0.581 0.563   0.891  0.240  0.344 
-##  2 0.969  0.897  0.138 0.348 0.109   0.574  0.0559 0.374 
-##  3 0.293  0.322  0.196 0.100 0.869   0.298  0.560  0.485 
-##  4 0.248  0.720  0.155 0.802 0.647   0.366  0.401  0.821 
-##  5 0.0319 0.304  0.701 0.825 0.325   0.0532 0.0715 0.414 
-##  6 0.677  0.0534 0.185 0.168 0.804   0.683  0.549  0.296 
-##  7 0.771  0.804  0.130 0.918 0.207   0.667  0.267  0.605 
-##  8 0.336  0.290  0.239 0.384 0.00264 0.400  0.148  0.0412
-##  9 0.349  0.821  0.726 0.152 0.431   0.929  0.358  0.358 
-## 10 0.151  0.658  0.435 0.830 0.831   0.893  0.906  0.543</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1"><span class="kw">select</span>(df, <span class="kw">num_range</span>(<span class="st">&quot;V&quot;</span>, <span class="dv">4</span><span class="op">:</span><span class="dv">6</span>))</a></code></pre></div>
+##        V4      V7     V1    V9    V8    V5     V2     V6
+##     &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1 0.0728 0.561   0.342  0.606 0.760 0.350 0.508  0.269 
+##  2 0.615  0.379   0.487  0.481 0.855 0.164 0.0578 0.763 
+##  3 0.305  0.385   0.732  0.787 0.377 0.879 0.469  0.716 
+##  4 0.105  0.00834 0.329  0.752 0.437 0.771 0.0187 0.0228
+##  5 0.683  0.912   0.0490 0.778 0.596 0.160 0.364  0.316 
+##  6 0.0254 0.570   0.300  0.216 0.927 0.800 0.885  0.250 
+##  7 0.222  0.873   0.397  0.500 0.182 0.973 0.0168 0.990 
+##  8 0.200  0.0767  0.852  0.502 0.985 0.325 0.807  0.882 
+##  9 0.412  0.246   0.764  0.303 0.268 0.448 0.402  0.612 
+## 10 0.911  0.00540 0.936  0.356 0.355 0.964 0.712  0.613</code></pre>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1"><span class="kw">select</span>(df, <span class="kw">num_range</span>(<span class="st">&quot;V&quot;</span>, <span class="dv">4</span><span class="op">:</span><span class="dv">6</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 10 x 3
-##        V4     V5     V6
-##     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-##  1 0.840  0.891  0.344 
-##  2 0.969  0.574  0.374 
-##  3 0.293  0.298  0.485 
-##  4 0.248  0.366  0.821 
-##  5 0.0319 0.0532 0.414 
-##  6 0.677  0.683  0.296 
-##  7 0.771  0.667  0.605 
-##  8 0.336  0.400  0.0412
-##  9 0.349  0.929  0.358 
-## 10 0.151  0.893  0.543</code></pre>
+##        V4    V5     V6
+##     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+##  1 0.0728 0.350 0.269 
+##  2 0.615  0.164 0.763 
+##  3 0.305  0.879 0.716 
+##  4 0.105  0.771 0.0228
+##  5 0.683  0.160 0.316 
+##  6 0.0254 0.800 0.250 
+##  7 0.222  0.973 0.990 
+##  8 0.200  0.325 0.882 
+##  9 0.412  0.448 0.612 
+## 10 0.911  0.964 0.613</code></pre>
 <p>Você também pode usar expressões regulares mais gerais, se necessário. Veja a página de ajuda (?select) para mais detalhes.</p>
 <p><code>select()</code> pode ser usado para renomear variáveis, mas raramente é útil porque descarta todas as variáveis não mencionadas explicitamente. Em vez disso, use <code>rename()</code>, que é uma variante de <code>select()</code> que mantém todas as variáveis que não são mencionadas explicitamente.</p>
 <p>Outra opção é usar <code>select()</code> em conjunto com o <code>everything()</code> auxiliar. Isso é útil se você tiver um punhado de variáveis que deseja mover para o início do quadro de dados.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1">subset7 &lt;-<span class="st"> </span><span class="kw">select</span>(chicago, o3tmean2, no2tmean2, <span class="kw">everything</span>())</a>
-<a class="sourceLine" id="cb62-2" title="2"><span class="kw">head</span>(subset7)</a></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1">subset7 &lt;-<span class="st"> </span><span class="kw">select</span>(chicago, o3tmean2, no2tmean2, <span class="kw">everything</span>())</a>
+<a class="sourceLine" id="cb86-2" title="2"><span class="kw">head</span>(subset7)</a></code></pre></div>
 <pre><code>##   o3tmean2 no2tmean2 city tmpd   dptp       date pm25tmean2 pm10tmean2
 ## 1 4.250000  19.98810 chic 31.5 31.500 1987-01-01         NA   34.00000
 ## 2 3.304348  23.19099 chic 33.0 29.875 1987-01-02         NA         NA
@@ -453,7 +451,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 4.750000  30.33333 chic 32.0 28.875 1987-01-05         NA         NA
 ## 6 5.833333  25.77233 chic 40.0 35.125 1987-01-06         NA   48.00000</code></pre>
 <div id="exercícios-2" class="section level3">
-<h3><span class="header-section-number">5.5.1</span> Exercícios</h3>
+<h3><span class="header-section-number">4.5.1</span> Exercícios</h3>
 <ul>
 <li><ol style="list-style-type: decimal">
 <li>Obter um subconjunto com as seguintes variáveis selecionadas: <code>dep_time</code>, <code>dep_delay</code>, <code>arr_time</code>, e <code>arr_delayde</code> do banco <code>flights</code>.</li>
@@ -471,34 +469,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div id="rename" class="section level2">
-<h2><span class="header-section-number">5.6</span> <code>rename()</code></h2>
+<h2><span class="header-section-number">4.6</span> <code>rename()</code></h2>
 <p>Para renomear variáveis em uma data.frames em R não é tão prático. E a função <code>rename()</code> foi projetada para facilitar esse processo.</p>
 <p>Os nomes das cinco primeiras variáveis do data frame chicago.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1"><span class="co">#Imprimir às 3 primeiras linhas da primeira a quinta coluna.</span></a>
-<a class="sourceLine" id="cb64-2" title="2"><span class="kw">head</span>(chicago[, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>], <span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1"><span class="co">#Imprimir às 3 primeiras linhas da primeira a quinta coluna.</span></a>
+<a class="sourceLine" id="cb88-2" title="2"><span class="kw">head</span>(chicago[, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>], <span class="dv">3</span>)</a></code></pre></div>
 <pre><code>##   city tmpd   dptp       date pm25tmean2
 ## 1 chic 31.5 31.500 1987-01-01         NA
 ## 2 chic 33.0 29.875 1987-01-02         NA
 ## 3 chic 33.0 27.375 1987-01-03         NA</code></pre>
 <p>A coluna <code>dptp</code> deve representar a temperatura do ponto de orvalho e a coluna <code>pm25tmean2</code> fornece os dados do PM2.5. No entanto, esses nomes são bastante obscuros ou estranhos e provavelmente serão renomeados para algo mais sensato.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1">chicago &lt;-<span class="st"> </span><span class="kw">rename</span>(chicago, <span class="dt">Temp_Orv =</span> dptp, <span class="dt">pm25 =</span> pm25tmean2)</a>
-<a class="sourceLine" id="cb66-2" title="2"><span class="kw">head</span>(chicago[, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>], <span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1">chicago &lt;-<span class="st"> </span><span class="kw">rename</span>(chicago, <span class="dt">Temp_Orv =</span> dptp, <span class="dt">pm25 =</span> pm25tmean2)</a>
+<a class="sourceLine" id="cb90-2" title="2"><span class="kw">head</span>(chicago[, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>], <span class="dv">3</span>)</a></code></pre></div>
 <pre><code>##   city tmpd Temp_Orv       date pm25
 ## 1 chic 31.5   31.500 1987-01-01   NA
 ## 2 chic 33.0   29.875 1987-01-02   NA
 ## 3 chic 33.0   27.375 1987-01-03   NA</code></pre>
 <p>A sintaxe dentro da <code>rename()</code> função é ter o novo nome no lado esquerdo do <code>=</code> sinal e o nome antigo no lado direito.</p>
 <div id="exercícios-3" class="section level3">
-<h3><span class="header-section-number">5.6.1</span> Exercícios</h3>
+<h3><span class="header-section-number">4.6.1</span> Exercícios</h3>
 </div>
 </div>
 <div id="mutate" class="section level2">
-<h2><span class="header-section-number">5.7</span> <code>mutate()</code></h2>
+<h2><span class="header-section-number">4.7</span> <code>mutate()</code></h2>
 <p>Em certas situações é útil adicionar novas colunas/variáveis que são funções de colunas existentes no data frames, ou seja, criar novas variáveis derivadas de variáveis existentes. Esse é o trabalho de <code>mutate()</code>. Esta função adiciona novas colunas no final do seu conjunto de dados. <code>mutate()</code> fornece uma interface limpa para fazer isso. Lembre-se de que, quando você está no RStudio, a maneira mais fácil de ver todas as colunas é <code>View()</code>.</p>
 <p>Por exemplo, com os dados de poluição do ar, subtraindo a média dos dados. Dessa forma, podemos verificar se o nível de poluição do ar de um determinado dia é maior ou menor que a média (em oposição a observar seu nível absoluto).</p>
 <p>Aqui, criamos uma variável <code>pm25difmean</code> que subtrai a média da variável <code>pm25</code>.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1">chicago &lt;-<span class="st"> </span><span class="kw">mutate</span>(chicago, <span class="dt">pm25difmean =</span> pm25 <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(pm25, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb68-2" title="2"><span class="kw">head</span>(chicago)</a></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1">chicago &lt;-<span class="st"> </span><span class="kw">mutate</span>(chicago, <span class="dt">pm25difmean =</span> pm25 <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(pm25, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb92-2" title="2"><span class="kw">head</span>(chicago)</a></code></pre></div>
 <pre><code>##   city tmpd Temp_Orv       date pm25 pm10tmean2 o3tmean2 no2tmean2
 ## 1 chic 31.5   31.500 1987-01-01   NA   34.00000 4.250000  19.98810
 ## 2 chic 33.0   29.875 1987-01-02   NA         NA 3.304348  23.19099
@@ -515,9 +513,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6          NA</code></pre>
 <p>Há também a função relacionada <code>transmute()</code>, que faz a mesma coisa que, <code>mutate()</code>, mas elimina todas as variáveis não transformadas.</p>
 <p>Aqui, desprezamos as variáveis PM10 e ozônio (O3).</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1"><span class="kw">head</span>(<span class="kw">transmute</span>(chicago, </a>
-<a class="sourceLine" id="cb70-2" title="2">               <span class="dt">pm10difmean =</span> pm10tmean2 <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(pm10tmean2, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb70-3" title="3">               <span class="dt">O3difmean =</span> o3tmean2 <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(o3tmean2, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</a></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1"><span class="kw">head</span>(<span class="kw">transmute</span>(chicago, </a>
+<a class="sourceLine" id="cb94-2" title="2">               <span class="dt">pm10difmean =</span> pm10tmean2 <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(pm10tmean2, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb94-3" title="3">               <span class="dt">O3difmean =</span> o3tmean2 <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(o3tmean2, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</a></code></pre></div>
 <pre><code>##   pm10difmean O3difmean
 ## 1   0.1047939 -15.18551
 ## 2          NA -16.13117
@@ -528,15 +526,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Observe que existem apenas duas colunas no quadro de dados transformados.</p>
 <p>Há inúmeras funções que pode ser feita, a propriedade é que a função deva ser vetorizada: ela deve pegar um vetor de valores como entrada, retornar um vetor com o mesmo número de valores que a saída. Não há como listar todas as funções possíveis que você possa usar, mas aqui está uma seleção de funções frequentemente úteis:</p>
 <div id="exercícios-4" class="section level3">
-<h3><span class="header-section-number">5.7.1</span> Exercícios</h3>
+<h3><span class="header-section-number">4.7.1</span> Exercícios</h3>
 </div>
 </div>
 <div id="filter" class="section level2">
-<h2><span class="header-section-number">5.8</span> <code>filter()</code></h2>
+<h2><span class="header-section-number">4.8</span> <code>filter()</code></h2>
 <p>A função <code>filter()</code> é usada para extrair subconjuntos de linhas de um data frame.</p>
 <p>Suponhamos que desejássemos extrair as linhas do banco <code>chicago</code> em que o níveis de PM2,5 sejam maiores que 30, poderíamos fazer</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1">chic.f &lt;-<span class="st"> </span><span class="kw">filter</span>(chicago, pm25 <span class="op">&gt;</span><span class="st"> </span><span class="dv">30</span>)</a>
-<a class="sourceLine" id="cb72-2" title="2"><span class="kw">str</span>(chic.f)</a></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" title="1">chic.f &lt;-<span class="st"> </span><span class="kw">filter</span>(chicago, pm25 <span class="op">&gt;</span><span class="st"> </span><span class="dv">30</span>)</a>
+<a class="sourceLine" id="cb96-2" title="2"><span class="kw">str</span>(chic.f)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    194 obs. of  9 variables:
 ##  $ city       : chr  &quot;chic&quot; &quot;chic&quot; &quot;chic&quot; &quot;chic&quot; ...
 ##  $ tmpd       : num  23 28 55 59 57 57 75 61 73 78 ...
@@ -549,10 +547,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ pm25difmean: num  21.9 17.7 23.2 19.2 17.1 ...</code></pre>
 </div>
 <div id="arrange" class="section level2">
-<h2><span class="header-section-number">5.9</span> <code>arrange()</code></h2>
+<h2><span class="header-section-number">4.9</span> <code>arrange()</code></h2>
 </div>
 <div id="group_by" class="section level2">
-<h2><span class="header-section-number">5.10</span> <code>group_by()</code></h2>
+<h2><span class="header-section-number">4.10</span> <code>group_by()</code></h2>
 
 </div>
 </div>
@@ -561,7 +559,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="função-spread.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="literature.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="application.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

@@ -110,23 +110,70 @@ knitr::include_graphics("imagens/rstudio-editor.png")
 
 No *script* você pode digitar comandos a serem executados e também comentários.
 
-## Objetos R
+## Classes de Objetos R
 
-R possui cinco classes básicas ou "atômicas" de objetos:
+R possui 5 classes básicas de objetos, também chamados de objetos "atômicas":
 
-  - character
+  - character;
 
-  - numeric (real numbers)
+  - numeric (real numbers);
 
-  - integer
+  - integer;
 
-  - complex
+  - complex;
 
-  - logical (True/False)
+  - logical (True/False).
 
-O tipo mais básico de objeto R é um vetor. Vetores vazios podem ser criados com a função `vector()`. Existe apenas uma regra sobre vetores em R, que um vetor pode conter apenas objetos da mesma classe.
+O tipo mais básico de objeto R é um vetor. Um vetor só pode conter elementos de uma mesma classe. Mas há uma exceção, que é uma lista. Uma lista é representada como um vetor, mas pode conter objetos de diferentes classes. 
 
-Mas há uma exceção, que é uma lista. Uma lista é representada como um vetor, mas pode conter objetos de diferentes classes. De fato, geralmente é por isso que os usamos.
+Características do vetor:
+
+  - Coleção ordenada de valores;
+
+  - Estrutura unidimensional.
+
+Usando a função `c()` para criar vetores:
+
+```{r}
+num <- c(10, 5, 2, 4, 8, 9)
+num
+
+class(num) # para saber a classe do objeto, usamos a função class().
+```
+
+Por que `numeric` e não `integer`? Para forçar a representação de um número para inteiro é necessário usar o sufixo L.
+
+```{r}
+x <- c(10L, 5L, 2L, 4L, 8L, 9L)
+x
+class(x)
+```
+
+Note que a diferença entre `numeric` e `integer` também possui impacto computacional, pois o armazenamento de números inteiros ocupa menos espaço na memória. Dessa forma, esperamos que o vetor x acima ocupe menos espaço na memória do que o vetor num, embora sejam aparentemente idênticos. Usamos a função `object.size()` fornece uma estimativa da memória que está sendo usada para armazenar um objeto R.Veja:
+
+```{r}
+object.size(num)
+
+object.size(x)
+```
+
+A diferença pode parecer pequena, mas pode ter um grande impacto computacional quando os vetores são formados por milhares ou milhões de números
+
+## Atributos
+
+Os objetos R podem ter atributos, como metadados para o objeto. Esses metadados podem ser muito úteis, pois ajudam a descrever o objeto. Por exemplo, nomes de colunas em um quadro de dados ajudam a nos dizer quais dados estão contidos em cada uma das colunas. Alguns exemplos de atributos de objeto R são:
+
+  - nomes, dimnames;
+
+  - dimensões (por exemplo, matrizes, matrizes);
+
+  - classe (por exemplo, inteiro, numérico);
+
+  - comprimento;
+
+  - outros atributos/metadados definidos pelo usuário.
+  
+Os atributos de um objeto (se houver) podem ser acessados usando a função  `attributes()`. Nem todos os objetos R contêm atributos; nesse caso, a `attributes()` retorna `NULL`.
 
 ## *swirl*
 
@@ -137,5 +184,3 @@ knitr::include_graphics("imagens/swirl.png")
 
 O *swirl* dá acesso às tarefas de cursos de R que estão disponíveis também no Coursera, como o *R Programming*: *The basics of programming in R*, em <https://pt.coursera.org/learn/r-programming>. Além deste, estão
 disponíveis no *swirl*: *Regression Models: The basics of regression modeling in R, Statistical Inference: The basics of statistical inference in R, e Exploratory Data Analysis: The basics of exploring data in R*.
-
-

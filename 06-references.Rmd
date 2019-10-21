@@ -16,7 +16,7 @@ https://www.nytimes.com/2014/08/18/technology/for-big-data-scientists-hurdle-to-
 
 Dasu T, Johnson T (2003). Exploratory Data Mining and Data Cleaning. Wiley-IEEE.
 
-
+http://leg.ufpr.br/~fernandomayer/aulas/ce083-2016-2/02_funcoes_e_objetos.html#classes_de_objetos
 
 # Apêndice A: Respostas dos Exercícios {-}
 
