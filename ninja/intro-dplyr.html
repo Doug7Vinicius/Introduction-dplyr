@@ -120,15 +120,29 @@ O tipo mais básico de objeto R é um vetor. Um vetor só pode conter elementos 
 
 ---
 
-# Tipos de Objetos
+# Atributos 
 
-- **Vector**: unidimensional, apenas uma classe
+Os objetos R podem ter atributos, como metadados para o objeto. Esses metadados podem ser muito úteis, pois ajudam a descrever o objeto. Por exemplo, nomes de colunas em um quadro de dados ajudam a nos dizer quais dados estão contidos em cada uma das colunas. Alguns exemplos de atributos de objeto R são:
 
-- **Matriz**: bidimensional, apenas uma classe
+  - nomes, dimnames;
 
-- **Data.frame**: lista de vetores
+  - dimensões (por exemplo, matrizes, matrizes);
 
-- **List**: pode contar diferentes classes
+  - classe (por exemplo, inteiro, numérico);
+
+  - comprimento;
+
+  - outros atributos/metadados definidos pelo usuário.
+
+Os atributos de um objeto (se houver) podem ser acessados usando a função `attributes()`. Nem todos os objetos R contêm atributos; nesse caso, a `attributes()` retorna NULL.
+
+---
+
+# Pacote `swirl`
+
+O `swirl` é um pacote do R construído para transformar o console em uma ferramenta interativa para aprender R. `swirl` ensina programação de R e ciência de dados interativamente, no seu próprio ritmo e diretamente no console do R. Para entender melhor o projeto, veja http://swirlstats.com/ e http://swirlstats.com/students. Nestes endereços são dados os detalhes sobre como usar o `swirl`. Uma vez intalado e carregado o pacote, você é levado a efetuar tarefas.
+
+O `swirl` dá acesso às tarefas de cursos de R que estão disponíveis também no Coursera, como o R Programming: The basics of programming in R, em https://pt.coursera.org/learn/r-programming. Além deste, estão disponíveis no `swirl`: Regression Models: The basics of regression modeling in R, Statistical Inference: The basics of statistical inference in R, e Exploratory Data Analysis: The basics of exploring data in R.
 
 ---
 
@@ -136,9 +150,32 @@ O tipo mais básico de objeto R é um vetor. Um vetor só pode conter elementos 
 
 Mas afinal, como dois quadros de dados aparecem totalmente diferentes no console?
 
+--
 
+O que é um tibble? Tibbles são similares aos data frames, porém diferentes em dois aspectos: **impressão** e **indexação**.
+
+--
+
+Sempre que indexarmos um tibble usando `[`, o resultado será outro tibble. Usando `[[` o resultados será um vetor.
 
 ---
+
+# O que é Dados organizados?
+
+Costuma-se dizer que 80% da análise de dados é gasta no processo de limpeza e preparação os dados (Dasu e Johnson 2003).
+--
+### `tidyr`
+
+&lt;img src="imagens/tidyr.png" width="30%" style="display: block; margin: auto;" /&gt;
+
+O objetivo do tidyr é ajudá-lo a criar dados organizados . Dados organizados são dados em que:
+
+Cada coluna é variável.
+Toda linha é uma observação.
+Cada célula é um valor único.
+
+---
+
 class: inverse, middle, center
 
 
