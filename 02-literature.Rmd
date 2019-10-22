@@ -183,12 +183,12 @@ Além disso, existem duas funções que podem ser importantes na nossa análise:
 
 ### Função `gather()`
 
-Vamos criar um `tibble` no formato *wide* e transformá-lo em um dado *tidy*:
+Vamos criar um `tibble` no formato *wide* e transformá-lo em um dado *tidy*. Utilizando o conjunto de dados `storms` do pacote `EDAWR`, que descreve a velocidades máximas do vento para seis furacões no Atlântico.
 
 ```{r}
-library(tibble)
-dados_wide <- tibble(uf = c("RJ", "SP"), `2017` = c(10, 11), `2018` = c(11, 10))
-dados_wide
+storms
+
+
 ```
 
 a função `gather()` retorna um `tibble` com duas colunas, por padrão, isso se não inserirmos nenhum parâmetro além do `tibble`.

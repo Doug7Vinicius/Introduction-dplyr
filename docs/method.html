@@ -158,18 +158,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2" data-path="method.html"><a href="method.html#gramática-do-dplyr"><i class="fa fa-check"></i><b>4.2</b> Gramática do <code>dplyr</code></a></li>
 <li class="chapter" data-level="4.3" data-path="method.html"><a href="method.html#propriedades-das-funções-do-dplyr"><i class="fa fa-check"></i><b>4.3</b> Propriedades das funções do <code>dplyr</code></a></li>
 <li class="chapter" data-level="4.4" data-path="method.html"><a href="method.html#instalando-o-pacote-dplyr"><i class="fa fa-check"></i><b>4.4</b> Instalando o Pacote <code>dplyr</code></a></li>
-<li class="chapter" data-level="4.5" data-path="method.html"><a href="method.html#select"><i class="fa fa-check"></i><b>4.5</b> <code>select()</code></a><ul>
-<li class="chapter" data-level="4.5.1" data-path="method.html"><a href="method.html#exercícios-2"><i class="fa fa-check"></i><b>4.5.1</b> Exercícios</a></li>
-</ul></li>
+<li class="chapter" data-level="4.5" data-path="method.html"><a href="method.html#select"><i class="fa fa-check"></i><b>4.5</b> <code>select()</code></a></li>
 <li class="chapter" data-level="4.6" data-path="method.html"><a href="method.html#rename"><i class="fa fa-check"></i><b>4.6</b> <code>rename()</code></a><ul>
-<li class="chapter" data-level="4.6.1" data-path="method.html"><a href="method.html#exercícios-3"><i class="fa fa-check"></i><b>4.6.1</b> Exercícios</a></li>
+<li class="chapter" data-level="4.6.1" data-path="method.html"><a href="method.html#exercícios-2"><i class="fa fa-check"></i><b>4.6.1</b> Exercícios</a></li>
 </ul></li>
 <li class="chapter" data-level="4.7" data-path="method.html"><a href="method.html#mutate"><i class="fa fa-check"></i><b>4.7</b> <code>mutate()</code></a><ul>
-<li class="chapter" data-level="4.7.1" data-path="method.html"><a href="method.html#exercícios-4"><i class="fa fa-check"></i><b>4.7.1</b> Exercícios</a></li>
+<li class="chapter" data-level="4.7.1" data-path="method.html"><a href="method.html#exercícios-3"><i class="fa fa-check"></i><b>4.7.1</b> Exercícios</a></li>
 </ul></li>
 <li class="chapter" data-level="4.8" data-path="method.html"><a href="method.html#filter"><i class="fa fa-check"></i><b>4.8</b> <code>filter()</code></a></li>
 <li class="chapter" data-level="4.9" data-path="method.html"><a href="method.html#arrange"><i class="fa fa-check"></i><b>4.9</b> <code>arrange()</code></a></li>
-<li class="chapter" data-level="4.10" data-path="method.html"><a href="method.html#group_by"><i class="fa fa-check"></i><b>4.10</b> <code>group_by()</code></a></li>
+<li class="chapter" data-level="4.10" data-path="method.html"><a href="method.html#group_by"><i class="fa fa-check"></i><b>4.10</b> <code>group_by()</code></a><ul>
+<li class="chapter" data-level="4.10.1" data-path="method.html"><a href="method.html#exercícios-4"><i class="fa fa-check"></i><b>4.10.1</b> Exercícios</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="application.html"><a href="application.html"><i class="fa fa-check"></i><b>5</b> Vôos em Nova York de 2013</a><ul>
 <li class="chapter" data-level="5.1" data-path="application.html"><a href="application.html#nycflights13"><i class="fa fa-check"></i><b>5.1</b> nycflights13</a></li>
@@ -412,32 +412,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb82-3" title="3">df &lt;-<span class="st"> </span><span class="kw">tbl_df</span>(df[<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">1</span>, <span class="dv">9</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">10</span>)])</a>
 <a class="sourceLine" id="cb82-4" title="4"><span class="kw">select</span>(df, V4<span class="op">:</span>V6)</a></code></pre></div>
 <pre><code>## # A tibble: 10 x 8
-##        V4      V7     V1    V9    V8    V5     V2     V6
-##     &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-##  1 0.0728 0.561   0.342  0.606 0.760 0.350 0.508  0.269 
-##  2 0.615  0.379   0.487  0.481 0.855 0.164 0.0578 0.763 
-##  3 0.305  0.385   0.732  0.787 0.377 0.879 0.469  0.716 
-##  4 0.105  0.00834 0.329  0.752 0.437 0.771 0.0187 0.0228
-##  5 0.683  0.912   0.0490 0.778 0.596 0.160 0.364  0.316 
-##  6 0.0254 0.570   0.300  0.216 0.927 0.800 0.885  0.250 
-##  7 0.222  0.873   0.397  0.500 0.182 0.973 0.0168 0.990 
-##  8 0.200  0.0767  0.852  0.502 0.985 0.325 0.807  0.882 
-##  9 0.412  0.246   0.764  0.303 0.268 0.448 0.402  0.612 
-## 10 0.911  0.00540 0.936  0.356 0.355 0.964 0.712  0.613</code></pre>
+##        V4    V7     V1      V9     V8    V5     V2      V6
+##     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
+##  1 0.813  0.489 0.670  0.550   0.895  0.434 0.689  0.863  
+##  2 0.932  0.343 0.769  0.0905  0.493  0.251 0.574  0.909  
+##  3 0.193  0.501 0.988  0.604   0.204  0.278 0.992  0.895  
+##  4 0.534  0.801 0.247  0.0696  0.0631 0.454 0.102  0.0171 
+##  5 0.0914 0.982 0.226  0.00122 0.0405 0.641 0.654  0.188  
+##  6 0.173  0.924 0.0788 0.0101  0.0292 0.543 0.898  0.382  
+##  7 0.224  0.359 0.706  0.928   0.881  0.473 0.0269 0.488  
+##  8 0.132  0.850 0.242  0.239   0.645  0.612 0.152  0.00450
+##  9 0.985  0.903 0.552  0.503   0.778  0.193 0.492  0.142  
+## 10 0.867  0.740 0.957  0.0350  0.976  0.790 0.0177 0.993</code></pre>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1"><span class="kw">select</span>(df, <span class="kw">num_range</span>(<span class="st">&quot;V&quot;</span>, <span class="dv">4</span><span class="op">:</span><span class="dv">6</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 10 x 3
-##        V4    V5     V6
-##     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
-##  1 0.0728 0.350 0.269 
-##  2 0.615  0.164 0.763 
-##  3 0.305  0.879 0.716 
-##  4 0.105  0.771 0.0228
-##  5 0.683  0.160 0.316 
-##  6 0.0254 0.800 0.250 
-##  7 0.222  0.973 0.990 
-##  8 0.200  0.325 0.882 
-##  9 0.412  0.448 0.612 
-## 10 0.911  0.964 0.613</code></pre>
+##        V4    V5      V6
+##     &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+##  1 0.813  0.434 0.863  
+##  2 0.932  0.251 0.909  
+##  3 0.193  0.278 0.895  
+##  4 0.534  0.454 0.0171 
+##  5 0.0914 0.641 0.188  
+##  6 0.173  0.543 0.382  
+##  7 0.224  0.473 0.488  
+##  8 0.132  0.612 0.00450
+##  9 0.985  0.193 0.142  
+## 10 0.867  0.790 0.993</code></pre>
 <p>Você também pode usar expressões regulares mais gerais, se necessário. Veja a página de ajuda (?select) para mais detalhes.</p>
 <p><code>select()</code> pode ser usado para renomear variáveis, mas raramente é útil porque descarta todas as variáveis não mencionadas explicitamente. Em vez disso, use <code>rename()</code>, que é uma variante de <code>select()</code> que mantém todas as variáveis que não são mencionadas explicitamente.</p>
 <p>Outra opção é usar <code>select()</code> em conjunto com o <code>everything()</code> auxiliar. Isso é útil se você tiver um punhado de variáveis que deseja mover para o início do quadro de dados.</p>
@@ -450,23 +450,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 4.375000  30.43452 chic 29.0 28.625 1987-01-04         NA   47.00000
 ## 5 4.750000  30.33333 chic 32.0 28.875 1987-01-05         NA         NA
 ## 6 5.833333  25.77233 chic 40.0 35.125 1987-01-06         NA   48.00000</code></pre>
-<div id="exercícios-2" class="section level3">
-<h3><span class="header-section-number">4.5.1</span> Exercícios</h3>
-<ul>
-<li><ol style="list-style-type: decimal">
-<li>Obter um subconjunto com as seguintes variáveis selecionadas: <code>dep_time</code>, <code>dep_delay</code>, <code>arr_time</code>, e <code>arr_delayde</code> do banco <code>flights</code>.</li>
-</ol></li>
-<li><ol start="2" style="list-style-type: decimal">
-<li>O que acontece se você incluir o nome de uma variável várias vezes em uma <code>select()</code> chamada?</li>
-</ol></li>
-<li><ol start="3" style="list-style-type: decimal">
-<li>O que a <code>one_of()</code> função faz? Por que pode ser útil em conjunto com esse vetor?</li>
-</ol></li>
-</ul>
-<blockquote>
-<p>vars &lt;- c(“year”, “month”, “day”, “dep_delay”, “arr_delay”)</p>
-</blockquote>
-</div>
 </div>
 <div id="rename" class="section level2">
 <h2><span class="header-section-number">4.6</span> <code>rename()</code></h2>
@@ -486,7 +469,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2 chic 33.0   29.875 1987-01-02   NA
 ## 3 chic 33.0   27.375 1987-01-03   NA</code></pre>
 <p>A sintaxe dentro da <code>rename()</code> função é ter o novo nome no lado esquerdo do <code>=</code> sinal e o nome antigo no lado direito.</p>
-<div id="exercícios-3" class="section level3">
+<div id="exercícios-2" class="section level3">
 <h3><span class="header-section-number">4.6.1</span> Exercícios</h3>
 </div>
 </div>
@@ -525,7 +508,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6  14.1047939 -13.60218</code></pre>
 <p>Observe que existem apenas duas colunas no quadro de dados transformados.</p>
 <p>Há inúmeras funções que pode ser feita, a propriedade é que a função deva ser vetorizada: ela deve pegar um vetor de valores como entrada, retornar um vetor com o mesmo número de valores que a saída. Não há como listar todas as funções possíveis que você possa usar, mas aqui está uma seleção de funções frequentemente úteis:</p>
-<div id="exercícios-4" class="section level3">
+<div id="exercícios-3" class="section level3">
 <h3><span class="header-section-number">4.7.1</span> Exercícios</h3>
 </div>
 </div>
@@ -551,7 +534,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="group_by" class="section level2">
 <h2><span class="header-section-number">4.10</span> <code>group_by()</code></h2>
+<div id="exercícios-4" class="section level3">
+<h3><span class="header-section-number">4.10.1</span> Exercícios</h3>
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>Obter um subconjunto com as seguintes variáveis selecionadas: <code>dep_time</code>, <code>dep_delay</code>, <code>arr_time</code>, e <code>arr_delayde</code> do banco <code>flights</code>.</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>O que acontece se você incluir o nome de uma variável várias vezes em uma <code>select()</code> chamada?</li>
+</ol></li>
+<li><ol start="3" style="list-style-type: decimal">
+<li>O que a <code>one_of()</code> função faz? Por que pode ser útil em conjunto com esse vetor?</li>
+</ol></li>
+</ul>
+<blockquote>
+<p>vars &lt;- c(“year”, “month”, “day”, “dep_delay”, “arr_delay”)</p>
+</blockquote>
 
+</div>
 </div>
 </div>
             </section>

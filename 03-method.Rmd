@@ -214,17 +214,6 @@ subset7 <- select(chicago, o3tmean2, no2tmean2, everything())
 head(subset7)
 ```
 
-### Exercícios
-
-  - 1. Obter um subconjunto com as seguintes variáveis selecionadas: `dep_time`, `dep_delay`, `arr_time`, e `arr_delayde` do banco `flights`.
-
-  - 2. O que acontece se você incluir o nome de uma variável várias vezes em uma `select()` chamada?
-
-  - 3. O que a `one_of()` função faz? Por que pode ser útil em conjunto com esse vetor?
-    
->vars <- c("year", "month", "day", "dep_delay", "arr_delay")
-
-
 ## `rename()`
 
 Para renomear variáveis em uma data.frames em R não é tão prático. E a função `rename()` foi projetada para facilitar esse processo.
@@ -297,4 +286,14 @@ str(chic.f)
 
 ## `group_by()`
 
+
+### Exercícios
+
+  - 1. Obter um subconjunto com as seguintes variáveis selecionadas: `dep_time`, `dep_delay`, `arr_time`, e `arr_delayde` do banco `flights`.
+
+  - 2. O que acontece se você incluir o nome de uma variável várias vezes em uma `select()` chamada?
+
+  - 3. O que a `one_of()` função faz? Por que pode ser útil em conjunto com esse vetor?
+    
+>vars <- c("year", "month", "day", "dep_delay", "arr_delay")
 
