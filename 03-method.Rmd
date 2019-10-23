@@ -254,46 +254,131 @@ Há também a função relacionada `transmute()`, que faz a mesma coisa que, `mu
 Aqui, desprezamos as variáveis PM10 e ozônio (O3).
 
 ```{r}
-head(transmute(chicago, 
-               pm10difmean = pm10tmean2 - mean(pm10tmean2, na.rm = TRUE),
-               O3difmean = o3tmean2 - mean(o3tmean2, na.rm = TRUE)))
+chicago %>% 
+  transmute(pm10difmean = pm10tmean2 - mean(pm10tmean2, na.rm = TRUE),
+               O3difmean = o3tmean2 - mean(o3tmean2, na.rm = TRUE)) %>% 
+  head()
+
 ```
 
 Observe que existem apenas duas colunas no quadro de dados transformados.
 
-Há inúmeras funções que pode ser feita, a propriedade é que a função deva ser vetorizada: ela deve pegar um vetor de valores como entrada, retornar um vetor com o mesmo número de valores que a saída. Não há como listar todas as funções possíveis que você possa usar, mas aqui está uma seleção de funções frequentemente úteis:
+Há inúmeras funções que pode ser feita, a propriedade é que a função deva ser vetorizada: ela deve pegar um vetor de valores como entrada, retornar um vetor com o mesmo número de valores que a saída. 
 
+## `arrange()`
 
+A função `arrange()` é usada para reordenar linhas de um quadro de dados de acordo com uma das variáveis/colunas. Reordenar linhas de um quadro de dados (preservando a ordem correspondente de outras colunas) normalmente é uma tarefa difícil em R. A função simplifica bastante o processo.
 
-### Exercícios
+Aqui, podemos ordenar as linhas do quadro de dados por data, para que a primeira linha seja a observação mais antiga e a última linha seja a observação mais recente.
+
+```{r}
+chicago %>% 
+  arrange(date) %>% 
+  head()
+```
+
+Agora podemos verificar as primeiras linhas:
+
+```{r}
+chicago %>% 
+  select(date, pm25) %>% 
+  head(3)
+```
+
+e as últimas linhas:
+
+```{r}
+chicago %>% 
+  select(date, pm25) %>% 
+  tail()
+```
+
+As colunas também podem ser organizadas em ordem decrescente, usando o operador especial `desc()`.
+
+```{r}
+chicago <- arrange(chicago, desc(date))
+```
+
+Observa as três primeiras e as últimas três linhas mostra as datas em ordem decrescente.
+
+```{r}
+chicago %>% 
+  select(date, pm25) %>% 
+  head()
+
+chicago %>% 
+  select(date, pm25) %>% 
+  tail()
+```
 
 
 ## `filter()`
 
-A função `filter()` é usada para extrair subconjuntos de linhas de um data frame.
+A função `filter()` é usada para extrair subconjuntos de linhas de um data frame. O primeiro argumento é o nome do quadro de dados. O segundo argumento e os argumentos subseqüentes são as expressões que filtram o quadro de dados.
 
 Suponhamos que desejássemos extrair as linhas do banco `chicago` em que o níveis de PM2,5 sejam maiores que 30, poderíamos fazer 
 
 ```{r}
-chic.f <- filter(chicago, pm25 > 30)
-str(chic.f)
+chicago <- as_tibble(chicago) 
+chicago %>% 
+  filter(pm25 > 30) %>% 
+  head()
+```
+
+Quando você executa essa linha de código, o dplyr executa a operação de filtragem e retorna um novo quadro de dados. As funções `dplyr` nunca modificam suas entradas; portanto, se você deseja salvar o resultado, precisará usar o operador de atribuição `<-`.
+
+Para usar a filtragem de maneira eficaz, você precisa saber como selecionar as observações que deseja usando os operadores de comparação. R fornece o conjunto padrão: `>`, `>=`, `<`, `<=`, `!=`(não igual), e `==`(igual).
+
+Quando você começa com R, o erro mais fácil de cometer é usar `=` em vez de `==` testar a igualdade. Quando isso acontece, você recebe um erro informativo:
+
+```{r eval=FALSE}
+filter(chicago, tmpd = 33)
+#> Error: `month` (`month = 1`) must not be named, do you need `==`?
+```
+
+Há outro problema comum que você pode encontrar ao usar `==`: números de ponto flutuante. Esses resultados podem surpreendê-lo!
+
+```{r}
+sqrt(2) ^ 2 == 2
+1 / 49 * 49 == 1
+```
+
+Os computadores usam aritmética de precisão finita (eles obviamente não podem armazenar um número infinito de dígitos!). Lembre-se de que todo número que você vê é uma aproximação. Use `near()`:
+
+```{r}
+near(sqrt(2) ^ 2,  2)
+near(1 / 49 * 49, 1)
+```
+
+### Operadores lógicos
+
+Vários argumentos para `filter()` são combinados com “e”: toda expressão deve ser verdadeira para que uma linha seja incluída na saída. Para outros tipos de combinações, você precisará usar operadores booleanos: `&` é "e", `|` é "ou" e `!` é "negação". A Figura abaixo mostra o conjunto completo de operações booleanas.
+
+```{r echo=FALSE, fig.align='center', out.width="70%", fig.cap='Conjunto completo de operações booleanas. x é o círculo do lado esquerdo, y é o círculo do lado direito e a região sombreada mostra quais partes cada operador seleciona.'}
+knitr::include_graphics("imagens/transform-logical.png")
+```
+
+O código a seguir localiza todas as temperaturas iguais a 30ºF ou 40ºF no banco:
+
+```{r}
+chicago %>% 
+  filter(tmpd == 30 | tmpd == 40)
 ```
 
 
-## `arrange()`
+Às vezes, você pode simplificar um subconjunto complicado lembrando a lei de De Morgan: `!(x & y)` é o mesmo que `!x | !y` e `!(x | y)` é o mesmo que `!x & !y`. Por exemplo, se você deseja encontrar temperaturas voos que não foram atrasados (na chegada ou na partida) por mais de duas horas, você pode usar um dos dois filtros a seguir:
+
+```{r}
+chicago %>% 
+  filter(!(tmpd > 30 & pm25 < 15))
+```
 
 
+## `summarise()`
 
-## `group_by()`
+O último verbo-chave é `summarise()`. Recolhe um quadro de dados em uma única linha:
 
+```{r}
 
-### Exercícios
-
-  - 1. Obter um subconjunto com as seguintes variáveis selecionadas: `dep_time`, `dep_delay`, `arr_time`, e `arr_delayde` do banco `flights`.
-
-  - 2. O que acontece se você incluir o nome de uma variável várias vezes em uma `select()` chamada?
-
-  - 3. O que a `one_of()` função faz? Por que pode ser útil em conjunto com esse vetor?
-    
->vars <- c("year", "month", "day", "dep_delay", "arr_delay")
+```
 

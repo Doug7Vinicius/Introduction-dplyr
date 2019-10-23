@@ -1,4 +1,5 @@
-\documentclass[]{book}
+\documentclass[a4paper]{book}
+\usepackage[brazil]{babel}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -24,7 +25,7 @@
 \usepackage{hyperref}
 \hypersetup{unicode=true,
             pdftitle={Apostila: introdução ao pacote dplyr},
-            pdfauthor={Me. Elisângela C. Biazatti Douglas Vinícius Jossivana Macedo},
+            pdfauthor={Me. Elisângela C. Biazatti \\Douglas Vinícius \\Jossivana Macedo},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
@@ -130,39 +131,6 @@
 
 \begin{document}
 \maketitle
-
-{
-\pagestyle{empty}
-\begin{titlepage}
-   \begin{center}
-
-       \Huge
-
-       \textbf{Title}
-
-       \vspace{0.5cm}
-
-       \LARGE
-       \textbf{Subtitle}
-
-   \end{center}
-\end{titlepage}
-
-\begin{titlepage}
-   \begin{center}
-
-       \Huge
-
-       \textbf{AnotherTitle}
-
-       \vspace{0.5cm}
-
-       \LARGE
-       \textbf{Subtitle}
-
-   \end{center}
-\end{titlepage}
-}
 
 {
 \setcounter{tocdepth}{1}
@@ -784,7 +752,7 @@ Para contornar esse problema, usar-se o tubo ``tee''. \texttt{\%T\textgreater{}\
 \includegraphics{introduction-dplyr_files/figure-latex/unnamed-chunk-16-1.pdf}
 
 \begin{verbatim}
-##  num [1:50, 1:2] -1.1119 -0.3139 0.0372 0.6148 -1.372 ...
+##  num [1:50, 1:2] 0.339 -0.918 -1.039 0.182 -0.571 ...
 \end{verbatim}
 
 Para mais informações sobre o \emph{pipe}, outros operadores relacionados e exemplos de utilização, visite a página \href{https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html}{Ceci n'est pas un pipe}. Ou consulte a vinheta do pacote \texttt{vignette("magrittr")}.
@@ -800,16 +768,100 @@ De acordo com as regras ditas anteriormente, um dado limpo/organizado é aquele 
 
 O \texttt{tidyr} possui duas funções principais:
 
-\texttt{gather}: Transforma um \texttt{tibble} \emph{wide} em \emph{long}, ou seja, transforma os dados no formato \emph{tidy}.
+\texttt{gather} = \emph{amontoar}: Transforma um \texttt{tibble} \emph{wide} em \emph{long}, ou seja, transforma os dados no formato \emph{tidy}.
 
-\texttt{spread}: Transforma um \texttt{tibble} \emph{long} em \emph{wide}, ou seja, transforma dados que estão no formato \emph{tidy} em formato não \emph{tidy}.
+\texttt{spread} = \emph{esparramar}: Transforma um \texttt{tibble} \emph{long} em \emph{wide}, ou seja, transforma dados que estão no formato \emph{tidy} em formato não \emph{tidy}.
 
 Além disso, existem duas funções que podem ser importantes na nossa análise: \texttt{separate} e \texttt{unite}, que separa uma coluna em duas e vice versa.
 
-\hypertarget{funuxe7uxe3o-gather}{%
-\subsection{\texorpdfstring{Função \texttt{gather()}}{Função gather()}}\label{funuxe7uxe3o-gather}}
+Utilizando o conjunto de dados \texttt{storms} do pacote \texttt{EDAWR}, que descreve a velocidades máximas do vento para seis furacões no Atlântico.
 
-Vamos criar um \texttt{tibble} no formato \emph{wide} e transformá-lo em um dado \emph{tidy}. Utilizando o conjunto de dados \texttt{storms} do pacote \texttt{EDAWR}, que descreve a velocidades máximas do vento para seis furacões no Atlântico.
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyr)}
+\KeywordTok{library}\NormalTok{(EDAWR)}
+\NormalTok{storms}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     storm wind pressure       date
+## 1 Alberto  110     1007 2000-08-03
+## 2    Alex   45     1009 1998-07-27
+## 3 Allison   65     1005 1995-06-03
+## 4     Ana   40     1013 1997-06-30
+## 5  Arlene   50     1010 1999-06-11
+## 6  Arthur   45     1010 1996-06-17
+\end{verbatim}
+
+Como você pode ver, toda variável (nome da tempestade, vento, pressão, data) tem sua própria coluna e toda observação é salva em sua própria linha.
+
+Como você pode ver, toda variável (nome da tempestade, vento, pressão, data) tem sua própria coluna e toda observação é salva em sua própria linha.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cases}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   country  2011  2012  2013
+## 1      FR  7000  6900  7000
+## 2      DE  5800  6000  6200
+## 3      US 15000 14000 13000
+\end{verbatim}
+
+O conjunto de dados \texttt{cases} têm três variáveis: o código do país em cada linha, o ano em cada coluna e uma contagem para cada combinação de linha e colunas. Como você pode ver, essa estrutura não está em conformidade com as características de um conjunto de dados organizado mencionado acima.
+
+Vamos dar uma olhada em outro exemplo de um conjunto de dados não arrumado chamado poluição:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pollution}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       city  size amount
+## 1 New York large     23
+## 2 New York small     14
+## 3   London large     22
+## 4   London small     16
+## 5  Beijing large    121
+## 6  Beijing small     56
+\end{verbatim}
+
+Aqui temos três variáveis: nomes de cidades, quantidade de partículas pequenas e quantidade de partículas grandes que cada cidade possui (indice de qualidade do ar). Novamente, isso não está em conformidade com as características de um conjunto de dados organizado. A próxima figura resume graficamente a estrutura dos três conjuntos de dados:
+
+\begin{center}\includegraphics[width=0.5\linewidth]{imagens/tidy_data} \end{center}
+
+\hypertarget{funuxe7uxe3o-gather}{%
+\section{\texorpdfstring{Função \texttt{gather()}}{Função gather()}}\label{funuxe7uxe3o-gather}}
+
+Se procurarmos a documentação para esta função, podemos encontrar: ``usa o \texttt{gather()} quando percebe que possui colunas que não são variáveis.'' Esta declaração se aplica ao conjunto de dados \texttt{cases} descrito acima. Então, vamos tentar arrumar usando a \texttt{gather()}. A função \texttt{gather()} retorna um \texttt{tibble} com duas colunas, por padrão, isso se não inserirmos nenhum parâmetro além do \texttt{tibble}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tidy.cases <-}\StringTok{ }\KeywordTok{gather}\NormalTok{(cases, }\StringTok{"year"}\NormalTok{, }\StringTok{"n"}\NormalTok{, }\DecValTok{2}\OperatorTok{:}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+O resultado é um quadro de dados organizado com três colunas, onde cada coluna representa uma variável e cada obeservação é salva em sua própria linha.
+
+\hypertarget{funuxe7uxe3o-spread}{%
+\section{\texorpdfstring{Função \texttt{spread()}}{Função spread()}}\label{funuxe7uxe3o-spread}}
+
+A segunda função principal do \texttt{tidyr} é \texttt{spread()}. Esta função pega dados que estão em um formato de valor-chave e retorna um formato retangular de célula organizada. Isso pode parecer confuso, então vamos aplicar esta função no quadro de dados de poluição para ilustrar sua funcionalidade:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tidy.pollution <-}\StringTok{ }\KeywordTok{spread}\NormalTok{(pollution, size, amount)}
+\end{Highlighting}
+\end{Shaded}
+
+Como você pode ver, \texttt{spread()} reestrutura o quadro de dados removendo linhas redundantes sem perder nenhuma informação.
+
+Duas outras funções úteis são \texttt{unite()} e \texttt{separate()}. Para mostrar seu uso, vamos olhar o quandro de dados \texttt{storms} novamente:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -818,27 +870,42 @@ Vamos criar um \texttt{tibble} no formato \emph{wide} e transformá-lo em um dad
 \end{Shaded}
 
 \begin{verbatim}
-## # A tibble: 10,010 x 13
-##    name   year month   day  hour   lat  long status category  wind pressure
-##    <chr> <dbl> <dbl> <int> <dbl> <dbl> <dbl> <chr>  <ord>    <int>    <int>
-##  1 Amy    1975     6    27     0  27.5 -79   tropi~ -1          25     1013
-##  2 Amy    1975     6    27     6  28.5 -79   tropi~ -1          25     1013
-##  3 Amy    1975     6    27    12  29.5 -79   tropi~ -1          25     1013
-##  4 Amy    1975     6    27    18  30.5 -79   tropi~ -1          25     1013
-##  5 Amy    1975     6    28     0  31.5 -78.8 tropi~ -1          25     1012
-##  6 Amy    1975     6    28     6  32.4 -78.7 tropi~ -1          25     1012
-##  7 Amy    1975     6    28    12  33.3 -78   tropi~ -1          25     1011
-##  8 Amy    1975     6    28    18  34   -77   tropi~ -1          30     1006
-##  9 Amy    1975     6    29     0  34.4 -75.8 tropi~ 0           35     1004
-## 10 Amy    1975     6    29     6  34   -74.8 tropi~ 0           40     1002
-## # ... with 10,000 more rows, and 2 more variables: ts_diameter <dbl>,
-## #   hu_diameter <dbl>
+##     storm wind pressure       date
+## 1 Alberto  110     1007 2000-08-03
+## 2    Alex   45     1009 1998-07-27
+## 3 Allison   65     1005 1995-06-03
+## 4     Ana   40     1013 1997-06-30
+## 5  Arlene   50     1010 1999-06-11
+## 6  Arthur   45     1010 1996-06-17
 \end{verbatim}
 
-a função \texttt{gather()} retorna um \texttt{tibble} com duas colunas, por padrão, isso se não inserirmos nenhum parâmetro além do \texttt{tibble}.
+\texttt{separate()} pode ser usado para separar uma coluna em várias outras colunas usando um separador. Digamos, por exemplo, que, em vez do formato de data AAAA-MM-DD que esta no \texttt{storms} e em uma única coluna, desejemos três colunas separadas: uma com o ano, uma com o mês e outra com o dia. Isso pode ser alcançado com o seguinte comando:
 
-\hypertarget{funuxe7uxe3o-spread}{%
-\section{\texorpdfstring{Função \texttt{spread()}}{Função spread()}}\label{funuxe7uxe3o-spread}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{storms.sep <-}\StringTok{ }\KeywordTok{separate}\NormalTok{(storms, date, }\KeywordTok{c}\NormalTok{(}\StringTok{"year"}\NormalTok{, }\StringTok{"month"}\NormalTok{, }\StringTok{"day"}\NormalTok{), }\DataTypeTok{sep=}\StringTok{"-"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{unite()} faz exatamente o oposto. Ele une várias colunas em uma única coluna. Isso pode ser demonstrado usando nosso novo quadro de dados:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{unite}\NormalTok{(storms.sep, }\StringTok{"date"}\NormalTok{ , }\DecValTok{4}\OperatorTok{:}\DecValTok{6}\NormalTok{ , }\DataTypeTok{sep =}\StringTok{"-"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 4
+##   storm    wind pressure date      
+##   <chr>   <int>    <int> <chr>     
+## 1 Alberto   110     1007 2000-08-03
+## 2 Alex       45     1009 1998-07-27
+## 3 Allison    65     1005 1995-06-03
+## 4 Ana        40     1013 1997-06-30
+## 5 Arlene     50     1010 1999-06-11
+## 6 Arthur     45     1010 1996-06-17
+\end{verbatim}
 
 \hypertarget{exercuxedcios}{%
 \subsection{Exercícios}\label{exercuxedcios}}
@@ -1331,18 +1398,18 @@ A função \texttt{select()} permite uma sintaxe especial que especifica nomes d
 
 \begin{verbatim}
 ## # A tibble: 10 x 8
-##       V4     V7    V1    V9     V8      V5     V2      V6
-##    <dbl>  <dbl> <dbl> <dbl>  <dbl>   <dbl>  <dbl>   <dbl>
-##  1 0.178 0.141  0.905 0.173 0.0478 0.688   0.148  0.448  
-##  2 0.951 0.896  0.245 0.349 0.927  0.864   0.452  0.470  
-##  3 0.693 0.132  0.247 0.296 0.584  0.518   0.468  0.136  
-##  4 0.216 0.581  0.737 0.609 0.0464 0.336   0.821  0.533  
-##  5 0.723 0.829  0.424 0.554 0.181  0.00588 0.524  0.252  
-##  6 0.489 0.415  0.420 0.178 0.572  0.536   0.0216 0.437  
-##  7 0.374 0.237  0.211 0.808 0.524  0.893   0.799  0.967  
-##  8 0.829 0.0971 0.951 0.916 0.307  0.424   0.608  0.00597
-##  9 0.632 0.0916 0.565 0.506 0.544  0.190   0.138  0.837  
-## 10 0.502 0.738  0.328 0.806 0.932  0.865   0.172  0.0590
+##        V4     V7     V1    V9    V8    V5    V2     V6
+##     <dbl>  <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl>  <dbl>
+##  1 0.815  0.313  0.744  0.355 0.809 0.177 0.487 0.341 
+##  2 0.413  0.950  0.865  0.686 0.117 0.289 0.468 0.463 
+##  3 0.723  0.275  0.0296 0.728 0.394 0.524 0.948 0.747 
+##  4 0.864  0.0351 0.590  0.853 0.480 0.455 0.101 0.0393
+##  5 0.934  0.501  0.566  0.326 0.581 0.900 0.459 0.471 
+##  6 0.427  0.660  0.873  0.364 0.270 0.432 0.607 0.802 
+##  7 0.0498 0.733  0.792  0.999 0.981 0.970 0.230 0.733 
+##  8 0.618  0.957  0.135  0.248 0.248 0.642 0.776 0.260 
+##  9 0.485  0.0198 0.687  0.689 0.537 0.944 0.711 0.311 
+## 10 0.718  0.357  0.0559 0.240 0.450 0.490 0.383 0.162
 \end{verbatim}
 
 \begin{Shaded}
@@ -1353,18 +1420,18 @@ A função \texttt{select()} permite uma sintaxe especial que especifica nomes d
 
 \begin{verbatim}
 ## # A tibble: 10 x 3
-##       V4      V5      V6
-##    <dbl>   <dbl>   <dbl>
-##  1 0.178 0.688   0.448  
-##  2 0.951 0.864   0.470  
-##  3 0.693 0.518   0.136  
-##  4 0.216 0.336   0.533  
-##  5 0.723 0.00588 0.252  
-##  6 0.489 0.536   0.437  
-##  7 0.374 0.893   0.967  
-##  8 0.829 0.424   0.00597
-##  9 0.632 0.190   0.837  
-## 10 0.502 0.865   0.0590
+##        V4    V5     V6
+##     <dbl> <dbl>  <dbl>
+##  1 0.815  0.177 0.341 
+##  2 0.413  0.289 0.463 
+##  3 0.723  0.524 0.747 
+##  4 0.864  0.455 0.0393
+##  5 0.934  0.900 0.471 
+##  6 0.427  0.432 0.802 
+##  7 0.0498 0.970 0.733 
+##  8 0.618  0.642 0.260 
+##  9 0.485  0.944 0.311 
+## 10 0.718  0.490 0.162
 \end{verbatim}
 
 Você também pode usar expressões regulares mais gerais, se necessário. Veja a página de ajuda (?select) para mais detalhes.
@@ -1471,9 +1538,10 @@ Aqui, desprezamos as variáveis PM10 e ozônio (O3).
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{head}\NormalTok{(}\KeywordTok{transmute}\NormalTok{(chicago, }
-               \DataTypeTok{pm10difmean =}\NormalTok{ pm10tmean2 }\OperatorTok{-}\StringTok{ }\KeywordTok{mean}\NormalTok{(pm10tmean2, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-               \DataTypeTok{O3difmean =}\NormalTok{ o3tmean2 }\OperatorTok{-}\StringTok{ }\KeywordTok{mean}\NormalTok{(o3tmean2, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)))}
+\NormalTok{chicago }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{transmute}\NormalTok{(}\DataTypeTok{pm10difmean =}\NormalTok{ pm10tmean2 }\OperatorTok{-}\StringTok{ }\KeywordTok{mean}\NormalTok{(pm10tmean2, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+               \DataTypeTok{O3difmean =}\NormalTok{ o3tmean2 }\OperatorTok{-}\StringTok{ }\KeywordTok{mean}\NormalTok{(o3tmean2, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{head}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1489,76 +1557,279 @@ Aqui, desprezamos as variáveis PM10 e ozônio (O3).
 
 Observe que existem apenas duas colunas no quadro de dados transformados.
 
-Há inúmeras funções que pode ser feita, a propriedade é que a função deva ser vetorizada: ela deve pegar um vetor de valores como entrada, retornar um vetor com o mesmo número de valores que a saída. Não há como listar todas as funções possíveis que você possa usar, mas aqui está uma seleção de funções frequentemente úteis:
+Há inúmeras funções que pode ser feita, a propriedade é que a função deva ser vetorizada: ela deve pegar um vetor de valores como entrada, retornar um vetor com o mesmo número de valores que a saída.
 
-\hypertarget{exercuxedcios-3}{%
-\subsection{Exercícios}\label{exercuxedcios-3}}
+\hypertarget{arrange}{%
+\section{\texorpdfstring{\texttt{arrange()}}{arrange()}}\label{arrange}}
+
+A função \texttt{arrange()} é usada para reordenar linhas de um quadro de dados de acordo com uma das variáveis/colunas. Reordenar linhas de um quadro de dados (preservando a ordem correspondente de outras colunas) normalmente é uma tarefa difícil em R. A função simplifica bastante o processo.
+
+Aqui, podemos ordenar as linhas do quadro de dados por data, para que a primeira linha seja a observação mais antiga e a última linha seja a observação mais recente.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chicago }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{arrange}\NormalTok{(date) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{head}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   city tmpd Temp_Orv       date pm25 pm10tmean2 o3tmean2 no2tmean2
+## 1 chic 31.5   31.500 1987-01-01   NA   34.00000 4.250000  19.98810
+## 2 chic 33.0   29.875 1987-01-02   NA         NA 3.304348  23.19099
+## 3 chic 33.0   27.375 1987-01-03   NA   34.16667 3.333333  23.81548
+## 4 chic 29.0   28.625 1987-01-04   NA   47.00000 4.375000  30.43452
+## 5 chic 32.0   28.875 1987-01-05   NA         NA 4.750000  30.33333
+## 6 chic 40.0   35.125 1987-01-06   NA   48.00000 5.833333  25.77233
+##   pm25difmean
+## 1          NA
+## 2          NA
+## 3          NA
+## 4          NA
+## 5          NA
+## 6          NA
+\end{verbatim}
+
+Agora podemos verificar as primeiras linhas:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chicago }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(date, pm25) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{head}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         date pm25
+## 1 1987-01-01   NA
+## 2 1987-01-02   NA
+## 3 1987-01-03   NA
+\end{verbatim}
+
+e as últimas linhas:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chicago }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(date, pm25) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{tail}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##            date     pm25
+## 6935 2005-12-26  8.40000
+## 6936 2005-12-27 23.56000
+## 6937 2005-12-28 17.75000
+## 6938 2005-12-29  7.45000
+## 6939 2005-12-30 15.05714
+## 6940 2005-12-31 15.00000
+\end{verbatim}
+
+As colunas também podem ser organizadas em ordem decrescente, usando o operador especial \texttt{desc()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chicago <-}\StringTok{ }\KeywordTok{arrange}\NormalTok{(chicago, }\KeywordTok{desc}\NormalTok{(date))}
+\end{Highlighting}
+\end{Shaded}
+
+Observa as três primeiras e as últimas três linhas mostra as datas em ordem decrescente.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chicago }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(date, pm25) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{head}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         date     pm25
+## 1 2005-12-31 15.00000
+## 2 2005-12-30 15.05714
+## 3 2005-12-29  7.45000
+## 4 2005-12-28 17.75000
+## 5 2005-12-27 23.56000
+## 6 2005-12-26  8.40000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chicago }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(date, pm25) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{tail}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##            date pm25
+## 6935 1987-01-06   NA
+## 6936 1987-01-05   NA
+## 6937 1987-01-04   NA
+## 6938 1987-01-03   NA
+## 6939 1987-01-02   NA
+## 6940 1987-01-01   NA
+\end{verbatim}
 
 \hypertarget{filter}{%
 \section{\texorpdfstring{\texttt{filter()}}{filter()}}\label{filter}}
 
-A função \texttt{filter()} é usada para extrair subconjuntos de linhas de um data frame.
+A função \texttt{filter()} é usada para extrair subconjuntos de linhas de um data frame. O primeiro argumento é o nome do quadro de dados. O segundo argumento e os argumentos subseqüentes são as expressões que filtram o quadro de dados.
 
 Suponhamos que desejássemos extrair as linhas do banco \texttt{chicago} em que o níveis de PM2,5 sejam maiores que 30, poderíamos fazer
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{chic.f <-}\StringTok{ }\KeywordTok{filter}\NormalTok{(chicago, pm25 }\OperatorTok{>}\StringTok{ }\DecValTok{30}\NormalTok{)}
-\KeywordTok{str}\NormalTok{(chic.f)}
+\NormalTok{chicago <-}\StringTok{ }\KeywordTok{as_tibble}\NormalTok{(chicago) }
+\NormalTok{chicago }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(pm25 }\OperatorTok{>}\StringTok{ }\DecValTok{30}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{head}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## 'data.frame':    194 obs. of  9 variables:
-##  $ city       : chr  "chic" "chic" "chic" "chic" ...
-##  $ tmpd       : num  23 28 55 59 57 57 75 61 73 78 ...
-##  $ Temp_Orv   : num  21.9 25.8 51.3 53.7 52 56 65.8 59 60.3 67.1 ...
-##  $ date       : Date, format: "1998-01-17" "1998-01-23" ...
-##  $ pm25       : num  38.1 34 39.4 35.4 33.3 ...
-##  $ pm10tmean2 : num  32.5 38.7 34 28.5 35 ...
-##  $ o3tmean2   : num  3.18 1.75 10.79 14.3 20.66 ...
-##  $ no2tmean2  : num  25.3 29.4 25.3 31.4 26.8 ...
-##  $ pm25difmean: num  21.9 17.7 23.2 19.2 17.1 ...
+## # A tibble: 6 x 9
+##   city   tmpd Temp_Orv date        pm25 pm10tmean2 o3tmean2 no2tmean2
+##   <chr> <dbl>    <dbl> <date>     <dbl>      <dbl>    <dbl>     <dbl>
+## 1 chic     37     35.2 2005-12-24  30.8       25.2     1.77      32.0
+## 2 chic     41     32.6 2005-12-23  32.9       34.5     6.91      29.1
+## 3 chic     22     23.3 2005-12-22  36.6       42.5     5.39      33.7
+## 4 chic     12      7.7 2005-12-21  37.9       59.5     3.66      34.9
+## 5 chic      8     -1.8 2005-12-07  37.8       39       3.92      34.3
+## 6 chic     55     49.8 2005-11-08  40         36.5     4.10      27.2
+## # ... with 1 more variable: pm25difmean <dbl>
 \end{verbatim}
 
-\hypertarget{arrange}{%
-\section{\texorpdfstring{\texttt{arrange()}}{arrange()}}\label{arrange}}
+Quando você executa essa linha de código, o dplyr executa a operação de filtragem e retorna um novo quadro de dados. As funções \texttt{dplyr} nunca modificam suas entradas; portanto, se você deseja salvar o resultado, precisará usar o operador de atribuição \texttt{\textless{}-}.
 
-\hypertarget{group_by}{%
-\section{\texorpdfstring{\texttt{group\_by()}}{group\_by()}}\label{group_by}}
+Para usar a filtragem de maneira eficaz, você precisa saber como selecionar as observações que deseja usando os operadores de comparação. R fornece o conjunto padrão: \texttt{\textgreater{}}, \texttt{\textgreater{}=}, \texttt{\textless{}}, \texttt{\textless{}=}, \texttt{!=}(não igual), e \texttt{==}(igual).
 
-\hypertarget{exercuxedcios-4}{%
-\subsection{Exercícios}\label{exercuxedcios-4}}
+Quando você começa com R, o erro mais fácil de cometer é usar \texttt{=} em vez de \texttt{==} testar a igualdade. Quando isso acontece, você recebe um erro informativo:
 
-\begin{itemize}
-\item
-  \begin{enumerate}
-  \def\labelenumi{\arabic{enumi}.}
-  \tightlist
-  \item
-    Obter um subconjunto com as seguintes variáveis selecionadas: \texttt{dep\_time}, \texttt{dep\_delay}, \texttt{arr\_time}, e \texttt{arr\_delayde} do banco \texttt{flights}.
-  \end{enumerate}
-\item
-  \begin{enumerate}
-  \def\labelenumi{\arabic{enumi}.}
-  \setcounter{enumi}{1}
-  \tightlist
-  \item
-    O que acontece se você incluir o nome de uma variável várias vezes em uma \texttt{select()} chamada?
-  \end{enumerate}
-\item
-  \begin{enumerate}
-  \def\labelenumi{\arabic{enumi}.}
-  \setcounter{enumi}{2}
-  \tightlist
-  \item
-    O que a \texttt{one\_of()} função faz? Por que pode ser útil em conjunto com esse vetor?
-  \end{enumerate}
-\end{itemize}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{filter}\NormalTok{(chicago, }\DataTypeTok{tmpd =} \DecValTok{33}\NormalTok{)}
+\CommentTok{#> Error: `month` (`month = 1`) must not be named, do you need `==`?}
+\end{Highlighting}
+\end{Shaded}
 
-\begin{quote}
-vars \textless- c(``year'', ``month'', ``day'', ``dep\_delay'', ``arr\_delay'')
-\end{quote}
+Há outro problema comum que você pode encontrar ao usar \texttt{==}: números de ponto flutuante. Esses resultados podem surpreendê-lo!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sqrt}\NormalTok{(}\DecValTok{2}\NormalTok{) }\OperatorTok{^}\StringTok{ }\DecValTok{2} \OperatorTok{==}\StringTok{ }\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1} \OperatorTok{/}\StringTok{ }\DecValTok{49} \OperatorTok{*}\StringTok{ }\DecValTok{49} \OperatorTok{==}\StringTok{ }\DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+Os computadores usam aritmética de precisão finita (eles obviamente não podem armazenar um número infinito de dígitos!). Lembre-se de que todo número que você vê é uma aproximação. Use \texttt{near()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{near}\NormalTok{(}\KeywordTok{sqrt}\NormalTok{(}\DecValTok{2}\NormalTok{) }\OperatorTok{^}\StringTok{ }\DecValTok{2}\NormalTok{,  }\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{near}\NormalTok{(}\DecValTok{1} \OperatorTok{/}\StringTok{ }\DecValTok{49} \OperatorTok{*}\StringTok{ }\DecValTok{49}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\hypertarget{operadores-luxf3gicos}{%
+\subsection{Operadores lógicos}\label{operadores-luxf3gicos}}
+
+Vários argumentos para \texttt{filter()} são combinados com ``e'': toda expressão deve ser verdadeira para que uma linha seja incluída na saída. Para outros tipos de combinações, você precisará usar operadores booleanos: \texttt{\&} é ``e'', \texttt{\textbar{}} é ``ou'' e \texttt{!} é ``negação''. A Figura abaixo mostra o conjunto completo de operações booleanas.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{imagens/transform-logical} 
+
+}
+
+\caption{Conjunto completo de operações booleanas. x é o círculo do lado esquerdo, y é o círculo do lado direito e a região sombreada mostra quais partes cada operador seleciona.}\label{fig:unnamed-chunk-48}
+\end{figure}
+
+O código a seguir localiza todas as temperaturas iguais a 30ºF ou 40ºF no banco:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chicago }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(tmpd }\OperatorTok{==}\StringTok{ }\DecValTok{30} \OperatorTok{|}\StringTok{ }\NormalTok{tmpd }\OperatorTok{==}\StringTok{ }\DecValTok{40}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 136 x 9
+##    city   tmpd Temp_Orv date        pm25 pm10tmean2 o3tmean2 no2tmean2
+##    <chr> <dbl>    <dbl> <date>     <dbl>      <dbl>    <dbl>     <dbl>
+##  1 chic     40     33.6 2005-12-27  23.6       27       4.47      23.5
+##  2 chic     30     27.9 2005-12-15  14.4       16.5     4.90      25.4
+##  3 chic     30     21.1 2005-11-18  11.7       22.4     4.53      25.0
+##  4 chic     40     36.7 2005-10-23   8.5       10      11.6       18.1
+##  5 chic     40     25.1 2005-05-02   8         24      17.0       15.4
+##  6 chic     30     22.7 2005-03-11  12.0       20.5    23.1       19.9
+##  7 chic     30     18.2 2005-02-16  12.8       27.5    19.1       19.9
+##  8 chic     30     25   2005-02-03  47.4       53.6     7.27      48.6
+##  9 chic     30     26.2 2005-01-30  NA         23      12.4       23.4
+## 10 chic     30     27.6 2005-01-09  19.1       17      11.4       19.0
+## # ... with 126 more rows, and 1 more variable: pm25difmean <dbl>
+\end{verbatim}
+
+Às vezes, você pode simplificar um subconjunto complicado lembrando a lei de De Morgan: \texttt{!(x\ \&\ y)} é o mesmo que \texttt{!x\ \textbar{}\ !y} e \texttt{!(x\ \textbar{}\ y)} é o mesmo que \texttt{!x\ \&\ !y}. Por exemplo, se você deseja encontrar temperaturas voos que não foram atrasados (na chegada ou na partida) por mais de duas horas, você pode usar um dos dois filtros a seguir:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chicago }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\NormalTok{(tmpd }\OperatorTok{>}\StringTok{ }\DecValTok{30} \OperatorTok{&}\StringTok{ }\NormalTok{pm25 }\OperatorTok{<}\StringTok{ }\DecValTok{15}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2,156 x 9
+##    city   tmpd Temp_Orv date        pm25 pm10tmean2 o3tmean2 no2tmean2
+##    <chr> <dbl>    <dbl> <date>     <dbl>      <dbl>    <dbl>     <dbl>
+##  1 chic     35     30.1 2005-12-31  15         23.5     2.53      13.2
+##  2 chic     36     31   2005-12-30  15.1       19.2     3.03      22.8
+##  3 chic     37     34.5 2005-12-28  17.8       27.5     3.26      19.3
+##  4 chic     40     33.6 2005-12-27  23.6       27       4.47      23.5
+##  5 chic     37     35.2 2005-12-24  30.8       25.2     1.77      32.0
+##  6 chic     41     32.6 2005-12-23  32.9       34.5     6.91      29.1
+##  7 chic     22     23.3 2005-12-22  36.6       42.5     5.39      33.7
+##  8 chic     12      7.7 2005-12-21  37.9       59.5     3.66      34.9
+##  9 chic     13      7.7 2005-12-20  25.8       32       3.85      32.9
+## 10 chic      5     -0.3 2005-12-19  21.2       21       8.06      31.8
+## # ... with 2,146 more rows, and 1 more variable: pm25difmean <dbl>
+\end{verbatim}
+
+\hypertarget{summarise}{%
+\section{\texorpdfstring{\texttt{summarise()}}{summarise()}}\label{summarise}}
+
+O último verbo-chave é \texttt{summarise()}. Recolhe um quadro de dados em uma única linha:
 
 \hypertarget{application}{%
 \chapter{Vôos em Nova York de 2013}\label{application}}
@@ -1644,7 +1915,17 @@ Colunas do quadro de dados:
 \item
   flight: número do vôo.
 \item
-  tailnum:
+  tailnum: número da cauda do avião.
+\item
+  origin, dest: origem e destino.
+\item
+  air\_time: quantidade de tempo gasto no ar, em minutos.
+\item
+  distance: distância entre aeroportos, em milhas.
+\item
+  hour, minute: hora da partida programada dividida em hora e minutos.
+\item
+  time\_hour: data e hora agendadas do voo como uma data POSIXct. Juntamente com a origem, pode ser usado para unir dados de voos a dados meteorológicos.
 \end{itemize}
 
 \begin{Shaded}
@@ -1654,24 +1935,10 @@ Colunas do quadro de dados:
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{filter-1}{%
-\section{\texorpdfstring{\texttt{filter()}}{filter()}}\label{filter-1}}
-
-\texttt{filter()} permite agrupar observações com base em seus valores. O primeiro argumento da função é o nome do data frames. Por exemplo, podemos selecionar todos os valores
-
-\hypertarget{comparauxe7uxf5es}{%
-\subsection{Comparações}\label{comparauxe7uxf5es}}
-
-\hypertarget{operadores-luxf3gicos}{%
-\subsection{Operadores Lógicos}\label{operadores-luxf3gicos}}
-
-\hypertarget{valores-ausentes}{%
-\subsection{Valores Ausentes}\label{valores-ausentes}}
-
 \hypertarget{summary}{%
 \chapter{Conclusão}\label{summary}}
 
-Os números\ldots{}
+\ldots{}
 
 Peng, R.D. and Welty, L.J. (2004) The NMMAPSdata package. R News 4(2).
 

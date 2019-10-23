@@ -175,25 +175,79 @@ De acordo com as regras ditas anteriormente, um dado limpo/organizado é aquele 
 
 O `tidyr` possui duas funções principais:
 
-`gather`: Transforma um `tibble` *wide* em *long*, ou seja, transforma os dados no formato *tidy*.
+`gather` = *amontoar*: Transforma um `tibble` *wide* em *long*, ou seja, transforma os dados no formato *tidy*.
 
-`spread`: Transforma um `tibble` *long* em *wide*, ou seja, transforma dados que estão no formato *tidy* em formato não *tidy*.
+`spread` = *esparramar*: Transforma um `tibble` *long* em *wide*, ou seja, transforma dados que estão no formato *tidy* em formato não *tidy*.
 
 Além disso, existem duas funções que podem ser importantes na nossa análise: `separate` e `unite`, que separa uma coluna em duas e vice versa.
 
-### Função `gather()`
+Utilizando o conjunto de dados `storms` do pacote `EDAWR`, que descreve a velocidades máximas do vento para seis furacões no Atlântico.
 
-Vamos criar um `tibble` no formato *wide* e transformá-lo em um dado *tidy*. Utilizando o conjunto de dados `storms` do pacote `EDAWR`, que descreve a velocidades máximas do vento para seis furacões no Atlântico.
+```{r}
+library(tidyr)
+library(EDAWR)
+storms
+```
+
+Como você pode ver, toda variável (nome da tempestade, vento, pressão, data) tem sua própria coluna e toda observação é salva em sua própria linha.
+
+Como você pode ver, toda variável (nome da tempestade, vento, pressão, data) tem sua própria coluna e toda observação é salva em sua própria linha.
+
+```{r}
+cases
+```
+
+O conjunto de dados `cases` têm três variáveis: o código do país em cada linha, o ano em cada coluna e uma contagem para cada combinação de linha e colunas. Como você pode ver, essa estrutura não está em conformidade com as características de um conjunto de dados organizado mencionado acima.
+
+Vamos dar uma olhada em outro exemplo de um conjunto de dados não arrumado chamado poluição:
+
+```{r}
+pollution
+```
+
+Aqui temos três variáveis: nomes de cidades, quantidade de partículas pequenas e quantidade de partículas grandes que cada cidade possui (indice de qualidade do ar). Novamente, isso não está em conformidade com as características de um conjunto de dados organizado. A próxima figura resume graficamente a estrutura dos três conjuntos de dados:
+
+```{r echo=FALSE, fig.align='center', out.width="50%"}
+knitr::include_graphics("imagens/tidy_data.png")
+```
+
+## Função `gather()`
+
+Se procurarmos a documentação para esta função, podemos encontrar: “usa o `gather()` quando percebe que possui colunas que não são variáveis.” Esta declaração se aplica ao conjunto de dados `cases` descrito acima. Então, vamos tentar arrumar usando a `gather()`. A função `gather()` retorna um `tibble` com duas colunas, por padrão, isso se não inserirmos nenhum parâmetro além do `tibble`.
+
+```{r}
+tidy.cases <- gather(cases, "year", "n", 2:4)
+```
+
+O resultado é um quadro de dados organizado com três colunas, onde cada coluna representa uma variável e cada obeservação é salva em sua própria linha.
+
+## Função `spread()`
+
+A segunda função principal do `tidyr` é `spread()`. Esta função pega dados que estão em um formato de valor-chave e retorna um formato retangular de célula organizada. Isso pode parecer confuso, então vamos aplicar esta função no quadro de dados de poluição para ilustrar sua funcionalidade:
+
+```{r}
+tidy.pollution <- spread(pollution, size, amount)
+```
+
+Como você pode ver, `spread()` reestrutura o quadro de dados removendo linhas redundantes sem perder nenhuma informação. 
+
+Duas outras funções úteis são `unite()` e `separate()`. Para mostrar seu uso, vamos olhar o quandro de dados `storms` novamente:
 
 ```{r}
 storms
-
-
 ```
 
-a função `gather()` retorna um `tibble` com duas colunas, por padrão, isso se não inserirmos nenhum parâmetro além do `tibble`.
+`separate()` pode ser usado para separar uma coluna em várias outras colunas usando um separador. Digamos, por exemplo, que, em vez do formato de data AAAA-MM-DD que esta no `storms` e em uma única coluna, desejemos três colunas separadas: uma com o ano, uma com o mês e outra com o dia. Isso pode ser alcançado com o seguinte comando:
 
-## Função `spread()`
+```{r}
+storms.sep <- separate(storms, date, c("year", "month", "day"), sep="-")
+```
+
+`unite()` faz exatamente o oposto. Ele une várias colunas em uma única coluna. Isso pode ser demonstrado usando nosso novo quadro de dados:
+
+```{r}
+unite(storms.sep, "date" , 4:6 , sep ="-")
+```
 
 
 ### Exercícios

@@ -1,0 +1,36 @@
+\babel@toc {brazil}{}
+\contentsline {chapter}{\numberline {1}Prefácio}{5}{chapter.1}% 
+\contentsline {section}{\numberline {1.1}Público-alvo}{5}{section.1.1}% 
+\contentsline {section}{\numberline {1.2}Conteúdo:}{5}{section.1.2}% 
+\contentsline {chapter}{\numberline {2}Introdução}{7}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}Universo \texttt {tidyverse}}{8}{section.2.1}% 
+\contentsline {section}{\numberline {2.2}Porque devo aprender R e RStudio?}{8}{section.2.2}% 
+\contentsline {section}{\numberline {2.3}Classes de Objetos R}{11}{section.2.3}% 
+\contentsline {section}{\numberline {2.4}Atributos}{12}{section.2.4}% 
+\contentsline {section}{\numberline {2.5}\emph {swirl}}{13}{section.2.5}% 
+\contentsline {chapter}{\numberline {3}Tibbles x Data frames}{15}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}O que é Dados organizados?}{16}{section.3.1}% 
+\contentsline {section}{\numberline {3.2}Operador \emph {pipe} \texttt {\%\textgreater {}\%}}{18}{section.3.2}% 
+\contentsline {section}{\numberline {3.3}Breve Introdução ao \texttt {tidyr}}{20}{section.3.3}% 
+\contentsline {section}{\numberline {3.4}Função \texttt {gather()}}{22}{section.3.4}% 
+\contentsline {section}{\numberline {3.5}Função \texttt {spread()}}{22}{section.3.5}% 
+\contentsline {subsection}{\numberline {3.5.1}Exercícios}{23}{subsection.3.5.1}% 
+\contentsline {subsection}{\numberline {3.5.2}Exercícios}{23}{subsection.3.5.2}% 
+\contentsline {chapter}{\numberline {4}Manipulando Data Frames com \texttt {dplyr}}{25}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}O Pacote \texttt {dplyr}}{25}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}Gramática do \texttt {dplyr}}{25}{section.4.2}% 
+\contentsline {section}{\numberline {4.3}Propriedades das funções do \texttt {dplyr}}{26}{section.4.3}% 
+\contentsline {section}{\numberline {4.4}Instalando o Pacote \texttt {dplyr}}{26}{section.4.4}% 
+\contentsline {section}{\numberline {4.5}\texttt {select()}}{26}{section.4.5}% 
+\contentsline {section}{\numberline {4.6}\texttt {rename()}}{31}{section.4.6}% 
+\contentsline {subsection}{\numberline {4.6.1}Exercícios}{32}{subsection.4.6.1}% 
+\contentsline {section}{\numberline {4.7}\texttt {mutate()}}{32}{section.4.7}% 
+\contentsline {section}{\numberline {4.8}\texttt {arrange()}}{33}{section.4.8}% 
+\contentsline {section}{\numberline {4.9}\texttt {filter()}}{35}{section.4.9}% 
+\contentsline {subsection}{\numberline {4.9.1}Operadores lógicos}{36}{subsection.4.9.1}% 
+\contentsline {section}{\numberline {4.10}\texttt {summarise()}}{37}{section.4.10}% 
+\contentsline {chapter}{\numberline {5}Vôos em Nova York de 2013}{39}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}nycflights13}{39}{section.5.1}% 
+\contentsline {section}{\numberline {5.2}Formato}{40}{section.5.2}% 
+\contentsline {chapter}{\numberline {6}Conclusão}{43}{chapter.6}% 
+\contentsline {chapter}{Apêndice A: Respostas dos Exercícios}{45}{chapter*.2}% 

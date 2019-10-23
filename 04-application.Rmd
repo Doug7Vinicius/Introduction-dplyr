@@ -53,8 +53,17 @@ Colunas do quadro de dados:
   
   - flight: número do vôo.
   
-  - tailnum:
+  - tailnum: número da cauda do avião.
 
+  - origin, dest: origem e destino.
+  
+  - air_time: quantidade de tempo gasto no ar, em minutos.
+  
+  - distance: distância entre aeroportos, em milhas.
+  
+  - hour, minute: hora da partida programada dividida em hora e minutos.
+  
+  - time_hour: data e hora agendadas do voo como uma data POSIXct. Juntamente com a origem, pode ser usado para unir dados de voos a dados meteorológicos.
 
 
 ```{r}
@@ -63,12 +72,3 @@ Voos <- flights %>%
 ```
 
 
-## `filter()`
-
-`filter()` permite agrupar observações com base em seus valores. O primeiro argumento da função é o nome do data frames. Por exemplo, podemos selecionar todos os valores 
-
-### Comparações
-
-### Operadores Lógicos
-
-### Valores Ausentes
