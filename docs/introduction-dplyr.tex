@@ -1,5 +1,4 @@
-\documentclass[a4paper]{book}
-\usepackage[brazil]{babel}
+\documentclass[]{book}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -25,7 +24,7 @@
 \usepackage{hyperref}
 \hypersetup{unicode=true,
             pdftitle={Apostila: introdução ao pacote dplyr},
-            pdfauthor={Me. Elisângela C. Biazatti \\Douglas Vinícius \\Jossivana Macedo},
+            pdfauthor={Me. Elisângela C. Biazatti Douglas Vinícius Jossivana Macedo},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
@@ -752,7 +751,7 @@ Para contornar esse problema, usar-se o tubo ``tee''. \texttt{\%T\textgreater{}\
 \includegraphics{introduction-dplyr_files/figure-latex/unnamed-chunk-16-1.pdf}
 
 \begin{verbatim}
-##  num [1:50, 1:2] 0.339 -0.918 -1.039 0.182 -0.571 ...
+##  num [1:50, 1:2] 0.311 -0.849 -1.119 0.6 -0.583 ...
 \end{verbatim}
 
 Para mais informações sobre o \emph{pipe}, outros operadores relacionados e exemplos de utilização, visite a página \href{https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html}{Ceci n'est pas un pipe}. Ou consulte a vinheta do pacote \texttt{vignette("magrittr")}.
@@ -1398,18 +1397,18 @@ A função \texttt{select()} permite uma sintaxe especial que especifica nomes d
 
 \begin{verbatim}
 ## # A tibble: 10 x 8
-##        V4     V7     V1    V9    V8    V5    V2     V6
-##     <dbl>  <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl>  <dbl>
-##  1 0.815  0.313  0.744  0.355 0.809 0.177 0.487 0.341 
-##  2 0.413  0.950  0.865  0.686 0.117 0.289 0.468 0.463 
-##  3 0.723  0.275  0.0296 0.728 0.394 0.524 0.948 0.747 
-##  4 0.864  0.0351 0.590  0.853 0.480 0.455 0.101 0.0393
-##  5 0.934  0.501  0.566  0.326 0.581 0.900 0.459 0.471 
-##  6 0.427  0.660  0.873  0.364 0.270 0.432 0.607 0.802 
-##  7 0.0498 0.733  0.792  0.999 0.981 0.970 0.230 0.733 
-##  8 0.618  0.957  0.135  0.248 0.248 0.642 0.776 0.260 
-##  9 0.485  0.0198 0.687  0.689 0.537 0.944 0.711 0.311 
-## 10 0.718  0.357  0.0559 0.240 0.450 0.490 0.383 0.162
+##       V4     V7     V1     V9      V8     V5    V2    V6
+##    <dbl>  <dbl>  <dbl>  <dbl>   <dbl>  <dbl> <dbl> <dbl>
+##  1 0.526 0.953  0.156  0.999  0.542   0.637  0.165 0.457
+##  2 0.299 0.356  0.944  0.0825 0.508   0.913  0.635 0.664
+##  3 0.956 0.606  0.913  0.0248 0.627   0.0244 0.922 0.698
+##  4 0.395 0.674  0.602  0.323  0.746   0.620  0.791 0.201
+##  5 0.528 0.693  0.0589 0.920  0.275   0.690  0.412 0.448
+##  6 0.396 0.293  0.334  0.170  0.952   0.478  0.121 0.300
+##  7 0.218 0.105  0.459  0.240  0.101   0.800  0.158 0.249
+##  8 0.142 0.0507 0.665  0.517  0.00740 0.286  0.239 0.367
+##  9 0.776 0.361  0.343  0.0381 0.408   0.960  0.187 0.145
+## 10 0.498 0.465  0.669  0.987  0.302   0.459  0.952 0.771
 \end{verbatim}
 
 \begin{Shaded}
@@ -1420,18 +1419,18 @@ A função \texttt{select()} permite uma sintaxe especial que especifica nomes d
 
 \begin{verbatim}
 ## # A tibble: 10 x 3
-##        V4    V5     V6
-##     <dbl> <dbl>  <dbl>
-##  1 0.815  0.177 0.341 
-##  2 0.413  0.289 0.463 
-##  3 0.723  0.524 0.747 
-##  4 0.864  0.455 0.0393
-##  5 0.934  0.900 0.471 
-##  6 0.427  0.432 0.802 
-##  7 0.0498 0.970 0.733 
-##  8 0.618  0.642 0.260 
-##  9 0.485  0.944 0.311 
-## 10 0.718  0.490 0.162
+##       V4     V5    V6
+##    <dbl>  <dbl> <dbl>
+##  1 0.526 0.637  0.457
+##  2 0.299 0.913  0.664
+##  3 0.956 0.0244 0.698
+##  4 0.395 0.620  0.201
+##  5 0.528 0.690  0.448
+##  6 0.396 0.478  0.300
+##  7 0.218 0.800  0.249
+##  8 0.142 0.286  0.367
+##  9 0.776 0.960  0.145
+## 10 0.498 0.459  0.771
 \end{verbatim}
 
 Você também pode usar expressões regulares mais gerais, se necessário. Veja a página de ajuda (?select) para mais detalhes.
@@ -1830,6 +1829,83 @@ O código a seguir localiza todas as temperaturas iguais a 30ºF ou 40ºF no ban
 \section{\texorpdfstring{\texttt{summarise()}}{summarise()}}\label{summarise}}
 
 O último verbo-chave é \texttt{summarise()}. Recolhe um quadro de dados em uma única linha:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summarise}\NormalTok{(chicago, }\StringTok{"Média"}\NormalTok{ =}\StringTok{ }\KeywordTok{mean}\NormalTok{(tmpd, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 1
+##   Média
+##   <dbl>
+## 1  50.3
+\end{verbatim}
+
+Juntos \texttt{group\_by()} e \texttt{summarise()} forneça uma das ferramentas que você mais usará ao trabalhar com dplyr: resumos agrupados.
+
+\hypertarget{group_by}{%
+\section{\texorpdfstring{\texttt{group\_by()}}{group\_by()}}\label{group_by}}
+
+A função \texttt{group\_by()} é usada para gerar estatísticas resumidas do quadro de dados nos estratos definidos por uma variável. Por exemplo, neste conjunto de dados de poluição do ar, convém saber qual é o nível médio anual de PM2.5. Portanto, o estrato é o ano, e isso é algo que podemos derivar da variável date. Em conjunto com a função \texttt{group\_by()}, freqüentemente usamos a função \texttt{summarize()} (ou \texttt{summarise()} para algumas partes do mundo).
+
+A operação geral aqui é uma combinação de dividir um quadro de dados em partes separadas definidas por uma variável ou grupo de variáveis ( \texttt{group\_by()}) e, em seguida, aplicar uma função de resumo nesses subconjuntos ( \texttt{summarize()}).
+
+A operação geral aqui é uma combinação de dividir um quadro de dados em partes separadas definidas por uma variável ou grupo de variáveis ( \texttt{group\_by()}) e, em seguida, aplicar uma função de resumo nesses subconjuntos ( \texttt{summarize()}).
+
+Primeiro, podemos criar uma variável \texttt{year} usando \texttt{as.POSIXlt()} (Funções para manipular objetos de classes ``POSIXlt''e ``POSIXct''representar datas e horas do calendário).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chicago <-}\StringTok{ }\KeywordTok{mutate}\NormalTok{(chicago, }\DataTypeTok{year =} \KeywordTok{as.POSIXlt}\NormalTok{(date)}\OperatorTok{$}\NormalTok{year }\OperatorTok{+}\StringTok{ }\DecValTok{1900}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Agora podemos criar um quadro de dados separado que divide o quadro de dados original por ano.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{years <-}\StringTok{ }\KeywordTok{group_by}\NormalTok{(chicago, year)}
+\end{Highlighting}
+\end{Shaded}
+
+Por fim, calculamos estatísticas de resumo para cada ano no quadro de dados com a função \texttt{summarize()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summarize}\NormalTok{(years, }\StringTok{"pm25"}\NormalTok{ =}\StringTok{ }\KeywordTok{mean}\NormalTok{(pm25, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+           \StringTok{"o3"}\NormalTok{ =}\StringTok{ }\KeywordTok{max}\NormalTok{(o3tmean2, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+           \StringTok{"no2"}\NormalTok{ =}\StringTok{ }\KeywordTok{median}\NormalTok{(no2tmean2, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 19 x 4
+##     year  pm25    o3   no2
+##    <dbl> <dbl> <dbl> <dbl>
+##  1  1987 NaN    63.0  23.5
+##  2  1988 NaN    61.7  24.5
+##  3  1989 NaN    59.7  26.1
+##  4  1990 NaN    52.2  22.6
+##  5  1991 NaN    63.1  21.4
+##  6  1992 NaN    50.8  24.8
+##  7  1993 NaN    44.3  25.8
+##  8  1994 NaN    52.2  28.5
+##  9  1995 NaN    66.6  27.3
+## 10  1996 NaN    58.4  26.4
+## 11  1997 NaN    56.5  25.5
+## 12  1998  18.3  50.7  24.6
+## 13  1999  18.5  57.5  24.7
+## 14  2000  16.9  55.8  23.5
+## 15  2001  16.9  51.8  25.1
+## 16  2002  15.3  54.9  22.7
+## 17  2003  15.2  56.2  24.6
+## 18  2004  14.6  44.5  23.4
+## 19  2005  16.2  58.8  22.6
+\end{verbatim}
+
+\texttt{summarize()} devolve uma trama de dados com year primeira coluna, e em seguida, as médias anuais de pm25, o3e no2.
 
 \hypertarget{application}{%
 \chapter{Vôos em Nova York de 2013}\label{application}}

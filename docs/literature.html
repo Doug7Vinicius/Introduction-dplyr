@@ -167,6 +167,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.9.1" data-path="method.html"><a href="method.html#operadores-lógicos"><i class="fa fa-check"></i><b>4.9.1</b> Operadores lógicos</a></li>
 </ul></li>
 <li class="chapter" data-level="4.10" data-path="method.html"><a href="method.html#summarise"><i class="fa fa-check"></i><b>4.10</b> <code>summarise()</code></a></li>
+<li class="chapter" data-level="4.11" data-path="method.html"><a href="method.html#group_by"><i class="fa fa-check"></i><b>4.11</b> <code>group_by()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="application.html"><a href="application.html"><i class="fa fa-check"></i><b>5</b> Vôos em Nova York de 2013</a><ul>
 <li class="chapter" data-level="5.1" data-path="application.html"><a href="application.html#nycflights13"><i class="fa fa-check"></i><b>5.1</b> nycflights13</a></li>
@@ -363,7 +364,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb49-3" title="3"><span class="st">  </span><span class="kw">plot</span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb49-4" title="4"><span class="st">  </span><span class="kw">str</span>()</a></code></pre></div>
 <p><img src="introduction-dplyr_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
-<pre><code>##  num [1:50, 1:2] 1.371 0.18 0.139 -0.675 -0.388 ...</code></pre>
+<pre><code>##  num [1:50, 1:2] -0.4813 0.4946 -0.0852 -1.5671 0.7604 ...</code></pre>
 <p>Para mais informações sobre o <em>pipe</em>, outros operadores relacionados e exemplos de utilização, visite a página <a href="https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html">Ceci n’est pas un pipe</a>. Ou consulte a vinheta do pacote <code>vignette("magrittr")</code>.</p>
 </div>
 <div id="breve-introdução-ao-tidyr" class="section level2">
@@ -541,7 +542,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["introduction-dplyr.pdf", "introduction-dplyr.epub", "introduction-dplyr.djvu"],
+"download": ["introduction-dplyr.pdf", "introduction-dplyr.epub"],
 "toc": {
 "collapse": "subsection"
 }

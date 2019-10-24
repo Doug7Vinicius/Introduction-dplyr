@@ -379,6 +379,38 @@ chicago %>%
 O último verbo-chave é `summarise()`. Recolhe um quadro de dados em uma única linha:
 
 ```{r}
-
+summarise(chicago, "Média" = mean(tmpd, na.rm = TRUE))
 ```
 
+
+Juntos `group_by()` e `summarise()` forneça uma das ferramentas que você mais usará ao trabalhar com dplyr: resumos agrupados.
+
+## `group_by()`
+
+A função `group_by()` é usada para gerar estatísticas resumidas do quadro de dados nos estratos definidos por uma variável. Por exemplo, neste conjunto de dados de poluição do ar, convém saber qual é o nível médio anual de PM2.5. Portanto, o estrato é o ano, e isso é algo que podemos derivar da variável date. Em conjunto com a função `group_by()`, freqüentemente usamos a função `summarize()` (ou `summarise()` para algumas partes do mundo).
+
+A operação geral aqui é uma combinação de dividir um quadro de dados em partes separadas definidas por uma variável ou grupo de variáveis ( `group_by()`) e, em seguida, aplicar uma função de resumo nesses subconjuntos ( `summarize()`).
+
+A operação geral aqui é uma combinação de dividir um quadro de dados em partes separadas definidas por uma variável ou grupo de variáveis ( `group_by()`) e, em seguida, aplicar uma função de resumo nesses subconjuntos ( `summarize()`).
+
+Primeiro, podemos criar uma variável `year` usando `as.POSIXlt()` (Funções para manipular objetos de classes "POSIXlt"e "POSIXct"representar datas e horas do calendário).
+
+```{r}
+chicago <- mutate(chicago, year = as.POSIXlt(date)$year + 1900)
+```
+
+Agora podemos criar um quadro de dados separado que divide o quadro de dados original por ano.
+
+```{r}
+years <- group_by(chicago, year)
+```
+
+Por fim, calculamos estatísticas de resumo para cada ano no quadro de dados com a função `summarize()`.
+
+```{r}
+summarize(years, "pm25" = mean(pm25, na.rm = TRUE), 
+           "o3" = max(o3tmean2, na.rm = TRUE), 
+           "no2" = median(no2tmean2, na.rm = TRUE))
+```
+
+`summarize()` devolve uma trama de dados com year primeira coluna, e em seguida, as médias anuais de pm25, o3e no2.
